@@ -19,7 +19,7 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          <img src="assets\img\bayou-bowl.jpg"></img>
+          <img src="../../assets/img/bayou-bowl.jpg"></img>
         </div>
       </main>
 
