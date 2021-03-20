@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Bayou Bowl</title>
+        <title>Swamp Dish</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -17,22 +17,12 @@ export default function Home() {
       <Container fluid>
         <main className={styles.main}>
           <h1 className={styles.title}>
-            Welcome to the Bayou Bowl Tournament Homepage!
+            Welcome to the Swamp Dish!
         </h1>
 
           <p className={styles.description}>
             Coming Soon!
         </p>
-
-          <div className={styles.grid}>
-            <Image
-              src="/img/bayou-bowl.jpg"
-              alt="Bayou Bowl main graphic"
-              height={1000}
-              width={1000}
-              layout="intrinsic"
-            />
-          </div>
         </main>
       </Container>
 
