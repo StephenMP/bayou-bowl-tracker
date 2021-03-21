@@ -1,5 +1,5 @@
 {
-  "name": "swamp-dish-tracker",
+  "name": "swamp-dish",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^1.2.0",
     "bootstrap": "^4.6.0",
     "next": "10.0.8",
     "react": "17.0.1",

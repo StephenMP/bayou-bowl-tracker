@@ -1,23 +1,29 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import AnonymousNav from './components/AnonymousNav'
+import MainNav from '../components/MainNav'
 import Container from 'react-bootstrap/Container'
+import { constants } from './util/constants'
+import { UserProfile, useUser } from '@auth0/nextjs-auth0'
 
 export default function Home() {
+  const { user, error, isLoading } = useUser();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>;
+  
   return (
     <>
       <Head>
-        <title>Swamp Dish</title>
+        <title>{constants.appName}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <AnonymousNav />
+      <MainNav />
 
       <Container fluid>
         <main className={styles.main}>
           <h1 className={styles.title}>
-            Welcome to the Swamp Dish!
+            Welcome to {constants.appName}
         </h1>
 
           <p className={styles.description}>
@@ -25,7 +31,6 @@ export default function Home() {
         </p>
         </main>
       </Container>
-
       <footer className={styles.footer}>
         Built by MrSpwn
         © 2021 All Rights Reserved
