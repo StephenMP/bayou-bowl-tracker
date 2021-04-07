@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import MainNav from '../components/MainNav'
 import Container from 'react-bootstrap/Container'
-import { constants } from './util/constants'
+import { constants } from '../util/constants'
 import { UserProfile, useUser } from '@auth0/nextjs-auth0'
 
 export default function Home() {

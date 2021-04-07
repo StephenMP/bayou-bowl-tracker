@@ -2,7 +2,7 @@ import { useUser } from "@auth0/nextjs-auth0";
 import React from "react";
 import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar";
-import { constants } from "../pages/util/constants";
+import { constants } from "../util/constants";
 
 function NavBrand() {
     return (
