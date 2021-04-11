@@ -6,6 +6,7 @@ import { constants } from '../util/constants'
 import { UserProfile, useUser } from '@auth0/nextjs-auth0'
 
 export default function Home() {
+  var isProd = process.env.NEXT_PUBLIC_APP_ENV === 'PRODUCTION'
   const { user, error, isLoading } = useUser();
 
   if (isLoading) return <div>Loading...</div>;
@@ -14,7 +15,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{constants.appName}</title>
+        <title>{isProd ? constants.appName : `TEST - ${constants.appName}`}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
