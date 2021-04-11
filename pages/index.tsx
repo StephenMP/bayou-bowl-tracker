@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{constants.appName} - Test</title>
+        <title>{constants.appName}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
