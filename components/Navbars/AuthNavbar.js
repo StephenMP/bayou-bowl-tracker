@@ -61,7 +61,7 @@ function AuthedNavLinks() {
     )
   }
 
-  return (<></>)
+  return (<><div></div></>)
 }
 
 export default function Navbar(props) {
@@ -72,7 +72,7 @@ export default function Navbar(props) {
   if (error) return <div>{error.message}</div>;
 
   return (
-    user && <>
+    <>
       <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <img src="/img/brand/bayoubowl-logo.png" heigh={50} width={50} />
