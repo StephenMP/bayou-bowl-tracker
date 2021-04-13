@@ -14,27 +14,54 @@ function SignInOutButton() {
 
   if (user) {
     return (
-      <a href="/api/auth/logout">
-        <button
-          className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-          type="button"
-        >
-          <i className="fas fa-sign-out-alt"></i> Sign Out
+      <li className="flex items-center">
+        <a href="/api/auth/logout">
+          <button
+            className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+            type="button"
+          >
+            <i className="fas fa-sign-out-alt"></i> Sign Out
         </button>
-      </a>
+        </a>
+      </li>
     )
   }
 
   return (
-    <a href="/api/auth/login">
-      <button
-        className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-        type="button"
-      >
-        <i className="fas fa-sign-in-alt"></i> Sign In
+    <li className="flex items-center">
+      <a href="/api/auth/login">
+        <button
+          className="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+          type="button"
+        >
+          <i className="fas fa-sign-in-alt"></i> Sign In
       </button>
-    </a>
+      </a>
+    </li>
   )
+}
+
+function AuthedNavLinks() {
+  const { user, error, isLoading } = useUser();
+
+  if (isLoading) return <div></div>;
+  if (error) return <div>{error.message}</div>;
+
+  if (user) {
+    return (
+      <li className="flex items-center">
+        <Link href="/profile">
+          <a
+            className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+          >
+            Account
+          </a>
+        </Link>
+      </li>
+    )
+  }
+
+  return (<></>)
 }
 
 export default function Navbar(props) {
@@ -45,9 +72,10 @@ export default function Navbar(props) {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <>
+    user && <>
       <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+          <img src="/img/brand/bayoubowl-logo.png" heigh={50} width={50} />
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <Link href="/">
               <a
@@ -84,7 +112,7 @@ export default function Navbar(props) {
               </li>
 
               <li className="flex items-center">
-                <Link href="/profile">
+                <Link href="/">
                   <a
                     className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                   >
@@ -103,9 +131,8 @@ export default function Navbar(props) {
                 </Link>
               </li>
 
-              <li className="flex items-center">
-                <SignInOutButton />
-              </li>
+              <AuthedNavLinks />
+              <SignInOutButton />
             </ul>
           </div>
         </div>
