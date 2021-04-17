@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import Router from "next/router"
+import { useUser } from "@auth0/nextjs-auth0";
 
 // components
 
@@ -8,6 +10,15 @@ import Footer from "components/Footers/Footer.js";
 import { constants } from "../util/constants"
 
 export default function Landing() {
+  const { user, error, isLoading } = useUser();
+
+  if (isLoading) return <div></div>;
+  if (error) return <div>{error.message}</div>;
+
+  if(user) {
+    Router.push("/user/profile")
+  }
+
   return (
     <>
       <Navbar transparent />
@@ -30,7 +41,7 @@ export default function Landing() {
                     The {constants.APP_NAME}
                   </h1>
                   <p className="mt-4 text-lg text-blueGray-200">
-                    Coming Soon!
+                    The Premier Hunt: Showdown ESports Tournament
                   </p>
                 </div>
               </div>

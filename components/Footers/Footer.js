@@ -16,7 +16,6 @@ export default function Footer() {
                 >
                   MrSpwn
                 </a>
-                .
               </div>
             </div>
           </div>

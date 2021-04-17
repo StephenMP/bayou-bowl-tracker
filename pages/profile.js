@@ -15,7 +15,7 @@ function Profile() {
 
   if (user) {
     return (
-      <>
+      user && <>
         <Navbar transparent />
         <main className="profile-page">
           <section className="relative block h-500-px">
@@ -81,26 +81,26 @@ function Profile() {
                       <div className="flex justify-center py-4 lg:pt-4 pt-8">
                         <div className="mr-4 p-3 text-center">
                           <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                            N/A
+                            {/* N/A */}
                           </span>
                           <span className="text-sm text-blueGray-400">
-                            Kills
+                            {/* # of Events */}
                           </span>
                         </div>
                         <div className="mr-4 p-3 text-center">
                           <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                            N/A
+                            {/* N/A */}
                           </span>
                           <span className="text-sm text-blueGray-400">
-                            Deaths
+                            {/* Wins */}
                           </span>
                         </div>
                         <div className="lg:mr-4 p-3 text-center">
                           <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                            N/A
+                            {/* N/A */}
                           </span>
                           <span className="text-sm text-blueGray-400">
-                            Assists
+                            {/* Assists */}
                           </span>
                         </div>
                       </div>
@@ -113,10 +113,6 @@ function Profile() {
                     <div className="mb-2 text-blueGray-600">
                       <i className="fas fa-envelope mr-2 text-lg text-blueGray-400"></i>
                       {user.email}
-                    </div>
-                    <div className="mb-2 text-blueGray-600">
-                      <i className="fas fa-users mr-2 text-lg text-blueGray-400"></i>
-                      N/A
                     </div>
                     <div className="mb-2 text-blueGray-600">
                       <i className="fab fa-twitch mr-2 text-lg text-blueGray-400"></i>

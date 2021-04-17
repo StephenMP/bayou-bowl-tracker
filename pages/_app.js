@@ -10,6 +10,13 @@ import { constants } from "../util/constants"
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
 
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
@@ -52,11 +59,13 @@ export default class MyApp extends App {
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
           <title>{pageTitle}</title>
         </Head>
-        <Layout>
+        <RecoilRoot>
           <UserProvider>
-            <Component {...pageProps} />
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
           </UserProvider>
-        </Layout>
+        </RecoilRoot>
       </React.Fragment>
     );
   }

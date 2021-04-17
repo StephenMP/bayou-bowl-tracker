@@ -1,22 +1,30 @@
 import React from "react";
 import { createPopper } from "@popperjs/core";
+import { useUser } from "@auth0/nextjs-auth0";
 
 const UserDropdown = () => {
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();
   const popoverDropdownRef = React.createRef();
+  const { user, error, isLoading } = useUser();
+  
   const openDropdownPopover = () => {
     createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
       placement: "bottom-start",
     });
     setDropdownPopoverShow(true);
   };
+
   const closeDropdownPopover = () => {
     setDropdownPopoverShow(false);
   };
+
+  if (isLoading) return <div></div>;
+  if (error) return <div>{error.message}</div>;
+  
   return (
-    <>
+    user && <>
       <a
         className="text-blueGray-500 block"
         href="#pablo"
@@ -31,7 +39,7 @@ const UserDropdown = () => {
             <img
               alt="..."
               className="w-full rounded-full align-middle border-none shadow-lg"
-              src="/img/team-1-800x800.jpg"
+              src={user.picture}
             />
           </span>
         </div>
@@ -44,41 +52,12 @@ const UserDropdown = () => {
         }
       >
         <a
-          href="#pablo"
+          href="/api/auth/logout"
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
-          onClick={(e) => e.preventDefault()}
         >
-          Action
-        </a>
-        <a
-          href="#pablo"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-          onClick={(e) => e.preventDefault()}
-        >
-          Another action
-        </a>
-        <a
-          href="#pablo"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-          onClick={(e) => e.preventDefault()}
-        >
-          Something else here
-        </a>
-        <div className="h-0 my-2 border border-solid border-blueGray-100" />
-        <a
-          href="#pablo"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-          onClick={(e) => e.preventDefault()}
-        >
-          Seprated link
+          Logout
         </a>
       </div>
     </>
