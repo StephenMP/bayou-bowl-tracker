@@ -1,10 +1,11 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useUser } from "@auth0/nextjs-auth0";
 import { constants } from "util/constants.js"
+import { routes } from "../../util/routes"
 
-import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
 import UserDropdown from "components/Dropdowns/UserDropdown.js";
 
 export default function Sidebar() {
@@ -17,7 +18,7 @@ export default function Sidebar() {
 
   return (
     user && <>
-      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
+      <nav className="md:left-0 bg-blueGray-100 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
         <div className="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
           {/* Toggler */}
           <button
@@ -28,9 +29,9 @@ export default function Sidebar() {
             <i className="fas fa-bars"></i>
           </button>
           {/* Brand */}
-            <span className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
-              {user.name}
-            </span>
+          <span className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
+            {user.name}
+          </span>
           {/* User */}
           <ul className="md:hidden items-center flex flex-wrap list-none">
             <li className="inline-block relative">
@@ -48,11 +49,8 @@ export default function Sidebar() {
             <div className="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blueGray-200">
               <div className="flex flex-wrap">
                 <div className="w-6/12">
-                  <Link href="/">
-                    <a
-                      href="#pablo"
-                      className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
-                    >
+                  <Link href={routes.HOME}>
+                    <a className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0" >
                       {constants.APP_NAME}
                     </a>
                   </Link>
@@ -68,32 +66,21 @@ export default function Sidebar() {
                 </div>
               </div>
             </div>
-            {/* Form */}
-            <form className="mt-6 mb-4 md:hidden">
-              <div className="mb-3 pt-0">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  className="border-0 px-3 py-2 h-12 border border-solid  border-blueGray-500 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal"
-                />
-              </div>
-            </form>
 
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />
             {/* Heading */}
             <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              User Pages
+              User
             </h6>
             {/* Navigation */}
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">
-                <Link href="/user/profile">
+                <Link href={routes.USER_PROFILE}>
                   <a
-                    href="#pablo"
                     className={
                       "text-xs uppercase py-3 font-bold block " +
-                      (router.pathname.indexOf("/user/profile") !== -1
+                      (router.pathname.indexOf(routes.USER_PROFILE) !== -1
                         ? "text-lightBlue-500 hover:text-lightBlue-600"
                         : "text-blueGray-700 hover:text-blueGray-500")
                     }
@@ -101,9 +88,9 @@ export default function Sidebar() {
                     <i
                       className={
                         "fas fa-user-cog mr-2 text-sm " +
-                        (router.pathname.indexOf("/user/profile") !== -1
+                        (router.pathname.indexOf(routes.USER_PROFILE) !== -1
                           ? "opacity-75"
-                          : "text-blueGray-300")
+                          : "text-blueGray-500")
                       }
                     ></i>{" "}
                     Profile
@@ -112,12 +99,11 @@ export default function Sidebar() {
               </li>
 
               <li className="items-center">
-                <Link href="/user/events">
+                <Link href={routes.USER_EVENTS}>
                   <a
-                    href="#pablo"
                     className={
                       "text-xs uppercase py-3 font-bold block " +
-                      (router.pathname.indexOf("/user/events") !== -1
+                      (router.pathname.indexOf(routes.USER_EVENTS) !== -1
                         ? "text-lightBlue-500 hover:text-lightBlue-600"
                         : "text-blueGray-700 hover:text-blueGray-500")
                     }
@@ -125,9 +111,9 @@ export default function Sidebar() {
                     <i
                       className={
                         "fas fa-calendar-alt mr-2 text-sm " +
-                        (router.pathname.indexOf("/user/events") !== -1
+                        (router.pathname.indexOf(routes.USER_EVENTS) !== -1
                           ? "opacity-75"
-                          : "text-blueGray-300")
+                          : "text-blueGray-500")
                       }
                     ></i>{" "}
                     Events
@@ -140,28 +126,25 @@ export default function Sidebar() {
             <hr className="my-4 md:min-w-full" />
             {/* Heading */}
             <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Admin Pages
+              Admin
             </h6>
             {/* Navigation */}
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">
-                <Link href="/admin/dashboard">
-                  <a
-                    href="#pablo"
-                    className={
-                      "text-xs uppercase py-3 font-bold block " +
-                      (router.pathname.indexOf("/admin/users") !== -1
-                        ? "text-lightBlue-500 hover:text-lightBlue-600"
-                        : "text-blueGray-700 hover:text-blueGray-500")
-                    }
+                <Link href={routes.ADMIN_USERS}>
+                  <a className={
+                    "text-xs uppercase py-3 font-bold block " +
+                    (router.pathname.indexOf(routes.ADMIN_USERS) !== -1
+                      ? "text-lightBlue-500 hover:text-lightBlue-600"
+                      : "text-blueGray-700 hover:text-blueGray-500")
+                  }
                   >
-                    <i
-                      className={
-                        "fas fa-users mr-2 text-sm " +
-                        (router.pathname.indexOf("/admin/users") !== -1
-                          ? "opacity-75"
-                          : "text-blueGray-300")
-                      }
+                    <i className={
+                      "fas fa-users mr-2 text-sm " +
+                      (router.pathname.indexOf(routes.ADMIN_USERS) !== -1
+                        ? "opacity-75"
+                        : "text-blueGray-500")
+                    }
                     ></i>{" "}
                     Users
                   </a>
@@ -177,11 +160,11 @@ export default function Sidebar() {
             </h6>
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
-                  <a
-                    href="/api/auth/logout"
-                    className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  >
-                    <i className="fas fa-sign-out-alt text-blueGray-400 mr-2 text-sm"></i>{" "}
+                <a
+                  href={routes.LOGOUT}
+                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                >
+                  <i className="fas fa-sign-out-alt text-blueGray-500 mr-2 text-sm"></i>{" "}
                     Logout
                   </a>
               </li>

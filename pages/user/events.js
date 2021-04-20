@@ -2,7 +2,7 @@ import React from "react";
 
 // components
 
-import CardBarChart from "components/Cards/CardBarChart.js";
+import CardEvent from "components/Cards/CardEvent.js";
 
 // layout for page
 
@@ -12,8 +12,8 @@ export default function UserEvents() {
   return (
     <>
       <div className="flex flex-wrap">
-        <div className="w-full lg:w-8/12 px-4">
-          <CardBarChart />
+        <div className="w-full lg:w-4/12 px-4">
+          <CardEvent />
         </div>
       </div>
     </>

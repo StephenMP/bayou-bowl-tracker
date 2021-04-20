@@ -2,9 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Router from "next/router"
 import { useUser } from "@auth0/nextjs-auth0";
-
-// components
-
+import Countdown from 'react-countdown';
 import Navbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footers/Footer.js";
 import { constants } from "../util/constants"
@@ -37,12 +35,13 @@ export default function Landing() {
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                 <div className="pr-12">
-                  <h1 className="text-white font-semibold text-5xl">
+                  <h1 className="text-white font-semibold text-5xl uppercase">
                     The {constants.APP_NAME}
                   </h1>
-                  <p className="mt-4 text-lg text-blueGray-200">
+                  <h3 className="mt-4 text-lg text-blueGray-200">
                     The Premier Hunt: Showdown ESports Tournament
-                  </p>
+                  </h3>
+                  <Countdown className="mt-4 text-md text-blueGray-200" date={new Date(2021, 6, 17)} />
                 </div>
               </div>
             </div>

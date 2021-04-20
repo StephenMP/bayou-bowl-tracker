@@ -1,19 +1,9 @@
 import React from "react";
-
-// components
-
-import AdminNavbar from "components/Navbars/AdminNavbar.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 import Header from "components/Headers/Header.js";
 import FooterAdmin from "components/Footers/FooterAdmin.js";
 import { UserProvider } from '@auth0/nextjs-auth0';
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil';
+import { RecoilRoot } from 'recoil';
 
 export default function Admin({ children }) {
   return (
@@ -21,9 +11,7 @@ export default function Admin({ children }) {
       <RecoilRoot>
         <UserProvider>
           <Sidebar />
-          <div className="relative md:ml-64 bg-blueGray-100">
-            <AdminNavbar />
-            {/* Header */}
+          <div className="relative md:ml-64 bg-blueGray-200">
             <Header />
             <div className="px-4 md:px-10 mx-auto w-full -m-24">
               {children}

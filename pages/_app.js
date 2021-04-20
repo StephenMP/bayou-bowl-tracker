@@ -10,13 +10,7 @@ import { constants } from "../util/constants"
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil';
+import { RecoilRoot } from 'recoil';
 
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
