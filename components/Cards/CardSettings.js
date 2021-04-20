@@ -14,9 +14,9 @@ export const profileState = atom({
   key: 'profileState', // unique ID (with respect to other atoms/selectors)
   default: {
     steamName: 'MrSpwn',
-    twitch: 'https://twitch.tv/mrspwn',
-    discord: 'https://meh.discord.gg',
-    twitter: 'https//twitter.com/Mr_Spwn',
+    twitch: 'MrSpwn',
+    discord: 'MrSpwn#9644',
+    twitter: 'Mr_Spwn',
     aboutMe: 'I\'m awesome'
   },
 });
@@ -31,7 +31,9 @@ export default function CardSettings() {
         ...oldProfile
       }
 
-      newProfile[event.target.id] = event.target.value
+      const sanitizedValue = event.target.value.replace("https://", "").replace("http://", "").replace("@", "").replace(/[^a-z0-9áéíóúñü #\.,_-]/gim,"")
+      newProfile[event.target.id] = sanitizedValue.trim()
+      event.target.value = sanitizedValue
 
       return newProfile
     })
@@ -162,6 +164,7 @@ export default function CardSettings() {
                     id='twitter'
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="your_handle"
                     defaultValue={profile.twitter}
                     onChange={onAboutMeChange}
                   />

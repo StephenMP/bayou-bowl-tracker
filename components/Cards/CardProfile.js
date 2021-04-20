@@ -1,15 +1,7 @@
 import React from "react";
 import { useUser } from "@auth0/nextjs-auth0";
 import { profileState } from "components/Cards/CardSettings.js"
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil';
-
-// components
+import { useRecoilValue } from 'recoil';
 
 export default function CardProfile() {
   const { user, error, isLoading } = useUser();
@@ -73,7 +65,7 @@ export default function CardProfile() {
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-twitch mr-2 text-lg text-blueGray-400"></i>
-              {profile.twitch}
+              <a href={"https://twitch.tv/" + profile.twitch} target="_blank">{profile.twitch}</a>
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-steam mr-2 text-lg text-blueGray-400"></i>
@@ -85,7 +77,7 @@ export default function CardProfile() {
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-twitter mr-2 text-lg text-blueGray-400"></i>
-              {profile.twitter}
+              <a href={"https://twitter.com/" + profile.twitter} rel="noreferrer" target="_blank">{profile.twitter}</a>
             </div>
           </div>
           <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
