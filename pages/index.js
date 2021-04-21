@@ -24,7 +24,7 @@ export default function Landing() {
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
-            style={{ backgroundImage: "url('https://www.huntshowdown.com//files/screenshots/05_Hunt_screenshot_Update1.0.jpg')" }}
+            style={{ backgroundImage: "url('https://trello-attachments.s3.amazonaws.com/605665ed64f1d22238ad9d7e/1200x474/9d1f8df524b6024ab8b0bda6115a2e2a/AdobeStock_131228401.jpeg.jpg')" }}
           >
             <span
               id="blackOverlay"

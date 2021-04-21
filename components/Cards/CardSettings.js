@@ -31,7 +31,7 @@ export default function CardSettings() {
         ...oldProfile
       }
 
-      const sanitizedValue = event.target.value.replace("https://", "").replace("http://", "").replace("@", "").replace(/[^a-z0-9áéíóúñü #\.,_-]/gim,"")
+      const sanitizedValue = event.target.value.replace("https://", "").replace("http://", "").replace("@", "").replace(/[^a-z0-9áéíóúñü #/\.,_-]/gim,"")
       newProfile[event.target.id] = sanitizedValue.trim()
       event.target.value = sanitizedValue
 
@@ -40,7 +40,7 @@ export default function CardSettings() {
   };
 
   const onSave = () => {
-    alert("This doesn't do anything silly face :)")
+    
   }
 
   if (isLoading) return <div></div>;
