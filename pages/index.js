@@ -1,6 +1,4 @@
 import React from "react";
-import Link from "next/link";
-import Router from "next/router"
 import { useUser } from "@auth0/nextjs-auth0";
 import Countdown from 'react-countdown';
 import Navbar from "components/Navbars/AuthNavbar.js";
@@ -12,10 +10,6 @@ export default function Landing() {
 
   if (isLoading) return <div></div>;
   if (error) return <div>{error.message}</div>;
-
-  if(user) {
-    Router.push("/user/profile")
-  }
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useUser } from "@auth0/nextjs-auth0";
-import { profileState } from "components/Cards/CardSettings.js"
+import { profileState } from "../../pages/user/profile"
 import {
   RecoilRoot,
   atom,

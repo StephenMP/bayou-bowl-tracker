@@ -1,37 +1,19 @@
 import React from "react";
-import { useUser } from "@auth0/nextjs-auth0";
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil';
+import { profileState } from '../../pages/user/profile'
+import { useRecoilState } from 'recoil';
+import { useToasts } from 'react-toast-notifications';
 
-// components
-
-export const profileState = atom({
-  key: 'profileState', // unique ID (with respect to other atoms/selectors)
-  default: {
-    steamName: 'MrSpwn',
-    twitch: 'MrSpwn',
-    discord: 'MrSpwn#9644',
-    twitter: 'Mr_Spwn',
-    aboutMe: 'I\'m awesome'
-  },
-});
-
-export default function CardSettings() {
-  const { user, error, isLoading } = useUser();
+export default function CardSettings({email, name}) {
   const [profile, setProfile] = useRecoilState(profileState);
+  const { addToast } = useToasts();
 
-  const onAboutMeChange = (event) => {
+  const onInputChange = (event) => {
     setProfile(oldProfile => {
       var newProfile = {
         ...oldProfile
       }
 
-      const sanitizedValue = event.target.value.replace("https://", "").replace("http://", "").replace("@", "").replace(/[^a-z0-9áéíóúñü #/\.,_-]/gim,"")
+      const sanitizedValue = event.target.value.replace("https://", "").replace("http://", "").replace("@", "")
       newProfile[event.target.id] = sanitizedValue.trim()
       event.target.value = sanitizedValue
 
@@ -39,15 +21,31 @@ export default function CardSettings() {
     })
   };
 
-  const onSave = () => {
-    
+  const onSave = async () => {
+    const body = {
+      ...profile
+    }
+
+    const response = await fetch('/api/user/profile', {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      })
+    })
+
+    if(response.status >= 200 && response.status <= 299) {
+      addToast('Saved successfully', { appearance: 'success', autoDismiss: true });
+    }
+
+    else{
+      addToast('Unable to save :(', { appearance: 'error' });
+    }
   }
 
-  if (isLoading) return <div></div>;
-  if (error) return <div>{error.message}</div>;
-
   return (
-    user && <>
+    <>
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
         <div className="rounded-t bg-white mb-0 px-6 py-6">
           <div className="text-center flex justify-between">
@@ -80,7 +78,7 @@ export default function CardSettings() {
                   <input
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-400 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue={user.name}
+                    defaultValue={name}
                     disabled
                   />
                 </div>
@@ -96,7 +94,7 @@ export default function CardSettings() {
                   <input
                     type="email"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-400 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue={user.email}
+                    defaultValue={email}
                     disabled
                   />
                 </div>
@@ -110,11 +108,11 @@ export default function CardSettings() {
                     Steam Name
                   </label>
                   <input
-                    id='steamName'
+                    id='steam_name'
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue={profile.steamName}
-                    onChange={onAboutMeChange}
+                    defaultValue={profile.steam_name}
+                    onChange={onInputChange}
                   />
                 </div>
               </div>
@@ -127,11 +125,11 @@ export default function CardSettings() {
                     Twitch
                   </label>
                   <input
-                    id='twitch'
+                    id='twitch_name'
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue={profile.twitch}
-                    onChange={onAboutMeChange}
+                    defaultValue={profile.twitch_name}
+                    onChange={onInputChange}
                   />
                 </div>
               </div>
@@ -144,11 +142,11 @@ export default function CardSettings() {
                     Discord
                   </label>
                   <input
-                    id='discord'
+                    id='discord_name'
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue={profile.discord}
-                    onChange={onAboutMeChange}
+                    defaultValue={profile.discord_name}
+                    onChange={onInputChange}
                   />
                 </div>
               </div>
@@ -161,12 +159,12 @@ export default function CardSettings() {
                     Twitter
                   </label>
                   <input
-                    id='twitter'
+                    id='twitter_name'
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     placeholder="your_handle"
-                    defaultValue={profile.twitter}
-                    onChange={onAboutMeChange}
+                    defaultValue={profile.twitter_name}
+                    onChange={onInputChange}
                   />
                 </div>
               </div>
@@ -187,12 +185,12 @@ export default function CardSettings() {
                     About me
                   </label>
                   <textarea
-                    id="aboutMe"
+                    id="about_me"
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     rows="4"
-                    defaultValue={profile.aboutMe}
-                    onChange={onAboutMeChange}
+                    defaultValue={profile.about_me}
+                    onChange={onInputChange}
                   ></textarea>
                 </div>
               </div>

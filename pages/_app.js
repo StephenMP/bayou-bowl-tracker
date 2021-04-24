@@ -4,7 +4,7 @@ import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
 import { UserProvider } from '@auth0/nextjs-auth0';
-
+import { ToastProvider } from 'react-toast-notifications';
 import PageChange from "components/PageChange/PageChange.js";
 import { constants } from "../util/constants"
 
@@ -13,7 +13,6 @@ import "styles/tailwind.css";
 import { RecoilRoot } from 'recoil';
 
 Router.events.on("routeChangeStart", (url) => {
-  console.log(`Loading: ${url}`);
   document.body.classList.add("body-page-transition");
   ReactDOM.render(
     <PageChange path={url} />,
@@ -55,9 +54,11 @@ export default class MyApp extends App {
         </Head>
         <RecoilRoot>
           <UserProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
+            <ToastProvider>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </ToastProvider>
           </UserProvider>
         </RecoilRoot>
       </React.Fragment>

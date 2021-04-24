@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0";
 import { constants } from "../../util/constants"
+import { routes } from '../../util/routes'
 
 const navLinkClassName = "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
 const navButtonClassName = "bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
@@ -44,7 +45,7 @@ function AuthedNavLinks() {
   if (user) {
     return (
       <li className="flex items-center">
-        <Link href="/profile">
+        <Link href={routes.USER_PROFILE}>
           <a className={navLinkClassName} >
             Account
           </a>
