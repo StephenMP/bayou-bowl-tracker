@@ -1,14 +1,9 @@
 import React from "react";
-
-// components
-
 import CardEvent from "components/Cards/CardEvent.js";
-
-// layout for page
-
 import Admin from "layouts/Admin.js";
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
-export default function UserEvents() {
+const UserEvents = withPageAuthRequired(() => {
   return (
     <>
       <div className="flex flex-wrap">
@@ -18,6 +13,8 @@ export default function UserEvents() {
       </div>
     </>
   );
-}
+})
 
 UserEvents.layout = Admin;
+
+export default UserEvents

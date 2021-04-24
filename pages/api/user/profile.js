@@ -1,21 +1,22 @@
 import { getSession } from '@auth0/nextjs-auth0'
 import { UserRepository } from 'repositories/user-repository'
+import { getAccessToken, withApiAuthRequired } from '@auth0/nextjs-auth0';
 
 const userRepository = new UserRepository()
 
-async function getProfile(sub) {
-    return await userRepository.getUserById(sub.split('|')[1])
+async function getProfile(user) {
+    return await userRepository.getUserById(`user-${user.sub.split('|')[1]}`)
 }
 
 async function saveProfile(userEntity) {
     await userRepository.saveUser(userEntity)
 }
 
-export default async function handler(req, res) {
+export default withApiAuthRequired(async function handler(req, res) {
     switch (req.method) {
         case 'GET':
             const session = getSession(req, res)
-            const profile = await getProfile(session.user.sub)
+            const profile = await getProfile(session.user)
 
             res.status(200).json(profile)
             break
@@ -32,4 +33,4 @@ export default async function handler(req, res) {
             res.status(405).end()
             break
     }
-}
+})

@@ -19,7 +19,7 @@ export class UserEntity {
   static fromAuth0(auth0User) {
     var userEntity = new UserEntity()
     Object.assign(userEntity, auth0User)
-    userEntity.id = userEntity.sub.split('|')[1]
+    userEntity.id = `user-${userEntity.sub.split('|')[1]}`
     return userEntity
   }
 }

@@ -2,7 +2,7 @@ import React from "react";
 import CardSettings from "components/Cards/CardSettings.js";
 import CardProfile from "components/Cards/CardProfile.js";
 import Admin from "layouts/Admin.js";
-import { useUser } from "@auth0/nextjs-auth0";
+import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import {
   atom,
   useRecoilState,
@@ -14,7 +14,7 @@ export const profileState = atom({
   default: new UserEntity()
 });
 
-export default function Settings() {
+const Settings = withPageAuthRequired(() => {
   // Hooks
   const { user, error, isLoading } = useUser();
   const [profile, setProfile] = useRecoilState(profileState);
@@ -43,6 +43,8 @@ export default function Settings() {
       </div>
     </>
   );
-}
+})
 
 Settings.layout = Admin;
+
+export default Settings

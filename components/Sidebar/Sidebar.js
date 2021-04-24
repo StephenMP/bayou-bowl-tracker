@@ -1,14 +1,13 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/router";
-import { useUser } from "@auth0/nextjs-auth0";
+import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { constants } from "util/constants.js"
 import { routes } from "../../util/routes"
 
 import UserDropdown from "components/Dropdowns/UserDropdown.js";
 
-export default function Sidebar() {
+const Sidebar = withPageAuthRequired(() => {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
   const router = useRouter();
   const { user, error, isLoading } = useUser();
@@ -174,4 +173,6 @@ export default function Sidebar() {
       </nav>
     </>
   );
-}
+})
+
+export default Sidebar

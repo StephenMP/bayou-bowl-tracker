@@ -1,8 +1,9 @@
 import React from "react";
 import CardTable from "components/Cards/CardTable.js";
 import Admin from "layouts/Admin.js";
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
-export default function Tables() {
+const AdminUsersTable = withPageAuthRequired(() => {
   return (
     <>
       <div className="flex flex-wrap mt-4">
@@ -12,6 +13,8 @@ export default function Tables() {
       </div>
     </>
   );
-}
+});
 
-Tables.layout = Admin;
+AdminUsersTable.layout = Admin
+
+export default AdminUsersTable
