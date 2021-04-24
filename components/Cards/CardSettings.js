@@ -3,9 +3,9 @@ import { profileState } from '../../pages/user/profile'
 import { useRecoilState } from 'recoil';
 import { useToasts } from 'react-toast-notifications';
 
-export default function CardSettings({email, name}) {
+export default function CardSettings({ email, name }) {
   const [profile, setProfile] = useRecoilState(profileState);
-  const { addToast } = useToasts();
+  const { addToast, updateToast } = useToasts();
 
   const onInputChange = (event) => {
     setProfile(oldProfile => {
@@ -22,27 +22,30 @@ export default function CardSettings({email, name}) {
   };
 
   const onSave = async () => {
-    const body = {
-      ...profile
-    }
+    addToast('Saving...', { appearance: 'info', autoDismiss: true }, async toastId => {
+      const body = {
+        ...profile
+      }
 
-    const response = await fetch('/api/user/profile', {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: new Headers({
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+      const response = await fetch('/api/user/profile', {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        })
       })
-    })
 
-    if(response.status >= 200 && response.status <= 299) {
-      addToast('Saved successfully', { appearance: 'success', autoDismiss: true });
-    }
+      if (response.status >= 200 && response.status <= 299) {
+        updateToast(toastId, { content: 'Saved successfully', appearance: 'success', autoDismiss: true });
+      }
 
-    else{
-      addToast('Unable to save :(', { appearance: 'error' });
-    }
+      else {
+        updateToast(toastId, { content: 'Unable to save :(', appearance: 'error', autoDismiss: false });
+      }
+    });
   }
+
 
   return (
     <>
