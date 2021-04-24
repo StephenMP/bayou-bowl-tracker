@@ -43,4 +43,26 @@ export class UserRepository {
             redis.quit()
         }
     }
+
+    async getAllUsers() {
+        const redis = getRedisContext()
+        try {
+            const userEntities = []
+            const userKeys = await redis.keys('user-*')
+            const usersJson = await redis.mget(userKeys)
+
+            for (var i = 0; i < usersJson.length; i++) {
+                const userEntity = JSON.parse(usersJson[i])
+                userEntities.push(Object.assign(new UserEntity(), userEntity))
+            }
+
+            return userEntities
+        }
+        catch (error) {
+            console.log(error)
+        }
+        finally {
+            redis.quit()
+        }
+    }
 }
