@@ -11,7 +11,7 @@ module.exports = {
   },
   theme: {
     colors: {
-      ...colors,
+      ...colors
     },
     extend: {
       minHeight: {
@@ -93,6 +93,7 @@ module.exports = {
       addComponents([
         {
           ".container": { width: "100%" },
+          ".bg-purple-twitch": { "background-color": "#6441a5" }
         },
         {
           [`@media (min-width: ${screens.sm})`]: {

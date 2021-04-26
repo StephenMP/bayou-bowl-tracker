@@ -68,7 +68,7 @@ export default function Navbar(props) {
     <>
       <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <img src="/img/brand/bayoubowl-logo.png" heigh={50} width={50} />
+          <img src="/img/brand/bayoubowl-logo.png" heigh={40} width={40} className="mr-3" />
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <Link href="/">
               <a
@@ -95,7 +95,15 @@ export default function Navbar(props) {
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="flex items-center">
-                <Link href="/">
+                <Link href="#news">
+                  <a className={navLinkClassName} >
+                    News
+                </a>
+                </Link>
+              </li>
+              
+              <li className="flex items-center">
+                <Link href="#about">
                   <a className={navLinkClassName} >
                     About
                 </a>
@@ -103,15 +111,7 @@ export default function Navbar(props) {
               </li>
 
               <li className="flex items-center">
-                <Link href="/">
-                  <a className={navLinkClassName} >
-                    News
-                </a>
-                </Link>
-              </li>
-
-              <li className="flex items-center">
-                <Link href="/">
+                <Link href="#partners">
                   <a className={navLinkClassName} >
                     Partners
                 </a>
