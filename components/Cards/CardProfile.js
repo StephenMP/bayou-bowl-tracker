@@ -60,7 +60,7 @@ export default function CardProfile({email, name, picture}) {
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-twitch mr-2 text-lg text-blueGray-400"></i>
-              <a href={"https://twitch.tv/" + profile.twitch} target="_blank">{profile.twitch}</a>
+              <a href={"https://twitch.tv/" + profile.twitch_name} target="_blank">{profile.twitch_name}</a>
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-steam mr-2 text-lg text-blueGray-400"></i>
