@@ -1,11 +1,19 @@
 import React, { Suspense } from "react"
 import PropTypes from "prop-types"
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useResetRecoilState } from 'recoil'
 import { usersState } from '../../state/atoms'
 import TableDropdown from "components/Dropdowns/TableDropdown.js"
 
 function AllUsers({ color }) {
-  const [allUsers] = useRecoilState(usersState)
+  const [allUsers, setAllUsers] = useRecoilState(usersState)
+
+  const refreshUsers = async () => {
+    console.log("Refreshing all users")
+    const res = await fetch('/api/admin/users')
+    const users = await res.json()
+
+    setAllUsers(users)
+  }
 
   return (
     <div
@@ -25,6 +33,13 @@ function AllUsers({ color }) {
             >
               Users
               </h3>
+          </div>
+          <div>
+            <button
+              className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+              onClick={refreshUsers}
+            >
+              Refresh</button>
           </div>
         </div>
       </div>
