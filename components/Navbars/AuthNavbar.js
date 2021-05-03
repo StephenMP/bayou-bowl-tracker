@@ -7,62 +7,33 @@ import { routes } from '../../util/routes'
 const navLinkClassName = "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
 const navButtonClassName = "bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
 
-function SignInOutButton() {
-  const { user, error, isLoading } = useUser();
+function AuthedNavs() {
+  const { user, isLoading } = useUser();
 
   if (isLoading) return <div></div>;
-  if (error) return <div>{error.message}</div>;
-
-  if (user) {
-    return (
-      <li className="flex items-center">
-        <a href="/api/auth/logout">
-          <button className={navButtonClassName} type="button">
-            <i className="fas fa-sign-out-alt"></i> Sign Out
-        </button>
-        </a>
-      </li>
-    )
-  }
 
   return (
-    <li className="flex items-center">
-      <a href="/api/auth/login">
-        <button className={navButtonClassName} type="button">
-          <i className="fas fa-sign-in-alt"></i> Sign In
-      </button>
-      </a>
-    </li>
-  )
-}
-
-function AuthedNavLinks() {
-  const { user, error, isLoading } = useUser();
-
-  if (isLoading) return <div></div>;
-  if (error) return <div>{error.message}</div>;
-
-  if (user) {
-    return (
-      <li className="flex items-center">
+    <>
+      { user && <li className="flex items-center">
         <Link href={routes.USER_PROFILE}>
           <a className={navLinkClassName} >
             Account
           </a>
         </Link>
+      </li> }
+      <li className="flex items-center">
+        <a href={user ? "/api/auth/logout" : "/api/auth/login"}>
+          <button className={navButtonClassName} type="button">
+            <i className={user ? "fas fa-sign-out-alt" : "fas fa-sign-in-alt"}></i> {user ? 'Sign Out' : 'Sign In'}
+          </button>
+        </a>
       </li>
-    )
-  }
-
-  return <></>
+    </>
+  )
 }
 
-export default function Navbar(props) {
+export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
-  const { user, error, isLoading } = useUser();
-
-  if (isLoading) return <div></div>;
-  if (error) return <div>{error.message}</div>;
 
   return (
     <>
@@ -101,7 +72,7 @@ export default function Navbar(props) {
                 </a>
                 </Link>
               </li>
-              
+
               <li className="flex items-center">
                 <Link href="#about">
                   <a className={navLinkClassName} >
@@ -118,8 +89,15 @@ export default function Navbar(props) {
                 </Link>
               </li>
 
-              <AuthedNavLinks />
-              <SignInOutButton />
+              <li className="flex items-center">
+                <Link href="#leaderboards">
+                  <a className={navLinkClassName} >
+                    Leaderboards
+                  </a>
+                </Link>
+              </li>
+
+              <AuthedNavs />
             </ul>
           </div>
         </div>

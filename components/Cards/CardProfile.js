@@ -1,10 +1,9 @@
 import React from "react";
-import { profileState } from '../../pages/user/profile'
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil'
+import { userState } from '../../state/atoms'
 
-export default function CardProfile({email, name, picture}) {
-  const profile = useRecoilValue(profileState);
-
+export default function CardProfile() {
+  const user = useRecoilValue(userState)
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
@@ -16,7 +15,7 @@ export default function CardProfile({email, name, picture}) {
                   alt="..."
                   heigh={800}
                   width={800}
-                  src={picture}
+                  src={user.picture}
                   className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                 />
               </div>
@@ -52,27 +51,27 @@ export default function CardProfile({email, name, picture}) {
           </div>
           <div className="text-center mt-12">
             <h3 className="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-              {name ?? email}
+              {user.name ?? user.email}
             </h3>
             <div className="mb-2 text-blueGray-600">
               <i className="fas fa-envelope mr-2 text-lg text-blueGray-400"></i>
-              {email}
+              {user.email}
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-twitch mr-2 text-lg text-blueGray-400"></i>
-              <a href={"https://twitch.tv/" + profile.twitch_name} target="_blank">{profile.twitch_name}</a>
+              <a href={"https://twitch.tv/" + user.twitch_name} target="_blank">{user.twitch_name}</a>
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-steam mr-2 text-lg text-blueGray-400"></i>
-              {profile.steam_name}
+              {user.steam_name}
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-discord mr-2 text-lg text-blueGray-400"></i>
-              {profile.discord_name}
+              {user.discord_name}
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-twitter mr-2 text-lg text-blueGray-400"></i>
-              <a href={"https://twitter.com/" + profile.twitter_name} rel="noreferrer" target="_blank">{profile.twitter_name}</a>
+              <a href={"https://twitter.com/" + user.twitter_name} rel="noreferrer" target="_blank">{user.twitter_name}</a>
             </div>
           </div>
           <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
@@ -82,7 +81,7 @@ export default function CardProfile({email, name, picture}) {
                   About Me
                         </h3>
                 <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
-                  {profile.about_me}
+                  {user.about_me}
                 </p>
               </div>
             </div>

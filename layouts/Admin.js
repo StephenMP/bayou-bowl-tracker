@@ -7,21 +7,19 @@ import { ToastProvider } from 'react-toast-notifications';
 
 export default function Admin({ children }) {
   return (
-    <>
-      <RecoilRoot>
-        <UserProvider>
-          <ToastProvider>
-            <Sidebar />
-            <div className="relative md:ml-64 bg-blueGray-200">
-              <Header />
-              <div className="px-4 md:px-10 mx-auto w-full -m-24">
-                {children}
-                {/* <FooterAdmin /> */}
-              </div>
+    <RecoilRoot>
+      <UserProvider>
+        <ToastProvider>
+          <Sidebar />
+          <div className="relative md:ml-64 bg-blueGray-200">
+            <Header />
+            <div className="px-4 md:px-10 mx-auto w-full -m-24">
+              {children}
+              {/* <FooterAdmin /> */}
             </div>
-          </ToastProvider>
-        </UserProvider>
-      </RecoilRoot>
-    </>
+          </div>
+        </ToastProvider>
+      </UserProvider>
+    </RecoilRoot>
   );
 }

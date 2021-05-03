@@ -1,26 +1,18 @@
 import React from "react";
 import YouTube from 'react-youtube';
-import { useUser } from "@auth0/nextjs-auth0";
 import Countdown from 'react-countdown';
 import Navbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footers/Footer.js";
 import { constants } from "../util/constants"
-import Link from "next/link";
 
 export default function Landing() {
-  const { user, error, isLoading } = useUser();
-
   const opts = {
     height: '390',
     width: '640',
     playerVars: {
-      // https://developers.google.com/youtube/player_parameters
       autoplay: 0,
     },
   };
-
-  if (isLoading) return <div></div>;
-  if (error) return <div>{error.message}</div>;
 
   return (
     <>
@@ -384,8 +376,8 @@ export default function Landing() {
                   Partners
                 </h2>
                 <p className="text-lg leading-relaxed mt-4 mb-4 text-blueGray-400">
-                  at risus viverra adipiscing at in tellus integer feugiat 
-                  scelerisque varius morbi enim nunc faucibus a pellentesque 
+                  at risus viverra adipiscing at in tellus integer feugiat
+                  scelerisque varius morbi enim nunc faucibus a pellentesque
                   sit amet porttitor eget dolor morbi non arcu
                 </p>
               </div>
