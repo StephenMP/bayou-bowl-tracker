@@ -27,7 +27,7 @@ export default function CardSettings() {
         ...user
       }
 
-      const response = await fetch('/api/user/profile', {
+      const response = await fetch('/api/user', {
         method: 'POST',
         body: JSON.stringify(body),
         headers: new Headers({
