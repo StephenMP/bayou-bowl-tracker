@@ -3,7 +3,6 @@ import { UserEntity } from "entities/user-entity";
 
 const syncUserStateEffect = () => ({ setSelf }) => {
   const loadUser = async () => {
-    console.log("Fetching user")
     const res = await fetch('/api/user')
     const user = await res.json()
 
@@ -15,11 +14,21 @@ const syncUserStateEffect = () => ({ setSelf }) => {
 
 const fetchAllUsersEffect = () => ({ setSelf }) => {
   const loadUsers = async () => {
-    console.log("Fetching all users")
     const res = await fetch('/api/admin/users')
     const users = await res.json()
 
     setSelf(users)
+  }
+
+  loadUsers()
+}
+
+const fetchAllEventsEffect = () => ({ setSelf }) => {
+  const loadUsers = async () => {
+    const res = await fetch('/api/events')
+    const events = await res.json()
+
+    setSelf(events)
   }
 
   loadUsers()
@@ -40,3 +49,11 @@ export const usersState = atom({
     fetchAllUsersEffect()
   ]
 });
+
+export const eventsState = atom({
+  key: 'eventsState',
+  default: [],
+  effects_UNSTABLE: [
+    fetchAllEventsEffect()
+  ]
+})

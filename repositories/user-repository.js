@@ -1,5 +1,5 @@
 import { UserEntity } from 'entities/user-entity'
-import { getRedisContext, executeRedis } from '../util/redis'
+import { getRedisContext } from '../util/redis'
 
 export class UserRepository {
     async saveNewUser(userEntity) {

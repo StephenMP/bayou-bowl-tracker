@@ -1,6 +1,6 @@
 import React, { Suspense } from "react"
 import PropTypes from "prop-types"
-import { useRecoilState, useResetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { usersState } from '../../state/atoms'
 import TableDropdown from "components/Dropdowns/TableDropdown.js"
 

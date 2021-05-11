@@ -7,9 +7,10 @@ import { UserProvider } from '@auth0/nextjs-auth0';
 import { ToastProvider } from 'react-toast-notifications';
 import PageChange from "components/PageChange/PageChange.js";
 import { constants } from "../util/constants"
+import { RecoilRoot } from 'recoil';
+
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "styles/tailwind.css";
-import { RecoilRoot } from 'recoil';
 
 Router.events.on("routeChangeStart", (url) => {
   document.body.classList.add("body-page-transition");

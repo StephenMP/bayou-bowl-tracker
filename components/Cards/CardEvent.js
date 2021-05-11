@@ -1,7 +1,14 @@
 import React from "react";
 import { useUser } from "@auth0/nextjs-auth0";
+import { useRouter } from 'next/router'
 
 export default function CardEvent({ id, picture, name, startDate, rulesLink }) {
+  const router = useRouter();
+  const registerForEvent = (event) => {
+    const eventId = event.currentTarget.dataset.eventId;
+    router.push(`/user/event/register/${eventId}`)
+  }
+
   const { user, error, isLoading } = useUser();
 
   if (isLoading) return <div></div>;
@@ -40,6 +47,7 @@ export default function CardEvent({ id, picture, name, startDate, rulesLink }) {
           <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
             <button
               data-event-id={id}
+              onClick={registerForEvent}
               className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
             >
               Register
