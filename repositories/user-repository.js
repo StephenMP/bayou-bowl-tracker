@@ -1,4 +1,4 @@
-import { UserEntity } from 'entities/user-entity'
+import { UserEntity } from '../entities/user-entity'
 import { getRedisContext } from '../util/redis'
 
 export class UserRepository {

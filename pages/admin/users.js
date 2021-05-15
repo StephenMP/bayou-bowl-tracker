@@ -1,6 +1,6 @@
 import React from "react";
-import CardTable from "components/Cards/CardTable.js";
-import Admin from "layouts/Admin.js";
+import CardTable from "../../components/Cards/CardTable";
+import Admin from "../../layouts/Admin";
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 const AdminUsersTable = withPageAuthRequired(() => {

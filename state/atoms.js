@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { UserEntity } from "entities/user-entity";
+import { UserEntity } from "../entities/user-entity";
 
 const syncUserStateEffect = () => ({ setSelf }) => {
   const loadUser = async () => {

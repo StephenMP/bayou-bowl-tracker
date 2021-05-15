@@ -1,8 +1,6 @@
 import { handleAuth, handleCallback } from '@auth0/nextjs-auth0';
-import { getRedisContext } from '../../../util/redis'
-import { UserEntity } from 'entities/user-entity';
-import Redis from 'ioredis'
-import { UserRepository } from 'repositories/user-repository';
+import { UserEntity } from '../../../entities/user-entity';
+import { UserRepository } from '../../../repositories/user-repository';
 
 async function saveNewUser(auth0User) {
     const userRepository = new UserRepository()

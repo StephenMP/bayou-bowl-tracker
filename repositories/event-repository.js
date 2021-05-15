@@ -1,5 +1,5 @@
-import { EventEntity } from 'entities/event-entity'
-import { getRedisContext, withRedis } from '../util/redis'
+import { EventEntity } from '../entities/event-entity'
+import { withRedis } from '../util/redis'
 
 export class EventRepository {
     async getAllEvents() {
@@ -22,17 +22,4 @@ export class EventRepository {
             await redis.set(entity.id, JSON.stringify(entity))
         })
     }
-
-    // async saveEvent(entity) {
-    //     const redis = getRedisContext()
-    //     try {
-    //         await redis.set(entity.id, JSON.stringify(entity))
-    //     }
-    //     catch (error) {
-    //         console.log(error)
-    //     }
-    //     finally {
-    //         redis.quit()
-    //     }
-    // }
 }

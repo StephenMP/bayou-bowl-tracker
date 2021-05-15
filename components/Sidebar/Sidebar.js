@@ -2,9 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
-import { constants } from "util/constants.js"
+import { constants } from "../../util/constants"
 import { routes } from "../../util/routes"
-import UserDropdown from "components/Dropdowns/UserDropdown.js";
+import UserDropdown from "../Dropdowns/UserDropdown";
 
 const Sidebar = withPageAuthRequired(() => {
   const [collapseShow, setCollapseShow] = React.useState("hidden");

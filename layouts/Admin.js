@@ -1,6 +1,6 @@
 import React from "react";
-import Sidebar from "components/Sidebar/Sidebar.js";
-import Header from "components/Headers/Header.js";
+import Sidebar from "../components/Sidebar/Sidebar";
+import Header from "../components/Headers/Header";
 import { UserProvider } from '@auth0/nextjs-auth0';
 import { RecoilRoot } from 'recoil';
 import { ToastProvider } from 'react-toast-notifications';

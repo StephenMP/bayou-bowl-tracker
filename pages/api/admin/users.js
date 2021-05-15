@@ -1,4 +1,4 @@
-import { UserRepository } from 'repositories/user-repository'
+import { UserRepository } from '../../../repositories/user-repository'
 import { withApiAuthRequired } from '@auth0/nextjs-auth0';
 
 const userRepository = new UserRepository()

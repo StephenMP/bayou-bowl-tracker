@@ -1,5 +1,5 @@
 import { EventEntity } from '../../entities/event-entity'
-import { EventRepository } from 'repositories/event-repository'
+import { EventRepository } from '../../repositories/event-repository'
 import { withApiAuthRequired } from '@auth0/nextjs-auth0';
 
 const eventRepository = new EventRepository()
