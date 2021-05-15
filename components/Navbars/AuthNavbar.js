@@ -6,11 +6,12 @@ import { routes } from '../../util/routes'
 
 const navLinkClassName = "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
 const navButtonClassName = "bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+const isProduction = constants.ENVIRONMENT === 'PRODUCTION'
 
 function AuthedNavs() {
   const { user, isLoading } = useUser();
 
-  if (isLoading) return <div></div>;
+  if (isProduction || isLoading) return <div></div>;
 
   return (
     <>
@@ -81,7 +82,7 @@ export default function Navbar() {
                 </Link>
               </li>
 
-              <li className="flex items-center">
+              {/* <li className="flex items-center">
                 <Link href="#partners">
                   <a className={navLinkClassName} >
                     Partners
@@ -95,7 +96,7 @@ export default function Navbar() {
                     Leaderboards
                   </a>
                 </Link>
-              </li>
+              </li> */}
 
               <AuthedNavs />
             </ul>

@@ -6,6 +6,7 @@ import Footer from "../components/Footers/Footer";
 import { constants } from "../util/constants"
 
 export default function Landing() {
+  const isProduction = constants.ENVIRONMENT === 'PRODUCTION'
   const videoOpts: Plyr.Options = {
     ads: { enabled: false, publisherId: '' },
     hideControls: true
@@ -34,24 +35,24 @@ export default function Landing() {
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
-            style={{ backgroundImage: "url('https://trello-attachments.s3.amazonaws.com/605665ed64f1d22238ad9d7e/1200x474/9d1f8df524b6024ab8b0bda6115a2e2a/AdobeStock_131228401.jpeg.jpg')" }}
+            style={{ backgroundImage: "url('/img/bg-landing.jpg')" }}
           >
             <span
               id="blackOverlay"
-              className="w-full h-full absolute opacity-75 bg-black"
+              className="w-full h-full absolute opacity-50 bg-black"
             ></span>
           </div>
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                 <div className="pr-12">
-                  <h1 className="text-white font-semibold text-5xl uppercase">
+                  <h1 className="text-white font-semibold text-6xl uppercase">
                     The {constants.APP_NAME}
                   </h1>
-                  <h3 className="mt-4 text-lg text-blueGray-200">
+                  <h3 className="mt-4 text-2xl text-blueGray-200">
                     The Premier Hunt: Showdown ESports Tournament
                   </h3>
-                  <Countdown className="mt-4 text-md text-blueGray-200" date={new Date(2021, 6, 17)} />
+                  {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} /> }
                 </div>
               </div>
             </div>
