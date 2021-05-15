@@ -52,7 +52,7 @@ export default function Landing() {
                   <h3 className="mt-4 text-2xl text-blueGray-200">
                     The Premier Hunt: Showdown ESports Tournament
                   </h3>
-                  {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} /> }
+                  {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />}
                 </div>
               </div>
             </div>
@@ -87,9 +87,11 @@ export default function Landing() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
                       <i className="fab fa-twitter"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">@MrSpwn</h6>
+                    <h6 className="text-xl font-semibold">@GameswithDeath</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      The #BayouBowl webpage is DOPE!
+                      CONGRATULATIONS to @TheFailSpawner and Maluke for claiming 1st Place
+                      in the Bayou Bowl I for @HuntShowdown! Thank you to all our participants,
+                      volunteers, and supporters for making this such an amazing event.Skull
                     </p>
                   </div>
                 </div>
@@ -101,9 +103,12 @@ export default function Landing() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
                       <i className="fab fa-twitter"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">@GameswithDeath</h6>
+                    <h6 className="text-xl font-semibold">@gunsmackk</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      I'm the best VTuber on the internet! #BayouBowl
+                      Absolutely Insane Stream Today! Shout out @GameswithDeath and @saltyoctopusttv
+                      for setting up this tournament was INSANELY well balanced, and very fun to play in!!
+                      @vombuz and I smashed 3rd place with sunglasses GGS to everyone, and much
+                      love to everyone that supported me today
                     </p>
                   </div>
                 </div>
@@ -115,9 +120,12 @@ export default function Landing() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
                       <i className="fab fa-twitter"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">@Saltyoctopusttv</h6>
+                    <h6 className="text-xl font-semibold">@rachta_z</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      The #BayouBowl has changed my life! Get yours today :)
+                      It was really fun playing this game bit more serious after a year
+                      being stuck on P100 with nothing to do. Hopefully we will get more
+                      events like this, hopefully Crytek will give us Custom lobbies or
+                      test servers for it next time! GG to everyone!
                     </p>
                   </div>
                 </div>

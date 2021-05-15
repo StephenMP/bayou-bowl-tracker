@@ -66,6 +66,14 @@ export default function Navbar() {
             id="example-navbar-warning"
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+            <li className="flex items-center">
+                <Link href="/">
+                  <a className={navLinkClassName} >
+                    Home
+                </a>
+                </Link>
+              </li>
+
               <li className="flex items-center">
                 <Link href="#news">
                   <a className={navLinkClassName} >
