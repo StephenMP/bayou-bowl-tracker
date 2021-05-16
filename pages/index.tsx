@@ -4,6 +4,7 @@ import Countdown from 'react-countdown';
 import Navbar from "../components/Navbars/AuthNavbar";
 import Footer from "../components/Footers/Footer";
 import { constants } from "../util/constants"
+import Link from "next/link";
 
 export default function Landing() {
   const isProduction = constants.ENVIRONMENT === 'PRODUCTION'
@@ -242,24 +243,30 @@ export default function Landing() {
                       Co-Mastermind, Content Creator
                     </p>
                     <div className="mt-6">
-                      <button
-                        className="bg-lightBlue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-twitter"></i>
-                      </button>
-                      <button
-                        className="bg-purple-twitch text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-twitch"></i>
-                      </button>
-                      <button
-                        className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-youtube"></i>
-                      </button>
+                      <a href="https://twitter.com/GameswithDeath" target="_blank">
+                        <button
+                          className="bg-lightBlue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <i className="fab fa-twitter"></i>
+                        </button>
+                      </a>
+                      <a href="https://www.twitch.tv/gameswithdeath" target="_blank">
+                        <button
+                          className="bg-purple-twitch text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <i className="fab fa-twitch"></i>
+                        </button>
+                      </a>
+                      <a href="https://www.youtube.com/channel/UC_GOJ8g3nYIoa_5VbENLTJw?" target="_blank">
+                        <button
+                          className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <i className="fab fa-youtube"></i>
+                        </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -277,24 +284,30 @@ export default function Landing() {
                       Co-Mastermind, Content Creator
                     </p>
                     <div className="mt-6">
-                      <button
-                        className="bg-lightBlue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-twitter"></i>
-                      </button>
-                      <button
-                        className="bg-purple-twitch text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-twitch"></i>
-                      </button>
-                      <button
-                        className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-youtube"></i>
-                      </button>
+                      <a href="https://twitter.com/saltyoctopusttv" target="_blank">
+                        <button
+                          className="bg-lightBlue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <i className="fab fa-twitter"></i>
+                        </button>
+                      </a>
+                      <a href="https://www.twitch.tv/saltyoctopus" target="_blank">
+                        <button
+                          className="bg-purple-twitch text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <i className="fab fa-twitch"></i>
+                        </button>
+                      </a>
+                      <a href="https://www.youtube.com/channel/UC1MJ_Z8Jkj4PWnS-mb1aRyw" target="_blank">
+                        <button
+                          className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <i className="fab fa-youtube"></i>
+                        </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -312,24 +325,30 @@ export default function Landing() {
                       Software Mastermind
                     </p>
                     <div className="mt-6">
-                      <button
-                        className="bg-lightBlue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-twitter"></i>
-                      </button>
-                      <button
-                        className="bg-purple-twitch text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-twitch"></i>
-                      </button>
-                      <button
-                        className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-youtube"></i>
-                      </button>
+                      <a href="https://twitter.com/Mr_Spwn" target="_blank">
+                        <button
+                          className="bg-lightBlue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <i className="fab fa-twitter"></i>
+                        </button>
+                      </a>
+                      <a href="https://twitch.tv/MrSpwn" target="_blank">
+                        <button
+                          className="bg-purple-twitch text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <i className="fab fa-twitch"></i>
+                        </button>
+                      </a>
+                      <a href="https://youtube.com/c/MrSpwn" target="_blank">
+                        <button
+                          className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <i className="fab fa-youtube"></i>
+                        </button>
+                      </a>
                     </div>
                   </div>
                 </div>
