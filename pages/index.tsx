@@ -4,7 +4,6 @@ import Countdown from 'react-countdown';
 import Navbar from "../components/Navbars/AuthNavbar";
 import Footer from "../components/Footers/Footer";
 import { constants } from "../util/constants"
-import Link from "next/link";
 
 export default function Landing() {
   const isProduction = constants.ENVIRONMENT === 'PRODUCTION'
@@ -18,7 +17,7 @@ export default function Landing() {
     sources: [
       {
         src: "nhsXk4GK078",
-        size: 1080,
+        size: 720,
         provider: 'youtube'
       }
     ]
@@ -46,13 +45,15 @@ export default function Landing() {
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                <div className="pr-12">
-                  <h1 className="text-white font-semibold text-6xl uppercase">
-                    The {constants.APP_NAME}
-                  </h1>
-                  <h3 className="mt-4 text-2xl text-blueGray-200">
+                <div className="pr-12 mt-10">
+                  <img
+                    alt="..."
+                    className="max-w-full rounded-lg shadow-lg"
+                    src="https://trello-attachments.s3.amazonaws.com/604fe9255c0c0230f7cab23a/6071fcc18b72e86c34967f2b/e7744589e781dbaaefe4442ebfcee7b2/The_Bayou_Bowl.png"
+                  />
+                  {/* <h3 className="mt-4 text-2xl text-blueGray-200">
                     The Premier Hunt: Showdown ESports Tournament
-                  </h3>
+                  </h3> */}
                   {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />}
                 </div>
               </div>
@@ -146,14 +147,14 @@ export default function Landing() {
                   The Bayou Bowl II tournament has been announced!
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  Starting on June 5th, 2021 players can begin applying to compete in the
-                  Bayou Bowl II tournament! The tournament will consist of Trio matches
-                  and be limited to players considered to have the highest skill in Hunt due
-                  to Crytek's new skill based matchmaking policies.
+                  "Starting on June 5th, 2021 players can begin applying to compete in the Bayou
+                  Bowl II tournament! The tournament will consist of 20 teams of three in a
+                  Trio v. Trio all-out battle. Teams will be selected based on KDA, Prestige
+                  Level, Hours Played, and general reputation in the Hunt community. Details
+                  on how to sign-up will be released soon
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  For more information regarding the Bayou Bowl II tournament and why it will
-                  be limited to a select few teams, please watch the video.
+                  For more information regarding the Bayou Bowl II tournament please watch the following video.
                 </p>
               </div>
 

@@ -21,7 +21,7 @@ function AuthedNavs() {
             Account
           </a>
         </Link>
-      </li> }
+      </li>}
       <li className="flex items-center">
         <a href={user ? "/api/auth/logout" : "/api/auth/login"}>
           <button className={navButtonClassName} type="button">
@@ -42,14 +42,14 @@ export default function Navbar() {
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <img src="/img/brand/bayoubowl-logo.png" heigh={40} width={40} className="mr-3" />
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-            <Link href="/">
+            {/* <Link href="/">
               <a
                 className="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
                 href="#pablo"
               >
                 {constants.APP_NAME}
               </a>
-            </Link>
+            </Link> */}
             <button
               className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"
@@ -66,7 +66,7 @@ export default function Navbar() {
             id="example-navbar-warning"
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-            <li className="flex items-center">
+              <li className="flex items-center">
                 <Link href="/">
                   <a className={navLinkClassName} >
                     Home
@@ -86,6 +86,14 @@ export default function Navbar() {
                 <Link href="#about">
                   <a className={navLinkClassName} >
                     About
+                </a>
+                </Link>
+              </li>
+
+              <li className="flex items-center">
+                <Link href="#about">
+                  <a className={navLinkClassName} >
+                    Rules
                 </a>
                 </Link>
               </li>

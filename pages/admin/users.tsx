@@ -15,6 +15,6 @@ const AdminUsersTable = withPageAuthRequired(() => {
   );
 });
 
-AdminUsersTable.layout = Admin
+AdminUsersTable['layout'] = Admin
 
 export default AdminUsersTable

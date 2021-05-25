@@ -16,13 +16,15 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "jsx": "preserve"
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "entities/user-entity.js", "entities/event-entity.js"  ],
   "exclude": [
     "node_modules"
   ]
