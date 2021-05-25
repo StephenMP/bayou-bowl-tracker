@@ -1,32 +1,24 @@
 import React from "react";
 import { createPopper } from "@popperjs/core";
-import { useUser } from "@auth0/nextjs-auth0";
 
-const UserDropdown = () => {
+const NotificationDropdown = () => {
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
-  const btnDropdownRef = React.createRef();
-  const popoverDropdownRef = React.createRef();
-  const { user, error, isLoading } = useUser();
-  
+  const btnDropdownRef = React.createRef<HTMLAnchorElement>();
+  const popoverDropdownRef = React.createRef<HTMLDivElement>();
   const openDropdownPopover = () => {
     createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
-      placement: "bottom-start",
+      placement: "left-start",
     });
     setDropdownPopoverShow(true);
   };
-
   const closeDropdownPopover = () => {
     setDropdownPopoverShow(false);
   };
-
-  if (isLoading) return <div></div>;
-  if (error) return <div>{error.message}</div>;
-  
   return (
-    user && <>
+    <>
       <a
-        className="text-blueGray-500 block"
+        className="text-blueGray-500 py-1 px-3"
         href="#pablo"
         ref={btnDropdownRef}
         onClick={(e) => {
@@ -34,15 +26,7 @@ const UserDropdown = () => {
           dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
         }}
       >
-        <div className="items-center flex">
-          <span className="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
-            <img
-              alt="..."
-              className="w-full rounded-full align-middle border-none shadow-lg"
-              src={user.picture}
-            />
-          </span>
-        </div>
+        <i className="fas fa-ellipsis-v"></i>
       </a>
       <div
         ref={popoverDropdownRef}
@@ -52,16 +36,17 @@ const UserDropdown = () => {
         }
       >
         <a
-          href="/api/auth/logout"
+          href="#pablo"
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
+          onClick={(e) => e.preventDefault()}
         >
-          Logout
+          Ban
         </a>
       </div>
     </>
   );
 };
 
-export default UserDropdown;
+export default NotificationDropdown;

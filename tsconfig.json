@@ -24,7 +24,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "entities/user-entity.js", "entities/event-entity.js"  ],
+, "entities/user-entity.js", "entities/event-entity.js", "components/Dropdowns/UserDropdown.jsx", "components/Dropdowns/TableDropdown.jsx"  ],
   "exclude": [
     "node_modules"
   ]
