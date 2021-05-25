@@ -40,7 +40,7 @@ export default function Navbar() {
     <>
       <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <img src="/img/brand/bayoubowl-logo.png" heigh={40} width={40} className="mr-3" />
+          <img src="/img/brand/bayoubowl-logo.png" height={40} width={40} className="mr-3" />
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             {/* <Link href="/">
               <a

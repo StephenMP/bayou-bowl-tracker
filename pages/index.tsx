@@ -147,11 +147,11 @@ export default function Landing() {
                   The Bayou Bowl II tournament has been announced!
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  "Starting on June 5th, 2021 players can begin applying to compete in the Bayou
+                  Starting on June 5th, 2021 players can begin applying to compete in the Bayou
                   Bowl II tournament! The tournament will consist of 20 teams of three in a
                   Trio v. Trio all-out battle. Teams will be selected based on KDA, Prestige
                   Level, Hours Played, and general reputation in the Hunt community. Details
-                  on how to sign-up will be released soon
+                  on how to sign-up will be released soon.
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
                   For more information regarding the Bayou Bowl II tournament please watch the following video.
