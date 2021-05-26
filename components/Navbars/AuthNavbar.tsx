@@ -91,7 +91,7 @@ export default function Navbar() {
               </li>
 
               <li className="flex items-center">
-                <Link href="#about">
+                <Link href={routes.RULES}>
                   <a className={navLinkClassName} >
                     Rules
                 </a>
