@@ -7,7 +7,8 @@
     "build": "next build",
     "dev": "next dev",
     "install:clean": "rm -rf node_modules/ && rm -rf yarn.lock && yarn install && yarn run build:tailwind && yarn run dev",
-    "build:tailwind": "tailwind build styles/index.css -o styles/tailwind.css"
+    "build:tailwind": "tailwind build styles/index.css -o styles/tailwind.css",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.2.0",
@@ -29,6 +30,7 @@
     "recoil": "^0.2.0",
     "reflect-metadata": "^0.1.13",
     "swr": "^0.5.5",
+    "ts-node": "^10.0.0",
     "typeorm": "^0.2.32",
     "uuid": "^8.3.2",
     "valid-url": "^1.0.9"

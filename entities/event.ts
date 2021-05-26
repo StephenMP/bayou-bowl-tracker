@@ -18,5 +18,5 @@ export class EventEntity {
   startDate: number
 
   @Column()
-  pictureUrl: string
+  pictureUrl?: string
 }
