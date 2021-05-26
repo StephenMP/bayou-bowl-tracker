@@ -370,7 +370,7 @@ export default function Landing() {
               </div>
               <div className="w-full md:w-6/12 ml-auto mr-auto px-4">
                 <div className="md:pr-12">
-                  <h3 className="text-3xl font-semibold text-blueGray-200">Weapons</h3>
+                  <h3 className="text-3xl font-semibold text-blueGray-200 mt-10">Weapons</h3>
                   <ul className="list-none mt-6">
                     <li className="py-2">
                       <div className="flex items-center">
