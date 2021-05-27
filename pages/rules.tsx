@@ -56,7 +56,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             This competition is limited to 4 hours.
                           </h4>
                         </div>
@@ -70,7 +70,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Each team must have three (3) hunters to compete. This is a trios vs trios competition.
                           </h4>
                         </div>
@@ -84,7 +84,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Teams may queue into US East, US West, EU, and Russia servers only.
                           </h4>
                         </div>
@@ -98,7 +98,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Random contracts only.
                           </h4>
                         </div>
@@ -112,7 +112,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             At least one hunter must stream for the whole competition.
                           </h4>
                         </div>
@@ -126,7 +126,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Streamers must have VODs turned on and available.
                           </h4>
                         </div>
@@ -140,7 +140,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             This competition is PC only.
                           </h4>
                         </div>
@@ -154,7 +154,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Teams are encouraged, but not required to take breaks.
                           </h4>
                         </div>
@@ -168,7 +168,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Hunters are prohibited from deliberately targeting, harassing, or displaying unsportsmanlike
                             conduct toward any other hunters during the competition; this can include verbal abuse,
                             text abuse, trolling, bullying, or VOIP abuse.
@@ -184,7 +184,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Competition officials reserve the right to disqualify any team or hunters for violating any of
                             the rules, or for any other reason not listed here, at any time, as they deem necessary. Any
                             actions that result in an unfair advantage for a team during the competition will result in
@@ -201,7 +201,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Hunters may be banned for any behavior on any other social media platform that is deemed
                             unacceptable by competition officials.
                           </h4>
@@ -216,8 +216,8 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
-                            These rules are subject to change at any time without notice. Check https://bayoubowl.gg/rules for
+                          <h4 className="text-blueGray-200">
+                            These rules are subject to change at any time without notice. Check <a href="https://bayoubowl.gg/rules">bayoubowl.gg/rules</a> for
                             the latest version of the official rules.
                           </h4>
                         </div>
@@ -238,7 +238,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Queue sniping is NOT permitted. Stream sniping is NOT permitted. Teams in the
                             competition are forbidden from attempting to get into each other’s games.
                           </h4>
@@ -253,7 +253,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Chats that are found to be relaying information to their streamer about other competitors
                             or other streamers without any recourse from their streamer, will have their streamer and
                             their team disqualified.
@@ -269,7 +269,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Pre-arranged alliances between teams are NOT permitted. You may form organic in-game
                             alliances with other teams during the competition, as per usual gameplay.
                           </h4>
@@ -284,7 +284,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             You may NOT obstruct a team on another’s behalf or have other hunters inhibit other teams
                             for your benefit.
                           </h4>
@@ -299,7 +299,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Hunters are prohibited from using outside help during the competition, intentionally or
                             unintentionally (i.e. viewers or friend brings in higher tier weapons for them to use).
                           </h4>
@@ -314,7 +314,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Hunters are prohibited from using the free weapons with legendary skins they purchase
                             with blood bonds during the competition.
                           </h4>
@@ -329,7 +329,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Quick Play matches during the competition are NOT permitted. Hunter may use sole
                             survivors from QP games obtained prior to the competition.
                           </h4>
@@ -344,7 +344,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Alternate accounts are permitted.
                           </h4>
                         </div>
@@ -358,7 +358,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Hunters may have their rosters full or partially full before the competition in any
                             configuration with any permitted weapons/tools/consumables equipped.
                           </h4>
@@ -380,7 +380,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Players may not enter a match with a Dolch or Dolch Precision equipped on hunters. Players
                             are permitted to loot Dolches and Dolch Percisions for use in-game. Dolches looted in game
                             must be unequipped prior to the next match.
@@ -399,7 +399,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             <span className="underline">How to Win</span>: The team with the highest score at the end
                             of the competition will be declared the winner. Teams may secure points for kills
                             (1 point each) and bounty token extracted (3 points each for first and second bounty token,
@@ -416,7 +416,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             If a hunter withdraws from the competition at any time for any reason, their team may
                             continue and the score of the quitting hunter at the time they withdraw will still be added
                             to the team’s score.
@@ -432,7 +432,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Hunters are on the honor system to report their team score and times on the scores entry
                             spreadsheet, here: bayoubowl.gg/scorecard.
                           </h4>
@@ -447,7 +447,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Teams may only report points between matches once they have extracted or died.
                           </h4>
                         </div>
@@ -461,7 +461,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             You must show your mission summary screen showing the number of hunters killed card
                             and bounties extracted card for your points to count on stream.
                           </h4>
@@ -476,7 +476,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             If an entire team disconnects the points for that match will not count. If one hunter on the
                             team disconnects and the other hunter extracts or dies and sees the mission summary
                             screen, then the points will count.
@@ -492,7 +492,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             The scoresheet (bayoubowl.gg/scorecard) will be LOCKED AT EXACTLY 4 PM EST. No scores
                             will be accepted after 4 PM EST.
                           </h4>
@@ -507,7 +507,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             In the case of score discrepancies or accusations of score manipulation, all complaints will
                             be thoroughly investigated and adjudicated after the competition by the competition
                             officials. Teams found engaging in falsifying scores will be disqualified and banned from
@@ -531,7 +531,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Official time for the competition is Windows time. Ensure that your Windows clock is
                             synced with the Windows servers. The official timezone is US Eastern Time
                           </h4>
@@ -546,7 +546,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             The competition starts at exactly 12 PM EST. Hunters are not permitted to start a match
                             until 12 PM EST. The start of the match will be announced on GameswithDeath and
                             SaltyOctopus’ Twitch channels and on the bayoubowl.gg website.
@@ -562,8 +562,8 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
-                            The competition entry forms must be filled out no later than 6 March 2021 at 11:59 PM EST,
+                          <h4 className="text-blueGray-200">
+                            The competition entry forms must be filled out no later than 19 June 2021 at 11:59 PM EST,
                             late submissions will not be accepted.
                           </h4>
                         </div>
@@ -577,7 +577,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             Competition officials reserve the right to limit the number of teams and who is selected to
                             participate.
                           </h4>
@@ -592,8 +592,8 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
-                            The official team list will be published on 7 March 2021 by 11:59 PM at
+                          <h4 className="text-blueGray-200">
+                            The official team list will be published on 3 July 2021 by 11:59 PM EST at
                             bayoubowl.gg/teams.
                           </h4>
                         </div>
@@ -610,7 +610,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-blueGray-500">
+                          <h4 className="text-blueGray-200">
                             The hosts of this competition (SaltyOctopus and GameswithDeath) will be rebroadcasting
                             and commentating in an esports format on the streamers participating. By signing up for
                             this competition you are giving permission to the hosts to rebroadcast your stream and
