@@ -1,14 +1,15 @@
 import React from "react";
-import { useRecoilState } from 'recoil'
-import { userState } from '../../state/atoms'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import { userState, userProfileState } from '../../state/atoms'
 import { useToasts } from 'react-toast-notifications';
 
 export default function CardSettings() {
-  const [user, setUserState] = useRecoilState(userState)
+  const user = useRecoilValue(userState)
+  const [userProfile, setUserProfile] = useRecoilState(userProfileState)
   const { addToast, updateToast } = useToasts();
 
   const onInputChange = (event) => {
-    setUserState(oldProfile => {
+    setUserProfile(oldProfile => {
       var newProfile = {
         ...oldProfile
       }
@@ -24,10 +25,10 @@ export default function CardSettings() {
   const onSave = async () => {
     addToast('Saving...', { appearance: 'info', autoDismiss: true }, async toastId => {
       const body = {
-        ...user
+        ...userProfile
       }
 
-      const response = await fetch('/api/user', {
+      const response = await fetch('/api/user/profile', {
         method: 'POST',
         body: JSON.stringify(body),
         headers: new Headers({
@@ -114,7 +115,7 @@ export default function CardSettings() {
                     id='steam_name'
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue={user.steam_name}
+                    defaultValue={userProfile.steam_name}
                     onChange={onInputChange}
                   />
                 </div>
@@ -131,7 +132,7 @@ export default function CardSettings() {
                     id='twitch_name'
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue={user.twitch_name}
+                    defaultValue={userProfile.twitch_name}
                     onChange={onInputChange}
                   />
                 </div>
@@ -148,7 +149,7 @@ export default function CardSettings() {
                     id='discord_name'
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue={user.discord_name}
+                    defaultValue={userProfile.discord_name}
                     onChange={onInputChange}
                   />
                 </div>
@@ -166,7 +167,7 @@ export default function CardSettings() {
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     placeholder="your_handle"
-                    defaultValue={user.twitter_name}
+                    defaultValue={userProfile.twitter_name}
                     onChange={onInputChange}
                   />
                 </div>
@@ -191,7 +192,7 @@ export default function CardSettings() {
                     id="about_me"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     rows={4}
-                    defaultValue={user.about_me}
+                    defaultValue={userProfile.about_me}
                     onChange={onInputChange}
                   ></textarea>
                 </div>

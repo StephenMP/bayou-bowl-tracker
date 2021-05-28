@@ -1,15 +1,26 @@
 import { atom } from 'recoil';
-import { UserEntity } from "../entities/user-entity";
+import { User, Event, UserProfile, Team } from "@prisma/client";
 
 const syncUserStateEffect = () => ({ setSelf }) => {
   const loadUser = async () => {
     const res = await fetch('/api/user')
-    const user = await res.json()
+    const user: User = await res.json()
 
     setSelf(user)
   }
 
   loadUser()
+}
+
+const syncUserProfileStateEffect = () => ({ setSelf }) => {
+  const loadUserProfile = async () => {
+    const res = await fetch(`/api/user/profile`)
+    const userProfile: UserProfile = await res.json()
+
+    setSelf(userProfile)
+  }
+
+  loadUserProfile()
 }
 
 const fetchAllUsersEffect = () => ({ setSelf }) => {
@@ -34,17 +45,36 @@ const fetchAllEventsEffect = () => ({ setSelf }) => {
   loadUsers()
 }
 
+const fetchAllTeamsEffect = () => ({ setSelf }) => {
+  const loadUsers = async () => {
+    const res = await fetch('/api/user/teams')
+    const teams = await res.json()
+
+    setSelf(teams)
+  }
+
+  loadUsers()
+}
+
 export const userState = atom({
   key: 'userState',
-  default: new UserEntity(),
+  default: {} as User,
   effects_UNSTABLE: [
     syncUserStateEffect()
   ]
 });
 
+export const userProfileState = atom({
+  key: 'userProfileState',
+  default: {} as UserProfile,
+  effects_UNSTABLE: [
+    syncUserProfileStateEffect()
+  ]
+});
+
 export const usersState = atom({
   key: 'usersState',
-  default: [],
+  default: [] as User[],
   effects_UNSTABLE: [
     fetchAllUsersEffect()
   ]
@@ -55,5 +85,13 @@ export const eventsState = atom({
   default: [],
   effects_UNSTABLE: [
     fetchAllEventsEffect()
+  ]
+})
+
+export const userTeamsState = atom({
+  key: 'userTeamsState',
+  default: [] as Team[],
+  effects_UNSTABLE: [
+    fetchAllTeamsEffect()
   ]
 })

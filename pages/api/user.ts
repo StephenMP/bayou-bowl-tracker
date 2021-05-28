@@ -1,27 +1,28 @@
 import { getSession } from '@auth0/nextjs-auth0'
 import { UserRepository } from '../../repositories/user-repository'
 import { withApiAuthRequired } from '@auth0/nextjs-auth0';
+import { User } from '@prisma/client';
 
 const userRepository = new UserRepository()
 
-async function getProfile(user) {
-    return await userRepository.getUserById(`user-${user.sub.split('|')[1]}`)
+async function getProfile(sub: string) {
+    return await userRepository.getUserBySub(sub)
 }
 
-async function saveProfile(userEntity) {
-    await userRepository.saveUser(userEntity)
+async function saveProfile(user: User) {
+    await userRepository.updateUser(user)
 }
 
 export default withApiAuthRequired(async function handler(req, res) {
     switch (req.method) {
         case 'GET':
             const session = getSession(req, res)
-            const profile = await getProfile(session.user)
+            const profile = await getProfile(session.user.sub)
 
             res.status(200).json(profile)
             break
         case 'POST':
-            const { body } = req
+            const { body }: { body: User } = req
 
             await saveProfile(body)
 

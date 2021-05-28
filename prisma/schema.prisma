@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum EventMatchType {
+  SOLOS
+  SOLOSvDUOS
+  SOLOSvTRIOS
+  DUOS
+  DUOSvTRIOS
+  TRIOS
+}
+
+model Event {
+  id          String         @id @default(uuid())
+  createdDate DateTime       @default(now())
+  updatedDate DateTime       @default(now())
+  name        String
+  startDate   DateTime
+  picture     String?
+  match_type  EventMatchType
+  teams       Team[]
+  scores      EventScore[]
+}
+
+model User {
+  id             String       @id
+  createdDate    DateTime     @default(now())
+  updatedDate    DateTime     @default(now())
+  nickname       String?
+  name           String?
+  picture        String?
+  email          String?
+  email_verified Boolean?
+  sub            String?
+  profile        UserProfile?
+
+  @@index([email, sub])
+}
+
+model UserProfile {
+  id           String  @id @default(uuid())
+  steam_name   String?
+  twitch_name  String?
+  discord_name String?
+  twitter_name String?
+  about_me     String?
+  user         User    @relation(fields: [user_id], references: [id])
+  user_id      String  @unique
+}
+
+model Team {
+  id           String       @id @default(uuid())
+  name         String
+  event        Event        @relation(fields: [event_id], references: [id])
+  event_id     String
+  team_members TeamMember[]
+}
+
+enum TeamMemberType {
+  CAPTAIN
+  MEMBER
+  SCOREKEEPER
+}
+
+model TeamMember {
+  team_id     String
+  user_id     String
+  member_type TeamMemberType @default(CAPTAIN)
+  kills       Int            @default(0)
+  bounties    Int            @default(0)
+  team        Team           @relation(fields: [team_id], references: [id])
+
+  @@id([team_id, user_id])
+  @@index([member_type])
+}
+
+model EventScore {
+  event_id  String
+  team_id   String
+  round_num Int
+  kills     Int
+  bounties  Int
+  event     Event  @relation(fields: [event_id], references: [id])
+
+  @@id([event_id, team_id, round_num])
+}

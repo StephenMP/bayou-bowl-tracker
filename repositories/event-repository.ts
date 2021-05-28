@@ -1,5 +1,7 @@
-import { EventEntity } from '../entities/event-entity'
 import { withRedis } from '../util/redis'
+import prisma from '../lib/prisma'
+import { Event, Team } from '@prisma/client'
+import {EventEntity} from '../entities/event-entity'
 
 export class EventRepository {
     async getAllEvents() {
@@ -15,6 +17,16 @@ export class EventRepository {
 
             return entities
         })
+    }
+
+    async getAllEventsPrisma(): Promise<(Event & { teams: Team[] })[]> {
+        const events = await prisma.event.findMany({
+            include: {
+                teams: true
+            }
+        })
+        
+        return events
     }
 
     async saveEvent(entity) {

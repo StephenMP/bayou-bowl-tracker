@@ -5,14 +5,12 @@ export class EventEntity {
   name
   startDate
   picture
-  registeredUsers
+  match_type
   teams
-
+  
   static new() {
     const entity = new EventEntity()
     entity.id = `event-${uuid.v4()}`
-    entity.registeredUsers = []
-    entity.teams = []
 
     return entity
   }

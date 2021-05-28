@@ -5,7 +5,7 @@ import { withApiAuthRequired } from '@auth0/nextjs-auth0';
 const eventRepository = new EventRepository()
 
 async function getEvents() {
-    return await eventRepository.getAllEvents()
+    return await eventRepository.getAllEventsPrisma()
 }
 
 async function saveEvent(eventEntity) {

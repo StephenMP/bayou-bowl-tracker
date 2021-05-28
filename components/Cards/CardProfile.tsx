@@ -1,9 +1,12 @@
 import React from "react";
 import { useRecoilValue } from 'recoil'
-import { userState } from '../../state/atoms'
+import { userState, userProfileState } from '../../state/atoms'
+import { User, UserProfile } from '@prisma/client'
 
 export default function CardProfile() {
-  const user = useRecoilValue(userState)
+  const user: User = useRecoilValue(userState)
+  const userProfile: UserProfile = useRecoilValue(userProfileState)
+
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
@@ -59,19 +62,19 @@ export default function CardProfile() {
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-twitch mr-2 text-lg text-blueGray-400"></i>
-              <a href={"https://twitch.tv/" + user.twitch_name} target="_blank">{user.twitch_name}</a>
+              <a href={"https://twitch.tv/" + userProfile.twitch_name} target="_blank">{userProfile.twitch_name}</a>
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-steam mr-2 text-lg text-blueGray-400"></i>
-              {user.steam_name}
+              {userProfile.steam_name}
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-discord mr-2 text-lg text-blueGray-400"></i>
-              {user.discord_name}
+              {userProfile.discord_name}
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-twitter mr-2 text-lg text-blueGray-400"></i>
-              <a href={"https://twitter.com/" + user.twitter_name} rel="noreferrer" target="_blank">{user.twitter_name}</a>
+              <a href={"https://twitter.com/" + userProfile.twitter_name} rel="noreferrer" target="_blank">{userProfile.twitter_name}</a>
             </div>
           </div>
           <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
@@ -81,7 +84,7 @@ export default function CardProfile() {
                   About Me
                         </h3>
                 <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
-                  {user.about_me}
+                  {userProfile.about_me}
                 </p>
               </div>
             </div>

@@ -12,8 +12,8 @@ const UserEvents = withPageAuthRequired(() => {
     <>
       <div className="flex flex-wrap">
         <div className="w-full lg:w-4/12 px-4">
-          {events.map(event =>
-            <CardEvent key={event.id} id={event.id} name={event.name} startDate={new Date(event.startDate).toLocaleDateString()} picture={event.picture} rulesLink='/' />
+          {events.map((event) =>
+            <CardEvent key={event.id} event={event} />
           )}
         </div>
       </div>
