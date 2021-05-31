@@ -1,7 +1,7 @@
+import { User, UserProfile } from '@prisma/client';
 import React from "react";
-import { useRecoilValue } from 'recoil'
-import { userState, userProfileState } from '../../state/atoms'
-import { User, UserProfile } from '@prisma/client'
+import { useRecoilValue } from 'recoil';
+import { userProfileState, userState } from '../../state/atoms';
 
 export default function CardProfile() {
   const user: User = useRecoilValue(userState)

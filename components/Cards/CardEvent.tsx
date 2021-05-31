@@ -1,11 +1,11 @@
-import React from "react"
-import { useUser } from "@auth0/nextjs-auth0"
-import { useRouter } from 'next/router'
-import { Event, Team } from "@prisma/client"
+import { useUser } from "@auth0/nextjs-auth0";
+import { useRouter } from 'next/router';
+import React from "react";
 import { useRecoilValue } from "recoil";
 import { userTeamsState } from "../../state/atoms";
+import { EventWithTeamsAndScores } from '../../types/event';
 
-export default function CardEvent({ event }: { event: (Event & { teams: Team[] }) }) {
+export default function CardEvent({ event }: { event: EventWithTeamsAndScores }) {
   const router = useRouter();
   const userTeams = useRecoilValue(userTeamsState)
   const isRegistered = userTeams.find(ut => ut.event_id === event.id)
@@ -20,7 +20,7 @@ export default function CardEvent({ event }: { event: (Event & { teams: Team[] }
     router.push(`/user/event/${eventId}`)
   }
 
-  const Register = ({eventId}: {eventId: string}) => {
+  const Register = ({ eventId }: { eventId: string }) => {
     return (
       <button
         data-event-id={eventId}
@@ -32,7 +32,7 @@ export default function CardEvent({ event }: { event: (Event & { teams: Team[] }
     )
   }
 
-  const GoToEventPage = ({eventId}: {eventId: string}) => {
+  const GoToEventPage = ({ eventId }: { eventId: string }) => {
     return (
       <button
         data-event-id={eventId}

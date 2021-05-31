@@ -8,3 +8,11 @@ export const routes = {
     USER_EVENTS: "/user/events",
     ADMIN_USERS: "/admin/users",
 }
+
+export function queryParamAsString(param: string | string[]): string {
+    if (param) {
+        return typeof param === 'string' ? param : param[0]
+    }
+
+    return ''
+}

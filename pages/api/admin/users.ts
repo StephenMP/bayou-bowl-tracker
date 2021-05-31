@@ -1,16 +1,10 @@
-import { UserRepository } from '../../../repositories/user-repository'
 import { withApiAuthRequired } from '@auth0/nextjs-auth0';
-
-const userRepository = new UserRepository()
-
-async function getAllUsers() {
-    return await userRepository.getAllUsers()
-}
+import { readUsers } from '../../../repositories/user';
 
 export default withApiAuthRequired(async function handler(req, res) {
     switch (req.method) {
         case 'GET':
-            const users = await getAllUsers()
+            const users = await readUsers()
             res.status(200).json(users)
             break
 

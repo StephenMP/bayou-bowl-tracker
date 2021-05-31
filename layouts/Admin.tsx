@@ -1,9 +1,9 @@
-import React from "react";
-import Sidebar from "../components/Sidebar/Sidebar";
-import Header from "../components/Headers/Header";
 import { UserProvider } from '@auth0/nextjs-auth0';
-import { RecoilRoot } from 'recoil';
+import React from "react";
 import { ToastProvider } from 'react-toast-notifications';
+import { RecoilRoot } from 'recoil';
+import Header from "../components/Headers/Header";
+import Sidebar from "../components/Sidebar/Sidebar";
 
 export default function Admin({ children }) {
   return (

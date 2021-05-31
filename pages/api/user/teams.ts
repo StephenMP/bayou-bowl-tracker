@@ -12,10 +12,13 @@ async function getUserTeams(sub: string) {
     return await prisma.team.findMany({
         where: {
             team_members: {
-                every: {
+                some: {
                     user_id: user.id
                 }
             }
+        },
+        include: {
+            team_members: true
         }
     })
 }

@@ -1,5 +1,8 @@
 import { atom } from 'recoil';
 import { User, Event, UserProfile, Team } from "@prisma/client";
+import { EventWithTeamsAndScores } from '../../types/event'
+import { TeamWithTeamMembers } from '../../types/team';
+import { getRedisContext } from '../../util/redis';
 
 const syncUserStateEffect = () => ({ setSelf }) => {
   const loadUser = async () => {
@@ -46,14 +49,15 @@ const fetchAllEventsEffect = () => ({ setSelf }) => {
 }
 
 const fetchAllTeamsEffect = () => ({ setSelf }) => {
-  const loadUsers = async () => {
+  const load = async () => {
     const res = await fetch('/api/user/teams')
     const teams = await res.json()
+    console.log(teams)
 
     setSelf(teams)
   }
 
-  loadUsers()
+  load()
 }
 
 export const userState = atom({
@@ -78,7 +82,7 @@ export const usersState = atom({
   effects_UNSTABLE: [
     fetchAllUsersEffect()
   ]
-});
+})
 
 export const eventsState = atom({
   key: 'eventsState',
@@ -90,7 +94,7 @@ export const eventsState = atom({
 
 export const userTeamsState = atom({
   key: 'userTeamsState',
-  default: [] as Team[],
+  default: [] as TeamWithTeamMembers[],
   effects_UNSTABLE: [
     fetchAllTeamsEffect()
   ]

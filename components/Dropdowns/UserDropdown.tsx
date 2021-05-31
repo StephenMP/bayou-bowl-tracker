@@ -1,6 +1,6 @@
-import React from "react";
-import { createPopper } from "@popperjs/core";
 import { useUser } from "@auth0/nextjs-auth0";
+import { createPopper } from "@popperjs/core";
+import React from "react";
 
 const UserDropdown = () => {
   // dropdown props
@@ -8,7 +8,7 @@ const UserDropdown = () => {
   const btnDropdownRef = React.createRef<HTMLAnchorElement>();
   const popoverDropdownRef = React.createRef<HTMLDivElement>();
   const { user, error, isLoading } = useUser();
-  
+
   const openDropdownPopover = () => {
     createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
       placement: "bottom-start",
@@ -22,7 +22,7 @@ const UserDropdown = () => {
 
   if (isLoading) return <div></div>;
   if (error) return <div>{error.message}</div>;
-  
+
   return (
     user && <>
       <a

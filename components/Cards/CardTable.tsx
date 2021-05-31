@@ -1,5 +1,5 @@
-import React, { Suspense } from "react"
 import PropTypes from "prop-types"
+import React, { Suspense } from "react"
 import { useRecoilState } from 'recoil'
 import { usersState } from '../../state/atoms'
 import TableDropdown from "../Dropdowns/TableDropdown"
@@ -112,7 +112,7 @@ function AllUsers({ color }) {
                   {user.id}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {new Date(user.updated_at).toLocaleDateString()}
+                  {new Date(user.updatedDate).toLocaleDateString()}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   N/A

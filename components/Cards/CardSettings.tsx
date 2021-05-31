@@ -1,7 +1,7 @@
 import React from "react";
-import { useRecoilState, useRecoilValue } from 'recoil'
-import { userState, userProfileState } from '../../state/atoms'
 import { useToasts } from 'react-toast-notifications';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { userProfileState, userState } from '../../state/atoms';
 
 export default function CardSettings() {
   const user = useRecoilValue(userState)

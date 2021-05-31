@@ -1,12 +1,10 @@
-import { handleAuth, handleCallback } from '@auth0/nextjs-auth0';
-import { UserEntity } from '../../../entities/user-entity';
-import { UserRepository } from '../../../repositories/user-repository';
-import { UserProfile, Session, Claims } from '@auth0/nextjs-auth0'
-import { NextApiRequest, NextApiResponse } from 'next';
-import { User } from '@prisma/client'
+import { handleAuth, handleCallback, Session, UserProfile } from '@auth0/nextjs-auth0';
+import { User } from '@prisma/client';
+import { NextApiRequest } from 'next';
+import { createUser } from '../../../repositories/user';
+import { NextApiResponseServerIO } from '../../../types/next';
 
 async function saveNewUser(auth0User: UserProfile) {
-    const userRepository = new UserRepository()
     const user = {
         email: auth0User.email,
         email_verified: auth0User.email_verified,
@@ -16,14 +14,14 @@ async function saveNewUser(auth0User: UserProfile) {
         sub: auth0User.sub
     } as User
 
-    userRepository.saveNewUser(user)
+    createUser(user)
 }
 
 export default handleAuth({
-    callback: async (req: NextApiRequest, res: NextApiResponse) => {
+    callback: async (req: NextApiRequest, res: NextApiResponseServerIO) => {
         try {
             await handleCallback(req, res, {
-                afterCallback: (req: NextApiRequest, res: NextApiResponse, session: Session, state) => {
+                afterCallback: (req: NextApiRequest, res: NextApiResponseServerIO, session: Session, state) => {
                     saveNewUser(session.user)
                     return session
                 }

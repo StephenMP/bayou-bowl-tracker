@@ -1,33 +1,34 @@
-import { getSession } from '@auth0/nextjs-auth0'
-import { UserRepository } from '../../repositories/user-repository'
-import { withApiAuthRequired } from '@auth0/nextjs-auth0';
+import { getSession, withApiAuthRequired } from '@auth0/nextjs-auth0';
 import { User } from '@prisma/client';
+import { NextApiRequest } from 'next';
+import { readUser, updateUser, userIdFromAuth0Sub } from '../../repositories/user';
+import { NextApiResponseServerIO } from '../../types/next';
+import { queryParamAsString } from '../../util/routes';
 
-const userRepository = new UserRepository()
+function parseUserIdFromQuery(req: NextApiRequest, res: NextApiResponseServerIO): string {
+    const userId = req.query.userId
 
-async function getProfile(sub: string) {
-    return await userRepository.getUserBySub(sub)
+    if (userId || userId?.length) {
+        return queryParamAsString(userId)
+    }
+
+    const session = getSession(req, res)
+    return userIdFromAuth0Sub(session.user.sub)
 }
 
-async function saveProfile(user: User) {
-    await userRepository.updateUser(user)
-}
-
-export default withApiAuthRequired(async function handler(req, res) {
+export default withApiAuthRequired(async function handler(req: NextApiRequest, res: NextApiResponseServerIO) {
     switch (req.method) {
         case 'GET':
-            const session = getSession(req, res)
-            const profile = await getProfile(session.user.sub)
+            const userId = parseUserIdFromQuery(req, res)
+            const user = await readUser(userId)
 
-            res.status(200).json(profile)
+            res.status(200).json(user)
             break
         case 'POST':
             const { body }: { body: User } = req
-
-            await saveProfile(body)
+            await updateUser(body)
 
             res.status(200).json({})
-
             break
 
         default:
