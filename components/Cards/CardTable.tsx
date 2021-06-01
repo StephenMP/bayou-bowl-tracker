@@ -8,7 +8,6 @@ function AllUsers({ color }) {
   const [allUsers, setAllUsers] = useRecoilState(usersState)
 
   const refreshUsers = async () => {
-    console.log("Refreshing all users")
     const res = await fetch('/api/admin/users')
     const users = await res.json()
 

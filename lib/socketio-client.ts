@@ -1,4 +1,4 @@
-export async function publishMessage(event: string, message: any) {
+export async function publishEvent<TEvent>(event: string, message: TEvent) {
     await fetch(`/api/publish/${event}`, {
         method: 'POST',
         body: JSON.stringify(message),
@@ -8,7 +8,7 @@ export async function publishMessage(event: string, message: any) {
     })
 }
 
-export async function publishJson(event: string, json: string) {
+export async function publishEventAsJson(event: string, json: string) {
     await fetch(`/api/publish/${event}`, {
         method: 'POST',
         body: json,

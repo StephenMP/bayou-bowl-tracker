@@ -1,5 +1,5 @@
-import prisma from '../../../lib/prisma'
 import { withApiAuthRequired } from '@auth0/nextjs-auth0';
+import prisma from '../../../lib/prisma';
 import { queryParamAsString } from '../../../util/routes';
 
 async function getEventById(id: string) {
@@ -18,7 +18,6 @@ export default withApiAuthRequired(async function handler(req, res) {
     switch (req.method) {
         case 'GET':
             const { eventId } = req.query
-            console.log(eventId)
 
             if (eventId) {
                 const id = queryParamAsString(eventId)

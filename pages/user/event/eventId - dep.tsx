@@ -1,8 +1,10 @@
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
-import { EventScore, TeamMember, TeamMemberType } from "@prisma/client";
+import { TeamMember, TeamMemberType } from "@prisma/client";
 import { useRouter } from 'next/router';
-import React, { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
+import React, { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { useRecoilValue } from 'recoil';
+import { Socket } from 'socket.io-client';
+import { DefaultEventsMap } from 'socket.io/dist/typed-events';
 import useSocket from '../../../hooks/useSocket';
 import Admin from "../../../layouts/Admin";
 import { publishEvent } from '../../../lib/socketio-client';
@@ -10,45 +12,41 @@ import { userState, userTeamsState } from "../../../state/atoms";
 import { loadEventSelector, loadUserSelector } from "../../../state/selectors";
 import { queryParamAsString } from '../../../util/routes';
 
-type MutateScoreEvent = {
-    eventType: 'add' | 'delete',
-    score: EventScore
-}
-
 type MemberScore = {
     userId: string,
     kills: number,
     bounties: number
 }
 
+type MutateScoreEvent = {
+    eventType: 'add' | 'delete',
+    score?: RoundScore,
+    round?: number
+}
+
 type RoundScore = {
-    total: number
-} & EventScore
-
-function calculateBountyScore(totalBounties: number) {
-    let bountyScore = 0
-    let tempTotalBounties = totalBounties
-    while (tempTotalBounties > 2) {
-        bountyScore += 1
-        tempTotalBounties--
-    }
-
-    bountyScore += tempTotalBounties * 3
-    return bountyScore
+    round: number
+    kills: number,
+    bounties: number,
+    total: number,
+    isEdit: boolean
 }
 
-function calculateKillScore(totalKills: number) {
-    return totalKills
-}
+function ScoreTable({ color, scoreState, socket }: { color: 'light' | 'dark', scoreState: [RoundScore[], Dispatch<SetStateAction<RoundScore[]>>], socket: Socket<DefaultEventsMap, DefaultEventsMap> }) {
+    const [roundScores, setRoundScores] = scoreState
 
-function ScoreTable({ color, roundScores }: { color: 'light' | 'dark', roundScores: RoundScore[] }) {
     const deleteRound = async (score: RoundScore) => {
-        const message: MutateScoreEvent = {
-            eventType: 'delete',
-            score: score
+        let scores = roundScores.map(rs => rs)
+
+        if (round === 0) {
+            scores.shift()
         }
 
-        await publishEvent('event-score', message)
+        else {
+            scores.splice(round, 1)
+        }
+
+        await publishEvent('event-score', scores)
     }
 
     return (
@@ -63,6 +61,7 @@ function ScoreTable({ color, roundScores }: { color: 'light' | 'dark', roundScor
                 </div>
             </div>
             <div className="block w-full overflow-x-auto">
+                {/* Projects table */}
                 <table className="items-center w-full bg-transparent border-collapse">
                     <thead>
                         <tr>
@@ -151,17 +150,14 @@ function ScoreTable({ color, roundScores }: { color: 'light' | 'dark', roundScor
 }
 
 function UserScoreInput({ teamMember, memberScoreState }: { teamMember: TeamMember, memberScoreState: [MemberScore[], Dispatch<SetStateAction<MemberScore[]>>] }) {
-    const [teamMemberScore, setTeamMemberScore] = memberScoreState
-    const killRef = useRef<HTMLInputElement>()
-    const bountyRef = useRef<HTMLInputElement>()
-
+    const [memberScore, setMemberScore] = memberScoreState
     const handleScoreChange = (e: ChangeEvent<HTMLInputElement>, scoreType: 'kills' | 'bounties') => {
-        const scoreForTheRound = parseInt(e.target.value)
-        const userScore = teamMemberScore
+        const roundScore = parseInt(e.target.value)
+        const userScore = memberScore
 
         let currUserScore = userScore.find(u => u.userId === teamMember.user_id)
         if (currUserScore) {
-            currUserScore[scoreType] = scoreForTheRound
+            currUserScore[scoreType] = roundScore
         }
 
         else {
@@ -170,19 +166,14 @@ function UserScoreInput({ teamMember, memberScoreState }: { teamMember: TeamMemb
                 bounties: 0,
                 kills: 0
             }
-            currUserScore[scoreType] = scoreForTheRound
+            currUserScore[scoreType] = roundScore
             userScore.push(currUserScore)
         }
 
-        setTeamMemberScore(userScore)
+        setMemberScore(userScore)
     }
 
     const user = useRecoilValue(loadUserSelector(teamMember.user_id))
-
-    useSocket('event-score', () => {
-        killRef.current.value = ''
-        bountyRef.current.value = ''
-    })
 
     return (
         <>
@@ -196,7 +187,7 @@ function UserScoreInput({ teamMember, memberScoreState }: { teamMember: TeamMemb
                     <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" >
                         Kills
                     </label>
-                    <input id={teamMember.user_id + '-kills'} type="number" ref={killRef}
+                    <input id="teamName" type="number"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-400 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         onChange={e => handleScoreChange(e, 'kills')}
                     />
@@ -207,7 +198,7 @@ function UserScoreInput({ teamMember, memberScoreState }: { teamMember: TeamMemb
                     <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" >
                         Bounties
                     </label>
-                    <input id={teamMember.user_id + '-bounties'} type="number" ref={bountyRef}
+                    <input id="logoUrl" type="number"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-400 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         onChange={e => handleScoreChange(e, 'bounties')}
                     />
@@ -223,46 +214,25 @@ function Page({ eventId }: { eventId: string }) {
     const userTeams = useRecoilValue(userTeamsState)
     const userEventTeam = userTeams.find(ut => ut.event_id === currentEvent.id)
 
-    const teamMemberScoreState = useState<MemberScore[]>([])
+    const memberScoreState = useState<MemberScore[]>([])
     const roundScoresState = useState<RoundScore[]>([])
     const roundScores = roundScoresState[0]
     const setRoundScores = roundScoresState[1]
 
-    useSocket('event-score', (message: MutateScoreEvent) => {
+    const socket = useSocket('event-score', (message: RoundScore) => {
         const scores = roundScores.map(rs => rs)
-
-        if (message.eventType === 'add') {
-            let score = scores[message.score.round_num]
-            if (score) {
-                score.bounties += message.score.bounties
-                score.kills += message.score.kills
-                score.total = calculateBountyScore(score.bounties) + calculateKillScore(score.kills)
-                scores.splice(message.score.round_num, 1)
-                scores.push(score)
-            }
-
-            else {
-                score = {
-                    event_id: eventId,
-                    team_id: userEventTeam.id,
-                    user_id: currentUser.id,
-                    bounties: message.score.bounties,
-                    kills: message.score.kills,
-                    round_num: message.score.round_num,
-                    total: calculateBountyScore(message.score.bounties) + calculateKillScore(message.score.kills)
-                }
-
-                scores.push(score)
-            }
+        
+        if(message.eventType === 'add') {
+            scores.push(message)
         }
 
         else {
-            if (message.score.round_num === 0) {
+            if (message.round === 0) {
                 scores.shift()
             }
-
+    
             else {
-                scores.splice(message.score.round_num, 1)
+                scores.splice(message.round, 1)
             }
         }
 
@@ -270,23 +240,34 @@ function Page({ eventId }: { eventId: string }) {
     })
 
     const addScore = async () => {
-        const teamMemberScore: MemberScore[] = teamMemberScoreState[0];
+        const killState: Array<MemberScore> = memberScoreState[0];
+        const totalKills = killState.reduce((sum: number, curr: MemberScore) => sum + curr.kills, 0)
 
-        teamMemberScore.forEach(async score => {
-            const event: MutateScoreEvent = {
-                eventType: 'add',
-                score: {
-                    bounties: score.bounties,
-                    event_id: eventId,
-                    kills: score.kills,
-                    round_num: roundScores.length,
-                    team_id: userEventTeam.id,
-                    user_id: currentUser.id
-                }
+        let totalBounties = killState.reduce((sum: number, curr: MemberScore) => sum + curr.bounties, 0)
+        let bountyScore = 0
+        let tempTotalBounties = totalBounties
+        while (tempTotalBounties > 2) {
+            bountyScore += 1
+            tempTotalBounties--
+        }
+
+        bountyScore += tempTotalBounties * 3
+
+        const currRoundScores = roundScores.map(rs => rs)
+        const message: MutateScoreEvent = {
+            eventType: 'add',
+            score: {
+                bounties: totalBounties,
+                kills: totalKills,
+                round: currRoundScores.length,
+                total: totalKills + bountyScore,
+                isEdit: false
             }
+        }
 
-            await publishEvent('event-score', event)
-        });
+        currRoundScores.push(message.score)
+
+        await publishEvent('event-score', message)
     }
 
     const teamMemberType = userEventTeam?.team_members.find(tm => tm.user_id === currentUser.id)?.member_type
@@ -315,11 +296,11 @@ function Page({ eventId }: { eventId: string }) {
                         <form>
                             <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
                                 Add Round Information
-                            </h6>
+                    </h6>
                             <div className="flex flex-wrap">
                                 <React.Suspense fallback={<div>Loading...</div>}>
                                     {userEventTeam?.team_members.map(member => (
-                                        <UserScoreInput key={member.user_id} teamMember={member} memberScoreState={teamMemberScoreState} />
+                                        <UserScoreInput key={member.user_id} teamMember={member} memberScoreState={memberScoreState} />
                                     ))}
                                 </React.Suspense>
                             </div>
@@ -334,7 +315,7 @@ function Page({ eventId }: { eventId: string }) {
         <>
             {result}
             <div className="mt-5 w-full">
-                <ScoreTable color={'light'} roundScores={roundScoresState[0]} />
+                <ScoreTable color={'light'} scoreState={roundScoresState} socket={socket} />
             </div>
         </>
     )

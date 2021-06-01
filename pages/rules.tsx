@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "../components/Navbars/AuthNavbar";
 import Footer from "../components/Footers/Footer";
-import { constants } from "../util/constants"
+import Navbar from "../components/Navbars/AuthNavbar";
+import { constants } from "../util/constants";
 
 export default function Landing() {
   const isProduction = constants.ENVIRONMENT === 'PRODUCTION'
@@ -563,7 +563,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            The competition entry forms must be filled out no later than 19 June 2021 at 11:59 PM EST,
+                            The competition entry forms must be filled out no later than 26 June 2021 at 11:59 PM EST,
                             late submissions will not be accepted.
                           </h4>
                         </div>

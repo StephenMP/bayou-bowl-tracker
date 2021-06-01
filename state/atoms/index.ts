@@ -1,8 +1,6 @@
+import { User, UserProfile } from "@prisma/client";
 import { atom } from 'recoil';
-import { User, Event, UserProfile, Team } from "@prisma/client";
-import { EventWithTeamsAndScores } from '../../types/event'
 import { TeamWithTeamMembers } from '../../types/team';
-import { getRedisContext } from '../../util/redis';
 
 const syncUserStateEffect = () => ({ setSelf }) => {
   const loadUser = async () => {
@@ -52,7 +50,6 @@ const fetchAllTeamsEffect = () => ({ setSelf }) => {
   const load = async () => {
     const res = await fetch('/api/user/teams')
     const teams = await res.json()
-    console.log(teams)
 
     setSelf(teams)
   }
