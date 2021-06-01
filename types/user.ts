@@ -1,3 +1,3 @@
-import { Event, Team, EventScore, TeamMember } from '@prisma/client'
+import { User, UserProfile } from '@prisma/client'
 
 export type UserWithProfile = (User & { profile: UserProfile })

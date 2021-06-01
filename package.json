@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "next start",
-    "build": "next build",
+    "build": "yarn prisma:publish && next build",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "install:clean": "rm -rf node_modules/ && rm -rf yarn.lock && yarn install && yarn run build:tailwind && yarn run dev",
     "build:tailwind": "tailwind build styles/index.css -o styles/tailwind.css",
