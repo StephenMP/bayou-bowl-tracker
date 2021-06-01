@@ -1,4 +1,4 @@
-import { selectorFamily } from 'recoil'
+import { selectorFamily } from 'recoil';
 import { EventWithTeamsAndScores } from '../types/event';
 
 export const loadEventSelector = selectorFamily({
@@ -12,7 +12,7 @@ export const loadEventSelector = selectorFamily({
 });
 
 export const loadUserSelector = selectorFamily({
-    key: 'loadEventSelector',
+    key: 'loadUserSelector',
     get: userId => async (): Promise<EventWithTeamsAndScores> => {
         const res = await fetch(`/api/user?userId=${userId.toString()}`)
         const event: EventWithTeamsAndScores = await res.json()
