@@ -3,9 +3,7 @@ import { EventScore, TeamMember, TeamMemberType } from "@prisma/client";
 import { useRouter } from 'next/router';
 import React, { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
 import { useRecoilValue } from 'recoil';
-import useSocket from '../../../hooks/useSocket';
 import Admin from "../../../layouts/Admin";
-import { publishEvent } from '../../../lib/socketio-client';
 import { userState, userTeamsState } from "../../../state/atoms";
 import { loadEventSelector, loadUserSelector } from "../../../state/selectors";
 import { queryParamAsString } from '../../../util/routes';
@@ -48,7 +46,7 @@ function ScoreTable({ color, roundScores }: { color: 'light' | 'dark', roundScor
             score: score
         }
 
-        await publishEvent('event-score', message)
+        // await publishEvent('event-score', message)
     }
 
     return (
@@ -179,10 +177,10 @@ function UserScoreInput({ teamMember, memberScoreState }: { teamMember: TeamMemb
 
     const user = useRecoilValue(loadUserSelector(teamMember.user_id))
 
-    useSocket('event-score', () => {
-        killRef.current.value = ''
-        bountyRef.current.value = ''
-    })
+    // useSocket('event-score', () => {
+    //     killRef.current.value = ''
+    //     bountyRef.current.value = ''
+    // })
 
     return (
         <>
@@ -228,46 +226,46 @@ function Page({ eventId }: { eventId: string }) {
     const roundScores = roundScoresState[0]
     const setRoundScores = roundScoresState[1]
 
-    useSocket('event-score', (message: MutateScoreEvent) => {
-        const scores = roundScores.map(rs => rs)
+    // useSocket('event-score', (message: MutateScoreEvent) => {
+    //     const scores = roundScores.map(rs => rs)
 
-        if (message.eventType === 'add') {
-            let score = scores[message.score.round_num]
-            if (score) {
-                score.bounties += message.score.bounties
-                score.kills += message.score.kills
-                score.total = calculateBountyScore(score.bounties) + calculateKillScore(score.kills)
-                scores.splice(message.score.round_num, 1)
-                scores.push(score)
-            }
+    //     if (message.eventType === 'add') {
+    //         let score = scores[message.score.round_num]
+    //         if (score) {
+    //             score.bounties += message.score.bounties
+    //             score.kills += message.score.kills
+    //             score.total = calculateBountyScore(score.bounties) + calculateKillScore(score.kills)
+    //             scores.splice(message.score.round_num, 1)
+    //             scores.push(score)
+    //         }
 
-            else {
-                score = {
-                    event_id: eventId,
-                    team_id: userEventTeam.id,
-                    user_id: currentUser.id,
-                    bounties: message.score.bounties,
-                    kills: message.score.kills,
-                    round_num: message.score.round_num,
-                    total: calculateBountyScore(message.score.bounties) + calculateKillScore(message.score.kills)
-                }
+    //         else {
+    //             score = {
+    //                 event_id: eventId,
+    //                 team_id: userEventTeam.id,
+    //                 user_id: currentUser.id,
+    //                 bounties: message.score.bounties,
+    //                 kills: message.score.kills,
+    //                 round_num: message.score.round_num,
+    //                 total: calculateBountyScore(message.score.bounties) + calculateKillScore(message.score.kills)
+    //             }
 
-                scores.push(score)
-            }
-        }
+    //             scores.push(score)
+    //         }
+    //     }
 
-        else {
-            if (message.score.round_num === 0) {
-                scores.shift()
-            }
+    //     else {
+    //         if (message.score.round_num === 0) {
+    //             scores.shift()
+    //         }
 
-            else {
-                scores.splice(message.score.round_num, 1)
-            }
-        }
+    //         else {
+    //             scores.splice(message.score.round_num, 1)
+    //         }
+    //     }
 
-        setRoundScores(scores)
-    })
+    //     setRoundScores(scores)
+    // })
 
     const addScore = async () => {
         const teamMemberScore: MemberScore[] = teamMemberScoreState[0];
@@ -285,7 +283,7 @@ function Page({ eventId }: { eventId: string }) {
                 }
             }
 
-            await publishEvent('event-score', event)
+            // await publishEvent('event-score', event)
         });
     }
 

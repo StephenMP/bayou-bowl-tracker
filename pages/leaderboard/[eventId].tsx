@@ -3,7 +3,6 @@ import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/router';
 import React, { useState } from "react";
 import { useRecoilValue } from 'recoil';
-import useSocket from '../../hooks/useSocket';
 import Admin from "../../layouts/Admin";
 import { loadEventSelector } from "../../state/selectors";
 import { queryParamAsString } from '../../util/routes';
@@ -41,45 +40,45 @@ function Page({ eventId }: { eventId: string }) {
     const currentEvent = useRecoilValue(loadEventSelector(eventId))
     const [teamScores, setTeamScores] = useState<TeamScore[]>([])
 
-    useSocket('event-score', (event: MutateScoreEvent) => {
-        const allTeamScores = teamScores.map(ts => ts)
-        let teamScoreIndex = allTeamScores.findIndex(t => t.teamId === event.score.team_id)
-        let teamScore = allTeamScores.find(t => t.teamId === event.score.team_id)
+    // useSocket('event-score', (event: MutateScoreEvent) => {
+    //     const allTeamScores = teamScores.map(ts => ts)
+    //     let teamScoreIndex = allTeamScores.findIndex(t => t.teamId === event.score.team_id)
+    //     let teamScore = allTeamScores.find(t => t.teamId === event.score.team_id)
 
-        if (event.eventType === 'add') {
-            if (teamScore) {
-                teamScore.bounties += event.score.bounties
-                teamScore.kills += event.score.kills
-                teamScore.totalScore = calculateBountyScore(teamScore.bounties) + calculateKillScore(teamScore.kills)
-                allTeamScores.splice(teamScoreIndex, 1)
-                allTeamScores.push(teamScore)
-            }
+    //     if (event.eventType === 'add') {
+    //         if (teamScore) {
+    //             teamScore.bounties += event.score.bounties
+    //             teamScore.kills += event.score.kills
+    //             teamScore.totalScore = calculateBountyScore(teamScore.bounties) + calculateKillScore(teamScore.kills)
+    //             allTeamScores.splice(teamScoreIndex, 1)
+    //             allTeamScores.push(teamScore)
+    //         }
 
-            else {
-                teamScore = {
-                    bounties: event.score.bounties,
-                    kills: event.score.kills,
-                    teamName: currentEvent.teams.find(t => t.id === event.score.team_id).name,
-                    totalScore: calculateBountyScore(event.score.bounties) + calculateKillScore(event.score.kills),
-                    teamId: event.score.team_id
-                }
+    //         else {
+    //             teamScore = {
+    //                 bounties: event.score.bounties,
+    //                 kills: event.score.kills,
+    //                 teamName: currentEvent.teams.find(t => t.id === event.score.team_id).name,
+    //                 totalScore: calculateBountyScore(event.score.bounties) + calculateKillScore(event.score.kills),
+    //                 teamId: event.score.team_id
+    //             }
 
-                allTeamScores.push(teamScore)
-            }
-        }
+    //             allTeamScores.push(teamScore)
+    //         }
+    //     }
 
-        else {
-            if (teamScore) {
-                teamScore.bounties -= event.score.bounties
-                teamScore.kills -= event.score.kills
-                teamScore.totalScore = calculateBountyScore(teamScore.bounties) + calculateKillScore(teamScore.kills)
-                allTeamScores.splice(teamScoreIndex, 1)
-                allTeamScores.push(teamScore)
-            }
-        }
+    //     else {
+    //         if (teamScore) {
+    //             teamScore.bounties -= event.score.bounties
+    //             teamScore.kills -= event.score.kills
+    //             teamScore.totalScore = calculateBountyScore(teamScore.bounties) + calculateKillScore(teamScore.kills)
+    //             allTeamScores.splice(teamScoreIndex, 1)
+    //             allTeamScores.push(teamScore)
+    //         }
+    //     }
 
-        setTeamScores(allTeamScores)
-    })
+    //     setTeamScores(allTeamScores)
+    // })
 
     return (
         <>
