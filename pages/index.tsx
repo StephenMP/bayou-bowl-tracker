@@ -1,6 +1,5 @@
 import Plyr from 'plyr-react';
 import React from "react";
-import Countdown from 'react-countdown';
 import Footer from "../components/Footers/Footer";
 import Navbar from "../components/Navbars/AuthNavbar";
 import { constants } from "../util/constants";
@@ -51,10 +50,10 @@ export default function Landing() {
                     className="max-w-full rounded-lg shadow-lg"
                     src="https://trello-attachments.s3.amazonaws.com/604fe9255c0c0230f7cab23a/6071fcc18b72e86c34967f2b/e7744589e781dbaaefe4442ebfcee7b2/The_Bayou_Bowl.png"
                   />
-                  {/* <h3 className="mt-4 text-2xl text-blueGray-200">
-                    The Premier Hunt: Showdown ESports Tournament
-                  </h3> */}
-                  {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />}
+                  <h3 className="mt-4 text-6xl uppercase font-bold text-blueGray-200">
+                    17 July 2021 Noon EST
+                  </h3>
+                  {/* {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />} */}
                 </div>
               </div>
             </div>

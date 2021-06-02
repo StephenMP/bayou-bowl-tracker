@@ -36,6 +36,10 @@ function AuthedNavs() {
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
+  const alertNotOpen = () => {
+    alert('Applications to compete are currently not open, but they will be soon!')
+  }
+
   return (
     <>
       <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
@@ -117,7 +121,7 @@ export default function Navbar() {
               <AuthedNavs />
               <li className="flex items-center">
                 <a href="#">
-                  <button className={navButtonClassName} type="button">
+                  <button className={navButtonClassName} type="button" onClick={alertNotOpen}>
                     <i className="fas fa-clipboard" ></i>{' '}Apply to Compete
                   </button>
                 </a>
