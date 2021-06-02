@@ -408,7 +408,7 @@ export default function Landing() {
                         <div>
                           <h4 className="text-blueGray-200">
                             All weapons and weapon configurations are permitted.
-                                            </h4>
+                          </h4>
                         </div>
                       </div>
                     </li>
@@ -428,7 +428,7 @@ export default function Landing() {
                             of the competition will be declared the winner. Teams may secure points for kills
                             (1 point each) and bounty token extracted (3 points each for first and second bounty token,
                             1 point each for third and fourth bounty token).
-                                            </h4>
+                          </h4>
                         </div>
                       </div>
                     </li>
@@ -574,7 +574,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            The competition entry forms must be filled out no later than 3 July 2021 at 11:59 PM EST, late submissions will not be accepted.
+                            The competition entry forms must be filled out no later than 26 June 2021 at 11:59 PM EST, late submissions will not be accepted.
                           </h4>
                         </div>
                       </div>
@@ -602,7 +602,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            The official team list will be published on 4 July 2021 by 11:59 PM at bayoubowl.gg/teams.
+                            The official team list will be published on 3 July 2021 by 11:59 PM at bayoubowl.gg/teams.
                           </h4>
                         </div>
                       </div>
@@ -620,7 +620,7 @@ export default function Landing() {
                         <div>
                           <h4 className="text-blueGray-200">
                             The hosts of this competition (SaltyOctopus and GameswithDeath) will be rebroadcasting and commentating in an esports format on the streamers participating. By signing up for this competition you are giving permission to the hosts to rebroadcast your stream and commentate on your gameplay during the competition.
-                                            </h4>
+                          </h4>
                         </div>
                       </div>
                     </li>

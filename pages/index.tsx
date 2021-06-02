@@ -1,9 +1,9 @@
+import Plyr from 'plyr-react';
 import React from "react";
-import Plyr from 'plyr-react'
 import Countdown from 'react-countdown';
-import Navbar from "../components/Navbars/AuthNavbar";
 import Footer from "../components/Footers/Footer";
-import { constants } from "../util/constants"
+import Navbar from "../components/Navbars/AuthNavbar";
+import { constants } from "../util/constants";
 
 export default function Landing() {
   const isProduction = constants.ENVIRONMENT === 'PRODUCTION'
@@ -105,12 +105,9 @@ export default function Landing() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
                       <i className="fab fa-twitter"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">@gunsmackk</h6>
+                    <h6 className="text-xl font-semibold">@kowalyshen</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      Absolutely Insane Stream Today! Shout out @GameswithDeath and @saltyoctopusttv
-                      for setting up this tournament was INSANELY well balanced, and very fun to play in!!
-                      @vombuz and I smashed 3rd place with sunglasses GGS to everyone, and much
-                      love to everyone that supported me today
+                      This was amazing to watch all the streamers play! Well done!
                     </p>
                   </div>
                 </div>
@@ -122,12 +119,12 @@ export default function Landing() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
                       <i className="fab fa-twitter"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">@rachta_z</h6>
+                    <h6 className="text-xl font-semibold">@gunsmackk</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      It was really fun playing this game bit more serious after a year
-                      being stuck on P100 with nothing to do. Hopefully we will get more
-                      events like this, hopefully Crytek will give us Custom lobbies or
-                      test servers for it next time! GG to everyone!
+                      Absolutely Insane Stream Today! Shout out @GameswithDeath and @saltyoctopusttv
+                      for setting up this tournament was INSANELY well balanced, and very fun to play in!!
+                      @vombuz and I smashed 3rd place with sunglasses GGS to everyone, and much
+                      love to everyone that supported me today
                     </p>
                   </div>
                 </div>
@@ -141,8 +138,14 @@ export default function Landing() {
             <div className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
                 <h3 className="text-3xl mb-2 font-semibold leading-normal">
-                  News
+                  Latest News
                 </h3>
+                <h6 className="text-lg mb-2 font-semibold leading-normal">
+                  Special Announcement
+                </h6>
+                <h6 className="text-sm mb-2 font-semibold leading-normal">
+                  May 11, 2021
+                </h6>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
                   The Bayou Bowl II tournament has been announced!
                 </p>
@@ -155,6 +158,9 @@ export default function Landing() {
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
                   For more information regarding the Bayou Bowl II tournament please watch the following video.
+                </p>
+                <p>
+                  <a href="/news">Read More News</a>
                 </p>
               </div>
 

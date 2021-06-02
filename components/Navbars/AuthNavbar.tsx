@@ -75,7 +75,7 @@ export default function Navbar() {
               </li>
 
               <li className="flex items-center">
-                <Link href="#news">
+                <Link href="/news">
                   <a className={navLinkClassName} >
                     News
                 </a>
@@ -83,7 +83,7 @@ export default function Navbar() {
               </li>
 
               <li className="flex items-center">
-                <Link href="#about">
+                <Link href="/#about">
                   <a className={navLinkClassName} >
                     About
                 </a>
