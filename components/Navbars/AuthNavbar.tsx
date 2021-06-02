@@ -115,6 +115,13 @@ export default function Navbar() {
               </li> */}
 
               <AuthedNavs />
+              <li className="flex items-center">
+                <a href="#">
+                  <button className={navButtonClassName} type="button">
+                    <i className="fas fa-clipboard" ></i>{' '}Apply to Compete
+                  </button>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
