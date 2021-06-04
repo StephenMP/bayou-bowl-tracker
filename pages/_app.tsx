@@ -1,17 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import { UserProvider } from '@auth0/nextjs-auth0';
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import type { AppContext } from 'next/app';
 import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
-import { UserProvider } from '@auth0/nextjs-auth0';
+import 'plyr-react/dist/plyr.css';
+import React from "react";
+import ReactDOM from "react-dom";
 import { ToastProvider } from 'react-toast-notifications';
-import PageChange from "../components/PageChange/PageChange";
-import { constants } from "../util/constants"
 import { RecoilRoot } from 'recoil';
-import type { AppContext } from 'next/app'
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import PageChange from "../components/PageChange/PageChange";
+import "../styles/custom.css";
 import "../styles/tailwind.css";
-import 'plyr-react/dist/plyr.css'
+import { constants } from "../util/constants";
 
 Router.events.on("routeChangeStart", (url) => {
   document.body.classList.add("body-page-transition");
