@@ -24,12 +24,9 @@ export default function Landing() {
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                 <div className="pr-12 mt-10">
-                  <h1 className="mt-4 text-6xl font-bold text-blueGray-200">
-                    Rules
+                  <h1 className="mt-4 text-8xl font-bold uppercase text-blueGray-200">
+                    Official Competition Rules for Bayou Bowl II
                   </h1>
-                  <h3 className="mt-4 text-2xl text-blueGray-200">
-                    Bayou Bowl II Tournament
-                  </h3>
                 </div>
               </div>
             </div>
