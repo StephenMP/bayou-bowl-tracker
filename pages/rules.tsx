@@ -341,7 +341,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Quick Play matches during the competition are NOT permitted. Hunter may use sole survivors from QP games obtained prior to the competition.
+                            Quickplay matches during the competition are NOT permitted. Hunter may use sole survivors from QP games obtained prior to the competition.
                           </h4>
                         </div>
                       </div>
@@ -422,10 +422,28 @@ export default function Landing() {
                         <div>
                           <h4 className="text-blueGray-200">
                             <span className="underline">How to Win</span>: The team with the highest score at the end
-                            of the competition will be declared the winner. Teams may secure points for kills
-                            (1 point each) and bounty token extracted (3 points each for first and second bounty token,
-                            1 point each for third and fourth bounty token).
+                            of the competition will be declared the winner. Teams may secure points in the following ways:
                           </h4>
+                          <ul>
+                            <li>
+                              <span className="text-blueGray-200">
+                                - Kills: 1 point each
+                              </span>
+                            </li>
+                            <li>
+                              <span className="text-blueGray-200">
+                                - Bounty Tokens Extracted:
+                                <ul>
+                                  <li>
+                                    -- 3 points for the first and second
+                                  </li>
+                                  <li>
+                                    -- 1 point each for third and fourth
+                                  </li>
+                                </ul>
+                              </span>
+                            </li>
+                          </ul>
                         </div>
                       </div>
                     </li>
@@ -508,7 +526,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            The scoresheet at bayoubowl.gg will be LOCKED AT EXACTLY 4 PM EST. No scores will be accepted after 4 PM EST exactly.
+                            The scoresheet at bayoubowl.gg will be LOCKED AT EXACTLY 4 PM EST. No scores will be accepted after this time.
                           </h4>
                         </div>
                       </div>
@@ -571,7 +589,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            The competition entry forms must be filled out no later than 26 June 2021 at 11:59 PM EST, late submissions will not be accepted.
+                            The competition entry forms must be filled out no later than 26 June 2021 at 11:59 PM EST. Late submissions will not be accepted.
                           </h4>
                         </div>
                       </div>
