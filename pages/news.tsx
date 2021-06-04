@@ -31,7 +31,7 @@ export default function Landing() {
     <>
       <Navbar />
       <main>
-      <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+        <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{ backgroundImage: "url('/img/bg-landing.jpg')" }}
@@ -45,7 +45,7 @@ export default function Landing() {
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                 <div className="pr-12 mt-10">
-                  <h1 className="mt-4 text-6xl font-bold text-blueGray-200">
+                  <h1 className="mt-4 text-8xl uppercase font-bold text-blueGray-200">
                     News
                   </h1>
                 </div>
@@ -60,7 +60,29 @@ export default function Landing() {
         </div>
 
         <section id="news" className="pb-20 bg-blueGray-200 -mt-24">
-        <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap items-center mt-32">
+              <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
+                <h6 className="text-lg mb-2 font-semibold leading-normal">
+                  Sign-ups for Bayou Bowl II Officially Open
+                </h6>
+                <h6 className="text-sm mb-2 font-semibold leading-normal">
+                  4 June 2021
+                </h6>
+                <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+                  Applications for Bayou Bowl II are now open to all! To apply press on the "Apply to Compete” button in the top right of the <a href="https://bayoubowl.gg">bayoubowl.gg</a> homepage. The top 20 teams of three will be selected to compete in the most intense Hunt: Showdown competition that has ever taken place. Only the best players will emerge the victors.
+                </p>
+                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
+                  Applications to compete will close on 26 June 2021 at 11:59 PM EST.
+                </p>
+              </div>
+              <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
+                <img src="/img/news/Sign-Ups_Open_Splash.png" />
+              </div>
+            </div>
+          </div>
+
+          <div className="container mx-auto px-4">
             <div className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
                 <h6 className="text-lg mb-2 font-semibold leading-normal">

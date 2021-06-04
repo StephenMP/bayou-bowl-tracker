@@ -22,7 +22,7 @@ export default function Landing() {
           </div>
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
-              <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+              <div className="w-full lg:w-7/12 px-4 ml-auto mr-auto text-center">
                 <div className="pr-12 mt-10">
                   <h1 className="mt-4 text-8xl font-bold uppercase text-blueGray-200">
                     Official Competition Rules for Bayou Bowl II
@@ -422,28 +422,10 @@ export default function Landing() {
                         <div>
                           <h4 className="text-blueGray-200">
                             <span className="underline">How to Win</span>: The team with the highest score at the end
-                            of the competition will be declared the winner. Teams may secure points in the following ways:
+                            of the competition will be declared the winner. Teams may secure points for kills
+                            (1 point each) and bounty tokens extracted (3 points each for first and second bounty token,
+                            1 point each for third and fourth bounty token).
                           </h4>
-                          <ul>
-                            <li>
-                              <span className="text-blueGray-200">
-                                - Kills: 1 point each
-                              </span>
-                            </li>
-                            <li>
-                              <span className="text-blueGray-200">
-                                - Bounty Tokens Extracted:
-                                <ul>
-                                  <li>
-                                    -- 3 points for the first and second
-                                  </li>
-                                  <li>
-                                    -- 1 point each for third and fourth
-                                  </li>
-                                </ul>
-                              </span>
-                            </li>
-                          </ul>
                         </div>
                       </div>
                     </li>

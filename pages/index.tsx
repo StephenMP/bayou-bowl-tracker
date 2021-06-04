@@ -1,4 +1,3 @@
-import Plyr from 'plyr-react';
 import React from "react";
 import Footer from "../components/Footers/Footer";
 import Navbar from "../components/Navbars/AuthNavbar";
@@ -140,23 +139,16 @@ export default function Landing() {
                   Latest News
                 </h3>
                 <h6 className="text-lg mb-2 font-semibold leading-normal">
-                  Special Announcement
+                  Sign-ups for Bayou Bowl II Officially Open
                 </h6>
                 <h6 className="text-sm mb-2 font-semibold leading-normal">
-                  May 11, 2021
+                  4 June 2021
                 </h6>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  The Bayou Bowl II tournament has been announced!
+                  Applications for Bayou Bowl II are now open to all! To apply press on the "Apply to Compete” button in the top right of the <a href="https://bayoubowl.gg">bayoubowl.gg</a> homepage. The top 20 teams of three will be selected to compete in the most intense Hunt: Showdown competition that has ever taken place. Only the best players will emerge the victors.
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  Starting on June 5th, 2021 players can begin applying to compete in the Bayou
-                  Bowl II tournament! The tournament will consist of 20 teams of three in a
-                  Trio v. Trio all-out battle. Teams will be selected based on KDA, Prestige
-                  Level, Hours Played, and general reputation in the Hunt community. Details
-                  on how to sign-up will be released soon.
-                </p>
-                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  For more information regarding the Bayou Bowl II tournament please watch the following video.
+                  Applications to compete will close on 26 June 2021 at 11:59 PM EST.
                 </p>
                 <p>
                   <a href="/news">Read More News</a>
@@ -164,7 +156,7 @@ export default function Landing() {
               </div>
 
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <Plyr source={videoSrc} options={videoOpts} style={plyrStyle} />
+                <img src="/img/news/Sign-Ups_Open_Splash.png" />
               </div>
             </div>
           </div>
