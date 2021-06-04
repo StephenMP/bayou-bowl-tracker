@@ -17,6 +17,9 @@ export default function Footer() {
                 MrSpwn
                 </a>
             </div>
+            <div className="text-sm text-blueGray-500 font-semibold py-1">
+              Not sponsored by Crytek or Hunt: Showdown.
+            </div>
           </div>
         </div>
       </footer>

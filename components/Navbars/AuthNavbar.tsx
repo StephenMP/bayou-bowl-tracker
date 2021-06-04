@@ -120,8 +120,8 @@ export default function Navbar() {
 
               <AuthedNavs />
               <li className="flex items-center">
-                <a href="#">
-                  <button className={navButtonClassName} type="button" onClick={alertNotOpen}>
+                <a href="https://docs.google.com/forms/d/1gZt8akT5D0SxGvzeJ5vDJRyfD5t_6ClggGI8iTVaaOY" target="_blank">
+                  <button className={navButtonClassName} type="button">
                     <i className="fas fa-clipboard" ></i>{' '}Apply to Compete
                   </button>
                 </a>
