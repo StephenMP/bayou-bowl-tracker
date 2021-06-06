@@ -3,9 +3,9 @@ import { useRouter } from 'next/router';
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { userTeamsState } from "../../state/atoms";
-import { EventWithTeamsAndScores } from '../../types/event';
+import { Event } from '../../types/prisma';
 
-export default function CardEvent({ event }: { event: EventWithTeamsAndScores }) {
+export default function CardEvent({ event }: { event: Event }) {
   const router = useRouter();
   const userTeams = useRecoilValue(userTeamsState)
   const isRegistered = userTeams.find(ut => ut.event_id === event.id)

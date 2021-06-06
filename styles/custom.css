@@ -12,3 +12,11 @@
     font-size: 6rem;
     line-height: 1;
 }
+
+.bg-green {
+    background-color: rgba(0, 255, 0, 100);
+}
+
+.max-w-5xl {
+    max-width: 75rem;
+  }

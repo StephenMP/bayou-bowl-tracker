@@ -1,6 +1,6 @@
 import { User, UserProfile } from "@prisma/client";
 import { atom } from 'recoil';
-import { TeamWithTeamMembers } from '../../types/team';
+import { Team } from '../../types/prisma';
 
 const syncUserStateEffect = () => ({ setSelf }) => {
   const loadUser = async () => {
@@ -91,7 +91,7 @@ export const eventsState = atom({
 
 export const userTeamsState = atom({
   key: 'userTeamsState',
-  default: [] as TeamWithTeamMembers[],
+  default: [] as Team[],
   effects_UNSTABLE: [
     fetchAllTeamsEffect()
   ]

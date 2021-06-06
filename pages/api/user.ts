@@ -5,7 +5,7 @@ import { readUser, updateUser, userIdFromAuth0Sub } from '../../repositories/use
 import { NextApiResponseServerIO } from '../../types/next';
 import { queryParamAsString } from '../../util/routes';
 
-function parseUserIdFromQuery(req: NextApiRequest, res: NextApiResponseServerIO): string {
+function getUserId(req: NextApiRequest, res: NextApiResponseServerIO): string {
     const userId = req.query.userId
 
     if (userId || userId?.length) {
@@ -19,7 +19,7 @@ function parseUserIdFromQuery(req: NextApiRequest, res: NextApiResponseServerIO)
 export default withApiAuthRequired(async function handler(req: NextApiRequest, res: NextApiResponseServerIO) {
     switch (req.method) {
         case 'GET':
-            const userId = parseUserIdFromQuery(req, res)
+            const userId = getUserId(req, res)
             const user = await readUser(userId)
 
             res.status(200).json(user)

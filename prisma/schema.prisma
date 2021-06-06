@@ -33,9 +33,9 @@ model Event {
 }
 
 model User {
-  id             String       @id
-  createdDate    DateTime     @default(now())
-  updatedDate    DateTime     @default(now())
+  id             String        @id
+  createdDate    DateTime      @default(now())
+  updatedDate    DateTime      @default(now())
   nickname       String?
   name           String?
   picture        String?
@@ -43,7 +43,7 @@ model User {
   email_verified Boolean?
   sub            String?
   profile        UserProfile?
-  event_scores   EventScore[]
+  player_scores  PlayerScore[]
 
   @@index([email, sub])
 }
@@ -65,6 +65,7 @@ model Team {
   event        Event        @relation(fields: [event_id], references: [id])
   event_id     String
   team_members TeamMember[]
+  EventScore   EventScore[]
 }
 
 enum TeamMemberType {
@@ -84,14 +85,35 @@ model TeamMember {
 }
 
 model EventScore {
-  event_id  String
-  team_id   String
-  user_id   String
-  round_num Int
-  kills     Int
-  bounties  Int
-  event     Event  @relation(fields: [event_id], references: [id])
-  user      User   @relation(fields: [user_id], references: [id])
+  event_id      String
+  team_id       String
+  round_num     Int
+  event         Event         @relation(fields: [event_id], references: [id])
+  team          Team          @relation(fields: [team_id], references: [id])
+  team_score    TeamScore?
+  player_scores PlayerScore[]
 
-  @@id([event_id, team_id, user_id, round_num])
+  @@id([event_id, team_id, round_num])
+}
+
+model TeamScore {
+  event_id    String
+  team_id     String
+  round_num   Int
+  bounties    Int
+  event_score EventScore @relation(fields: [event_id, team_id, round_num], references: [event_id, team_id, round_num])
+
+  @@id([event_id, team_id, round_num])
+}
+
+model PlayerScore {
+  event_id    String
+  team_id     String
+  round_num   Int
+  user_id     String
+  kills       Int
+  event_score EventScore @relation(fields: [event_id, team_id, round_num], references: [event_id, team_id, round_num])
+  user        User       @relation(fields: [user_id], references: [id])
+
+  @@id([event_id, team_id, round_num, user_id])
 }

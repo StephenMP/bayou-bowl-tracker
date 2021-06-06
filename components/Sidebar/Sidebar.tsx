@@ -120,13 +120,10 @@ const Sidebar = withPageAuthRequired(() => {
               </li>
             </ul>
 
-            {/* Divider */}
-            <hr className="my-4 md:min-w-full" />
-            {/* Heading */}
+            {/* <hr className="my-4 md:min-w-full" />
             <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
               Admin
             </h6>
-            {/* Navigation */}
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">
                 <Link href={routes.ADMIN_USERS}>
@@ -148,7 +145,7 @@ const Sidebar = withPageAuthRequired(() => {
                   </a>
                 </Link>
               </li>
-            </ul>
+            </ul> */}
 
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />
