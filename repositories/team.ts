@@ -23,6 +23,13 @@ export async function readTeams(opts: TeamReadOpts = DefaultReadOpts): Promise<A
     })
 }
 
+export async function readTeam(teamId: string, opts: TeamReadOpts = DefaultReadOpts): Promise<Team> {
+    return await client().findUnique({
+        where: { id: teamId },
+        include: opts.include
+    })
+}
+
 export async function readTeamByEventAndUser(eventId: string, userId: string, opts: TeamReadOpts = DefaultReadOpts): Promise<Team> {
     return await prisma.team.findFirst({
         where: {

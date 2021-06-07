@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { useEffect } from "react";
-import { useEventScoreForEventByTeam } from '../../../lib/swr/event-score';
+import { EventScoreByTeam, useEventScoreForEventByTeam } from '../../../lib/swr/event-score';
 import { queryParamAsString } from '../../../util/routes';
 
 function calculateBountyScore(totalBounties: number) {
@@ -23,16 +23,13 @@ function calculateScore(eventScore: EventScoreByTeam) {
     return calculateKillScore(eventScore.kills) + calculateBountyScore(eventScore.bounties)
 }
 
-type EventScoreByTeam = {
-    teamName: string,
-    teamId: string,
-    kills: number,
-    bounties: number
-}
-
 function Page({ eventId }: { eventId: string }) {
     // const currentEvent = useRecoilValue(loadEventSelector(eventId))
-    const { eventScoresByTeam } = useEventScoreForEventByTeam(eventId, { suspense: false, refreshInterval: 10000 })
+    const { eventScoresByTeam, isLoading } = useEventScoreForEventByTeam(eventId, { suspense: false, refreshInterval: 1000 })
+
+    if(isLoading) {
+        return (<div>Loading...</div>)
+    }
 
     return (
         <div className="flex flex-wrap max-w-5xl mt-4">
@@ -73,7 +70,7 @@ function Page({ eventId }: { eventId: string }) {
                             </tr>
                         </thead>
                         <tbody>
-                            {eventScoresByTeam.sort((a, b) => b.totalScore - a.totalScore).map((score, index) =>
+                        {eventScoresByTeam?.sort((a, b) => b.totalScore - a.totalScore).map((score, index) =>
                                 <tr key={score.teamId}>
                                     <td className="border-t-0 px-6 align-middle text-lg text-blueGray-200 border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                         {index + 1}

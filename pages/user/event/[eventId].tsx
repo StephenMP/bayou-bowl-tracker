@@ -45,7 +45,7 @@ function calculateTotalScore(eventScores: EventScore[]) {
     return total
 }
 
-function ScoreTable({ color, teamId }: { color: 'light' | 'dark', teamId: string }) {
+function ScoreTable({ color, teamId, canEdit }: { color: 'light' | 'dark', teamId: string, canEdit: boolean }) {
     const { eventScores } = useEventScoreForTeam(teamId, { suspense: true })
     const [canDelete, setCanDelete] = useState<boolean>(true)
     const deleteRound = async (eventScore: EventScore) => {
@@ -136,7 +136,7 @@ function ScoreTable({ color, teamId }: { color: 'light' | 'dark', teamId: string
                         </tr>
                     </thead>
                     <tbody>
-                        {eventScores.map((score, index) =>
+                        {eventScores?.map((score, index) =>
                             <tr key={index}>
                                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                                     {index + 1}
@@ -157,6 +157,7 @@ function ScoreTable({ color, teamId }: { color: 'light' | 'dark', teamId: string
                                         <button
                                             data-id={index}
                                             disabled={!canDelete}
+                                            hidden={!canEdit}
                                             onClick={() => deleteRound(score)}
                                         >
                                             <i className={canDelete ? "fas fa-trash-alt" : "fas fa-spinner fa-spin"}></i>
@@ -226,6 +227,8 @@ function Page({ eventId }: { eventId: string }) {
     const [addScoreForm, setScoreForm] = addScoreFormState
     const bountiesRef = useRef<HTMLSelectElement>()
     const [canAdd, setCanAdd] = useState<boolean>(true)
+    const memberType = team.team_members.find(tm => tm.user_id === currentUser.id).member_type
+    const canEdit = memberType === 'CAPTAIN' || memberType === 'SCOREKEEPER'
 
     const handleBountyChange = (e: ChangeEvent<HTMLSelectElement>) => {
         const newBounties = parseInt(e.target.value)
@@ -387,7 +390,7 @@ function Page({ eventId }: { eventId: string }) {
             {event.isActive ?
                 <div className="mt-5 w-full">
                     <React.Suspense fallback={<div>Loading...</div>}>
-                        <ScoreTable color={'light'} teamId={team.id} />
+                        <ScoreTable color={'light'} teamId={team.id} canEdit={canEdit} />
                     </React.Suspense>
                 </div> : <></>}
         </>
