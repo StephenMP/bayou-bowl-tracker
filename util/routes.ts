@@ -7,6 +7,7 @@ export const routes = {
     USER_PROFILE: "/user/profile",
     USER_EVENTS: "/user/events",
     ADMIN_USERS: "/admin/users",
+    ADMIN_EVENTS: "/admin/events",
 }
 
 export function queryParamAsString(param: string | string[]): string {

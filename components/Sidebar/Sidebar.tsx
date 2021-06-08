@@ -120,32 +120,34 @@ const Sidebar = withPageAuthRequired(() => {
               </li>
             </ul>
 
-            {/* <hr className="my-4 md:min-w-full" />
-            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Admin
+            {user.email === "gameswithdeathtv@gmail.com" || user.email === 'ivirspwn@gmail.com' ?
+              <>
+                <hr className="my-4 md:min-w-full" />
+                <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+                  Admin
             </h6>
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none">
-              <li className="items-center">
-                <Link href={routes.ADMIN_USERS}>
-                  <a className={
-                    "text-xs uppercase py-3 font-bold block " +
-                    (router.pathname.indexOf(routes.ADMIN_USERS) !== -1
-                      ? "text-lightBlue-500 hover:text-lightBlue-600"
-                      : "text-blueGray-700 hover:text-blueGray-500")
-                  }
-                  >
-                    <i className={
-                      "fas fa-users mr-2 text-sm " +
-                      (router.pathname.indexOf(routes.ADMIN_USERS) !== -1
-                        ? "opacity-75"
-                        : "text-blueGray-500")
-                    }
-                    ></i>{" "}
-                    Users
+                <ul className="md:flex-col md:min-w-full flex flex-col list-none">
+                  <li className="items-center">
+                    <Link href={routes.ADMIN_EVENTS}>
+                      <a className={
+                        "text-xs uppercase py-3 font-bold block " +
+                        (router.pathname.indexOf(routes.ADMIN_EVENTS) !== -1
+                          ? "text-lightBlue-500 hover:text-lightBlue-600"
+                          : "text-blueGray-700 hover:text-blueGray-500")
+                      }
+                      >
+                        <i className={
+                          "fas fa-calendar-alt mr-2 text-sm " +
+                          (router.pathname.indexOf(routes.ADMIN_EVENTS) !== -1
+                            ? "opacity-75"
+                            : "text-blueGray-500")
+                        }
+                        ></i>{" "}
+                    Manage Events
                   </a>
-                </Link>
-              </li>
-            </ul> */}
+                    </Link>
+                  </li>
+                </ul></> : <></>}
 
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />

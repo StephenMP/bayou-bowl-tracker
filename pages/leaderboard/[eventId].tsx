@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import React from "react";
+import { firstBy } from 'thenby';
 import Footer from '../../components/Footers/Footer';
 import Navbar from '../../components/Navbars/AuthNavbar';
 import { EventScoreByTeam, useEventScoreForEventByTeam } from '../../lib/swr/event-score';
@@ -62,12 +63,10 @@ function Page({ eventId }: { eventId: string }) {
                             </tr>
                         </thead>
                         <tbody>
-                            {eventScoresByTeam?.sort((a, b) => b.totalScore - a.totalScore).map((score, index) =>
+                            {eventScoresByTeam?.sort(firstBy('totalScore', 'desc').thenBy('totalRounds').thenBy('kills').thenBy('bounties')).map((score, index) =>
                                 <tr key={score.teamId}>
                                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <a href={`/team/${score.teamId}`} target='_blank'>
-                                            {index + 1}
-                                        </a>
+                                        {index + 1}
                                     </td>
                                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                         <a href={`/team/${score.teamId}`} target='_blank'>
@@ -75,24 +74,16 @@ function Page({ eventId }: { eventId: string }) {
                                         </a>
                                     </td>
                                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <a href={`/team/${score.teamId}`} target='_blank'>
-                                            {score.kills}
-                                        </a>
+                                        {score.kills}
                                     </td>
                                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <a href={`/team/${score.teamId}`} target='_blank'>
-                                            {score.bounties}
-                                        </a>
+                                        {score.bounties}
                                     </td>
                                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <a href={`/team/${score.teamId}`} target='_blank'>
-                                            {score.totalRounds}
-                                        </a>
+                                        {score.totalRounds}
                                     </td>
                                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <a href={`/team/${score.teamId}`} target='_blank'>
-                                            {score.totalScore}
-                                        </a>
+                                        {score.totalScore}
                                     </td>
                                 </tr>
                             )}

@@ -12,3 +12,13 @@ export function useEvent(eventId: string, options?: SWRConfiguration) {
         isLoading: !error && !data,
     }
 }
+
+export function useEvents(options?: SWRConfiguration) {
+    const { data, error } = useSWR<Event[]>(`/api/events`, fetcher, options)
+    console.log("ERROR: ", error)
+    return {
+        events: data,
+        error: error,
+        isLoading: !error && !data,
+    }
+}

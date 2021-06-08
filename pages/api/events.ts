@@ -4,7 +4,7 @@ import { readEvents } from '../../repositories/event';
 export default withApiAuthRequired(async function handler(req, res) {
     switch (req.method) {
         case 'GET':
-            const events = await readEvents({include: {teams: true}})
+            const events = await readEvents()
             res.status(200).json(events)
             break
 
