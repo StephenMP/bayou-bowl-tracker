@@ -63,15 +63,27 @@ function TeamCard({ teamMember }: { teamMember: TeamMember }) {
           <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
             {user.name}
           </h3>
-          <a href={user.profile?.twitch_name ? `https://twitch.tv/${user.profile.twitch_name}` : '#'} target='_blank'>
-            <i className="fab fa-twitch mr-2 text-lg text-blueGray-400"></i>
-            {user.profile?.twitch_name ?? 'N/A'}
-          </a>
           <div className="mb-2 text-blueGray-600">
-          <a href={user.profile?.twitter_name ? `https://twitter.com/${user.profile.twitter_name}` : '#'} target='_blank'>
+            <a href={user.profile?.twitch_name ? `https://twitch.tv/${user.profile.twitch_name}` : '#'} target='_blank'>
+              <i className="fab fa-twitch mr-2 text-lg text-blueGray-400"></i>
+              {user.profile?.twitch_name ?? 'N/A'}
+              {user.profile?.twitch_name ? <i className="fas fa-link ml-2 text-xs text-blueGray-400"></i> : <></>}
+            </a>
+          </div>
+          <div className="mb-2 text-blueGray-600">
+            <a href={user.profile?.twitter_name ? `https://twitter.com/${user.profile.twitter_name}` : '#'} target='_blank'>
               <i className="fab fa-twitter mr-2 text-lg text-blueGray-400"></i>
               {user.profile?.twitter_name ?? 'N/A'}
+              {user.profile?.twitter_name ? <i className="fas fa-link ml-2 text-xs text-blueGray-400"></i> : <></>}
             </a>
+          </div>
+          <div className="mb-2 text-blueGray-600">
+            <i className="fab fa-discord mr-2 text-lg text-blueGray-400"></i>
+            {user.profile?.discord_name ?? 'N/A'}
+          </div>
+          <div className="mb-2 text-blueGray-600">
+            <i className="fab fa-steam mr-2 text-lg text-blueGray-400"></i>
+            {user.profile?.steam_name ?? 'N/A'}
           </div>
         </div>
         <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
@@ -135,7 +147,7 @@ export default function Profile() {
         <section className="relative py-16 bg-blueGray-200">
           <div className="flex flex-wrap mx-auto px-4 -mt-24 justify-center">
             {team.team_members.map(tm => (
-              <TeamCard teamMember={tm} />
+              <TeamCard key={tm.user_id} teamMember={tm} />
             ))}
           </div>
         </section>

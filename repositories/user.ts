@@ -27,7 +27,10 @@ export async function createUser(user: User): Promise<void> {
         update: {},
         create: {
             ...user,
-            id: userIdFromAuth0Sub(user.sub)
+            id: userIdFromAuth0Sub(user.sub),
+            profile: {
+                create: {}
+            }
         }
     })
 }

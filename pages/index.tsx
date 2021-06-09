@@ -1,9 +1,41 @@
 import React from "react";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import Footer from "../components/Footers/Footer";
 import Navbar from "../components/Navbars/AuthNavbar";
 import { constants } from "../util/constants";
 
+const minuteSeconds = 60;
+const hourSeconds = 3600;
+const daySeconds = 86400;
+
+const timerProps = {
+  isPlaying: true,
+  size: 170,
+  strokeWidth: 10,
+  colors: "#00a1b3"
+};
+
+const getTimeSeconds = (time: number) => (minuteSeconds - time) | 0;
+const getTimeMinutes = (time: number) => ((time % hourSeconds) / minuteSeconds) | 0;
+const getTimeHours = (time: number) => ((time % daySeconds) / hourSeconds) | 0;
+const getTimeDays = (time: number) => (time / daySeconds) | 0;
+
+const renderTime = (dimension, time) => {
+  return (
+    <div className="time-wrapper">
+      <div className="time">{time}</div>
+      <div>{dimension}</div>
+    </div>
+  );
+};
+
 export default function Landing() {
+  const startTime = Date.now() / 1000
+  const endTime = new Date(2021, 6, 17).getTime() / 1000
+  const remainingTime = endTime - startTime;
+  const days = Math.ceil(remainingTime / daySeconds);
+  const daysDuration = days * daySeconds;
+
   const isProduction = constants.ENVIRONMENT === 'PRODUCTION'
   const videoOpts: Plyr.Options = {
     ads: { enabled: false, publisherId: '' },
@@ -42,17 +74,66 @@ export default function Landing() {
           </div>
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
-              <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+              <div className="w-full lg:w-8/12 px-4 ml-auto mr-auto text-center">
                 <div className="pr-12 mt-10">
                   <img
                     alt="..."
                     className="max-w-full rounded-lg shadow-lg"
                     src="https://trello-attachments.s3.amazonaws.com/604fe9255c0c0230f7cab23a/6071fcc18b72e86c34967f2b/e7744589e781dbaaefe4442ebfcee7b2/The_Bayou_Bowl.png"
                   />
+                  {/* {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />} */}
+                  <div className="items-center flex flex-wrap mt-5 text-3xl">
+                  <div className="w-full lg:w-3/12 uppercase countdown px-4 ml-auto mr-auto text-center">
+                      <CountdownCircleTimer
+                        {...timerProps}
+                        duration={daysDuration}
+                        initialRemainingTime={remainingTime}
+                      >
+                        {({ elapsedTime }) =>
+                          renderTime("days", getTimeDays(daysDuration - elapsedTime))
+                        }
+                      </CountdownCircleTimer>
+                    </div>
+                    <div className="w-full lg:w-3/12 uppercase countdown px-4 ml-auto mr-auto text-center">
+                      <CountdownCircleTimer
+                        {...timerProps}
+                        duration={daySeconds}
+                        initialRemainingTime={remainingTime % daySeconds}
+                        onComplete={(totalElapsedTime) => [remainingTime - totalElapsedTime > hourSeconds, 0]}
+                      >
+                        {({ elapsedTime }) =>
+                          renderTime("hours", getTimeHours(daySeconds - elapsedTime))
+                        }
+                      </CountdownCircleTimer>
+                    </div>
+                    <div className="w-full lg:w-3/12 uppercase countdown px-4 ml-auto mr-auto text-center">
+                      <CountdownCircleTimer
+                        {...timerProps}
+                        duration={hourSeconds}
+                        initialRemainingTime={remainingTime % hourSeconds}
+                        onComplete={(totalElapsedTime) => [remainingTime - totalElapsedTime > minuteSeconds, 0]}
+                      >
+                        {({ elapsedTime }) =>
+                          renderTime("minutes", getTimeMinutes(hourSeconds - elapsedTime))
+                        }
+                      </CountdownCircleTimer>
+                    </div>
+                    <div className="w-full lg:w-3/12 uppercase countdown px-4 ml-auto mr-auto text-center">
+                      <CountdownCircleTimer
+                        {...timerProps}
+                        duration={minuteSeconds}
+                        initialRemainingTime={remainingTime % minuteSeconds}
+                        onComplete={(totalElapsedTime) => [remainingTime - totalElapsedTime > 0, 0]}
+                      >
+                        {({ elapsedTime }) =>
+                          renderTime("seconds", getTimeSeconds(elapsedTime))
+                        }
+                      </CountdownCircleTimer>
+                    </div>
+                  </div>
                   <h3 className="mt-4 text-6xl uppercase font-bold text-blueGray-200">
                     17 July 2021 Noon EST
                   </h3>
-                  {/* {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />} */}
                 </div>
               </div>
             </div>
