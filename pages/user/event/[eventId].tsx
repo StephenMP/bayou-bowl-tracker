@@ -1,15 +1,14 @@
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
+import { EventMatchType } from '@prisma/client';
 import { useRouter } from 'next/router';
 import React, { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
 import { useToasts } from 'react-toast-notifications';
-import { useRecoilValue } from 'recoil';
 import { mutate } from 'swr';
 import Spinner from '../../../components/PageChange/Spinner';
 import Admin from "../../../layouts/Admin";
 import { fetcher, useEvent, useUserTeamForEvent } from '../../../lib/swr';
 import { useEventScoreForTeam } from '../../../lib/swr/event-score';
-import { useCurrentUser } from '../../../lib/swr/user';
-import { loadUserSelector } from "../../../state/selectors";
+import { useCurrentUser, useUser } from '../../../lib/swr/user';
 import { EventScore, PlayerScore, TeamMember, TeamMemberType, TeamScore } from "../../../types/prisma";
 import { queryParamAsString } from '../../../util/routes';
 
@@ -39,12 +38,27 @@ function calculateScore(eventScore: EventScore) {
 }
 
 function calculateTotalScore(eventScores: EventScore[]) {
-    let total = 0
-    eventScores.forEach(eventScore => {
+    return eventScores.reduce((total, eventScore) => {
         total += calculateScore(eventScore)
-    });
+        return total
+    }, 0)
+}
 
-    return total
+function calculateTotalKills(eventScores: EventScore[]) {
+    return eventScores.reduce((total, eventScore) => {
+        total += eventScore.player_scores.reduce((totalKills, playerScore) => {
+            totalKills += playerScore.kills
+            return totalKills
+        }, 0)
+        return total
+    }, 0)
+}
+
+function calculateTotalBounties(eventScores: EventScore[]) {
+    return eventScores.reduce((total, eventScore) => {
+        total += eventScore.team_score.bounties
+        return total
+    }, 0)
 }
 
 function ScoreTable({ color, teamId, canEdit }: { color: 'light' | 'dark', teamId: string, canEdit: boolean }) {
@@ -53,7 +67,6 @@ function ScoreTable({ color, teamId, canEdit }: { color: 'light' | 'dark', teamI
     const { addToast, updateToast } = useToasts();
     const deleteRound = async (eventScore: EventScore) => {
         addToast('Deleting score...', { appearance: 'info', autoDismiss: true }, async toastId => {
-
             setCanDelete(false)
 
             mutate(`/api/event-scores/team/${teamId}`, (data: EventScore[]) => {
@@ -82,9 +95,24 @@ function ScoreTable({ color, teamId, canEdit }: { color: 'light' | 'dark', teamI
         <div className={"relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " + (color === "light" ? "bg-white" : "bg-blueGray-700 text-white")}>
             <div className="rounded-t mb-0 px-4 py-3 border-0">
                 <div className="flex flex-wrap items-center">
-                    <div className="relative w-full px-4 max-w-full flex-grow flex-1">
+                    <div className="relative w-full lg:w-3/12 px-4 max-w-full flex-grow flex-1">
                         <h3 className={"font-semibold text-lg " + (color === "light" ? "text-blueGray-700" : "text-white")}>
-                            Total Score: {calculateTotalScore(eventScores)}
+                            Rounds: {eventScores.length}
+                        </h3>
+                    </div>
+                    <div className="relative w-full lg:w-3/12 px-4 max-w-full flex-grow flex-1">
+                        <h3 className={"font-semibold text-lg " + (color === "light" ? "text-blueGray-700" : "text-white")}>
+                            Kills: {calculateTotalKills(eventScores)}
+                        </h3>
+                    </div>
+                    <div className="relative w-full lg:w-3/12 px-4 max-w-full flex-grow flex-1">
+                        <h3 className={"font-semibold text-lg " + (color === "light" ? "text-blueGray-700" : "text-white")}>
+                            Bounties: {calculateTotalBounties(eventScores)}
+                        </h3>
+                    </div>
+                    <div className="relative w-full lg:w-3/12 px-4 max-w-full flex-grow flex-1">
+                        <h3 className={"font-semibold text-lg " + (color === "light" ? "text-blueGray-700" : "text-white")}>
+                            Score: {calculateTotalScore(eventScores)}
                         </h3>
                     </div>
                 </div>
@@ -182,21 +210,34 @@ function ScoreTable({ color, teamId, canEdit }: { color: 'light' | 'dark', teamI
 }
 
 function UserScoreInput({ teamMember, formState }: { teamMember: TeamMember, formState: [AddScoreForm, Dispatch<SetStateAction<AddScoreForm>>] }) {
+    const { user } = useUser(teamMember.user_id, { suspense: true })
     const [form, setForm] = formState
 
     const handleScoreChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const newMemberKills = parseInt(e.target.value)
+        let newMemberKills = parseInt(e.target.value)
+        let sum = 0
+
         const newForm: AddScoreForm = {
-            bounties: form.bounties,
-            killsByMember: form.killsByMember
+            ...form,
+            killsByMember: {
+                ...form.killsByMember,
+                [teamMember.user_id]: newMemberKills
+            }
         }
 
-        newForm.killsByMember[teamMember.user_id] = newMemberKills
+        for (var key in newForm.killsByMember) {
+            sum += newForm.killsByMember[key]
+        }
+
+        if (sum > form.maxKills) {
+            alert(`Total kills can not be larger than ${form.maxKills}`)
+            newMemberKills = newMemberKills - 1 >= 0 ? newMemberKills - 1 : 0
+            newForm.killsByMember[teamMember.user_id] = newMemberKills
+            e.target.value = `${newMemberKills}`
+        }
 
         setForm(newForm)
     }
-
-    const user = useRecoilValue(loadUserSelector(teamMember.user_id))
 
     return (
         <>
@@ -210,9 +251,7 @@ function UserScoreInput({ teamMember, formState }: { teamMember: TeamMember, for
                     <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" >
                         Kills
                     </label>
-                    <input id={teamMember.user_id + '-kills'} type="number" min={0} max={55} defaultValue={0} className="w-full"
-                        onChange={handleScoreChange}
-                    />
+                    <input id={teamMember.user_id + '-kills'} type="number" min={0} max={55} defaultValue={0} className="w-full" onChange={handleScoreChange} />
                 </div>
             </div>
         </>
@@ -220,7 +259,8 @@ function UserScoreInput({ teamMember, formState }: { teamMember: TeamMember, for
 }
 
 type AddScoreForm = {
-    bounties: number
+    bounties: number,
+    maxKills: number,
     killsByMember: {
         [key: string]: number
     }
@@ -231,10 +271,13 @@ function Page({ eventId }: { eventId: string }) {
     const { event } = useEvent(eventId, { suspense: true })
     const { team } = useUserTeamForEvent(eventId, currentUser.id, { suspense: true })
     const { eventScores } = useEventScoreForTeam(team.id, { suspense: true })
-    const addScoreFormState = useState<AddScoreForm>({ bounties: 0, killsByMember: {} })
+
+    const maxKills: number = event.match_type === EventMatchType.TRIOS ? 45 : EventMatchType.SOLOS ? 55 : 50
+    const addScoreFormState = useState<AddScoreForm>({ bounties: 0, killsByMember: {}, maxKills })
     const [addScoreForm, setScoreForm] = addScoreFormState
-    const bountiesRef = useRef<HTMLSelectElement>()
     const [canAdd, setCanAdd] = useState<boolean>(true)
+
+    const bountiesRef = useRef<HTMLSelectElement>()
     const memberType = team.team_members.find(tm => tm.user_id === currentUser.id).member_type
     const canEdit = memberType === 'CAPTAIN' || memberType === 'SCOREKEEPER'
     const { addToast, updateToast } = useToasts();
@@ -243,7 +286,8 @@ function Page({ eventId }: { eventId: string }) {
         const newBounties = parseInt(e.target.value)
         const newForm: AddScoreForm = {
             bounties: newBounties,
-            killsByMember: addScoreForm.killsByMember
+            killsByMember: addScoreForm.killsByMember,
+            maxKills,
         }
 
         setScoreForm(newForm)
@@ -304,7 +348,7 @@ function Page({ eventId }: { eventId: string }) {
 
             // Set states
             setCanAdd(true)
-            setScoreForm({ bounties: 0, killsByMember: {} })
+            setScoreForm({ bounties: 0, maxKills, killsByMember: {} })
 
             // Clear form
             bountiesRef.current.value = '0'
@@ -312,6 +356,16 @@ function Page({ eventId }: { eventId: string }) {
                 input => (input.value = "0")
             );
         })
+    }
+
+    const calculateRoundScore = () => {
+        const bountyScore = calculateBountyScore(addScoreFormState[0].bounties)
+        let killScore = 0
+        for (var key in addScoreFormState[0].killsByMember) {
+            killScore += calculateKillScore(addScoreFormState[0].killsByMember[key])
+        }
+
+        return killScore + bountyScore
     }
 
     const teamMemberType = team?.team_members.find(tm => tm.user_id === currentUser.id)?.member_type
@@ -358,37 +412,46 @@ function Page({ eventId }: { eventId: string }) {
                     </div>
                 </div>
                 <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-                    <form>
-                        <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                            Add Round Information
-                        </h6>
-                        <div className="flex flex-wrap">
-                            <div className="w-full lg:w-6/12 px-4">
-                                <div className="relative mt-6 w-full mb-3">
-                                    Team
+                    <React.Suspense fallback={<Spinner light={false} />}>
+                        <form>
+                            <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                                Add Round Information
+                            </h6>
+                            <div className="flex flex-wrap">
+                                <div className="w-full lg:w-6/12 px-4">
+                                    <div className="relative mt-6 w-full mb-3">
+                                        Team
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="w-full lg:w-6/12 px-4">
-                                <div className="relative w-full mb-3">
-                                    <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" >
-                                        Bounties
-                                    </label>
-                                    <select name="bounties" id="bounties" className="w-full" ref={bountiesRef} onChange={handleBountyChange} >
-                                        <option value="0">0</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                    </select>
+                                <div className="w-full lg:w-6/12 px-4">
+                                    <div className="relative w-full mb-3">
+                                        <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" >
+                                            Bounties
+                                        </label>
+                                        <select name="bounties" id="bounties" className="w-full" ref={bountiesRef} onChange={handleBountyChange} >
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <React.Suspense fallback={<Spinner light={false} />}>
                                 {team?.team_members.map(member => (
                                     <UserScoreInput key={member.user_id} teamMember={member} formState={addScoreFormState} />
                                 ))}
-                            </React.Suspense>
-                        </div>
-                    </form>
+                                <div className="w-full lg:w-6/12 px-4">
+                                    <div className="relative mt-3 w-full mb-3">
+                                        Score
+                                    </div>
+                                </div>
+                                <div className="w-full lg:w-6/12 px-4">
+                                    <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" >Points</label>
+                                    <input type="number" min={0} value={calculateRoundScore()} className="w-full" disabled />
+                                </div>
+                            </div>
+                        </form>
+                    </React.Suspense>
                 </div>
             </div>
         )
