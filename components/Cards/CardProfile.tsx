@@ -1,10 +1,11 @@
-import { User, UserProfile } from '@prisma/client';
+import { UserProfile } from '@prisma/client';
 import React from "react";
 import { useRecoilValue } from 'recoil';
-import { userProfileState, userState } from '../../state/atoms';
+import { useCurrentUser } from '../../lib/swr/user';
+import { userProfileState } from '../../state/atoms';
 
 export default function CardProfile() {
-  const user: User = useRecoilValue(userState)
+  const { user } = useCurrentUser({ suspense: true })
   const userProfile: UserProfile = useRecoilValue(userProfileState)
 
   return (
@@ -82,7 +83,7 @@ export default function CardProfile() {
               <div className="w-full lg:w-9/12 px-4">
                 <h3 className="text-lg font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
                   About Me
-                        </h3>
+                </h3>
                 <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
                   {userProfile.about_me}
                 </p>

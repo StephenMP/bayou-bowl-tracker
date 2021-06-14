@@ -1,6 +1,5 @@
 import { User, UserProfile } from "@prisma/client";
 import { atom } from 'recoil';
-import { Team } from '../../types/prisma';
 
 const syncUserStateEffect = () => ({ setSelf }) => {
   const loadUser = async () => {
@@ -35,36 +34,6 @@ const fetchAllUsersEffect = () => ({ setSelf }) => {
   loadUsers()
 }
 
-const fetchAllEventsEffect = () => ({ setSelf }) => {
-  const loadUsers = async () => {
-    const res = await fetch('/api/events')
-    const events = await res.json()
-
-    setSelf(events)
-  }
-
-  loadUsers()
-}
-
-const fetchAllTeamsEffect = () => ({ setSelf }) => {
-  const load = async () => {
-    const res = await fetch('/api/user/teams')
-    const teams = await res.json()
-
-    setSelf(teams)
-  }
-
-  load()
-}
-
-export const userState = atom({
-  key: 'userState',
-  default: {} as User,
-  effects_UNSTABLE: [
-    syncUserStateEffect()
-  ]
-});
-
 export const userProfileState = atom({
   key: 'userProfileState',
   default: {} as UserProfile,
@@ -78,21 +47,5 @@ export const usersState = atom({
   default: [] as User[],
   effects_UNSTABLE: [
     fetchAllUsersEffect()
-  ]
-})
-
-export const eventsState = atom({
-  key: 'eventsState',
-  default: [],
-  effects_UNSTABLE: [
-    fetchAllEventsEffect()
-  ]
-})
-
-export const userTeamsState = atom({
-  key: 'userTeamsState',
-  default: [] as Team[],
-  effects_UNSTABLE: [
-    fetchAllTeamsEffect()
   ]
 })

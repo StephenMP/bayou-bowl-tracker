@@ -1,12 +1,14 @@
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/router';
 import React, { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
+import { useToasts } from 'react-toast-notifications';
 import { useRecoilValue } from 'recoil';
 import { mutate } from 'swr';
+import Spinner from '../../../components/PageChange/Spinner';
 import Admin from "../../../layouts/Admin";
 import { fetcher, useEvent, useUserTeamForEvent } from '../../../lib/swr';
 import { useEventScoreForTeam } from '../../../lib/swr/event-score';
-import { userState } from "../../../state/atoms";
+import { useCurrentUser } from '../../../lib/swr/user';
 import { loadUserSelector } from "../../../state/selectors";
 import { EventScore, PlayerScore, TeamMember, TeamMemberType, TeamScore } from "../../../types/prisma";
 import { queryParamAsString } from '../../../util/routes';
@@ -48,26 +50,32 @@ function calculateTotalScore(eventScores: EventScore[]) {
 function ScoreTable({ color, teamId, canEdit }: { color: 'light' | 'dark', teamId: string, canEdit: boolean }) {
     const { eventScores } = useEventScoreForTeam(teamId, { suspense: true })
     const [canDelete, setCanDelete] = useState<boolean>(true)
+    const { addToast, updateToast } = useToasts();
     const deleteRound = async (eventScore: EventScore) => {
-        setCanDelete(false)
+        addToast('Deleting score...', { appearance: 'info', autoDismiss: true }, async toastId => {
 
-        mutate(`/api/event-scores/team/${teamId}`, (data: EventScore[]) => {
-            const newData = [...data]
-            newData.pop()
-            return newData
-        }, false)
+            setCanDelete(false)
 
-        await fetcher('/api/event-scores', {
-            method: 'DELETE',
-            body: JSON.stringify(eventScore),
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
+            mutate(`/api/event-scores/team/${teamId}`, (data: EventScore[]) => {
+                const newData = [...data]
+                newData.pop()
+                return newData
+            }, false)
+
+            await fetcher('/api/event-scores', {
+                method: 'DELETE',
+                body: JSON.stringify(eventScore),
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                })
             })
-        })
 
-        mutate(`/api/event-scores/team/${teamId}`)
-        setCanDelete(true)
+            updateToast(toastId, { content: 'Deleted successfully!', appearance: 'success', autoDismiss: true });
+            mutate(`/api/event-scores/team/${teamId}`)
+
+            setCanDelete(true)
+        })
     }
 
     return (
@@ -124,7 +132,7 @@ function ScoreTable({ color, teamId, canEdit }: { color: 'light' | 'dark', teamI
                                 }
                             >
                                 Round Score
-                        </th>
+                            </th>
                             <th
                                 className={
                                     "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-right " +
@@ -219,7 +227,7 @@ type AddScoreForm = {
 }
 
 function Page({ eventId }: { eventId: string }) {
-    const currentUser = useRecoilValue(userState)
+    const { user: currentUser } = useCurrentUser({ suspense: true })
     const { event } = useEvent(eventId, { suspense: true })
     const { team } = useUserTeamForEvent(eventId, currentUser.id, { suspense: true })
     const { eventScores } = useEventScoreForTeam(team.id, { suspense: true })
@@ -229,6 +237,7 @@ function Page({ eventId }: { eventId: string }) {
     const [canAdd, setCanAdd] = useState<boolean>(true)
     const memberType = team.team_members.find(tm => tm.user_id === currentUser.id).member_type
     const canEdit = memberType === 'CAPTAIN' || memberType === 'SCOREKEEPER'
+    const { addToast, updateToast } = useToasts();
 
     const handleBountyChange = (e: ChangeEvent<HTMLSelectElement>) => {
         const newBounties = parseInt(e.target.value)
@@ -241,65 +250,68 @@ function Page({ eventId }: { eventId: string }) {
     }
 
     const addScore = async () => {
-        setCanAdd(false)
+        addToast('Adding score...', { appearance: 'info', autoDismiss: true }, async toastId => {
+            setCanAdd(false)
 
-        const playerScores: PlayerScore[] = team.team_members.map(tm => {
-            const userKills = addScoreForm.killsByMember[tm.user_id]
-            return {
+            const playerScores: PlayerScore[] = team.team_members.map(tm => {
+                const userKills = addScoreForm.killsByMember[tm.user_id]
+                return {
+                    event_id: eventId,
+                    kills: userKills ?? 0,
+                    round_num: eventScores.length + 1,
+                    team_id: team.id,
+                    user_id: tm.user_id
+                }
+            })
+
+            const teamScore: TeamScore = {
+                bounties: addScoreForm.bounties,
                 event_id: eventId,
-                kills: userKills ?? 0,
+                round_num: eventScores.length + 1,
+                team_id: team.id
+            }
+
+            const eventScore: EventScore = {
+                event_id: eventId,
                 round_num: eventScores.length + 1,
                 team_id: team.id,
-                user_id: tm.user_id
+                player_scores: playerScores,
+                team_score: teamScore
             }
-        })
 
-        const teamScore: TeamScore = {
-            bounties: addScoreForm.bounties,
-            event_id: eventId,
-            round_num: eventScores.length + 1,
-            team_id: team.id
-        }
+            // Mutate SWR without revalidate
+            const newEventScores = eventScores.map(es => es)
+            newEventScores.push(eventScore)
+            mutate(`/api/event-scores/team/${team.id}`, (data: EventScore[]) => {
+                const newData = [...data]
+                newData.push(eventScore)
+                return newData
+            }, false)
 
-        const eventScore: EventScore = {
-            event_id: eventId,
-            round_num: eventScores.length + 1,
-            team_id: team.id,
-            player_scores: playerScores,
-            team_score: teamScore
-        }
-
-        // Mutate SWR without revalidate
-        const newEventScores = eventScores.map(es => es)
-        newEventScores.push(eventScore)
-        mutate(`/api/event-scores/team/${team.id}`, (data: EventScore[]) => {
-            const newData = [...data]
-            newData.push(eventScore)
-            return newData
-        }, false)
-
-        // Update data
-        await fetcher('/api/event-scores', {
-            method: 'POST',
-            body: JSON.stringify(eventScore),
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
+            // Update data
+            await fetcher('/api/event-scores', {
+                method: 'POST',
+                body: JSON.stringify(eventScore),
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                })
             })
+
+            // Mutate SWR with a revalidate
+            updateToast(toastId, { content: 'Added score successfully!', appearance: 'success', autoDismiss: true });
+            mutate(`/api/event-scores/team/${team.id}`)
+
+            // Set states
+            setCanAdd(true)
+            setScoreForm({ bounties: 0, killsByMember: {} })
+
+            // Clear form
+            bountiesRef.current.value = '0'
+            Array.from(document.querySelectorAll("input")).forEach(
+                input => (input.value = "0")
+            );
         })
-
-        // Mutate SWR with a revalidate
-        mutate(`/api/event-scores/team/${team.id}`)
-
-        // Set states
-        setCanAdd(true)
-        setScoreForm({ bounties: 0, killsByMember: {} })
-
-        // Clear form
-        bountiesRef.current.value = '0'
-        Array.from(document.querySelectorAll("input")).forEach(
-            input => (input.value = "0")
-        );
     }
 
     const teamMemberType = team?.team_members.find(tm => tm.user_id === currentUser.id)?.member_type
@@ -354,7 +366,7 @@ function Page({ eventId }: { eventId: string }) {
                             <div className="w-full lg:w-6/12 px-4">
                                 <div className="relative mt-6 w-full mb-3">
                                     Team
-                            </div>
+                                </div>
                             </div>
                             <div className="w-full lg:w-6/12 px-4">
                                 <div className="relative w-full mb-3">
@@ -370,7 +382,7 @@ function Page({ eventId }: { eventId: string }) {
                                     </select>
                                 </div>
                             </div>
-                            <React.Suspense fallback={<div>Loading...</div>}>
+                            <React.Suspense fallback={<Spinner light={false} />}>
                                 {team?.team_members.map(member => (
                                     <UserScoreInput key={member.user_id} teamMember={member} formState={addScoreFormState} />
                                 ))}
@@ -383,17 +395,17 @@ function Page({ eventId }: { eventId: string }) {
     }
 
     return (
-        <>
+        <React.Suspense fallback={<Spinner light={true} />}>
             <div className="flex justify-center">
                 {result}
             </div>
             {event.isActive ?
                 <div className="mt-5 w-full">
-                    <React.Suspense fallback={<div>Loading...</div>}>
+                    <React.Suspense fallback={<Spinner light={true} />}>
                         <ScoreTable color={'light'} teamId={team.id} canEdit={canEdit} />
                     </React.Suspense>
                 </div> : <></>}
-        </>
+        </React.Suspense>
     )
 }
 
@@ -402,7 +414,7 @@ const EventPage = withPageAuthRequired(() => {
     const eventId = queryParamAsString(router.query.eventId)
 
     return (
-        <React.Suspense fallback={<div>Loading...</div>}>
+        <React.Suspense fallback={<Spinner light={true} />}>
             <Page eventId={eventId} />
         </React.Suspense>
     )

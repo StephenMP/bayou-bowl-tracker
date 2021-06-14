@@ -1,17 +1,10 @@
 import { getSession, withApiAuthRequired } from '@auth0/nextjs-auth0';
 import { User } from '@prisma/client';
 import { NextApiRequest } from 'next';
-import { readUser, updateUser, userIdFromAuth0Sub } from '../../repositories/user';
-import { NextApiResponseServerIO } from '../../types/next';
-import { queryParamAsString } from '../../util/routes';
+import { readUser, updateUser, userIdFromAuth0Sub } from '../../../repositories/user';
+import { NextApiResponseServerIO } from '../../../types/next';
 
 function getUserId(req: NextApiRequest, res: NextApiResponseServerIO): string {
-    const userId = req.query.userId
-
-    if (userId || userId?.length) {
-        return queryParamAsString(userId)
-    }
-
     const session = getSession(req, res)
     return userIdFromAuth0Sub(session.user.sub)
 }

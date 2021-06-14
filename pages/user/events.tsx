@@ -1,23 +1,29 @@
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import React from "react";
 import CardEvent from "../../components/Cards/CardEvent";
+import Spinner from "../../components/PageChange/Spinner";
 import Admin from "../../layouts/Admin";
-import { withPageAuthRequired } from '@auth0/nextjs-auth0';
-import { eventsState } from '../../state/atoms'
-import { useRecoilValue } from 'recoil'
+import { useEvents } from "../../lib/swr";
 
 const UserEvents = withPageAuthRequired(() => {
-  const events = useRecoilValue(eventsState)
+  const { events, isLoading } = useEvents()
+
+  if (isLoading) {
+    return (
+      <Spinner light={true} />
+    )
+  }
 
   return (
-    <>
-      <div className="flex flex-wrap">
-        <div className="w-full lg:w-4/12 px-4">
-          {events.map((event) =>
+    <div className="flex flex-wrap">
+      <div className="w-full lg:w-4/12 px-4">
+        {events.map((event) =>
+          <React.Suspense fallback={<Spinner light={true} />} >
             <CardEvent key={event.id} event={event} />
-          )}
-        </div>
+          </React.Suspense>
+        )}
       </div>
-    </>
+    </div>
   );
 })
 

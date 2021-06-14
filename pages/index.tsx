@@ -73,11 +73,13 @@ export default function Landing() {
             ></span>
           </div>
           <div className="container relative mx-auto">
-            <div className="items-center flex flex-wrap">
-              <div className="w-full lg:w-8/12 px-4 ml-auto mr-auto text-center">
-                <div className="pr-12 mt-10">
+            <div className="flex flex-wrap items-center">
+              <div className="w-full px-4 ml-auto mr-auto text-center">
+                <div className="flex justify-center flex-wrap pr-12 mt-10">
                   <img
                     alt="..."
+                    height="50%"
+                    width="50%"
                     className="max-w-full rounded-lg shadow-lg"
                     src="https://trello-attachments.s3.amazonaws.com/604fe9255c0c0230f7cab23a/6071fcc18b72e86c34967f2b/e7744589e781dbaaefe4442ebfcee7b2/The_Bayou_Bowl.png"
                   />

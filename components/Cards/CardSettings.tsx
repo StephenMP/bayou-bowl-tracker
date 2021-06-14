@@ -1,14 +1,15 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { useToasts } from 'react-toast-notifications';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { userProfileState, userState } from '../../state/atoms';
+import { useRecoilState } from 'recoil';
+import { useCurrentUser } from "../../lib/swr/user";
+import { userProfileState } from '../../state/atoms';
 
 export default function CardSettings() {
-  const user = useRecoilValue(userState)
+  const { user } = useCurrentUser({ suspense: true })
   const [userProfile, setUserProfile] = useRecoilState(userProfileState)
   const { addToast, updateToast } = useToasts();
 
-  const onInputChange = (event) => {
+  const onInputChange = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
     setUserProfile(oldProfile => {
       var newProfile = {
         ...oldProfile
@@ -46,7 +47,6 @@ export default function CardSettings() {
       }
     });
   }
-
 
   return (
     <>

@@ -1,31 +1,27 @@
-import React from "react"
-import CardSettings from "../../components/Cards/CardSettings"
-import CardProfile from "../../components/Cards/CardProfile"
-import Admin from "../../layouts/Admin"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0"
-
-function User() {
-  return (
-    <div className="flex flex-wrap">
-      <div className="w-full lg:w-8/12 px-4">
-        <CardSettings />
-      </div>
-      <div className="w-full lg:w-4/12 px-4">
-        <CardProfile />
-      </div>
-    </div>
-  )
-}
+import React from "react"
+import CardProfile from "../../components/Cards/CardProfile"
+import CardSettings from "../../components/Cards/CardSettings"
+import Spinner from "../../components/PageChange/Spinner"
+import Admin from "../../layouts/Admin"
 
 const Settings = withPageAuthRequired(() => {
   // Render
   return (
-    <React.Suspense fallback={<div>Loading...</div>}>
-      <User />
-    </React.Suspense>
+    <div className="flex flex-wrap">
+      <div className="w-full lg:w-8/12 px-4">
+        <React.Suspense fallback={<Spinner light={true} />}>
+          <CardSettings />
+        </React.Suspense>
+      </div>
+      <div className="w-full lg:w-4/12 px-4">
+        <React.Suspense fallback={<Spinner light={true} />}>
+          <CardProfile />
+        </React.Suspense>
+      </div>
+    </div>
   );
 })
 
 Settings['layout'] = Admin;
-
 export default Settings

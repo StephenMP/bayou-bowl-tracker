@@ -1,55 +1,44 @@
-import { useUser } from "@auth0/nextjs-auth0";
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from "react";
-import { useRecoilValue } from "recoil";
-import { userTeamsState } from "../../state/atoms";
+import { useCurrentUserTeams } from "../../lib/swr/user";
 import { Event } from '../../types/prisma';
+import Spinner from '../PageChange/Spinner';
 
-export default function CardEvent({ event }: { event: Event }) {
-  const router = useRouter();
-  const userTeams = useRecoilValue(userTeamsState)
-  const isRegistered = userTeams.find(ut => ut.event_id === event.id)
+function navigate(route: string) {
+  const router = useRouter()
+  router.push(route)
+}
 
-  const registerForEvent = (e) => {
-    const eventId = e.currentTarget.dataset.eventId;
-    router.push(`/user/event/register/${eventId}`)
-  }
-
-  const goToEventPage = (e) => {
-    const eventId = e.currentTarget.dataset.eventId;
-    router.push(`/user/event/${eventId}`)
-  }
-
-  const Register = ({ eventId }: { eventId: string }) => {
-    return (
+function GoToEventPage({ eventId }: { eventId: string }) {
+  return (
+    <Link href={`/user/event/${eventId}`} >
       <button
-        data-event-id={eventId}
-        onClick={registerForEvent}
-        className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-      >
-        Register
-      </button>
-    )
-  }
-
-  const GoToEventPage = ({ eventId }: { eventId: string }) => {
-    return (
-      <button
-        data-event-id={eventId}
-        onClick={goToEventPage}
         className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
       >
         Go To Event Page
       </button>
-    )
-  }
+    </Link>
+  )
+}
 
-  const { user, error, isLoading } = useUser();
-  if (isLoading) return <div></div>;
-  if (error) return <div>{error.message}</div>;
+function Register({ eventId }: { eventId: string }) {
+  return (
+    <Link href={`/user/event/register/${eventId}`} >
+      <button
+        className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+      >
+        Register
+      </button>
+    </Link>
+  )
+}
+
+export default function CardEvent({ event }: { event: Event }) {
+  const { teams } = useCurrentUserTeams({ suspense: true })
 
   return (
-    user && <>
+    <>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
         <div className="px-6">
           <div className="flex flex-wrap justify-center">
@@ -85,7 +74,9 @@ export default function CardEvent({ event }: { event: Event }) {
             </a>
           </div>
           <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
-            {isRegistered ? <GoToEventPage eventId={event.id} /> : <Register eventId={event.id} />}
+            <React.Suspense fallback={<Spinner light={true} />}>
+              {teams.find(ut => ut.event_id === event.id) ? <GoToEventPage eventId={event.id} /> : <Register eventId={event.id} />}
+            </React.Suspense>
           </div>
         </div>
       </div>

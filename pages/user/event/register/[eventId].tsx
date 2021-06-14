@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import Admin from "../../../../layouts/Admin";
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
-import { useRouter } from 'next/router'
-import { useRecoilValue } from 'recoil'
-import { eventsState, userState } from "../../../../state/atoms";
+import { useRouter } from 'next/router';
+import React, { useState } from "react";
 import validUrl from 'valid-url';
+import Admin from "../../../../layouts/Admin";
+import { useEvents } from '../../../../lib/swr';
+import { useCurrentUser } from "../../../../lib/swr/user";
 
 type RegistrationForm = {
     teamName: string,
@@ -36,7 +36,7 @@ const Register = withPageAuthRequired(() => {
     const [errors, setErrors] = useState<RegistrationErrors>(defaultErrors())
     const [teamNameLength, setTeamNameLength] = useState<number>(0)
     const [mottoLength, setMottoLength] = useState<number>(0)
-    const user = useRecoilValue(userState)
+    const { user } = useCurrentUser()
 
     const validate = () => {
         let valid = true
@@ -48,7 +48,7 @@ const Register = withPageAuthRequired(() => {
             valid = false
         }
 
-        else if(formState.teamName.length > maxTeamNameLength) {
+        else if (formState.teamName.length > maxTeamNameLength) {
             newErrors.teamName = 'Team Name is over max length!'
             valid = false
         }
@@ -62,7 +62,7 @@ const Register = withPageAuthRequired(() => {
         }
 
         // Validate team motto
-        if(formState.teamMotto && formState.teamMotto.length > maxTeamMottoLength) {
+        if (formState.teamMotto && formState.teamMotto.length > maxTeamMottoLength) {
             newErrors.teamMotto = 'Team Motto is over max length!'
             valid = false
         }
@@ -85,7 +85,7 @@ const Register = withPageAuthRequired(() => {
     const router = useRouter()
     const eventId = router.query.eventId
 
-    const events = useRecoilValue(eventsState)
+    const { events } = useEvents({ suspense: true })
     const currentEvent = events.find(e => e.id === eventId)
 
     if (!currentEvent) {
@@ -106,7 +106,7 @@ const Register = withPageAuthRequired(() => {
                             onClick={register}
                         >
                             Register
-                    </button>
+                        </button>
                     </div>
                 </div>
                 <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
