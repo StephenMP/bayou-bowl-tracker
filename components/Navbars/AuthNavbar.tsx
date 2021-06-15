@@ -16,14 +16,14 @@ function AuthedNavs() {
   return (
     <>
       { user && <li className="flex items-center">
-        <Link href={routes.USER_PROFILE}>
+        <Link href={routes.user.profile}>
           <a className={navLinkClassName} >
             Account
           </a>
         </Link>
       </li>}
       <li className="flex items-center">
-        <a href={user ? "/api/auth/logout" : "/api/auth/login"}>
+        <a href={user ? routes.api.auth.logout : routes.api.auth.login}>
           <button className={navButtonClassName} type="button">
             <i className={user ? "fas fa-sign-out-alt" : "fas fa-sign-in-alt"}></i> {user ? 'Sign Out' : 'Sign In'}
           </button>
@@ -46,7 +46,7 @@ export default function Navbar() {
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <img src="/img/brand/bayoubowl-logo.png" height={40} width={40} className="mr-3" />
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-            {/* <Link href="/">
+            {/* <Link href={routes.home}>
               <a
                 className="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
                 href="#pablo"
@@ -71,7 +71,7 @@ export default function Navbar() {
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="flex items-center">
-                <Link href="/">
+                <Link href={routes.home}>
                   <a className={navLinkClassName} >
                     Home
                 </a>
@@ -79,7 +79,7 @@ export default function Navbar() {
               </li>
 
               <li className="flex items-center">
-                <Link href="/news">
+                <Link href={routes.news}>
                   <a className={navLinkClassName} >
                     News
                 </a>
@@ -95,7 +95,7 @@ export default function Navbar() {
               </li>
 
               <li className="flex items-center">
-                <Link href={routes.RULES}>
+                <Link href={routes.rules}>
                   <a className={navLinkClassName} >
                     Rules
                 </a>

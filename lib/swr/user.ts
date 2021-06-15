@@ -1,10 +1,11 @@
 import useSWR, { SWRConfiguration } from "swr"
 import { fetcher } from "."
 import { Team, User } from "../../types/prisma"
+import { routes } from "../../util/routes"
 
 
 export function useUser(userId: string, options?: SWRConfiguration) {
-    const { data, error } = useSWR<User>(`/api/user/${userId}`, fetcher, options)
+    const { data, error } = useSWR<User>(routes.api.user.userId(userId), fetcher, options)
 
     return {
         user: data,
@@ -14,7 +15,7 @@ export function useUser(userId: string, options?: SWRConfiguration) {
 }
 
 export function useCurrentUser(options?: SWRConfiguration) {
-    const { data, error } = useSWR<User>(`/api/user`, fetcher, options)
+    const { data, error } = useSWR<User>(routes.api.user.index, fetcher, options)
 
     return {
         user: data,
@@ -24,7 +25,7 @@ export function useCurrentUser(options?: SWRConfiguration) {
 }
 
 export function useCurrentUserTeams(options?: SWRConfiguration) {
-    const { data, error } = useSWR<Team[]>(`/api/user/teams`, fetcher, options)
+    const { data, error } = useSWR<Team[]>(routes.api.user.teams, fetcher, options)
 
     return {
         teams: data,

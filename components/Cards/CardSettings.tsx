@@ -3,6 +3,7 @@ import { useToasts } from 'react-toast-notifications';
 import { useRecoilState } from 'recoil';
 import { useCurrentUser } from "../../lib/swr/user";
 import { userProfileState } from '../../state/atoms';
+import { routes } from "../../util/routes";
 
 export default function CardSettings() {
   const { user } = useCurrentUser({ suspense: true })
@@ -29,7 +30,7 @@ export default function CardSettings() {
         ...userProfile
       }
 
-      const response = await fetch('/api/user/profile', {
+      const response = await fetch(routes.api.user.profile, {
         method: 'POST',
         body: JSON.stringify(body),
         headers: new Headers({

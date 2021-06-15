@@ -1,5 +1,8 @@
 import { useRouter } from 'next/router';
 import React, { useEffect } from "react";
+import { firstBy } from 'thenby';
+import Spinner from '../../../components/PageChange/Spinner';
+import { useEvent } from '../../../lib/swr';
 import { EventScoreByTeam, useEventScoreForEventByTeam } from '../../../lib/swr/event-score';
 import { queryParamAsString } from '../../../util/routes';
 
@@ -24,11 +27,11 @@ function calculateScore(eventScore: EventScoreByTeam) {
 }
 
 function Page({ eventId }: { eventId: string }) {
-    // const currentEvent = useRecoilValue(loadEventSelector(eventId))
-    const { eventScoresByTeam, isLoading } = useEventScoreForEventByTeam(eventId, { suspense: false, refreshInterval: 1000 })
+    const { event, isLoading: eventIsLoading } = useEvent(eventId)
+    const { eventScoresByTeam, isLoading: scoresAreLoading } = useEventScoreForEventByTeam(eventId, { refreshInterval: 1000 })
 
-    if(isLoading) {
-        return (<div>Loading...</div>)
+    if (eventIsLoading || scoresAreLoading) {
+        return (<Spinner light={false} />)
     }
 
     return (
@@ -38,8 +41,8 @@ function Page({ eventId }: { eventId: string }) {
                 <div className="rounded-t mb-0 px-4 py-3 border-0">
                     <div className="flex flex-wrap items-center">
                         <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                            <h3 className="font-semibold text-lg text-blueGray-700" >
-                                {/* {currentEvent.name + ' Leaderboards'} */}
+                            <h3 className="font-semibold text-lg text-blueGray-200" >
+                                {event.name + ' Leaderboards'}
                             </h3>
                         </div>
                     </div>
@@ -49,45 +52,45 @@ function Page({ eventId }: { eventId: string }) {
                     <table className="items-center w-full bg-transparent border-collapse bg-blueGray-700">
                         <thead>
                             <tr>
-                                <th className="px-6 align-middle border border-solid py-3 text-lg uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-6 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Place
                                 </th>
-                                <th className="px-6 align-middle border border-solid py-3 text-lg uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-6 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Team
                                 </th>
-                                <th className="px-6 align-middle border border-solid py-3 text-lg uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-6 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Kills
                                 </th>
-                                <th className="px-6 align-middle border border-solid py-3 text-lg uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-6 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Bounties
                                 </th>
-                                <th className="px-6 align-middle border border-solid py-3 text-lg uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-6 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Games Played
                                 </th>
-                                <th className="px-6 align-middle border border-solid py-3 text-lg uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-6 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Score
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                        {eventScoresByTeam?.sort((a, b) => b.totalScore - a.totalScore).map((score, index) =>
+                            {eventScoresByTeam?.sort(firstBy('totalScore', 'desc').thenBy('totalRounds').thenBy('kills', 'desc').thenBy('bounties', 'desc')).map((score, index) =>
                                 <tr key={score.teamId}>
-                                    <td className="border-t-0 px-6 align-middle text-lg text-blueGray-200 border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-6 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
                                         {index + 1}
                                     </td>
-                                    <td className="border-t-0 px-6 align-middle text-lg text-blueGray-200 border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-6 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
                                         {score.teamName}
                                     </td>
-                                    <td className="border-t-0 px-6 align-middle text-lg text-blueGray-200 border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-6 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
                                         {score.kills}
                                     </td>
-                                    <td className="border-t-0 px-6 align-middle text-lg text-blueGray-200 border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-6 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
                                         {score.bounties}
                                     </td>
-                                    <td className="border-t-0 px-6 align-middle text-lg text-blueGray-200 border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-6 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
                                         {score.totalRounds}
                                     </td>
-                                    <td className="border-t-0 px-6 align-middle text-lg text-blueGray-200 border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-6 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
                                         {score.totalScore}
                                     </td>
                                 </tr>

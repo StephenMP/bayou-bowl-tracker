@@ -1,23 +1,30 @@
-import { withPageAuthRequired } from '@auth0/nextjs-auth0';
-import React from "react";
-import { mutate } from 'swr';
-import Admin from "../../layouts/Admin";
-import { fetcher, useEvent, useEvents } from "../../lib/swr";
-import { Event } from "../../types/prisma";
+import { withPageAuthRequired } from '@auth0/nextjs-auth0'
+import React from "react"
+import { useToasts } from 'react-toast-notifications'
+import { mutate } from 'swr'
+import Spinner from '../../components/PageChange/Spinner'
+import Admin from "../../layouts/Admin"
+import { fetcher, useEvent, useEvents } from "../../lib/swr"
+import { Event } from "../../types/prisma"
+import { routes } from '../../util/routes'
 
 function EventCard({ eventId }: { eventId: string }) {
+  const { addToast, updateToast } = useToasts()
   const { event } = useEvent(eventId, { suspense: true })
 
   const mutateEvent = async (action: 'start' | 'stop') => {
-    mutate(`/api/event/${eventId}`, (data: Event) => {
-      const newData = { ...data }
-      newData.isActive = action === 'start'
-      return newData
-    }, false)
+    addToast(`${action === 'start' ? 'Starting' : 'Stopping'} event...`, { appearance: 'info', autoDismiss: true }, async toastId => {
+      mutate(routes.api.event.eventId.index(eventId), (data: Event) => {
+        const newData = { ...data }
+        newData.isActive = action === 'start'
+        return newData
+      }, false)
 
-    await fetcher(`/api/event/${eventId}/${action}`)
+      await fetcher(routes.api.event.eventId.toggleActive(eventId, action))
 
-    mutate(`/api/event/${eventId}`)
+      updateToast(toastId, { content: `${action === 'start' ? 'Started' : 'Stopped'} event successfully!`, appearance: 'success', autoDismiss: true });
+      mutate(routes.api.event.eventId.index(eventId))
+    })
   }
 
   return (
@@ -52,7 +59,7 @@ function EventCard({ eventId }: { eventId: string }) {
             <div className="mb-2 text-blueGray-600">
               Registered Teams: {event.teams.length}
             </div>
-            <a href="/rules" target="_blank" className="md:block text-center md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
+            <a href={routes.rules} target="_blank" className="md:block text-center md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
               Official Rules
             </a>
           </div>
@@ -81,11 +88,7 @@ const AdminEvents = withPageAuthRequired(() => {
 
   if (isLoading) {
     return (
-      <div className="flex flex-wrap">
-        <div className="w-full lg:w-4/12 px-4">
-          Loading...
-      </div>
-      </div>
+      <Spinner light={true} />
     )
   }
 

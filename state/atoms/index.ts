@@ -1,20 +1,10 @@
 import { User, UserProfile } from "@prisma/client";
 import { atom } from 'recoil';
-
-const syncUserStateEffect = () => ({ setSelf }) => {
-  const loadUser = async () => {
-    const res = await fetch('/api/user')
-    const user: User = await res.json()
-
-    setSelf(user)
-  }
-
-  loadUser()
-}
+import { routes } from "../../util/routes";
 
 const syncUserProfileStateEffect = () => ({ setSelf }) => {
   const loadUserProfile = async () => {
-    const res = await fetch(`/api/user/profile`)
+    const res = await fetch(routes.api.user.profile)
     const userProfile: UserProfile = await res.json()
 
     setSelf(userProfile)
@@ -25,7 +15,7 @@ const syncUserProfileStateEffect = () => ({ setSelf }) => {
 
 const fetchAllUsersEffect = () => ({ setSelf }) => {
   const loadUsers = async () => {
-    const res = await fetch('/api/admin/users')
+    const res = await fetch(routes.api.admin.users)
     const users = await res.json()
 
     setSelf(users)

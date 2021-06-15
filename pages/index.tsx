@@ -3,6 +3,7 @@ import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import Footer from "../components/Footers/Footer";
 import Navbar from "../components/Navbars/AuthNavbar";
 import { constants } from "../util/constants";
+import { routes } from "../util/routes";
 
 const minuteSeconds = 60;
 const hourSeconds = 3600;
@@ -234,7 +235,7 @@ export default function Landing() {
                   Applications to compete will close on 26 June 2021 at 11:59 PM EST.
                 </p>
                 <p>
-                  <a href="/news">Read More News</a>
+                  <a href={routes.news}>Read More News</a>
                 </p>
               </div>
 

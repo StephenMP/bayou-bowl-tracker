@@ -1,6 +1,7 @@
 import { useUser } from "@auth0/nextjs-auth0";
 import { createPopper } from "@popperjs/core";
 import React from "react";
+import { routes } from "../../util/routes";
 
 const UserDropdown = () => {
   // dropdown props
@@ -52,7 +53,7 @@ const UserDropdown = () => {
         }
       >
         <a
-          href="/api/auth/logout"
+          href={routes.api.auth.logout}
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }

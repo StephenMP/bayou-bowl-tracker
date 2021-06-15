@@ -1,13 +1,76 @@
 
 export const routes = {
-    HOME: "/",
-    RULES: "/rules",
-    LOGIN: "/api/auth/login",
-    LOGOUT: "/api/auth/logout",
-    USER_PROFILE: "/user/profile",
-    USER_EVENTS: "/user/events",
-    ADMIN_USERS: "/admin/users",
-    ADMIN_EVENTS: "/admin/events",
+    home: '/',
+    news: '/news',
+    rules: '/rules',
+    admin: {
+        events: '/admin/events',
+        users: '/admin/users',
+    },
+    api: {
+        admin: {
+            users: '/api/admin/users'
+        },
+        auth: {
+            login: '/api/auth/login',
+            logout: '/api/auth/logout',
+            callback: '/api/auth/callback',
+            me: '/api/auth/me',
+        },
+        event: {
+            eventId: {
+                index: (eventId: string) => `/api/event/${eventId}`,
+                toggleActive: (eventId: string, action: 'start' | 'stop') => `/api/event/${eventId}/${action}`,
+                team: {
+                    userId: (eventId: string, userId: string) => `/api/event/${eventId}/team/${userId}`,
+                }
+            },
+            register: '/api/event/register'
+        },
+        event_scores: {
+            event: {
+                eventId: (eventId: string) => `/api/event-scores/event/${eventId}`
+            },
+            team: {
+                teamId: (teamId: string) => `/api/event-scores/team/${teamId}`
+            },
+            index: '/api/event-scores'
+        },
+        leaderboard: {
+            eventId: (eventId: string) => `/api/leaderboard/${eventId}`
+        },
+        team: {
+            teamId: (teamId: string) => `/api/team/${teamId}`
+        },
+        user: {
+            userId: (userId: string) => `/api/user/${userId}`,
+            index: '/api/user',
+            profile: '/api/user/profile',
+            teams: '/api/user/teams'
+        },
+        events: {
+            index: '/api/events'
+        }
+    },
+    leaderboard: {
+        obs: {
+            eventId: (eventId: string) => `/leaderboard/obs/${eventId}`,
+        },
+        eventId: (eventId: string) => `/leaderboard/obs/${eventId}`
+    },
+    team: {
+        teamId: (teamId: string) => `/team/${teamId}`
+    },
+    user: {
+        event: {
+            register: {
+                eventId: (eventId: string) => `/user/event/register/${eventId}`
+            },
+            eventId: (eventId: string) => `/user/event/${eventId}`
+        },
+        events: '/user/events',
+        profile: '/user/profile'
+    }
 }
 
 export function queryParamAsString(param: string | string[]): string {

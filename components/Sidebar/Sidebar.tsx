@@ -47,7 +47,7 @@ const Sidebar = withPageAuthRequired(() => {
             <div className="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blueGray-200">
               <div className="flex flex-wrap">
                 <div className="w-6/12">
-                  <Link href={routes.HOME}>
+                  <Link href={routes.home}>
                     <a className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0" >
                       {constants.APP_NAME}
                     </a>
@@ -74,11 +74,11 @@ const Sidebar = withPageAuthRequired(() => {
             {/* Navigation */}
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">
-                <Link href={routes.USER_PROFILE}>
+                <Link href={routes.user.profile}>
                   <a
                     className={
                       "text-xs uppercase py-3 font-bold block " +
-                      (router.pathname.indexOf(routes.USER_PROFILE) !== -1
+                      (router.pathname.indexOf(routes.user.profile) !== -1
                         ? "text-lightBlue-500 hover:text-lightBlue-600"
                         : "text-blueGray-700 hover:text-blueGray-500")
                     }
@@ -86,7 +86,7 @@ const Sidebar = withPageAuthRequired(() => {
                     <i
                       className={
                         "fas fa-user-cog mr-2 text-sm " +
-                        (router.pathname.indexOf(routes.USER_PROFILE) !== -1
+                        (router.pathname.indexOf(routes.user.profile) !== -1
                           ? "opacity-75"
                           : "text-blueGray-500")
                       }
@@ -97,11 +97,11 @@ const Sidebar = withPageAuthRequired(() => {
               </li>
 
               <li className="items-center">
-                <Link href={routes.USER_EVENTS}>
+                <Link href={routes.user.events}>
                   <a
                     className={
                       "text-xs uppercase py-3 font-bold block " +
-                      (router.pathname.indexOf(routes.USER_EVENTS) !== -1
+                      (router.pathname.indexOf(routes.user.events) !== -1
                         ? "text-lightBlue-500 hover:text-lightBlue-600"
                         : "text-blueGray-700 hover:text-blueGray-500")
                     }
@@ -109,7 +109,7 @@ const Sidebar = withPageAuthRequired(() => {
                     <i
                       className={
                         "fas fa-calendar-alt mr-2 text-sm " +
-                        (router.pathname.indexOf(routes.USER_EVENTS) !== -1
+                        (router.pathname.indexOf(routes.user.events) !== -1
                           ? "opacity-75"
                           : "text-blueGray-500")
                       }
@@ -128,17 +128,17 @@ const Sidebar = withPageAuthRequired(() => {
             </h6>
                 <ul className="md:flex-col md:min-w-full flex flex-col list-none">
                   <li className="items-center">
-                    <Link href={routes.ADMIN_EVENTS}>
+                    <Link href={routes.admin.events}>
                       <a className={
                         "text-xs uppercase py-3 font-bold block " +
-                        (router.pathname.indexOf(routes.ADMIN_EVENTS) !== -1
+                        (router.pathname.indexOf(routes.admin.events) !== -1
                           ? "text-lightBlue-500 hover:text-lightBlue-600"
                           : "text-blueGray-700 hover:text-blueGray-500")
                       }
                       >
                         <i className={
                           "fas fa-calendar-alt mr-2 text-sm " +
-                          (router.pathname.indexOf(routes.ADMIN_EVENTS) !== -1
+                          (router.pathname.indexOf(routes.admin.events) !== -1
                             ? "opacity-75"
                             : "text-blueGray-500")
                         }
@@ -158,7 +158,7 @@ const Sidebar = withPageAuthRequired(() => {
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center">
                 <a
-                  href={routes.HOME}
+                  href={routes.home}
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                 >
                   <i className="fas fa-home text-blueGray-500 mr-2 text-sm"></i>{" "}
@@ -167,7 +167,7 @@ const Sidebar = withPageAuthRequired(() => {
               </li>
               <li className="items-center">
                 <a
-                  href={routes.LOGOUT}
+                  href={routes.api.auth.logout}
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                 >
                   <i className="fas fa-sign-out-alt text-blueGray-500 mr-2 text-sm"></i>{" "}

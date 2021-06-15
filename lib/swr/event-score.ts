@@ -1,6 +1,7 @@
 import useSWR, { SWRConfiguration } from "swr"
 import { fetcher } from "."
 import { EventScore } from "../../types/prisma"
+import { routes } from "../../util/routes"
 
 export type EventScoreByTeam = {
     teamName: string,
@@ -12,7 +13,7 @@ export type EventScoreByTeam = {
 }
 
 export function useEventScoreForEventByTeam(eventId: string, options?: SWRConfiguration) {
-    const { data, error } = useSWR<EventScoreByTeam[]>(`/api/leaderboard/${eventId}`, fetcher, options)
+    const { data, error } = useSWR<EventScoreByTeam[]>(routes.api.leaderboard.eventId(eventId), fetcher, options)
 
     return {
         eventScoresByTeam: data,
@@ -22,7 +23,7 @@ export function useEventScoreForEventByTeam(eventId: string, options?: SWRConfig
 }
 
 export function useEventScoreForTeam(teamId: string, options?: SWRConfiguration) {
-    const { data, error } = useSWR<EventScore[]>(`/api/event-scores/team/${teamId}`, fetcher, options)
+    const { data, error } = useSWR<EventScore[]>(routes.api.event_scores.team.teamId(teamId), fetcher, options)
 
     return {
         eventScores: data,

@@ -10,7 +10,7 @@ import { fetcher, useEvent, useUserTeamForEvent } from '../../../lib/swr';
 import { useEventScoreForTeam } from '../../../lib/swr/event-score';
 import { useCurrentUser, useUser } from '../../../lib/swr/user';
 import { EventScore, PlayerScore, TeamMember, TeamMemberType, TeamScore } from "../../../types/prisma";
-import { queryParamAsString } from '../../../util/routes';
+import { queryParamAsString, routes } from '../../../util/routes';
 
 function calculateBountyScore(totalBounties: number) {
     let bountyScore = 0
@@ -69,13 +69,13 @@ function ScoreTable({ color, teamId, canEdit }: { color: 'light' | 'dark', teamI
         addToast('Deleting score...', { appearance: 'info', autoDismiss: true }, async toastId => {
             setCanDelete(false)
 
-            mutate(`/api/event-scores/team/${teamId}`, (data: EventScore[]) => {
+            mutate(routes.api.event_scores.team.teamId(teamId), (data: EventScore[]) => {
                 const newData = [...data]
                 newData.pop()
                 return newData
             }, false)
 
-            await fetcher('/api/event-scores', {
+            await fetcher(routes.api.event_scores.index, {
                 method: 'DELETE',
                 body: JSON.stringify(eventScore),
                 headers: new Headers({
@@ -85,7 +85,7 @@ function ScoreTable({ color, teamId, canEdit }: { color: 'light' | 'dark', teamI
             })
 
             updateToast(toastId, { content: 'Deleted successfully!', appearance: 'success', autoDismiss: true });
-            mutate(`/api/event-scores/team/${teamId}`)
+            mutate(routes.api.event_scores.team.teamId(teamId))
 
             setCanDelete(true)
         })
@@ -326,14 +326,14 @@ function Page({ eventId }: { eventId: string }) {
             // Mutate SWR without revalidate
             const newEventScores = eventScores.map(es => es)
             newEventScores.push(eventScore)
-            mutate(`/api/event-scores/team/${team.id}`, (data: EventScore[]) => {
+            mutate(routes.api.event_scores.team.teamId(team.id), (data: EventScore[]) => {
                 const newData = [...data]
                 newData.push(eventScore)
                 return newData
             }, false)
 
             // Update data
-            await fetcher('/api/event-scores', {
+            await fetcher(routes.api.event_scores.index, {
                 method: 'POST',
                 body: JSON.stringify(eventScore),
                 headers: new Headers({
@@ -344,7 +344,7 @@ function Page({ eventId }: { eventId: string }) {
 
             // Mutate SWR with a revalidate
             updateToast(toastId, { content: 'Added score successfully!', appearance: 'success', autoDismiss: true });
-            mutate(`/api/event-scores/team/${team.id}`)
+            mutate(routes.api.event_scores.team.teamId(team.id))
 
             // Set states
             setCanAdd(true)

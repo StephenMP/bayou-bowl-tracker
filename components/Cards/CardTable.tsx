@@ -2,13 +2,14 @@ import PropTypes from "prop-types"
 import React, { Suspense } from "react"
 import { useRecoilState } from 'recoil'
 import { usersState } from '../../state/atoms'
+import { routes } from "../../util/routes"
 import TableDropdown from "../Dropdowns/TableDropdown"
 
 function AllUsers({ color }) {
   const [allUsers, setAllUsers] = useRecoilState(usersState)
 
   const refreshUsers = async () => {
-    const res = await fetch('/api/admin/users')
+    const res = await fetch(routes.api.admin.users)
     const users = await res.json()
 
     setAllUsers(users)
