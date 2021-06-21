@@ -82,7 +82,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            This competition is limited to 20 teams. Teams will be selected based on KDA (Kill Death Assist ratio), prestige level, hours played, and general reputation within the Hunt community.
+                            Participants applying to the competition will be organized into two-tiers: a seeded-tier of high-level players with a maximum of 20 teams and an open-tier of various skill level players with unlimited teams. Seeded teams will be selected based on KDA (Kill Death Assist ratio), prestige level, hours played, and general reputation within the Hunt community. All teams applying to compete will be eligible to participate in at least the open tier. Only the top 20 highest-skilled teams will be selected to participate in the seeded tier of the competition.
                           </h4>
                         </div>
                       </div>

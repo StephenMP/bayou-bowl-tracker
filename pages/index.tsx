@@ -86,7 +86,7 @@ export default function Landing() {
                   />
                   {/* {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />} */}
                   <div className="items-center flex flex-wrap mt-5 text-3xl">
-                  <div className="w-full lg:w-3/12 uppercase countdown px-4 ml-auto mr-auto text-center">
+                    <div className="w-full lg:w-3/12 uppercase countdown px-4 ml-auto mr-auto text-center">
                       <CountdownCircleTimer
                         {...timerProps}
                         duration={daysDuration}
@@ -223,16 +223,19 @@ export default function Landing() {
                   Latest News
                 </h3>
                 <h6 className="text-lg mb-2 font-semibold leading-normal">
-                  Sign-ups for Bayou Bowl II Officially Open
+                  Bayou Bowl II is now Officially a Tiered Competition – Seeded and Open Tiers
                 </h6>
                 <h6 className="text-sm mb-2 font-semibold leading-normal">
-                  4 June 2021
+                  20 June 2021
                 </h6>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  Applications for Bayou Bowl II are now open to all! To apply press on the "Apply to Compete” button in the top right of the <a href="https://bayoubowl.gg">bayoubowl.gg</a> homepage. The top 20 teams of three will be selected to compete in the most intense Hunt: Showdown competition that has ever taken place. Only the best players will emerge the victors.
+                  Due to overwhelming interest, we are announcing that Bayou Bowl II will be a two-tier competition. Participants applying to the competition will be organized into two-tiers: a seeded-tier of high-skill players with a maximum of 20 teams and an open-tier of various-skill players with unlimited teams.
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  Applications to compete will close on 26 June 2021 at 11:59 PM EST.
+                  All teams applying to compete will be eligible to participate in at least the open tier. Only the top 20 highest-skilled teams will be selected to participate in the seeded tier of the competition.
+                </p>
+                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
+                  For more information on Bayou Bowl II, please visit bayoubowl.gg.
                 </p>
                 <p>
                   <a href={routes.news}>Read More News</a>
@@ -240,7 +243,7 @@ export default function Landing() {
               </div>
 
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <img src="/img/news/Sign-Ups_Open_Splash.png" />
+                <img src="/img/news/Tiered_Splash.png" />
               </div>
             </div>
           </div>

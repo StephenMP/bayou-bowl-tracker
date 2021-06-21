@@ -64,6 +64,31 @@ export default function Landing() {
             <div className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
                 <h6 className="text-lg mb-2 font-semibold leading-normal">
+                  Bayou Bowl II is now Officially a Tiered Competition – Seeded and Open Tiers
+                </h6>
+                <h6 className="text-sm mb-2 font-semibold leading-normal">
+                  20 June 2021
+                </h6>
+                <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+                  Due to overwhelming interest, we are announcing that Bayou Bowl II will be a two-tier competition. Participants applying to the competition will be organized into two-tiers: a seeded-tier of high-skill players with a maximum of 20 teams and an open-tier of various-skill players with unlimited teams.
+                </p>
+                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
+                  All teams applying to compete will be eligible to participate in at least the open tier. Only the top 20 highest-skilled teams will be selected to participate in the seeded tier of the competition.
+                </p>
+                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
+                  For more information on Bayou Bowl II, please visit bayoubowl.gg.
+                </p>
+              </div>
+              <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
+                <img src="/img/news/Tiered_Splash.png" />
+              </div>
+            </div>
+          </div>
+
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap items-center mt-32">
+              <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
+                <h6 className="text-lg mb-2 font-semibold leading-normal">
                   Sign-ups for Bayou Bowl II Officially Open
                 </h6>
                 <h6 className="text-sm mb-2 font-semibold leading-normal">
