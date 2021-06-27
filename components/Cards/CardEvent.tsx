@@ -76,7 +76,8 @@ export default function CardEvent({ event }: { event: Event }) {
           </div>
           <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
             <React.Suspense fallback={<Spinner light={true} />}>
-              {teams.find(ut => ut.event_id === event.id) ? <GoToEventPage eventId={event.id} /> : <Register eventId={event.id} />}
+              {teams.find(ut => ut.event_id === event.id) ? <GoToEventPage eventId={event.id} /> : <></>}
+              {/* {teams.find(ut => ut.event_id === event.id) ? <GoToEventPage eventId={event.id} /> : <Register eventId={event.id} />} */}
             </React.Suspense>
           </div>
         </div>
