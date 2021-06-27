@@ -1,11 +1,8 @@
 import React from "react";
 import Footer from "../components/Footers/Footer";
 import Navbar from "../components/Navbars/AuthNavbar";
-import { constants } from "../util/constants";
 
 export default function Landing() {
-  const isProduction = constants.ENVIRONMENT === 'PRODUCTION'
-
   return (
     <>
       <Navbar />

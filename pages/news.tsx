@@ -2,10 +2,8 @@ import Plyr from 'plyr-react';
 import React from "react";
 import Footer from "../components/Footers/Footer";
 import Navbar from "../components/Navbars/AuthNavbar";
-import { constants } from "../util/constants";
 
 export default function Landing() {
-  const isProduction = constants.ENVIRONMENT === 'PRODUCTION'
   const videoOpts: Plyr.Options = {
     ads: { enabled: false, publisherId: '' },
     hideControls: true

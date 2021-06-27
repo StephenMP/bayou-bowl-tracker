@@ -2,7 +2,6 @@ import React from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import Footer from "../components/Footers/Footer";
 import Navbar from "../components/Navbars/AuthNavbar";
-import { constants } from "../util/constants";
 import { routes } from "../util/routes";
 
 const minuteSeconds = 60;
@@ -36,28 +35,6 @@ export default function Landing() {
   const remainingTime = endTime - startTime;
   const days = Math.ceil(remainingTime / daySeconds);
   const daysDuration = days * daySeconds;
-
-  const isProduction = constants.ENVIRONMENT === 'PRODUCTION'
-  const videoOpts: Plyr.Options = {
-    ads: { enabled: false, publisherId: '' },
-    hideControls: true
-  }
-
-  const videoSrc: Plyr.SourceInfo = {
-    type: "video",
-    sources: [
-      {
-        src: "nhsXk4GK078",
-        size: 720,
-        provider: 'youtube'
-      }
-    ]
-  };
-
-  const plyrStyle: React.CSSProperties = {
-    height: 500,
-    width: 500
-  }
 
   return (
     <>
