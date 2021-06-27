@@ -95,13 +95,13 @@ const AdminEvents = withPageAuthRequired(() => {
   return (
     <>
       <div className="flex flex-wrap">
-        <div className="w-full lg:w-4/12 px-4">
-          <React.Suspense fallback={<div>Loading...</div>}>
-            {events.map((event) =>
+        <React.Suspense fallback={<div>Loading...</div>}>
+          {events.map((event) =>
+            <div className="w-full lg:w-4/12 px-4">
               <EventCard key={event.id} eventId={event.id} />
-            )}
-          </React.Suspense>
-        </div>
+            </div>
+          )}
+        </React.Suspense>
       </div>
     </>
   );

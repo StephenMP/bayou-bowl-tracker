@@ -16,13 +16,13 @@ const UserEvents = withPageAuthRequired(() => {
 
   return (
     <div className="flex flex-wrap">
-      <div className="w-full lg:w-4/12 px-4">
-        {events.map((event) =>
-          <React.Suspense fallback={<Spinner light={true} />} >
+      {events.map((event) =>
+        <React.Suspense fallback={<Spinner light={true} />} >
+          <div className="w-full lg:w-4/12 px-4">
             <CardEvent key={event.id} event={event} />
-          </React.Suspense>
-        )}
-      </div>
+          </div>
+        </React.Suspense>
+      )}
     </div>
   );
 })
