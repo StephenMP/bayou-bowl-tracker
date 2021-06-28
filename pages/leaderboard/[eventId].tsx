@@ -3,6 +3,7 @@ import React from "react";
 import { firstBy } from 'thenby';
 import Footer from '../../components/Footers/Footer';
 import Navbar from '../../components/Navbars/AuthNavbar';
+import Spinner from '../../components/PageChange/Spinner';
 import { EventScoreByTeam, useEventScoreForEventByTeam } from '../../lib/swr/event-score';
 import { queryParamAsString } from '../../util/routes';
 
@@ -30,7 +31,7 @@ function Page({ eventId }: { eventId: string }) {
     const { eventScoresByTeam, isLoading } = useEventScoreForEventByTeam(eventId, { suspense: false, refreshInterval: 60000 })
 
     if (isLoading) {
-        return (<div>Loading...</div>)
+        return (<Spinner light={true} />)
     }
 
     return (

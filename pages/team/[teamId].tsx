@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import Footer from "../../components/Footers/Footer";
 import Navbar from "../../components/Navbars/AuthNavbar";
+import Spinner from "../../components/PageChange/Spinner";
 import { useTeam } from "../../lib/swr";
 import { useUser } from "../../lib/swr/user";
 import { TeamMember } from "../../types/prisma";
@@ -12,7 +13,7 @@ function TeamCard({ teamMember }: { teamMember: TeamMember }) {
 
   if (isLoading) {
     return (
-      <div>Loading...</div>
+      <Spinner light={false} />
     )
   }
 
@@ -29,34 +30,6 @@ function TeamCard({ teamMember }: { teamMember: TeamMember }) {
             </div>
           </div>
           <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
-          </div>
-          <div className="w-full lg:w-4/12 px-4 lg:order-1">
-            <div className="flex justify-center py-4 lg:pt-4 pt-8">
-              <div className="mr-4 p-3 text-center">
-                {/* <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                  22
-              </span>
-                <span className="text-sm text-blueGray-400">
-                  Friends
-              </span> */}
-              </div>
-              <div className="mr-4 p-3 text-center">
-                {/* <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                  10
-                </span>
-                <span className="text-sm text-blueGray-400">
-                  Photos
-              </span> */}
-              </div>
-              <div className="lg:mr-4 p-3 text-center">
-                {/* <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                  89
-              </span>
-                <span className="text-sm text-blueGray-400">
-                  Comments
-              </span> */}
-              </div>
-            </div>
           </div>
         </div>
         <div className="text-center mt-12">
