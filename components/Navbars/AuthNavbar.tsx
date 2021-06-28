@@ -13,7 +13,7 @@ function AuthedNavs() {
 
   return (
     <>
-      { user && <li className="flex items-center">
+      {user && <li className="flex items-center">
         <Link href={routes.user.profile}>
           <a className={navLinkClassName} >
             Account
@@ -72,7 +72,7 @@ export default function Navbar() {
                 <Link href={routes.home}>
                   <a className={navLinkClassName} >
                     Home
-                </a>
+                  </a>
                 </Link>
               </li>
 
@@ -80,7 +80,7 @@ export default function Navbar() {
                 <Link href={routes.news}>
                   <a className={navLinkClassName} >
                     News
-                </a>
+                  </a>
                 </Link>
               </li>
 
@@ -88,7 +88,7 @@ export default function Navbar() {
                 <Link href="/#about">
                   <a className={navLinkClassName} >
                     About
-                </a>
+                  </a>
                 </Link>
               </li>
 
@@ -96,7 +96,15 @@ export default function Navbar() {
                 <Link href={routes.rules}>
                   <a className={navLinkClassName} >
                     Rules
-                </a>
+                  </a>
+                </Link>
+              </li>
+
+              <li className="flex items-center">
+                <Link href={routes.teams}>
+                  <a className={navLinkClassName} >
+                    Teams
+                  </a>
                 </Link>
               </li>
 

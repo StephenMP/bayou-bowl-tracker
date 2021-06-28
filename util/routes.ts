@@ -3,6 +3,7 @@ export const routes = {
     home: '/',
     news: '/news',
     rules: '/rules',
+    teams: '/teams',
     admin: {
         events: '/admin/events',
         users: '/admin/users',
