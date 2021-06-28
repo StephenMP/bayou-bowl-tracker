@@ -51,7 +51,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            2 Boomers And A Zoomer - FailSpawner, Maluke, eklipselol
+                            <strong>2 Boomers And A Zoomer</strong><br />- FailSpawner<br />- Maluke<br />- eklipselol
                           </h4>
                         </div>
                       </div>
@@ -65,7 +65,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Сomrades - speedreflex, Fenix T-90, sty1ertv
+                            <strong>Сomrades</strong><br />- speedreflex<br />- Fenix T-90<br />- sty1ertv
                           </h4>
                         </div>
                       </div>
@@ -79,7 +79,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Say Wallahi - Rachta Z, ArchieTV, LordJamesDelaney
+                            <strong>Say Wallahi</strong><br />- Rachta Z<br />- ArchieTV<br />- LordJamesDelaney
                           </h4>
                         </div>
                       </div>
@@ -93,7 +93,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            It's Here It's Red - Daexyn, Breaaks, Mahnimuhl
+                            <strong>It's Here It's Red</strong><br />- Daexyn<br />- Breaaks<br />- Mahnimuhl
                           </h4>
                         </div>
                       </div>
@@ -107,7 +107,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Expect Sweat - Its__SimO, S H I N O B I, Whity
+                            <strong>Expect Sweat</strong><br />- Its__SimO<br />- S H I N O B I<br />- Whity
                           </h4>
                         </div>
                       </div>
@@ -121,7 +121,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            RUHUNT - draftpunk, RealFacepaalm, xpyct1k_
+                            <strong>RUHUNT</strong><br />- draftpunk<br />- RealFacepaalm<br />- xpyct1k_
                           </h4>
                         </div>
                       </div>
@@ -135,7 +135,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            ItsHereItsWhite - DoctrGears, Lidpig, Airless
+                            <strong>ItsHereItsWhite</strong><br />- DoctrGears<br />- Lidpig<br />- Airless
                           </h4>
                         </div>
                       </div>
@@ -149,7 +149,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            AC-130 - Gunsmackk, Vombuz, Hornet/Hornetlul
+                            <strong>AC-130</strong><br />- Gunsmackk<br />- Vombuz<br />- Hornet/Hornetlul
                           </h4>
                         </div>
                       </div>
@@ -163,7 +163,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            SpamGang - dopeeffecttv, Hisanttv, lj_bed1ntruder
+                            <strong>SpamGang</strong><br />- dopeeffecttv<br />- Hisanttv<br />- lj_bed1ntruder
                           </h4>
                         </div>
                       </div>
@@ -177,7 +177,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            The Italian Dream - LordBeruSnake, Murdor86, zRudolFZ
+                            <strong>The Italian Dream</strong><br />- LordBeruSnake<br />- Murdor86<br />- zRudolFZ
                           </h4>
                         </div>
                       </div>
@@ -191,7 +191,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Muddflapcleaners - ForceLikeObi, AzTec CoLLiSioN, Daveylon Cpt.Dave
+                            <strong>Muddflapcleaners</strong><br />- ForceLikeObi<br />- AzTec CoLLiSioN<br />- Daveylon Cpt.Dave
                           </h4>
                         </div>
                       </div>
@@ -205,7 +205,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            The Last Selected - TheRedBean1, MechanicallySeparatedChicken, Just Gomu
+                            <strong>The Last Selected</strong><br />- TheRedBean1<br />- MechanicallySeparatedChicken<br />- Just Gomu
                           </h4>
                         </div>
                       </div>
@@ -219,7 +219,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Geeploradas Rides Again - Amaradas, Geef, PatrynHaplo
+                            <strong>Geeploradas Rides Again</strong><br />- Amaradas<br />- Geef<br />- PatrynHaplo
                           </h4>
                         </div>
                       </div>
@@ -233,7 +233,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Pony Boys - itsthemastod, L3thalThreat, Five Star G
+                            <strong>Pony Boys</strong><br />- itsthemastod<br />- L3thalThreat<br />- Five Star G
                           </h4>
                         </div>
                       </div>
@@ -247,7 +247,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Amish inquisition - toolman, l1am5k, Grummbbles
+                            <strong>Amish inquisition</strong><br />- toolman<br />- l1am5k<br />- Grummbbles
                           </h4>
                         </div>
                       </div>
@@ -261,7 +261,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Hurkák - d_o_p_e_, AKA_J_J, PapaLikvid
+                            <strong>Hurkák</strong><br />- d_o_p_e_<br />- AKA_J_J<br />- PapaLikvid
                           </h4>
                         </div>
                       </div>
@@ -275,7 +275,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Sponsored by MILK - Khemust, BushWacker_1R, Earconsumer32
+                            <strong>Sponsored by MILK</strong><br />- Khemust<br />- BushWacker_1R<br />- Earconsumer32
                           </h4>
                         </div>
                       </div>
@@ -289,7 +289,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            A Hunt Millionaire and Two Broke Boys - Data, WtfIsGluten, chris_gh0sty
+                            <strong>A Hunt Millionaire and Two Broke Boys</strong><br />- Data<br />- WtfIsGluten<br />- chris_gh0sty
                           </h4>
                         </div>
                       </div>
@@ -303,7 +303,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Just Hold W - SuperMadKick Super, Tallyup_ Tallyup, Kjabs87 Kjabs87
+                            <strong>Just Hold W</strong><br />- SuperMadKick Super<br />- Tallyup_ Tallyup<br />- Kjabs87 Kjabs87
                           </h4>
                         </div>
                       </div>
@@ -317,7 +317,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            JustCaulkzDud - JustBree, Chedwinnn, Neenoh
+                            <strong>JustCaulkzDud</strong><br />- JustBree<br />- Chedwinnn<br />- Neenoh
                           </h4>
                         </div>
                       </div>
@@ -338,7 +338,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            L90 n the backup - blizzardunderscore, austin_l90, sketchle
+                            <strong>L90 n the backup</strong><br />- blizzardunderscore<br />- austin_l90<br />- sketchle
                           </h4>
                         </div>
                       </div>
@@ -352,7 +352,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Cursed Potatoes - DizzeeeRavenTTV, AbouRonin, Droi
+                            <strong>Cursed Potatoes</strong><br />- DizzeeeRavenTTV<br />- AbouRonin<br />- Droi
                           </h4>
                         </div>
                       </div>
@@ -366,7 +366,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Spyglass - lord4rt, spyglass is op, Werdi0
+                            <strong>Spyglass</strong><br />- lord4rt<br />- spyglass is op<br />- Werdi0
                           </h4>
                         </div>
                       </div>
@@ -380,7 +380,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            The sexy Trio - GuteNachtEule, Ironador, r4zr__
+                            <strong>The sexy Trio</strong><br />- GuteNachtEule<br />- Ironador<br />- r4zr__
                           </h4>
                         </div>
                       </div>
@@ -394,7 +394,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Yoga Gaming - Nadril_TV, Heffner1, El_Tinka
+                            <strong>Yoga Gaming</strong><br />- Nadril_TV<br />- Heffner1<br />- El_Tinka
                           </h4>
                         </div>
                       </div>
@@ -408,7 +408,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Cult of the Explosive Crossbow - TomScapps, CaptainMcSquigle, English_Deviil
+                            <strong>Cult of the Explosive Crossbow</strong><br />- TomScapps<br />- CaptainMcSquigle<br />- English_Deviil
                           </h4>
                         </div>
                       </div>
@@ -422,7 +422,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Spyglass - steam name: spyglass is op, konfukik, Werdi0
+                            <strong>Spyglass</strong><br />- steam name: spyglass is op<br />- konfukik<br />- Werdi0
                           </h4>
                         </div>
                       </div>
@@ -436,7 +436,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Bayou Wildcard - JustMeCasey, Barittaneyyy, Lunchbowl
+                            <strong>Bayou Wildcard</strong><br />- JustMeCasey<br />- Barittaneyyy<br />- Lunchbowl
                           </h4>
                         </div>
                       </div>
@@ -450,7 +450,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Wagon Watchers - GarrBear9, BurleeVR, Helloo_Box
+                            <strong>Wagon Watchers</strong><br />- GarrBear9<br />- BurleeVR<br />- Helloo_Box
                           </h4>
                         </div>
                       </div>
@@ -464,7 +464,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            HotTubBayou - JacJacJacque, SladamirPutin, Deathgoose08
+                            <strong>HotTubBayou</strong><br />- JacJacJacque<br />- SladamirPutin<br />- Deathgoose08
                           </h4>
                         </div>
                       </div>
@@ -478,7 +478,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Unruly Mess - m0rrie, The Collector, ItsBotRick
+                            <strong>Unruly Mess</strong><br />- m0rrie<br />- The Collector<br />- ItsBotRick
                           </h4>
                         </div>
                       </div>
@@ -492,7 +492,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            The Golden Boys - HueySlim, Goophi, IDEOTITAS
+                            <strong>The Golden Boys</strong><br />- HueySlim<br />- Goophi<br />- IDEOTITAS
                           </h4>
                         </div>
                       </div>
@@ -506,7 +506,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Team Tater Gators - VegaLightheart, Damouse15, TheJm0ney
+                            <strong>Team Tater Gators</strong><br />- VegaLightheart<br />- Damouse15<br />- TheJm0ney
                           </h4>
                         </div>
                       </div>
@@ -520,7 +520,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Pestilent Grove - PhDPlague, Ozaryk, Kilodarin
+                            <strong>Pestilent Grove</strong><br />- PhDPlague<br />- Ozaryk<br />- Kilodarin
                           </h4>
                         </div>
                       </div>
@@ -534,7 +534,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Hoof Hearted - michaelexile, flaminflannel, royaltarttoter
+                            <strong>Hoof Hearted</strong><br />- michaelexile<br />- flaminflannel<br />- royaltarttoter
                           </h4>
                         </div>
                       </div>
@@ -548,7 +548,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Scrapbeak for Mayor - Hobomasta, Kevinbacon_, HawaiianPunch
+                            <strong>Scrapbeak for Mayor</strong><br />- Hobomasta<br />- Kevinbacon_<br />- HawaiianPunch
                           </h4>
                         </div>
                       </div>
@@ -562,7 +562,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Simple Society - MonkeyXVII, The_Bullittt, Sadistiksage
+                            <strong>Simple Society</strong><br />- MonkeyXVII<br />- The_Bullittt<br />- Sadistiksage
                           </h4>
                         </div>
                       </div>
@@ -576,7 +576,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            We Love Chicken Run - galowhell, AssAssin312, blind_g4mer
+                            <strong>We Love Chicken Run</strong><br />- galowhell<br />- AssAssin312<br />- blind_g4mer
                           </h4>
                         </div>
                       </div>
@@ -590,7 +590,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Nordic Trash - MadessDude, MiniDudeMD, ChiMate
+                            <strong>Nordic Trash</strong><br />- MadessDude<br />- MiniDudeMD<br />- ChiMate
                           </h4>
                         </div>
                       </div>
@@ -604,7 +604,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            RAWR - peeceful, Varkith89, joseuk86
+                            <strong>RAWR</strong><br />- peeceful<br />- Varkith89<br />- joseuk86
                           </h4>
                         </div>
                       </div>
@@ -618,7 +618,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            NO U - BloO, PenguinArc47, Sir Bacon
+                            <strong>NO U</strong><br />- BloO<br />- PenguinArc47<br />- Sir Bacon
                           </h4>
                         </div>
                       </div>
@@ -632,7 +632,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Team Wet Socks - dizcoverhim, R3ap3r, Rigland
+                            <strong>Team Wet Socks</strong><br />- dizcoverhim<br />- R3ap3r<br />- Rigland
                           </h4>
                         </div>
                       </div>
@@ -646,7 +646,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Death's Whistle - NeonVoidNeVi, Kiteera, Mistarmann
+                            <strong>Death's Whistle</strong><br />- NeonVoidNeVi<br />- Kiteera<br />- Mistarmann
                           </h4>
                         </div>
                       </div>
@@ -660,7 +660,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            The Lost Boys - Worldly__Wiseman, Cosiety94, The Barracuda
+                            <strong>The Lost Boys</strong><br />- Worldly__Wiseman<br />- Cosiety94<br />- The Barracuda
                           </h4>
                         </div>
                       </div>
@@ -674,7 +674,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Do you want Cheese with that? - StrollingPeaches, zap_rowsdower579, JollyWrencher
+                            <strong>Do you want Cheese with that?</strong><br />- StrollingPeaches<br />- zap_rowsdower579<br />- JollyWrencher
                           </h4>
                         </div>
                       </div>
@@ -688,7 +688,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Big Head Mode - Ebonwave, Yammywam, Nakir
+                            <strong>Big Head Mode</strong><br />- Ebonwave<br />- Yammywam<br />- Nakir
                           </h4>
                         </div>
                       </div>
@@ -702,7 +702,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Three Wise Horthes - MistaPixels, PiinkSilener, MeestaRodgers
+                            <strong>Three Wise Horthes</strong><br />- MistaPixels<br />- PiinkSilener<br />- MeestaRodgers
                           </h4>
                         </div>
                       </div>
@@ -716,7 +716,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Wings of Ruin - NostalgiaHollow, Skaikrushadows, JackOnett
+                            <strong>Wings of Ruin</strong><br />- NostalgiaHollow<br />- Skaikrushadows<br />- JackOnett
                           </h4>
                         </div>
                       </div>
@@ -730,7 +730,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            High Packet Loss - EnolaLugosi, CuddlePhish, JimmyKerrigan
+                            <strong>High Packet Loss</strong><br />- EnolaLugosi<br />- CuddlePhish<br />- JimmyKerrigan
                           </h4>
                         </div>
                       </div>
@@ -744,7 +744,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Bromero 77 - bonthebeast, seamonty, cursednasty
+                            <strong>Bromero 77</strong><br />- bonthebeast<br />- seamonty<br />- cursednasty
                           </h4>
                         </div>
                       </div>
@@ -758,7 +758,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Disfunctional Squad - SecretSpook, SecretNubs, Lonstead
+                            <strong>Disfunctional Squad</strong><br />- SecretSpook<br />- SecretNubs<br />- Lonstead
                           </h4>
                         </div>
                       </div>
@@ -772,7 +772,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            The Irregular Handshakers - Hellbent, ShameLOL, tomato
+                            <strong>The Irregular Handshakers</strong><br />- Hellbent<br />- ShameLOL<br />- tomato
                           </h4>
                         </div>
                       </div>
@@ -786,7 +786,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Two Canucks And A Duck - GrimnyrGames, Jasuke, Thatdropshot
+                            <strong>Two Canucks And A Duck</strong><br />- GrimnyrGames<br />- Jasuke<br />- Thatdropshot
                           </h4>
                         </div>
                       </div>
@@ -800,7 +800,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Bayou Bandits - Brendon, Neviation, TheScarlettGamer
+                            <strong>Bayou Bandits</strong><br />- Brendon<br />- Neviation<br />- TheScarlettGamer
                           </h4>
                         </div>
                       </div>
@@ -814,7 +814,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            BulletEaters - NostalgiaHollow, Skaikrushadows, JackOnett
+                            <strong>BulletEaters</strong><br />- NostalgiaHollow<br />- Skaikrushadows<br />- JackOnett
                           </h4>
                         </div>
                       </div>
@@ -828,7 +828,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            The Axemen of New Orleans - LGEphilates, LG Ephilates, Tumbler341, BasicWhiteBroh
+                            <strong>The Axemen of New Orleans</strong><br />- LGEphilates<br />- LG Ephilates<br />- Tumbler341<br />- BasicWhiteBroh
                           </h4>
                         </div>
                       </div>
@@ -842,7 +842,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Belgian Desesperados Redneck - ElCorvusCorax, AbyssAmun, chodezouderp
+                            <strong>Belgian Desesperados Redneck</strong><br />- ElCorvusCorax<br />- AbyssAmun<br />- chodezouderp
                           </h4>
                         </div>
                       </div>
@@ -856,7 +856,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            The Good, The Rad and The Snuggly - theonlymonto, sheaabutterr, Pharl
+                            <strong>The Good<br />- The Rad and The Snuggly</strong><br />- theonlymonto<br />- sheaabutterr<br />- Pharl
                           </h4>
                         </div>
                       </div>
@@ -870,7 +870,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Bomblancebois - Puamanagang, Edgelordincoming, Redfox09
+                            <strong>Bomblancebois</strong><br />- Puamanagang<br />- Edgelordincoming<br />- Redfox09
                           </h4>
                         </div>
                       </div>
@@ -884,7 +884,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Gangrene Gangstas Doppleganger Gang - Kongalor, JTurner, TrialbyStone
+                            <strong>Gangrene Gangstas Doppleganger Gang</strong><br />- Kongalor<br />- JTurner<br />- TrialbyStone
                           </h4>
                         </div>
                       </div>
@@ -898,7 +898,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Hunters Anonymous - Will_Murjen, Psyf3ktor, Nazbad
+                            <strong>Hunters Anonymous</strong><br />- Will_Murjen<br />- Psyf3ktor<br />- Nazbad
                           </h4>
                         </div>
                       </div>
@@ -912,7 +912,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Purp Inc. - Mr.Purp, Laylay2ayy, ScrumbleBumbler
+                            <strong>Purp Inc.</strong><br />- Mr.Purp<br />- Laylay2ayy<br />- ScrumbleBumbler
                           </h4>
                         </div>
                       </div>
@@ -926,7 +926,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Blanket Fort Crew - kapaligames, Joannes3000, StraightUpShawn
+                            <strong>Blanket Fort Crew</strong><br />- kapaligames<br />- Joannes3000<br />- StraightUpShawn
                           </h4>
                         </div>
                       </div>
@@ -940,7 +940,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Scupper? HardlyKnewHer - lucybee, DorianViking, Clodington
+                            <strong>Scupper? HardlyKnewHer</strong><br />- lucybee<br />- DorianViking<br />- Clodington
                           </h4>
                         </div>
                       </div>
@@ -954,7 +954,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Burning Wolf Pack - HerrOokami, drabadur_dominic, Ethochan
+                            <strong>Burning Wolf Pack</strong><br />- HerrOokami<br />- drabadur_dominic<br />- Ethochan
                           </h4>
                         </div>
                       </div>
