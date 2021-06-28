@@ -9,7 +9,13 @@ const navButtonClassName = "bg-white text-blueGray-700 active:bg-blueGray-50 tex
 function AuthedNavs() {
   const { user, isLoading } = useUser();
 
-  if (isLoading) return <div></div>;
+  if (isLoading) {
+    return (
+      <button className={navButtonClassName} type="button">
+        <i className="fas fa-spinner animate-spin mx-auto"></i>
+      </button>
+    )
+  }
 
   return (
     <>
