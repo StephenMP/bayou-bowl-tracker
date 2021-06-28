@@ -437,7 +437,7 @@ function Page({ eventId }: { eventId: string }) {
                                         </select>
                                     </div>
                                 </div>
-                                {team?.team_members.map(member => (
+                                {team?.team_members.filter(member => member.member_type !== TeamMemberType.SCOREKEEPER).map(member => (
                                     <UserScoreInput key={member.user_id} teamMember={member} formState={addScoreFormState} />
                                 ))}
                                 <div className="w-full lg:w-6/12 px-4">
