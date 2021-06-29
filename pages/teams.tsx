@@ -408,7 +408,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            <strong>Spyglass</strong><br />- steam name: spyglass is op<br />- konfukik<br />- Werdi0
+                            <strong>Spyglass</strong><br />- spyglass is op<br />- konfukik<br />- Werdi0
                           </h4>
                         </div>
                       </div>
