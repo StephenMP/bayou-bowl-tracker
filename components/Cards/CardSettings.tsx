@@ -6,13 +6,30 @@ import { userProfileState } from '../../state/atoms';
 import { routes } from "../../util/routes";
 
 export default function CardSettings() {
-  const urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+  const urlRegex = /(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])/igm
   const { user } = useCurrentUser({ suspense: true })
   const [userProfile, setUserProfile] = useRecoilState(userProfileState)
   const { addToast, updateToast } = useToasts();
 
+  const isUrl = (value: string) => {
+    if (value.match(urlRegex)) {
+      return true
+    }
+
+    if (
+      value.includes('discord.gg')
+      || value.includes('twitch.tv')
+      || value.includes('twitter.com')
+      || value.includes('steamcommunity.com')
+    ) {
+      return true
+    }
+
+    return false
+  }
+
   const onInputChange = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
-    if(event.target.value.match(urlRegex)) {
+    if (isUrl(event.target.value)) {
       alert("You do not need to enter any URLs, just your name on this platform")
       event.target.value = ''
       return
