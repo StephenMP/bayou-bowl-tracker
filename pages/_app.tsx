@@ -66,13 +66,21 @@ export default class MyApp extends App {
         </RecoilRoot>
         <CookieConsent
           location="bottom"
-          buttonText="OK"
+          buttonText="I UNDERSTAND"
           cookieName="bayoubowlCookieConsent"
           style={{ background: "#2B373B" }}
           buttonStyle={{ background: '#e4e4e7', color: "#000", fontSize: "13px" }}
           expires={150}
         >
-          This website uses cookies to enhance the user experience.{" "}
+          This website uses cookies to enhance the user experience.
+          <br />
+          <a
+            href="https://www.freeprivacypolicy.com/live/87f9752a-671b-4179-866f-654a4ef87db8"
+            target='_blank'
+            className="text-blueGray-500 hover:text-blueGray-800"
+          >
+            Our Privacy Policy
+          </a>{" "}
         </CookieConsent>
       </React.Fragment>
     );
