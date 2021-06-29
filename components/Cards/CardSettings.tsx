@@ -23,6 +23,8 @@ export default function CardSettings() {
         ...oldProfile
       }
 
+      newProfile[event.target.id] = event.target.value.trim()
+
       return newProfile
     })
   };
