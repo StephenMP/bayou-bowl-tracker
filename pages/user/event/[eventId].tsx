@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import React, { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
 import { useToasts } from 'react-toast-notifications';
 import { mutate } from 'swr';
+import { firstBy } from 'thenby';
 import Spinner from '../../../components/PageChange/Spinner';
 import Admin from "../../../layouts/Admin";
 import { fetcher, useEvent, useUserTeamForEvent } from '../../../lib/swr';
@@ -437,7 +438,7 @@ function Page({ eventId }: { eventId: string }) {
                                         </select>
                                     </div>
                                 </div>
-                                {team?.team_members.filter(member => member.member_type !== TeamMemberType.SCOREKEEPER).map(member => (
+                                {team?.team_members.filter(member => member.member_type !== TeamMemberType.SCOREKEEPER).sort(firstBy('user_id')).map(member => (
                                     <UserScoreInput key={member.user_id} teamMember={member} formState={addScoreFormState} />
                                 ))}
                                 <div className="w-full lg:w-6/12 px-4">
