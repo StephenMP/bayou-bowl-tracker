@@ -15,10 +15,19 @@ export default function Footer() {
                 target="_blank"
               >
                 MrSpwn
-                </a>
+              </a>
             </div>
             <div className="text-sm text-blueGray-500 font-semibold py-1">
               Not sponsored by Crytek or Hunt: Showdown.
+            </div>
+            <div className="text-sm text-blueGray-500 font-semibold py-1">
+              <a
+                href="https://www.freeprivacypolicy.com/live/87f9752a-671b-4179-866f-654a4ef87db8"
+                target='_blank'
+                className="text-blueGray-500 hover:text-blueGray-800"
+              >
+                Privacy Policy
+              </a>
             </div>
           </div>
         </div>

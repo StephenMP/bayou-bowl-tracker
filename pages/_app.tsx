@@ -6,6 +6,7 @@ import Head from "next/head";
 import Router from "next/router";
 import 'plyr-react/dist/plyr.css';
 import React from "react";
+import CookieConsent from "react-cookie-consent";
 import ReactDOM from "react-dom";
 import { ToastProvider } from 'react-toast-notifications';
 import { RecoilRoot } from 'recoil';
@@ -63,6 +64,16 @@ export default class MyApp extends App {
             </ToastProvider>
           </UserProvider>
         </RecoilRoot>
+        <CookieConsent
+          location="bottom"
+          buttonText="OK"
+          cookieName="bayoubowlCookieConsent"
+          style={{ background: "#2B373B" }}
+          buttonStyle={{ background: '#e4e4e7', color: "#000", fontSize: "13px" }}
+          expires={150}
+        >
+          This website uses cookies to enhance the user experience.{" "}
+        </CookieConsent>
       </React.Fragment>
     );
   }
