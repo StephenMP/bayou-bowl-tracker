@@ -842,7 +842,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            <strong>The Good<br />- The Rad and The Snuggly</strong><br />- theonlymonto<br />- sheaabutterr<br />- Pharl
+                            <strong>The Good, The Rad and The Snuggly</strong><br />- theonlymonto<br />- sheaabutterr<br />- Pharl
                           </h4>
                         </div>
                       </div>
