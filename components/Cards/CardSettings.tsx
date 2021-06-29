@@ -6,19 +6,22 @@ import { userProfileState } from '../../state/atoms';
 import { routes } from "../../util/routes";
 
 export default function CardSettings() {
+  const urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
   const { user } = useCurrentUser({ suspense: true })
   const [userProfile, setUserProfile] = useRecoilState(userProfileState)
   const { addToast, updateToast } = useToasts();
 
   const onInputChange = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
+    if(event.target.value.match(urlRegex)) {
+      alert("You do not need to enter any URLs, just your name on this platform")
+      event.target.value = ''
+      return
+    }
+
     setUserProfile(oldProfile => {
       var newProfile = {
         ...oldProfile
       }
-
-      const sanitizedValue = event.target.value.replace("https://", "").replace("http://", "").replace("@", "")
-      newProfile[event.target.id] = sanitizedValue.trim()
-      event.target.value = sanitizedValue
 
       return newProfile
     })
