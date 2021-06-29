@@ -62,6 +62,28 @@ export default function Landing() {
             <div className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
                 <h6 className="text-lg mb-2 font-semibold leading-normal">
+                  The Official Bayou Bowl II team lists for Seeded and Open Tiers are released
+                </h6>
+                <h6 className="text-sm mb-2 font-semibold leading-normal">
+                  28 June 2021
+                </h6>
+                <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+                  With 65 teams applying, the official Bayou Bowl II team lists are now out. Head to <strong><a href="https://bayoubowl.gg/teams">bayoubowl.gg/teams</a></strong> for the full list. The team list features several well-known hunters and content creators from the Hunt: Showdown community and many newcomers. The team list is broken into two-tiers: a seeded-tier of high-skill players with a maximum of 20 teams and an open-tier of various-skill players with unlimited teams.
+                </p>
+                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
+                  Bayou Bowl II begins on Saturday, 17 July 2021 at Noon Eastern time and is gearing up to be the most exciting competition yet. Good luck to all the competitors!
+                </p>
+              </div>
+              <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
+                <img src="/img/news/Official_Team_List_is_Out.png" />
+              </div>
+            </div>
+          </div>
+
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap items-center mt-32">
+              <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
+                <h6 className="text-lg mb-2 font-semibold leading-normal">
                   Bayou Bowl II is now Officially a Tiered Competition – Seeded and Open Tiers
                 </h6>
                 <h6 className="text-sm mb-2 font-semibold leading-normal">

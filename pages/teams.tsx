@@ -163,7 +163,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            <strong>SpamGang</strong><br />- dopeeffecttv<br />- Hisanttv<br />- lj_bed1ntruder
+                            <strong>SpamGang</strong><br />- dopeeffecttv<br />- Alfadhir<br />- lj_bed1ntruder
                           </h4>
                         </div>
                       </div>
@@ -303,7 +303,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            <strong>Just Hold W</strong><br />- SuperMadKick Super<br />- Tallyup_ Tallyup<br />- Kjabs87 Kjabs87
+                            <strong>Just Hold W</strong><br />- SuperMadKick<br />- Tallyup<br />- Kjabs87
                           </h4>
                         </div>
                       </div>
@@ -576,7 +576,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            <strong>Nordic Trash</strong><br />- MadessDude<br />- MiniDudeMD<br />- ChiMate
+                            <strong>Nordic Trash</strong><br />- MadnessDude<br />- MiniDudeMD<br />- ChiMate
                           </h4>
                         </div>
                       </div>
