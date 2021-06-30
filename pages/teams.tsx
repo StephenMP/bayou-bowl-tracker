@@ -107,7 +107,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            <strong>Expect Sweat</strong><br />- Its__SimO<br />- S H I N O B I<br />- Whity
+                            <strong>Expect Sweat</strong><br />- SimO<br />- S H I N O B I<br />- Whity
                           </h4>
                         </div>
                       </div>
