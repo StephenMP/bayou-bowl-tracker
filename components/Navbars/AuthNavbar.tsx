@@ -1,6 +1,7 @@
 import { useUser } from "@auth0/nextjs-auth0";
 import Link from "next/link";
 import React from "react";
+import { constants } from "../../util/constants";
 import { routes } from '../../util/routes';
 
 const navLinkClassName = "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
@@ -48,16 +49,15 @@ export default function Navbar() {
     <>
       <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <img src="/img/brand/bayoubowl-logo.png" height={40} width={40} className="mr-3" />
+          <img src="/img/brand/bayoubowl-logo.png" height={40} width={40} className="mr-3 md-hide" />
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-            {/* <Link href={routes.home}>
+            <Link href={routes.home}>
               <a
-                className="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
-                href="#pablo"
+                className="text-white md-hide text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
               >
                 {constants.APP_NAME}
               </a>
-            </Link> */}
+            </Link>
             <button
               className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"

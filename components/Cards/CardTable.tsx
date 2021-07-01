@@ -15,6 +15,7 @@ function AllUsers({ color }) {
     )
   }
 
+  const usersWithoutProfiles = users.filter(u => !u.profile.steam_name)
   const copyEmails = (users: User[]) => {
     const el = document.createElement('textarea');
     el.value = users.map(u => u.email).join(',');
@@ -41,13 +42,13 @@ function AllUsers({ color }) {
                 (color === "light" ? "text-blueGray-700" : "text-white")
               }
             >
-              Users Without Profile Data
+              Users Without Profile Data: {usersWithoutProfiles.length}
             </h3>
           </div>
           <div>
             <button
               className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-              onClick={() => copyEmails(users.filter(u => !u.profile.steam_name))}
+              onClick={() => copyEmails(usersWithoutProfiles)}
             >
               Copy Emails
             </button>
@@ -102,7 +103,7 @@ function AllUsers({ color }) {
             </tr>
           </thead>
           <tbody>
-            {users.filter(u => !u.profile.steam_name).map(user =>
+            {usersWithoutProfiles.map(user =>
               <tr key={user.id}>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img

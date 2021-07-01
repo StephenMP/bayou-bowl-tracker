@@ -2,6 +2,7 @@ import { withPageAuthRequired } from '@auth0/nextjs-auth0'
 import React from "react"
 import { useToasts } from 'react-toast-notifications'
 import { mutate } from 'swr'
+import { firstBy } from 'thenby'
 import Spinner from '../../components/PageChange/Spinner'
 import Admin from "../../layouts/Admin"
 import { fetcher, useEvent, useEvents } from "../../lib/swr"
@@ -96,7 +97,7 @@ const AdminEvents = withPageAuthRequired(() => {
     <>
       <div className="flex flex-wrap">
         <React.Suspense fallback={<div>Loading...</div>}>
-          {events.map((event) =>
+        {events.sort(firstBy('startDate')).map((event) =>
             <div className="w-full lg:w-4/12 px-4">
               <EventCard key={event.id} eventId={event.id} />
             </div>

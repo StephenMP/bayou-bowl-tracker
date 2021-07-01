@@ -62,12 +62,15 @@ function calculateTotalBounties(eventScores: EventScore[]) {
     }, 0)
 }
 
-function ScoreTable({ color, teamId, canEdit }: { color: 'light' | 'dark', teamId: string, canEdit: boolean }) {
+function ScoreTable({ color, teamId, canEdit, canDeleteState, canAddState }: { color: 'light' | 'dark', teamId: string, canEdit: boolean, canDeleteState: [boolean, Dispatch<SetStateAction<boolean>>], canAddState: [boolean, Dispatch<SetStateAction<boolean>>] }) {
     const { eventScores } = useEventScoreForTeam(teamId, { suspense: true })
-    const [canDelete, setCanDelete] = useState<boolean>(true)
     const { addToast, updateToast } = useToasts();
+    const [canAdd, setCanAdd] = canAddState
+    const [canDelete, setCanDelete] = canDeleteState
+
     const deleteRound = async (eventScore: EventScore) => {
         addToast('Deleting score...', { appearance: 'info', autoDismiss: true }, async toastId => {
+            setCanAdd(false)
             setCanDelete(false)
 
             mutate(routes.api.event_scores.team.teamId(teamId), (data: EventScore[]) => {
@@ -88,6 +91,7 @@ function ScoreTable({ color, teamId, canEdit }: { color: 'light' | 'dark', teamI
             updateToast(toastId, { content: 'Deleted successfully!', appearance: 'success', autoDismiss: true });
             mutate(routes.api.event_scores.team.teamId(teamId))
 
+            setCanAdd(true)
             setCanDelete(true)
         })
     }
@@ -277,6 +281,7 @@ function Page({ eventId }: { eventId: string }) {
     const addScoreFormState = useState<AddScoreForm>({ bounties: 0, killsByMember: {}, maxKills })
     const [addScoreForm, setScoreForm] = addScoreFormState
     const [canAdd, setCanAdd] = useState<boolean>(true)
+    const [canDelete, setCanDelete] = useState<boolean>(true)
 
     const bountiesRef = useRef<HTMLSelectElement>()
     const memberType = team.team_members.find(tm => tm.user_id === currentUser.id).member_type
@@ -297,6 +302,7 @@ function Page({ eventId }: { eventId: string }) {
     const addScore = async () => {
         addToast('Adding score...', { appearance: 'info', autoDismiss: true }, async toastId => {
             setCanAdd(false)
+            setCanDelete(false)
 
             const playerScores: PlayerScore[] = team.team_members.map(tm => {
                 const userKills = addScoreForm.killsByMember[tm.user_id]
@@ -349,6 +355,7 @@ function Page({ eventId }: { eventId: string }) {
 
             // Set states
             setCanAdd(true)
+            setCanDelete(true)
             setScoreForm({ bounties: 0, maxKills, killsByMember: {} })
 
             // Clear form
@@ -466,7 +473,7 @@ function Page({ eventId }: { eventId: string }) {
             {event.isActive ?
                 <div className="mt-5 w-full">
                     <React.Suspense fallback={<Spinner light={true} />}>
-                        <ScoreTable color={'light'} teamId={team.id} canEdit={canEdit} />
+                        <ScoreTable color={'light'} teamId={team.id} canEdit={canEdit} canDeleteState={[canDelete, setCanDelete]} canAddState={[canAdd, setCanAdd]} />
                     </React.Suspense>
                 </div> : <></>}
         </React.Suspense>

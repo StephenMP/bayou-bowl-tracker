@@ -4,6 +4,7 @@ import { firstBy } from 'thenby';
 import Footer from '../../components/Footers/Footer';
 import Navbar from '../../components/Navbars/AuthNavbar';
 import Spinner from '../../components/PageChange/Spinner';
+import { useEvent } from '../../lib/swr';
 import { EventScoreByTeam, useEventScoreForEventByTeam } from '../../lib/swr/event-score';
 import { queryParamAsString } from '../../util/routes';
 
@@ -70,9 +71,11 @@ function Page({ eventId }: { eventId: string }) {
                                         {index + 1}
                                     </td>
                                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <a href={`/team/${score.teamId}`} target='_blank'>
-                                            {score.teamName} <i className="fas fa-link ml-2 text-xs text-blueGray-400"></i>
-                                        </a>
+                                        <strong>
+                                            <a href={`/team/${score.teamId}`} target='_blank'>
+                                                {score.teamName} <i className="fas fa-link ml-2 text-xs text-blueGray-400"></i>
+                                            </a>
+                                        </strong>
                                     </td>
                                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                         {score.kills}
@@ -99,6 +102,11 @@ function Page({ eventId }: { eventId: string }) {
 const EventPage = () => {
     const router = useRouter()
     const eventId = queryParamAsString(router.query.eventId)
+    const { event, isLoading } = useEvent(eventId)
+
+    if (isLoading) {
+        return (<Spinner light={true} />)
+    }
 
     return (
         <>
@@ -119,7 +127,7 @@ const EventPage = () => {
                             <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                                 <div className="pr-12 mt-10">
                                     <h1 className="mt-4 text-8xl uppercase font-bold text-blueGray-200">
-                                        Leaderboards
+                                        {event.name} Leaderboards
                                     </h1>
                                 </div>
                             </div>

@@ -22,7 +22,7 @@
   }
 
 @media screen and (max-width: 1024px) {
-    .countdown {
+    .md-hide {
       visibility: hidden;
       clear: both;
       float: left;

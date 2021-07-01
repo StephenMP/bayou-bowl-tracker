@@ -63,7 +63,7 @@ export default function Landing() {
                   />
                   {/* {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />} */}
                   <div className="items-center flex flex-wrap mt-5 text-3xl">
-                    <div className="w-full lg:w-3/12 uppercase countdown px-4 ml-auto mr-auto text-center">
+                    <div className="w-full lg:w-3/12 uppercase md-hide px-4 ml-auto mr-auto text-center">
                       <CountdownCircleTimer
                         {...timerProps}
                         duration={daysDuration}
@@ -74,7 +74,7 @@ export default function Landing() {
                         }
                       </CountdownCircleTimer>
                     </div>
-                    <div className="w-full lg:w-3/12 uppercase countdown px-4 ml-auto mr-auto text-center">
+                    <div className="w-full lg:w-3/12 uppercase md-hide px-4 ml-auto mr-auto text-center">
                       <CountdownCircleTimer
                         {...timerProps}
                         duration={daySeconds}
@@ -86,7 +86,7 @@ export default function Landing() {
                         }
                       </CountdownCircleTimer>
                     </div>
-                    <div className="w-full lg:w-3/12 uppercase countdown px-4 ml-auto mr-auto text-center">
+                    <div className="w-full lg:w-3/12 uppercase md-hide px-4 ml-auto mr-auto text-center">
                       <CountdownCircleTimer
                         {...timerProps}
                         duration={hourSeconds}
@@ -98,7 +98,7 @@ export default function Landing() {
                         }
                       </CountdownCircleTimer>
                     </div>
-                    <div className="w-full lg:w-3/12 uppercase countdown px-4 ml-auto mr-auto text-center">
+                    <div className="w-full lg:w-3/12 uppercase md-hide px-4 ml-auto mr-auto text-center">
                       <CountdownCircleTimer
                         {...timerProps}
                         duration={minuteSeconds}
