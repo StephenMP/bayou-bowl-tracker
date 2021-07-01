@@ -42,6 +42,8 @@ function AllUsers({ color }) {
                 (color === "light" ? "text-blueGray-700" : "text-white")
               }
             >
+              Total Users: {users.length}
+              <br />
               Users Without Profile Data: {usersWithoutProfiles.length}
             </h3>
           </div>
