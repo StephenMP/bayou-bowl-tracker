@@ -1,15 +1,28 @@
 import PropTypes from "prop-types";
 import React, { Suspense } from "react";
+import { useToasts } from "react-toast-notifications";
 import { useAllUsers } from "../../lib/swr/users";
+import { User } from "../../types/prisma";
 import Spinner from "../PageChange/Spinner";
 
 function AllUsers({ color }) {
-  const {users, isLoading} = useAllUsers({suspense: false})
+  const { users, isLoading } = useAllUsers({ suspense: false })
+  const { addToast } = useToasts()
 
-  if(isLoading) {
+  if (isLoading) {
     return (
       <Spinner light={true} />
     )
+  }
+
+  const copyEmails = (users: User[]) => {
+    const el = document.createElement('textarea');
+    el.value = users.map(u => u.email).join(',');
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    addToast('Copied', { appearance: 'success', autoDismiss: true })
   }
 
   return (
@@ -29,15 +42,16 @@ function AllUsers({ color }) {
               }
             >
               Users Without Profile Data
-              </h3>
+            </h3>
           </div>
-          {/* <div>
+          <div>
             <button
               className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-              onClick={refreshUsers}
+              onClick={() => copyEmails(users.filter(u => !u.profile.steam_name))}
             >
-              Refresh</button>
-          </div> */}
+              Copy Emails
+            </button>
+          </div>
         </div>
       </div>
       <div className="block w-full overflow-x-auto">
@@ -54,7 +68,7 @@ function AllUsers({ color }) {
                 }
               >
                 User
-                </th>
+              </th>
               <th
                 className={
                   "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
@@ -64,7 +78,7 @@ function AllUsers({ color }) {
                 }
               >
                 ID
-                </th>
+              </th>
               <th
                 className={
                   "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
@@ -74,7 +88,7 @@ function AllUsers({ color }) {
                 }
               >
                 Email
-                </th>
+              </th>
               <th
                 className={
                   "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
@@ -84,7 +98,7 @@ function AllUsers({ color }) {
                 }
               >
                 Updated At
-                </th>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -113,7 +127,7 @@ function AllUsers({ color }) {
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   {new Date(user.updatedDate).toLocaleDateString()}
-                  </td>
+                </td>
                 {/* <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
                   <TableDropdown />
                 </td> */}

@@ -19,6 +19,7 @@
     "@prisma/client": "^2.26.0",
     "@tailwindcss/forms": "0.2.1",
     "chart.js": "2.9.4",
+    "clipboardy": "^2.3.0",
     "cross-env": "^7.0.3",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
