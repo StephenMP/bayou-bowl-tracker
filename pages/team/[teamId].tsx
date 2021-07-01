@@ -80,7 +80,7 @@ export default function Profile() {
 
   if (isLoading) {
     return (
-      <div>Loading...</div>
+      <Spinner light={true} />
     )
   }
 

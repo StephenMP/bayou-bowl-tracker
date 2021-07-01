@@ -96,7 +96,7 @@ const AdminEvents = withPageAuthRequired(() => {
   return (
     <>
       <div className="flex flex-wrap">
-        <React.Suspense fallback={<div>Loading...</div>}>
+        <React.Suspense fallback={<Spinner light={true} />}>
         {events.sort(firstBy('startDate')).map((event) =>
             <div className="w-full lg:w-4/12 px-4">
               <EventCard key={event.id} eventId={event.id} />
