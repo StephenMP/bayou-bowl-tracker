@@ -120,7 +120,7 @@ const Sidebar = withPageAuthRequired(() => {
               </li>
             </ul>
 
-            {user.email === "gameswithdeathtv@gmail.com" || user.email === 'ivirspwn@gmail.com' ?
+            {user.email === "gameswithdeathtv@gmail.com" || user.email === 'itsspwn@gmail.com' ?
               <>
                 <hr className="my-4 md:min-w-full" />
                 <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
@@ -144,6 +144,26 @@ const Sidebar = withPageAuthRequired(() => {
                         }
                         ></i>{" "}
                     Manage Events
+                  </a>
+                    </Link>
+                  </li>
+                  <li className="items-center">
+                    <Link href={routes.admin.users}>
+                      <a className={
+                        "text-xs uppercase py-3 font-bold block " +
+                        (router.pathname.indexOf(routes.admin.users) !== -1
+                          ? "text-lightBlue-500 hover:text-lightBlue-600"
+                          : "text-blueGray-700 hover:text-blueGray-500")
+                      }
+                      >
+                        <i className={
+                          "fas fa-calendar-alt mr-2 text-sm " +
+                          (router.pathname.indexOf(routes.admin.users) !== -1
+                            ? "opacity-75"
+                            : "text-blueGray-500")
+                        }
+                        ></i>{" "}
+                    Users w/o Profile
                   </a>
                     </Link>
                   </li>

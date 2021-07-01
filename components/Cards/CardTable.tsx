@@ -1,18 +1,15 @@
-import PropTypes from "prop-types"
-import React, { Suspense } from "react"
-import { useRecoilState } from 'recoil'
-import { usersState } from '../../state/atoms'
-import { routes } from "../../util/routes"
-import TableDropdown from "../Dropdowns/TableDropdown"
+import PropTypes from "prop-types";
+import React, { Suspense } from "react";
+import { useAllUsers } from "../../lib/swr/users";
+import Spinner from "../PageChange/Spinner";
 
 function AllUsers({ color }) {
-  const [allUsers, setAllUsers] = useRecoilState(usersState)
+  const {users, isLoading} = useAllUsers({suspense: false})
 
-  const refreshUsers = async () => {
-    const res = await fetch(routes.api.admin.users)
-    const users = await res.json()
-
-    setAllUsers(users)
+  if(isLoading) {
+    return (
+      <Spinner light={true} />
+    )
   }
 
   return (
@@ -31,16 +28,16 @@ function AllUsers({ color }) {
                 (color === "light" ? "text-blueGray-700" : "text-white")
               }
             >
-              Users
+              Users Without Profile Data
               </h3>
           </div>
-          <div>
+          {/* <div>
             <button
               className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
               onClick={refreshUsers}
             >
               Refresh</button>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="block w-full overflow-x-auto">
@@ -76,7 +73,7 @@ function AllUsers({ color }) {
                     : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                 }
               >
-                Joined
+                Email
                 </th>
               <th
                 className={
@@ -86,12 +83,12 @@ function AllUsers({ color }) {
                     : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                 }
               >
-                Team
+                Updated At
                 </th>
             </tr>
           </thead>
           <tbody>
-            {allUsers.map(user =>
+            {users.filter(u => !u.profile.steam_name).map(user =>
               <tr key={user.id}>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img
@@ -112,14 +109,14 @@ function AllUsers({ color }) {
                   {user.id}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {new Date(user.updatedDate).toLocaleDateString()}
+                  {user.email}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  N/A
+                  {new Date(user.updatedDate).toLocaleDateString()}
                   </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
+                {/* <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
                   <TableDropdown />
-                </td>
+                </td> */}
               </tr>
             )}
           </tbody>
