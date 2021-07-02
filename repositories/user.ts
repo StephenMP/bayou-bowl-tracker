@@ -38,7 +38,13 @@ export async function createUser(user: User): Promise<void> {
 export async function updateUser(user: User): Promise<void> {
     await client().update({
         where: { id: user.id },
-        data: { ...user }
+        data: {
+            updatedDate: new Date(),
+            name: user.name,
+            nickname: user.nickname,
+            picture: user.picture,
+            email: user.email,
+        }
     })
 }
 

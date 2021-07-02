@@ -1,6 +1,17 @@
-import { UserProfile } from "@prisma/client";
 import { atom } from 'recoil';
+import { User, UserProfile } from "../../types/prisma";
 import { routes } from "../../util/routes";
+
+const syncUserNameStateEffect = () => ({ setSelf }) => {
+  const loadUserProfile = async () => {
+    const res = await fetch(routes.api.user.index)
+    const user: User = await res.json()
+
+    setSelf(user.name)
+  }
+
+  loadUserProfile()
+}
 
 const syncUserProfileStateEffect = () => ({ setSelf }) => {
   const loadUserProfile = async () => {
@@ -21,3 +32,10 @@ export const userProfileState = atom({
   ]
 });
 
+export const userNameState = atom({
+  key: 'userNameState',
+  default: '',
+  effects_UNSTABLE: [
+    syncUserNameStateEffect()
+  ]
+})

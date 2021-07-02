@@ -2,12 +2,13 @@ import React, { ChangeEvent } from "react";
 import { useToasts } from 'react-toast-notifications';
 import { useRecoilState } from 'recoil';
 import { useCurrentUser } from "../../lib/swr/user";
-import { userProfileState } from '../../state/atoms';
+import { userNameState, userProfileState } from '../../state/atoms';
 import { routes } from "../../util/routes";
 
 export default function CardSettings() {
   const urlRegex = /(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])/igm
   const { user } = useCurrentUser({ suspense: true })
+  const [userName, setUserName] = useRecoilState(userNameState)
   const [userProfile, setUserProfile] = useRecoilState(userProfileState)
   const { addToast, updateToast } = useToasts();
 
@@ -29,44 +30,72 @@ export default function CardSettings() {
   }
 
   const onInputChange = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
-    if (isUrl(event.target.value)) {
-      alert("You do not need to enter any URLs, just your name on this platform")
-      event.target.value = ''
-      return
+    if (event.target.id === 'name') {
+      setUserName(event.target.value)
     }
 
-    setUserProfile(oldProfile => {
-      var newProfile = {
-        ...oldProfile
+    else {
+      if (isUrl(event.target.value)) {
+        alert("You do not need to enter any URLs, just your name on this platform")
+        event.target.value = ''
+        return
       }
 
-      newProfile[event.target.id] = event.target.value.trim()
+      setUserProfile(oldProfile => {
+        var newProfile = {
+          ...oldProfile
+        }
 
-      return newProfile
+        newProfile[event.target.id] = event.target.value.trim()
+
+        return newProfile
+      })
+    }
+  }
+
+  const saveUserProfile = async () => {
+    const body = {
+      ...userProfile
+    }
+
+    return await fetch(routes.api.user.profile, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      })
     })
-  };
+  }
+
+  const saveUserName = async () => {
+    const body = {
+      ...user,
+      name: userName
+    }
+
+    return await fetch(routes.api.user.index, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      })
+    })
+  }
 
   const onSave = async () => {
     addToast('Saving...', { appearance: 'info', autoDismiss: true }, async toastId => {
-      const body = {
-        ...userProfile
-      }
+      const saveProfilePromise = saveUserProfile()
+      const saveUserNamePromise = saveUserName()
+      const responses = await Promise.all([saveProfilePromise, saveUserNamePromise])
 
-      const response = await fetch(routes.api.user.profile, {
-        method: 'POST',
-        body: JSON.stringify(body),
-        headers: new Headers({
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        })
-      })
-
-      if (response.status >= 200 && response.status <= 299) {
-        updateToast(toastId, { content: 'Saved successfully', appearance: 'success', autoDismiss: true });
+      if (responses.find(r => r.status > 299)) {
+        updateToast(toastId, { content: 'Unable to save :(', appearance: 'error', autoDismiss: false });
       }
 
       else {
-        updateToast(toastId, { content: 'Unable to save :(', appearance: 'error', autoDismiss: false });
+        updateToast(toastId, { content: 'Saved successfully', appearance: 'success', autoDismiss: true });
       }
     });
   }
@@ -103,10 +132,11 @@ export default function CardSettings() {
                     Name
                   </label>
                   <input
+                    id='name'
                     type="text"
-                    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-400 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     defaultValue={user.name}
-                    disabled
+                    onChange={onInputChange}
                   />
                 </div>
               </div>
