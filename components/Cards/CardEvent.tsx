@@ -36,10 +36,13 @@ function Register({ eventId }: { eventId: string }) {
 }
 
 function parseTimeFromDate(date: Date) {
-  const hour = (date.getHours() % 12) ?? 12
-  let min: string | number = date.getMinutes()
-  min = min < 10 ? '0' + min : min
+  let hour = date.getHours()
   const amPm = hour >= 12 ? 'pm' : 'am'
+  let min: string | number = date.getMinutes()
+
+  hour = hour % 12;
+  hour = hour ? hour : 12
+  min = min < 10 ? '0' + min : min
 
   return `${hour}:${min} ${amPm} ${Intl.DateTimeFormat().resolvedOptions().timeZone}`
 }
