@@ -31,7 +31,7 @@ const renderTime = (dimension, time) => {
 
 export default function Landing() {
   const startTime = Date.now() / 1000
-  const endTime = new Date(2021, 6, 17).getTime() / 1000
+  const endTime = new Date('2021-07-17T16:00:00.000Z').getTime() / 1000
   const remainingTime = endTime - startTime;
   const days = Math.ceil(remainingTime / daySeconds);
   const daysDuration = days * daySeconds;
