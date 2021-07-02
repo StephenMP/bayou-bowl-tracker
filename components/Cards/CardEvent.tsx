@@ -35,8 +35,19 @@ function Register({ eventId }: { eventId: string }) {
   )
 }
 
+function parseTimeFromDate(date: Date) {
+  const hour = (date.getHours() % 12) ?? 12
+  let min: string | number = date.getMinutes()
+  min = min < 10 ? '0' + min : min
+  const amPm = hour >= 12 ? 'pm' : 'am'
+
+  return `${hour}:${min} ${amPm} ${Intl.DateTimeFormat().resolvedOptions().timeZone}`
+}
+
 export default function CardEvent({ event }: { event: Event }) {
   const { teams } = useCurrentUserTeams({ suspense: true })
+  const eventStart = new Date(event.startDate)
+  const eventTime = parseTimeFromDate(eventStart)
 
   return (
     <>
@@ -56,23 +67,39 @@ export default function CardEvent({ event }: { event: Event }) {
             </div>
             <div className="w-full px-4 text-center mt-20"></div>
           </div>
-          <div className="text-center mt-12">
-            <h3 className="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
+          <div className="flex flex-wrap items-center mt-12">
+            <h3 className="text-center text-xl w-full lg:w-12/12 font-semibold leading-normal mb-2 text-blueGray-700 mb-5">
               {event.name}
             </h3>
-            <div className="mb-2 text-blueGray-600">
-              <i className="fas fa-calendar-alt mr-2 text-lg text-blueGray-400"></i>
-              {new Date(event.startDate).toLocaleDateString()}
+            <div className="w-full lg:w-6/12">
+              <div className="mb-2 text-blueGray-600">
+                <i className="fas fa-calendar-alt mr-2 text-lg text-blueGray-400"></i>
+                {`${eventStart.toLocaleDateString()}`}
+              </div>
             </div>
-            <div className="mb-2 text-blueGray-600">
-              Match Type: {event.match_type}
+            <div className="w-full lg:w-6/12">
+              <div className="mb-2 text-blueGray-600">
+                <i className="fas fa-clock mr-2 text-lg text-blueGray-400"></i>
+                {eventTime}
+              </div>
             </div>
-            <div className="mb-2 text-blueGray-600">
-              Registered Teams: {event.teams.length}
+            <div className="w-full lg:w-6/12">
+              <div className="mb-2 text-blueGray-600">
+                <i className="fas fa-sitemap mr-2 text-lg text-blueGray-400"></i>
+                Match Type: {event.match_type}
+              </div>
             </div>
-            <a href={routes.rules} target="_blank" className="md:block text-center md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
-              Official Rules
-            </a>
+            <div className="w-full lg:w-6/12">
+              <div className="mb-2 text-blueGray-600">
+                <i className="fas fa-users mr-2 text-lg text-blueGray-400"></i>
+                Registered Teams: {event.teams.length}
+              </div>
+            </div>
+            <div className="w-full lg:w-12/12">
+              <a href={routes.rules} target="_blank" className="md:block text-center md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
+                Official Rules
+              </a>
+            </div>
           </div>
           <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
             <React.Suspense fallback={<Spinner light={true} />}>
