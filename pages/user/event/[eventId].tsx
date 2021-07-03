@@ -415,7 +415,7 @@ function Page({ eventId }: { eventId: string }) {
                             disabled={!canAdd}
                             onClick={addScore}
                         >
-                            {canAdd ? "Add" : <i className="fas fa-spinner fa-spin"></i>}
+                            {canAdd ? `Add ${calculateRoundScore()} Points` : <i className="fas fa-spinner fa-spin"></i>}
                         </button>
                     </div>
                 </div>
@@ -448,15 +448,6 @@ function Page({ eventId }: { eventId: string }) {
                                 {team?.team_members.filter(member => member.member_type !== TeamMemberType.SCOREKEEPER).sort(firstBy('user_id')).map(member => (
                                     <UserScoreInput key={member.user_id} teamMember={member} formState={addScoreFormState} />
                                 ))}
-                                <div className="w-full lg:w-6/12 px-4">
-                                    <div className="relative mt-3 w-full mb-3">
-                                        Score
-                                    </div>
-                                </div>
-                                <div className="w-full lg:w-6/12 px-4">
-                                    <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2" >Points</label>
-                                    <input type="number" min={0} value={calculateRoundScore()} className="w-full" disabled />
-                                </div>
                             </div>
                         </form>
                     </React.Suspense>

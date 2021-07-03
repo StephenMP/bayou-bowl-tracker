@@ -57,6 +57,8 @@ model UserProfile {
   about_me     String?
   user         User    @relation(fields: [user_id], references: [id])
   user_id      String  @unique
+
+  @@index([user_id])
 }
 
 model Team {
@@ -66,6 +68,8 @@ model Team {
   event_id     String
   team_members TeamMember[]
   EventScore   EventScore[]
+
+  @@index([event_id])
 }
 
 enum TeamMemberType {
