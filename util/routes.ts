@@ -7,6 +7,11 @@ export const routes = {
     admin: {
         events: '/admin/events',
         users: '/admin/users',
+        teams: {
+            index: '/admin/teams',
+            open: '/admin/teams/open',
+            seeded: '/admin/teams/seeded'
+        },
     },
     api: {
         admin: {
@@ -42,6 +47,9 @@ export const routes = {
         },
         team: {
             teamId: (teamId: string) => `/api/team/${teamId}`
+        },
+        teams: {
+            eventId: (eventId: string) => `/api/teams/${eventId}`
         },
         user: {
             userId: (userId: string) => `/api/user/${userId}`,

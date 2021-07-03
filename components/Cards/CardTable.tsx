@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React, { Suspense } from "react";
 import { useToasts } from "react-toast-notifications";
 import { useAllUsers } from "../../lib/swr/users";
-import { User } from "../../types/prisma";
 import Spinner from "../PageChange/Spinner";
 
 function AllUsers({ color }) {
@@ -13,17 +12,6 @@ function AllUsers({ color }) {
     return (
       <Spinner light={true} />
     )
-  }
-
-  const usersWithoutProfiles = users.filter(u => !u.profile.steam_name)
-  const copyEmails = (users: User[]) => {
-    const el = document.createElement('textarea');
-    el.value = users.map(u => u.email).join(',');
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-    addToast('Copied', { appearance: 'success', autoDismiss: true })
   }
 
   return (
@@ -44,16 +32,9 @@ function AllUsers({ color }) {
             >
               Total Users: {users.length}
               <br />
-              Users Without Profile Data: {usersWithoutProfiles.length}
             </h3>
           </div>
           <div>
-            <button
-              className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-              onClick={() => copyEmails(usersWithoutProfiles)}
-            >
-              Copy Emails
-            </button>
           </div>
         </div>
       </div>
@@ -100,14 +81,44 @@ function AllUsers({ color }) {
                     : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                 }
               >
-                Updated At
+                Steam Name
+              </th>
+              <th
+                className={
+                  "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                  (color === "light"
+                    ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                    : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
+                }
+              >
+                Twitch
+              </th>
+              <th
+                className={
+                  "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                  (color === "light"
+                    ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                    : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
+                }
+              >
+                Discord
+              </th>
+              <th
+                className={
+                  "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                  (color === "light"
+                    ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                    : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
+                }
+              >
+                Twitter
               </th>
             </tr>
           </thead>
           <tbody>
-            {usersWithoutProfiles.map(user =>
+            {users.map(user =>
               <tr key={user.id}>
-                <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                <th className="border-t-0 px-2 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img
                     src={user.picture}
                     className="h-12 w-12 bg-white rounded-full border"
@@ -129,7 +140,16 @@ function AllUsers({ color }) {
                   {user.email}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {new Date(user.updatedDate).toLocaleDateString()}
+                  {user.profile.steam_name}
+                </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                {user.profile.twitch_name}
+                </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                {user.profile.discord_name}
+                </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                {user.profile.twitter_name}
                 </td>
                 {/* <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
                   <TableDropdown />

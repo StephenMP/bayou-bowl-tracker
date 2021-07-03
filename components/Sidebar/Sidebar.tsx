@@ -125,7 +125,7 @@ const Sidebar = withPageAuthRequired(() => {
                 <hr className="my-4 md:min-w-full" />
                 <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
                   Admin
-            </h6>
+                </h6>
                 <ul className="md:flex-col md:min-w-full flex flex-col list-none">
                   <li className="items-center">
                     <Link href={routes.admin.events}>
@@ -143,8 +143,8 @@ const Sidebar = withPageAuthRequired(() => {
                             : "text-blueGray-500")
                         }
                         ></i>{" "}
-                    Manage Events
-                  </a>
+                        Manage Events
+                      </a>
                     </Link>
                   </li>
                   <li className="items-center">
@@ -163,8 +163,68 @@ const Sidebar = withPageAuthRequired(() => {
                             : "text-blueGray-500")
                         }
                         ></i>{" "}
-                    Users w/o Profile
-                  </a>
+                        Users
+                      </a>
+                    </Link>
+                  </li>
+                  <li className="items-center">
+                    <Link href={routes.admin.teams.index}>
+                      <a className={
+                        "text-xs uppercase py-3 font-bold block " +
+                        (router.pathname.endsWith(routes.admin.teams.index)
+                          ? "text-lightBlue-500 hover:text-lightBlue-600"
+                          : "text-blueGray-700 hover:text-blueGray-500")
+                      }
+                      >
+                        <i className={
+                          "fas fa-calendar-alt mr-2 text-sm " +
+                          (router.pathname.endsWith(routes.admin.teams.index)
+                            ? "opacity-75"
+                            : "text-blueGray-500")
+                        }
+                        ></i>{" "}
+                        Teams
+                      </a>
+                    </Link>
+                  </li>
+                  <li className="items-center">
+                    <Link href={routes.admin.teams.open}>
+                      <a className={
+                        "text-xs uppercase py-3 font-bold block " +
+                        (router.pathname.indexOf(routes.admin.teams.open) !== -1
+                          ? "text-lightBlue-500 hover:text-lightBlue-600"
+                          : "text-blueGray-700 hover:text-blueGray-500")
+                      }
+                      >
+                        <i className={
+                          "fas fa-calendar-alt mr-2 text-sm " +
+                          (router.pathname.indexOf(routes.admin.teams.open) !== -1
+                            ? "opacity-75"
+                            : "text-blueGray-500")
+                        }
+                        ></i>{" "}
+                        Open Teams
+                      </a>
+                    </Link>
+                  </li>
+                  <li className="items-center">
+                    <Link href={routes.admin.teams.seeded}>
+                      <a className={
+                        "text-xs uppercase py-3 font-bold block " +
+                        (router.pathname.indexOf(routes.admin.teams.seeded) !== -1
+                          ? "text-lightBlue-500 hover:text-lightBlue-600"
+                          : "text-blueGray-700 hover:text-blueGray-500")
+                      }
+                      >
+                        <i className={
+                          "fas fa-calendar-alt mr-2 text-sm " +
+                          (router.pathname.indexOf(routes.admin.teams.seeded) !== -1
+                            ? "opacity-75"
+                            : "text-blueGray-500")
+                        }
+                        ></i>{" "}
+                        Seeded Teams
+                      </a>
                     </Link>
                   </li>
                 </ul></> : <></>}
@@ -182,8 +242,8 @@ const Sidebar = withPageAuthRequired(() => {
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                 >
                   <i className="fas fa-home text-blueGray-500 mr-2 text-sm"></i>{" "}
-                    Home
-                  </a>
+                  Home
+                </a>
               </li>
               <li className="items-center">
                 <a
@@ -191,8 +251,8 @@ const Sidebar = withPageAuthRequired(() => {
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                 >
                   <i className="fas fa-sign-out-alt text-blueGray-500 mr-2 text-sm"></i>{" "}
-                    Logout
-                  </a>
+                  Logout
+                </a>
               </li>
             </ul>
           </div>

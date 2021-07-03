@@ -7,7 +7,7 @@ import { mutate } from 'swr';
 import { firstBy } from 'thenby';
 import Spinner from '../../../components/PageChange/Spinner';
 import Admin from "../../../layouts/Admin";
-import { fetcher, useEvent, useUserTeamForEvent } from '../../../lib/swr';
+import { fetcher, useEvent, useUserTeamForEventAndUser } from '../../../lib/swr';
 import { useEventScoreForTeam } from '../../../lib/swr/event-score';
 import { useCurrentUser, useUser } from '../../../lib/swr/user';
 import { EventScore, PlayerScore, TeamMember, TeamMemberType, TeamScore } from "../../../types/prisma";
@@ -274,7 +274,7 @@ type AddScoreForm = {
 function Page({ eventId }: { eventId: string }) {
     const { user: currentUser } = useCurrentUser({ suspense: true })
     const { event } = useEvent(eventId, { suspense: true })
-    const { team } = useUserTeamForEvent(eventId, currentUser.id, { suspense: true })
+    const { team } = useUserTeamForEventAndUser(eventId, currentUser.id, { suspense: true })
     const { eventScores } = useEventScoreForTeam(team.id, { suspense: true })
 
     const maxKills: number = event.match_type === EventMatchType.TRIOS ? 45 : EventMatchType.SOLOS ? 55 : 50

@@ -23,3 +23,13 @@ export function useTeam(teamId: string, options?: SWRConfiguration) {
         isLoading: !error && !data,
     }
 }
+
+export function useTeamsForEvent(eventId: string, options?: SWRConfiguration) {
+    const { data, error } = useSWR<Team[]>(routes.api.teams.eventId(eventId), fetcher, options)
+
+    return {
+        teams: data,
+        error: error,
+        isLoading: !error && !data,
+    }
+}
