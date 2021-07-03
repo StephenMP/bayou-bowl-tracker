@@ -14,6 +14,9 @@ export default async function handler(req, res) {
     switch (req.method) {
         case 'GET':
             const session = getSession(req, res)
+            const userId = getUserId(req, res)
+            const testTeamId = queryParamAsString(req.query.testTeamId)
+            const eventTeamId = queryParamAsString(req.query.eventTeamId)
             let isCaptain = parseInt(queryParamAsString(req.query.c)) === 1
 
             if (!session) {
@@ -23,34 +26,40 @@ export default async function handler(req, res) {
             else {
                 const team: Team = await prisma.team.findUnique({
                     where: {
-                        id: queryParamAsString(req.query.testTeamId),
+                        id: testTeamId,
                     },
                     include: {
                         team_members: true
                     }
                 })
 
-                if(team.team_members.find(m => m.member_type === TeamMemberType.CAPTAIN)) {
-                    isCaptain = false
+                if (team.team_members.find(m => m.user_id === userId) || team.team_members.length === 3) {
+                    res.status(400).json(`You have already joined ${team.name} or the team is full`)
                 }
 
-                await prisma.teamMember.create({
-                    data: {
-                        member_type: isCaptain ? TeamMemberType.CAPTAIN : TeamMemberType.MEMBER,
-                        team_id: queryParamAsString(req.query.testTeamId),
-                        user_id: getUserId(req, res),
+                else {
+                    if (team.team_members.find(m => m.member_type === TeamMemberType.CAPTAIN)) {
+                        isCaptain = false
                     }
-                })
 
-                await prisma.teamMember.create({
-                    data: {
-                        member_type: isCaptain ? TeamMemberType.CAPTAIN : TeamMemberType.MEMBER,
-                        team_id: queryParamAsString(req.query.eventTeamId),
-                        user_id: getUserId(req, res),
-                    }
-                })
+                    await prisma.teamMember.create({
+                        data: {
+                            member_type: isCaptain ? TeamMemberType.CAPTAIN : TeamMemberType.MEMBER,
+                            team_id: testTeamId,
+                            user_id: userId,
+                        }
+                    })
 
-                res.status(200).json(`You've joined ${team.name} as ${isCaptain ? 'the ' + TeamMemberType.CAPTAIN.toLowerCase() : 'a ' + TeamMemberType.MEMBER.toLowerCase()}! You can close this now :)`)
+                    await prisma.teamMember.create({
+                        data: {
+                            member_type: isCaptain ? TeamMemberType.CAPTAIN : TeamMemberType.MEMBER,
+                            team_id: eventTeamId,
+                            user_id: userId,
+                        }
+                    })
+
+                    res.status(200).json(`You've joined ${team.name} as ${isCaptain ? 'the ' + TeamMemberType.CAPTAIN.toLowerCase() : 'a ' + TeamMemberType.MEMBER.toLowerCase()}! You can close this now :)`)
+                }
             }
             break
 
