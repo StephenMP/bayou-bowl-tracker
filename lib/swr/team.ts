@@ -4,7 +4,7 @@ import { Team } from "../../types/prisma"
 import { routes } from "../../util/routes"
 
 
-export function useUserTeamForEvent(eventId: string, userId: string, options?: SWRConfiguration) {
+export function useUserTeamForEventAndUser(eventId: string, userId: string, options?: SWRConfiguration) {
     const { data, error } = useSWR<Team>(routes.api.event.eventId.team.userId(eventId, userId), fetcher, options)
 
     return {
