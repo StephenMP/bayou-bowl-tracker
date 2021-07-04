@@ -87,5 +87,5 @@ export function queryParamAsString(param: string | string[]): string {
         return typeof param === 'string' ? param : param[0]
     }
 
-    return ''
+    return null
 }

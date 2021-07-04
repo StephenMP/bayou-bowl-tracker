@@ -1,4 +1,3 @@
-import { withApiAuthRequired } from '@auth0/nextjs-auth0';
 import prisma from '../../../lib/prisma';
 import { queryParamAsString } from '../../../util/routes';
 
@@ -14,7 +13,7 @@ async function getEventById(id: string) {
     })
 }
 
-export default withApiAuthRequired(async function handler(req, res) {
+export default async function handler(req, res) {
     switch (req.method) {
         case 'GET':
             const { eventId } = req.query
@@ -35,4 +34,4 @@ export default withApiAuthRequired(async function handler(req, res) {
             res.status(405).end()
             break
     }
-})
+}

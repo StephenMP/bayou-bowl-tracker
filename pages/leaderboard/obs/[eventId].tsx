@@ -26,13 +26,20 @@ function calculateScore(eventScore: EventScoreByTeam) {
     return calculateKillScore(eventScore.kills) + calculateBountyScore(eventScore.bounties)
 }
 
-function Page({ eventId }: { eventId: string }) {
+type PageProps = {
+    eventId: string,
+    take: number
+}
+
+function Page({ eventId, take }: PageProps) {
     const { event, isLoading: eventIsLoading } = useEvent(eventId)
-    const { eventScoresByTeam, isLoading: scoresAreLoading } = useEventScoreForEventByTeam(eventId, { refreshInterval: 1000 })
+    const { eventScoresByTeam, isLoading: scoresAreLoading } = useEventScoreForEventByTeam(eventId, { refreshInterval: 5000 })
 
     if (eventIsLoading || scoresAreLoading) {
         return (<Spinner light={false} />)
     }
+
+    const sortedEventScoresByTeam = eventScoresByTeam?.sort(firstBy('totalScore', 'desc').thenBy('totalRounds').thenBy('kills', 'desc').thenBy('bounties', 'desc')).slice(0, take)
 
     return (
         <div className="flex flex-wrap max-w-5xl mt-4">
@@ -41,8 +48,8 @@ function Page({ eventId }: { eventId: string }) {
                 <div className="rounded-t mb-0 px-4 py-3 border-0">
                     <div className="flex flex-wrap items-center">
                         <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                            <h3 className="font-semibold text-lg text-blueGray-200" >
-                                {event.name + ' Leaderboards'}
+                            <h3 className="font-semibold text-lg text-blueGray-200 text-center" >
+                                {`${event.name} Top ${take} Teams`}
                             </h3>
                         </div>
                     </div>
@@ -52,45 +59,45 @@ function Page({ eventId }: { eventId: string }) {
                     <table className="items-center w-full bg-transparent border-collapse bg-blueGray-700">
                         <thead>
                             <tr>
-                                <th className="px-6 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-3 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Place
                                 </th>
-                                <th className="px-6 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-3 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Team
                                 </th>
-                                <th className="px-6 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-3 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Kills
                                 </th>
-                                <th className="px-6 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-3 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Bounties
                                 </th>
-                                <th className="px-6 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
-                                    Games Played
+                                <th className="px-3 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                    Games
                                 </th>
-                                <th className="px-6 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-3 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Score
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            {eventScoresByTeam?.sort(firstBy('totalScore', 'desc').thenBy('totalRounds').thenBy('kills', 'desc').thenBy('bounties', 'desc')).map((score, index) =>
+                            {sortedEventScoresByTeam.map((score, index) =>
                                 <tr key={score.teamId}>
-                                    <td className="border-t-0 px-6 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
                                         {index + 1}
                                     </td>
-                                    <td className="border-t-0 px-6 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
                                         {score.teamName}
                                     </td>
-                                    <td className="border-t-0 px-6 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
                                         {score.kills}
                                     </td>
-                                    <td className="border-t-0 px-6 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
                                         {score.bounties}
                                     </td>
-                                    <td className="border-t-0 px-6 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
                                         {score.totalRounds}
                                     </td>
-                                    <td className="border-t-0 px-6 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
                                         {score.totalScore}
                                     </td>
                                 </tr>
@@ -106,6 +113,7 @@ function Page({ eventId }: { eventId: string }) {
 const EventPage = () => {
     const router = useRouter()
     const eventId = queryParamAsString(router.query.eventId)
+    const take = queryParamAsString(router.query.take) ?? '10'
 
     useEffect(() => {
         document.body.classList.remove('bg-blueGray-200')
@@ -114,7 +122,7 @@ const EventPage = () => {
 
     return (
         <div className="flex justify-center">
-            <Page eventId={eventId} />
+            <Page eventId={eventId} take={parseInt(take)} />
         </div>
     )
 }

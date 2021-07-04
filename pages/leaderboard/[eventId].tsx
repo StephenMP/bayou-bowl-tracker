@@ -39,6 +39,15 @@ function Page({ eventId }: { eventId: string }) {
         <div className="flex flex-wrap w-full mt-4 mr-3 ml-3">
             <div className="w-full mb-12 px-4"></div>
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white" >
+                <div className="rounded-t mb-0 px-4 py-3 border-0">
+                    <div className="flex flex-wrap items-center">
+                        <div className="relative w-full px-4 max-w-full flex-grow flex-1">
+                            <h3 className="font-semibold text-md text-blueGray-600 text-center" >
+                                Scores are automatically updated
+                            </h3>
+                        </div>
+                    </div>
+                </div>
                 <div className="block w-full overflow-x-auto">
                     {/* Projects table */}
                     <table className="items-center w-full bg-transparent border-collapse">
