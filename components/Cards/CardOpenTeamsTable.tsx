@@ -25,13 +25,21 @@ function AllTeams({ color }) {
       <div className="rounded-t mb-0 px-4 py-3 border-0">
         <div className="flex flex-wrap items-center">
           <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-            <h3
-              className={
-                "font-semibold text-lg " +
-                (color === "light" ? "text-blueGray-700" : "text-white")
-              }
-            >
+            <h3 className={"font-semibold text-lg " + (color === "light" ? "text-blueGray-700" : "text-white")}>
               Total Teams: {teams.length}
+              <br />
+            </h3>
+            <h3 className={"font-semibold text-lg " + (color === "light" ? "text-blueGray-700" : "text-white")}>
+              Completed Teams: {teams.filter(t => t.team_members.length === 3).length}
+              <br />
+            </h3>
+            <h3 className={"font-semibold text-lg " + (color === "light" ? "text-blueGray-700" : "text-white")}>
+              Missing Captain: {teams.filter(t => t.team_members.length === 0).length}
+              <br />
+            </h3>
+
+            <h3 className={"font-semibold text-lg " + (color === "light" ? "text-blueGray-700" : "text-white")}>
+              Missing Members: {teams.filter(t => t.team_members.length < 3).length}
               <br />
             </h3>
           </div>
@@ -90,10 +98,10 @@ function AllTeams({ color }) {
                   </span>
                 </th>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {users.find(u => u.id === team.team_members.find(t => t.member_type === TeamMemberType.CAPTAIN)?.user_id)?.name}
+                  {users.find(u => u.id === team.team_members.find(t => t.member_type === TeamMemberType.CAPTAIN)?.user_id)?.name}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {users.filter(u => team.team_members.find(t => t.user_id === u.id && t.member_type !== TeamMemberType.CAPTAIN)).map(u => u.name).join(', ')}
+                  {users.filter(u => team.team_members.find(t => t.user_id === u.id && t.member_type !== TeamMemberType.CAPTAIN)).map(u => u.name).join(', ')}
                 </td>
               </tr>
             )}

@@ -25,13 +25,21 @@ function AllTeams({ color }) {
       <div className="rounded-t mb-0 px-4 py-3 border-0">
         <div className="flex flex-wrap items-center">
           <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-            <h3
-              className={
-                "font-semibold text-lg " +
-                (color === "light" ? "text-blueGray-700" : "text-white")
-              }
-            >
+            <h3 className={"font-semibold text-lg " + (color === "light" ? "text-blueGray-700" : "text-white")}>
               Total Teams: {teams.length}
+              <br />
+            </h3>
+            <h3 className={"font-semibold text-lg " + (color === "light" ? "text-blueGray-700" : "text-white")}>
+              Completed Teams: {teams.filter(t => t.team_members.length === 3).length}
+              <br />
+            </h3>
+            <h3 className={"font-semibold text-lg " + (color === "light" ? "text-blueGray-700" : "text-white")}>
+              Missing Captain: {teams.filter(t => t.team_members.length === 0).length}
+              <br />
+            </h3>
+
+            <h3 className={"font-semibold text-lg " + (color === "light" ? "text-blueGray-700" : "text-white")}>
+              Missing Members: {teams.filter(t => t.team_members.length < 3).length}
               <br />
             </h3>
           </div>
