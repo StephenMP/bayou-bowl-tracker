@@ -1,5 +1,6 @@
 import { UserProvider } from '@auth0/nextjs-auth0';
 import React from "react";
+import CookieConsent from 'react-cookie-consent';
 import { ToastProvider } from 'react-toast-notifications';
 import { RecoilRoot } from 'recoil';
 import Header from "../components/Headers/Header";
@@ -20,6 +21,24 @@ export default function Admin({ children }) {
           </div>
         </ToastProvider>
       </UserProvider>
+      <CookieConsent
+        location="bottom"
+        buttonText="I UNDERSTAND"
+        cookieName="bayoubowlCookieConsent"
+        style={{ background: "#2B373B" }}
+        buttonStyle={{ background: '#e4e4e7', color: "#000", fontSize: "13px" }}
+        expires={150}
+      >
+        This website uses cookies to enhance the user experience.
+        <br />
+        <a
+          href="https://www.freeprivacypolicy.com/live/87f9752a-671b-4179-866f-654a4ef87db8"
+          target='_blank'
+          className="text-blueGray-500 hover:text-blueGray-800"
+        >
+          Our Privacy Policy
+        </a>{" "}
+      </CookieConsent>
     </RecoilRoot>
   );
 }
