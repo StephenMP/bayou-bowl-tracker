@@ -137,7 +137,7 @@ const Sidebar = withPageAuthRequired(() => {
                       }
                       >
                         <i className={
-                          "fas fa-calendar-alt mr-2 text-sm " +
+                          "fas fa-sitemap mr-2 text-sm " +
                           (router.pathname.indexOf(routes.admin.events) !== -1
                             ? "opacity-75"
                             : "text-blueGray-500")
@@ -157,7 +157,7 @@ const Sidebar = withPageAuthRequired(() => {
                       }
                       >
                         <i className={
-                          "fas fa-calendar-alt mr-2 text-sm " +
+                          "fas fa-user mr-2 text-sm " +
                           (router.pathname.indexOf(routes.admin.users) !== -1
                             ? "opacity-75"
                             : "text-blueGray-500")
@@ -177,7 +177,7 @@ const Sidebar = withPageAuthRequired(() => {
                       }
                       >
                         <i className={
-                          "fas fa-calendar-alt mr-2 text-sm " +
+                          "fas fa-users mr-2 text-sm " +
                           (router.pathname.endsWith(routes.admin.teams.index)
                             ? "opacity-75"
                             : "text-blueGray-500")
@@ -197,7 +197,7 @@ const Sidebar = withPageAuthRequired(() => {
                       }
                       >
                         <i className={
-                          "fas fa-calendar-alt mr-2 text-sm " +
+                          "fas fa-users mr-2 text-sm " +
                           (router.pathname.indexOf(routes.admin.teams.open) !== -1
                             ? "opacity-75"
                             : "text-blueGray-500")
@@ -217,7 +217,7 @@ const Sidebar = withPageAuthRequired(() => {
                       }
                       >
                         <i className={
-                          "fas fa-calendar-alt mr-2 text-sm " +
+                          "fas fa-users mr-2 text-sm " +
                           (router.pathname.indexOf(routes.admin.teams.seeded) !== -1
                             ? "opacity-75"
                             : "text-blueGray-500")
