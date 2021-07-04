@@ -520,7 +520,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            <strong>Scrapbeak for Mayor</strong><br />- Hobomasta<br />- Kevinbacon_<br />- HawaiianPunch
+                            <strong>Scrapbeak for Mayor</strong><br />- Hobomasta<br />- Kevinbacon_<br />- AdmiralSC
                           </h4>
                         </div>
                       </div>
@@ -688,7 +688,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            <strong>High Packet Loss</strong><br />- EnolaLugosi<br />- CuddlePhish<br />- JimmyKerrigan
+                            <strong>High Packet Loss</strong><br />- EnolaLugosi<br />- CuddlePhish<br />- Xade
                           </h4>
                         </div>
                       </div>
