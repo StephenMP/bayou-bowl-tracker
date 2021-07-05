@@ -261,7 +261,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            <strong>Hurkák</strong><br />- d_o_p_e_<br />- AKA_J_J<br />- PapaLikvid
+                            <strong>Hurkák</strong><br />- d_o_p_e_<br />- JJ<br />- Likvid
                           </h4>
                         </div>
                       </div>
