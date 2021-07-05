@@ -219,6 +219,10 @@ function UserScoreInput({ teamMember, formState }: { teamMember: TeamMember, for
     const [form, setForm] = formState
 
     const handleScoreChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if(!e.target.value) {
+            e.target.value = '0'
+        }
+        
         let newMemberKills = parseInt(e.target.value)
         let sum = 0
 
@@ -289,7 +293,17 @@ function Page({ eventId }: { eventId: string }) {
     const { addToast, updateToast } = useToasts();
 
     const handleBountyChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        if(!e.target.value) {
+            e.target.value = '0'
+        }
+
         const newBounties = parseInt(e.target.value)
+        if(newBounties > 4) {
+            alert('Max bounties is 4')
+            e.target.value = '0'
+            return
+        }
+
         const newForm: AddScoreForm = {
             bounties: newBounties,
             killsByMember: addScoreForm.killsByMember,
