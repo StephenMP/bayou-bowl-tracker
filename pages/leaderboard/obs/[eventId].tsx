@@ -58,22 +58,22 @@ function Page({ eventId, take }: PageProps) {
                     <table className="items-center w-full bg-transparent border-collapse bg-blueGray-700">
                         <thead>
                             <tr>
-                                <th className="px-3 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-3 align-middle border border-solid py-1 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Place
                                 </th>
-                                <th className="px-3 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-3 align-middle border border-solid py-1 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Team
                                 </th>
-                                <th className="px-3 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-3 align-middle border border-solid py-1 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Kills
                                 </th>
-                                <th className="px-3 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-3 align-middle border border-solid py-1 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Bounties
                                 </th>
-                                <th className="px-3 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-3 align-middle border border-solid py-1 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Games
                                 </th>
-                                <th className="px-3 align-middle border border-solid py-3 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
+                                <th className="px-3 align-middle border border-solid py-1 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                                     Score
                                 </th>
                             </tr>
@@ -81,22 +81,22 @@ function Page({ eventId, take }: PageProps) {
                         <tbody>
                             {sortedEventScoresByTeam.map((score, index) =>
                                 <tr key={score.teamId}>
-                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-2">
                                         {index + 1}
                                     </td>
-                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-2">
                                         {score.teamName}
                                     </td>
-                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-2">
                                         {score.kills}
                                     </td>
-                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-2">
                                         {score.bounties}
                                     </td>
-                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-2">
                                         {score.totalRounds}
                                     </td>
-                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-4">
+                                    <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-2">
                                         {score.totalScore}
                                     </td>
                                 </tr>
