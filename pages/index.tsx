@@ -1,3 +1,4 @@
+import Plyr from 'plyr-react';
 import React from "react";
 import CookieConsent from "react-cookie-consent";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
@@ -29,6 +30,27 @@ const renderTime = (dimension, time) => {
     </div>
   );
 };
+
+const videoOpts: Plyr.Options = {
+  ads: { enabled: false, publisherId: '' },
+  hideControls: true
+}
+
+const videoSrc2: Plyr.SourceInfo = {
+  type: "video",
+  sources: [
+    {
+      src: "--qrNHvfcSs",
+      size: 720,
+      provider: 'youtube'
+    }
+  ]
+};
+
+const plyrStyle: React.CSSProperties = {
+  height: 500,
+  width: 500
+}
 
 export default function Landing() {
   const startTime = Date.now() / 1000
@@ -201,24 +223,26 @@ export default function Landing() {
                   Latest News
                 </h3>
                 <h6 className="text-lg mb-2 font-semibold leading-normal">
-                  The Official Bayou Bowl II team lists for Seeded and Open Tiers are released
+                  You Can Now Practice Entering Scores
                 </h6>
                 <h6 className="text-sm mb-2 font-semibold leading-normal">
-                  28 June 2021
+                  5 July 2021
                 </h6>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  With 65 teams applying, the official Bayou Bowl II team lists are now out. Head to <strong><a href="https://bayoubowl.gg/teams">bayoubowl.gg/teams</a></strong> for the full list. The team list features several well-known hunters and content creators from the Hunt: Showdown community and many newcomers. The team list is broken into two-tiers: a seeded-tier of high-skill players with a maximum of 20 teams and an open-tier of various-skill players with unlimited teams.
+                  As we approach competition day, we want to make sure that everyone is comfortable using the system for entering scores. This is why we have opened a test event and are now allowing team captains to enter scores for the test event.
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  Bayou Bowl II begins on Saturday, 17 July 2021 at Noon Eastern time and is gearing up to be the most exciting competition yet. Good luck to all the competitors!
+                  The test event is exactly that, a test. No scores entered in the test event will count towards the actual Bayou Bowl II tournament.
+                </p>
+                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
+                  For info on how to enter scores, please watch the video <strong><a href="https://youtu.be/--qrNHvfcSs">here</a></strong>.
                 </p>
                 <p>
                   <a href={routes.news}>Read More News</a>
                 </p>
               </div>
-
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <img src="/img/news/Official_Team_List_is_Out.png" />
+                <Plyr source={videoSrc2} options={videoOpts} style={plyrStyle} />
               </div>
             </div>
           </div>
@@ -562,23 +586,23 @@ export default function Landing() {
 
       </main>
       <CookieConsent
-          location="bottom"
-          buttonText="I UNDERSTAND"
-          cookieName="bayoubowlCookieConsent"
-          style={{ background: "#2B373B" }}
-          buttonStyle={{ background: '#e4e4e7', color: "#000", fontSize: "13px" }}
-          expires={150}
+        location="bottom"
+        buttonText="I UNDERSTAND"
+        cookieName="bayoubowlCookieConsent"
+        style={{ background: "#2B373B" }}
+        buttonStyle={{ background: '#e4e4e7', color: "#000", fontSize: "13px" }}
+        expires={150}
+      >
+        This website uses cookies to enhance the user experience.
+        <br />
+        <a
+          href="https://www.freeprivacypolicy.com/live/87f9752a-671b-4179-866f-654a4ef87db8"
+          target='_blank'
+          className="text-blueGray-500 hover:text-blueGray-800"
         >
-          This website uses cookies to enhance the user experience.
-          <br />
-          <a
-            href="https://www.freeprivacypolicy.com/live/87f9752a-671b-4179-866f-654a4ef87db8"
-            target='_blank'
-            className="text-blueGray-500 hover:text-blueGray-800"
-          >
-            Our Privacy Policy
-          </a>{" "}
-        </CookieConsent>
+          Our Privacy Policy
+        </a>{" "}
+      </CookieConsent>
       <Footer />
     </>
   );

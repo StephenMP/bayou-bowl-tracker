@@ -20,6 +20,17 @@ export default function Landing() {
     ]
   };
 
+  const videoSrc2: Plyr.SourceInfo = {
+    type: "video",
+    sources: [
+      {
+        src: "--qrNHvfcSs",
+        size: 720,
+        provider: 'youtube'
+      }
+    ]
+  };
+
   const plyrStyle: React.CSSProperties = {
     height: 500,
     width: 500
@@ -58,6 +69,31 @@ export default function Landing() {
         </div>
 
         <section id="news" className="pb-20 bg-blueGray-200 -mt-24">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap items-center mt-32">
+              <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
+                <h6 className="text-lg mb-2 font-semibold leading-normal">
+                  You Can Now Practice Entering Scores
+                </h6>
+                <h6 className="text-sm mb-2 font-semibold leading-normal">
+                  5 July 2021
+                </h6>
+                <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+                  As we approach competition day, we want to make sure that everyone is comfortable using the system for entering scores. This is why we have opened a test event and are now allowing team captains to enter scores for the test event.
+                </p>
+                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
+                  The test event is exactly that, a test. No scores entered in the test event will count towards the actual Bayou Bowl II tournament.
+                </p>
+                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
+                  For info on how to enter scores, please watch the video <strong><a href="https://youtu.be/--qrNHvfcSs">here</a></strong>.
+                </p>
+              </div>
+              <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
+                <Plyr source={videoSrc2} options={videoOpts} style={plyrStyle} />
+              </div>
+            </div>
+          </div>
+
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
@@ -150,7 +186,6 @@ export default function Landing() {
                   For more information regarding the Bayou Bowl II tournament please watch the following video.
                 </p>
               </div>
-
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
                 <Plyr source={videoSrc} options={videoOpts} style={plyrStyle} />
               </div>
