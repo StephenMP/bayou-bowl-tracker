@@ -1,5 +1,6 @@
 import useSWR, { SWRConfiguration } from "swr"
 import { fetcher } from "."
+import { BB2LeaderboardScores } from "../../pages/api/leaderboard/bb2"
 import { EventScore } from "../../types/prisma"
 import { routes } from "../../util/routes"
 
@@ -27,6 +28,16 @@ export function useEventScoreForTeam(teamId: string, options?: SWRConfiguration)
 
     return {
         eventScores: data,
+        error: error,
+        isLoading: !error && !data,
+    }
+}
+
+export function useEventScoresForBB2(options?: SWRConfiguration) {
+    const { data, error } = useSWR<BB2LeaderboardScores>(routes.api.event_scores.bb2, fetcher, options)
+
+    return {
+        bb2EventScores: data,
         error: error,
         isLoading: !error && !data,
     }

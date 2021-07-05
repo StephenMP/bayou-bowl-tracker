@@ -107,7 +107,7 @@ export default function CardEvent({ event }: { event: Event }) {
           <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
             <React.Suspense fallback={<Spinner light={true} />}>
               {teams.find(ut => ut.event_id === event.id) ? <GoToEventPage eventId={event.id} /> : <></>}
-              <a href={`/leaderboard/${event.id}`} target='_blank'>
+              <a href={routes.leaderboard.eventId(event.id)} target='_blank'>
                 <button
                   className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                 >

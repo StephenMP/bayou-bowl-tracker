@@ -40,10 +40,11 @@ export const routes = {
             team: {
                 teamId: (teamId: string) => `/api/event-scores/team/${teamId}`
             },
-            index: '/api/event-scores'
+            index: '/api/event-scores',
+            bb2: '/api/leaderboard/bb2',
         },
         leaderboard: {
-            eventId: (eventId: string) => `/api/leaderboard/${eventId}`
+            eventId: (eventId: string) => `/api/leaderboard/${eventId}`,
         },
         team: {
             teamId: (teamId: string) => `/api/team/${teamId}`
@@ -65,7 +66,8 @@ export const routes = {
         obs: {
             eventId: (eventId: string) => `/leaderboard/obs/${eventId}`,
         },
-        eventId: (eventId: string) => `/leaderboard/obs/${eventId}`
+        eventId: (eventId: string) => `/leaderboard/${eventId}`,
+        bb2: `/leaderboard/bb2`
     },
     team: {
         teamId: (teamId: string) => `/team/${teamId}`

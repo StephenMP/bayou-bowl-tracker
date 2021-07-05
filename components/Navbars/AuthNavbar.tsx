@@ -114,6 +114,15 @@ export default function Navbar() {
                 </Link>
               </li>
 
+              {new Date().getDate() === new Date(2021, 6, 17).getDate() ?
+                <li className="flex items-center">
+                  <Link href={routes.leaderboard.bb2}>
+                    <a className={navLinkClassName} >
+                      BB2 Leaderboards
+                    </a>
+                  </Link>
+                </li> : <></>}
+
               {/* <li className="flex items-center">
                 <Link href="#partners">
                   <a className={navLinkClassName} >
