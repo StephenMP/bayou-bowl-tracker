@@ -14,16 +14,17 @@ export default async function handler(req, res) {
     switch (req.method) {
         case 'GET':
             const session = getSession(req, res)
-            const userId = getUserId(req, res)
-            const testTeamId = queryParamAsString(req.query.testTeamId)
-            const eventTeamId = queryParamAsString(req.query.eventTeamId)
-            let isCaptain = parseInt(queryParamAsString(req.query.c)) === 1
 
             if (!session) {
                 res.status(401).json('You need to sign in at https://bayoubowl.gg first, then click the link again')
             }
 
             else {
+                const userId = getUserId(req, res)
+                const testTeamId = queryParamAsString(req.query.testTeamId)
+                const eventTeamId = queryParamAsString(req.query.eventTeamId)
+                let isCaptain = parseInt(queryParamAsString(req.query.c)) === 1
+
                 const team: Team = await prisma.team.findUnique({
                     where: {
                         id: testTeamId,
