@@ -1,6 +1,7 @@
 import { TeamMemberType } from "@prisma/client";
 import PropTypes from "prop-types";
 import React, { Suspense } from "react";
+import { firstBy } from "thenby";
 import { useTeamsForEvent } from "../../lib/swr";
 import { useAllUsers } from "../../lib/swr/users";
 import Spinner from "../PageChange/Spinner";
@@ -85,7 +86,7 @@ function AllTeams({ color }) {
             </tr>
           </thead>
           <tbody>
-            {teams.map(team =>
+            {teams.sort(firstBy('name')).map(team =>
               <tr key={team.id}>
                 <th className="border-t-0 px-2 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <span

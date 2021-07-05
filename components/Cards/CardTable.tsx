@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Suspense } from "react";
 import { useToasts } from "react-toast-notifications";
+import { firstBy } from "thenby";
 import { useAllUsers } from "../../lib/swr/users";
 import Spinner from "../PageChange/Spinner";
 
@@ -111,7 +112,7 @@ function AllUsers({ color }) {
             </tr>
           </thead>
           <tbody>
-            {users.map(user =>
+            {users.sort(firstBy('name')).map(user =>
               <tr key={user.id}>
                 <th className="border-t-0 px-2 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img
