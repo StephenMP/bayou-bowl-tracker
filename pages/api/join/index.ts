@@ -10,13 +10,13 @@ function getUserId(req: NextApiRequest, res: NextApiResponse): string {
     return userIdFromAuth0Sub(session.user.sub)
 }
 
-export default async function handler(req, res) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     switch (req.method) {
         case 'GET':
             const session = getSession(req, res)
 
             if (!session) {
-                res.status(401).json('You need to sign in at https://bayoubowl.gg first, then click the link again')
+                res.status(401).json({ message: 'You need to sign in at https://bayoubowl.gg first, then click the link again' })
             }
 
             else {
@@ -35,7 +35,7 @@ export default async function handler(req, res) {
                 })
 
                 if (team.team_members.find(m => m.user_id === userId) || team.team_members.length === 3) {
-                    res.status(400).json(`You have already joined ${team.name} or the team is full`)
+                    res.status(400).json({ message: `You have already joined ${team.name} or the team is full` })
                 }
 
                 else {
@@ -59,7 +59,7 @@ export default async function handler(req, res) {
                         }
                     })
 
-                    res.status(200).json(`You've joined ${team.name} as ${isCaptain ? 'the ' + TeamMemberType.CAPTAIN.toLowerCase() : 'a ' + TeamMemberType.MEMBER.toLowerCase()}! You can close this now :)`)
+                    res.status(200).json({ message: `You've joined ${team.name} as ${isCaptain ? 'the ' + TeamMemberType.CAPTAIN.toLowerCase() : 'a ' + TeamMemberType.MEMBER.toLowerCase()}! You can close this now :)` })
                 }
             }
             break
