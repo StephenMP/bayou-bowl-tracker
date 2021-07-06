@@ -18,9 +18,9 @@ const UserEvents = withPageAuthRequired(() => {
   return (
     <div className="flex flex-wrap">
       {events.sort(firstBy('startDate')).filter(e => e.isActive).map((event) =>
-        <React.Suspense fallback={<Spinner light={true} />} >
-          <div className="w-full lg:w-4/12 px-4">
-            <CardEvent key={event.id} event={event} />
+        <React.Suspense  key={`suspense-${event.id}`} fallback={<Spinner light={true} />} >
+          <div key={event.id} className="w-full lg:w-4/12 px-4">
+            <CardEvent event={event} />
           </div>
         </React.Suspense>
       )}

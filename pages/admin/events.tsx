@@ -85,8 +85,6 @@ function EventCard({ eventId }: { eventId: string }) {
 const AdminEvents = withPageAuthRequired(() => {
   const { events, isLoading } = useEvents()
 
-  console.log('rerender')
-
   if (isLoading) {
     return (
       <Spinner light={true} />
@@ -97,9 +95,9 @@ const AdminEvents = withPageAuthRequired(() => {
     <>
       <div className="flex flex-wrap">
         <React.Suspense fallback={<Spinner light={true} />}>
-        {events.sort(firstBy('startDate')).map((event) =>
-            <div className="w-full lg:w-4/12 px-4">
-              <EventCard key={event.id} eventId={event.id} />
+          {events.sort(firstBy('startDate')).map((event) =>
+            <div key={event.id} className="w-full lg:w-4/12 px-4">
+              <EventCard eventId={event.id} />
             </div>
           )}
         </React.Suspense>
