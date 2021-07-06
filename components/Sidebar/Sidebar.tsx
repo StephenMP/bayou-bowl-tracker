@@ -76,6 +76,7 @@ const Sidebar = withPageAuthRequired(() => {
               <li className="items-center">
                 <Link href={routes.user.profile}>
                   <a
+                    onClick={() => setCollapseShow("hidden")}
                     className={
                       "text-xs uppercase py-3 font-bold block " +
                       (router.pathname.indexOf(routes.user.profile) !== -1
@@ -99,6 +100,7 @@ const Sidebar = withPageAuthRequired(() => {
               <li className="items-center">
                 <Link href={routes.user.events}>
                   <a
+                    onClick={() => setCollapseShow("hidden")}
                     className={
                       "text-xs uppercase py-3 font-bold block " +
                       (router.pathname.indexOf(routes.user.events) !== -1
@@ -129,12 +131,14 @@ const Sidebar = withPageAuthRequired(() => {
                 <ul className="md:flex-col md:min-w-full flex flex-col list-none">
                   <li className="items-center">
                     <Link href={routes.admin.events}>
-                      <a className={
-                        "text-xs uppercase py-3 font-bold block " +
-                        (router.pathname.indexOf(routes.admin.events) !== -1
-                          ? "text-lightBlue-500 hover:text-lightBlue-600"
-                          : "text-blueGray-700 hover:text-blueGray-500")
-                      }
+                      <a
+                        onClick={() => setCollapseShow("hidden")}
+                        className={
+                          "text-xs uppercase py-3 font-bold block " +
+                          (router.pathname.indexOf(routes.admin.events) !== -1
+                            ? "text-lightBlue-500 hover:text-lightBlue-600"
+                            : "text-blueGray-700 hover:text-blueGray-500")
+                        }
                       >
                         <i className={
                           "fas fa-sitemap mr-2 text-sm " +
@@ -149,12 +153,14 @@ const Sidebar = withPageAuthRequired(() => {
                   </li>
                   <li className="items-center">
                     <Link href={routes.admin.users}>
-                      <a className={
-                        "text-xs uppercase py-3 font-bold block " +
-                        (router.pathname.indexOf(routes.admin.users) !== -1
-                          ? "text-lightBlue-500 hover:text-lightBlue-600"
-                          : "text-blueGray-700 hover:text-blueGray-500")
-                      }
+                      <a
+                        onClick={() => setCollapseShow("hidden")}
+                        className={
+                          "text-xs uppercase py-3 font-bold block " +
+                          (router.pathname.indexOf(routes.admin.users) !== -1
+                            ? "text-lightBlue-500 hover:text-lightBlue-600"
+                            : "text-blueGray-700 hover:text-blueGray-500")
+                        }
                       >
                         <i className={
                           "fas fa-user mr-2 text-sm " +
@@ -169,12 +175,14 @@ const Sidebar = withPageAuthRequired(() => {
                   </li>
                   <li className="items-center">
                     <Link href={routes.admin.teams.index}>
-                      <a className={
-                        "text-xs uppercase py-3 font-bold block " +
-                        (router.pathname.endsWith(routes.admin.teams.index)
-                          ? "text-lightBlue-500 hover:text-lightBlue-600"
-                          : "text-blueGray-700 hover:text-blueGray-500")
-                      }
+                      <a
+                        onClick={() => setCollapseShow("hidden")}
+                        className={
+                          "text-xs uppercase py-3 font-bold block " +
+                          (router.pathname.endsWith(routes.admin.teams.index)
+                            ? "text-lightBlue-500 hover:text-lightBlue-600"
+                            : "text-blueGray-700 hover:text-blueGray-500")
+                        }
                       >
                         <i className={
                           "fas fa-users mr-2 text-sm " +
@@ -189,12 +197,14 @@ const Sidebar = withPageAuthRequired(() => {
                   </li>
                   <li className="items-center">
                     <Link href={routes.admin.teams.open}>
-                      <a className={
-                        "text-xs uppercase py-3 font-bold block " +
-                        (router.pathname.indexOf(routes.admin.teams.open) !== -1
-                          ? "text-lightBlue-500 hover:text-lightBlue-600"
-                          : "text-blueGray-700 hover:text-blueGray-500")
-                      }
+                      <a
+                        onClick={() => setCollapseShow("hidden")}
+                        className={
+                          "text-xs uppercase py-3 font-bold block " +
+                          (router.pathname.indexOf(routes.admin.teams.open) !== -1
+                            ? "text-lightBlue-500 hover:text-lightBlue-600"
+                            : "text-blueGray-700 hover:text-blueGray-500")
+                        }
                       >
                         <i className={
                           "fas fa-users mr-2 text-sm " +
@@ -209,12 +219,14 @@ const Sidebar = withPageAuthRequired(() => {
                   </li>
                   <li className="items-center">
                     <Link href={routes.admin.teams.seeded}>
-                      <a className={
-                        "text-xs uppercase py-3 font-bold block " +
-                        (router.pathname.indexOf(routes.admin.teams.seeded) !== -1
-                          ? "text-lightBlue-500 hover:text-lightBlue-600"
-                          : "text-blueGray-700 hover:text-blueGray-500")
-                      }
+                      <a
+                        onClick={() => setCollapseShow("hidden")}
+                        className={
+                          "text-xs uppercase py-3 font-bold block " +
+                          (router.pathname.indexOf(routes.admin.teams.seeded) !== -1
+                            ? "text-lightBlue-500 hover:text-lightBlue-600"
+                            : "text-blueGray-700 hover:text-blueGray-500")
+                        }
                       >
                         <i className={
                           "fas fa-users mr-2 text-sm " +
