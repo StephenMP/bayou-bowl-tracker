@@ -54,7 +54,7 @@ export default function Landing() {
                         </div>
                         <div>
                           <h4 className="text-blueGray-200">
-                            Have each member of your team go to <strong><a href="https://bayoubowl.gg" >bayoubowl.gg</a></strong> and click on the register/sign in button in the top right corner (if on mobile, click on the hamburger icon in the top left).
+                            Have each member of your team go to <strong><a href="https://bayoubowl.gg" >bayoubowl.gg</a></strong> and click on the register/sign in button in the top right corner (if on mobile, click on the hamburger icon).
                           </h4>
                         </div>
                       </div>
