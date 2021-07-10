@@ -1,8 +1,7 @@
-import { withApiAuthRequired } from '@auth0/nextjs-auth0';
 import { readUser } from '../../../repositories/user';
 import { queryParamAsString } from '../../../util/routes';
 
-export default withApiAuthRequired(async function handler(req, res) {
+export default async function handler(req, res) {
     switch (req.method) {
         case 'GET':
             const userId = queryParamAsString(req.query.userId)
@@ -15,4 +14,4 @@ export default withApiAuthRequired(async function handler(req, res) {
             res.status(405).end()
             break
     }
-})
+}

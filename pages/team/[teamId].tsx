@@ -24,6 +24,8 @@ function TeamCard({ teamMember }: { teamMember: TeamMember }) {
           <div className="w-full px-4 lg:order-2 flex justify-center">
             <div className="flex justify-center">
               <img
+                height={110}
+                width={110}
                 src={user.picture}
                 className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
               />
