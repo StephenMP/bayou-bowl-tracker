@@ -1,4 +1,3 @@
-import Plyr from 'plyr-react';
 import React from "react";
 import CookieConsent from "react-cookie-consent";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
@@ -223,26 +222,26 @@ export default function Landing() {
                   Latest News
                 </h3>
                 <h6 className="text-lg mb-2 font-semibold leading-normal">
-                  You Can Now Practice Entering Scores
+                  Teams Page Is Now Data Driven
                 </h6>
                 <h6 className="text-sm mb-2 font-semibold leading-normal">
-                  5 July 2021
+                  12 July 2021
                 </h6>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  As we approach competition day, we want to make sure that everyone is comfortable using the system for entering scores. This is why we have opened a test event and are now allowing team captains to enter scores for the test event.
+                  The list of teams at <strong><a href="https://bayoubowl.gg/teams">bayoubowl.gg/teams</a></strong> is now 100% data driven based on the data we have in our system.
+                </p>
+                <p className="text-lg font-light leading-relaxres enteed mt-0 mb-4 text-blueGray-600">
+                  If you do not see your team on the teams list, it's because your team captain has not followed the instructions which were emailed to them at the email which they provided when applying to compete. So, if you do not see your team, make sure to remind your team captain to check their email for instructions.
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  The test event is exactly that, a test. No scores entered in the test event will count towards the actual Bayou Bowl II tournament.
-                </p>
-                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  For info on how to enter scores, please watch the video <strong><a href="https://youtu.be/--qrNHvfcSs">here</a></strong>.
+                  The player names on the teams list page are driven off of your steam name in your user profile. So, if your name is incorrect on the list or is missing, please make sure to sign in and update your user profile with correct information.
                 </p>
                 <p>
                   <a href={routes.news}>Read More News</a>
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <Plyr source={videoSrc2} options={videoOpts} style={plyrStyle} />
+                <img src="/img/news/Team_List_Data_Driven.png" />
               </div>
             </div>
           </div>
