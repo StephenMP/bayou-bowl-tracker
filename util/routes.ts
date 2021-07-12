@@ -51,6 +51,7 @@ export const routes = {
             teamId: (teamId: string) => `/api/team/${teamId}`
         },
         teams: {
+            index: '/api/teams',
             eventId: (eventId: string) => `/api/teams/${eventId}`
         },
         user: {
