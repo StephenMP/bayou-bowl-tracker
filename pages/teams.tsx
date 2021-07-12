@@ -69,7 +69,7 @@ export default function Landing() {
                               <strong>{t.name}</strong>
                               {t.team_members.map(tm => (
                                 <div key={`stm-${tm.user_id}`}>
-                                  {` - ${users.find(u => u.id === tm.user_id)?.profile.steam_name ?? users.find(u => u.id === tm.user_id)?.name}`}
+                                  {` - ${users.find(u => u.id === tm.user_id)?.profile.steam_name ?? ""}`}
                                 </div>
                               ))}
                               {/* <br />- FailSpawner<br />- Maluke<br />- eklipselol */}
@@ -95,10 +95,10 @@ export default function Landing() {
                           </div>
                           <div>
                             <h4 className="text-blueGray-200">
-                              <strong>{t.name}</strong>
+                              <strong><a href={"/team/" + t.id}>{t.name}</a></strong>
                               {t.team_members.map(tm => (
                                 <div key={`otm-${tm.user_id}`}>
-                                  {` - ${users.find(u => u.id === tm.user_id)?.profile.steam_name ?? users.find(u => u.id === tm.user_id)?.name}`}
+                                  {` - ${users.find(u => u.id === tm.user_id)?.profile.steam_name ?? ""}`}
                                 </div>
                               ))}
                               {/* <br />- FailSpawner<br />- Maluke<br />- eklipselol */}
