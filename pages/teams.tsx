@@ -57,7 +57,7 @@ export default function Landing() {
                   <h3 className="text-3xl font-semibold text-blueGray-200">Seeded</h3>
                   <ul className="list-none mt-6">
                     {seededTeams.sort(firstBy('name')).filter(t => t.team_members.length).map(t => (
-                      <li className="py-2">
+                      <li key={`s-${t.id}`} className="py-2">
                         <div className="flex items-center">
                           <div>
                             <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-100 mr-3">
@@ -68,10 +68,9 @@ export default function Landing() {
                             <h4 className="text-blueGray-200">
                               <strong>{t.name}</strong>
                               {t.team_members.map(tm => (
-                                <>
-                                  <br />
+                                <div key={`stm-${tm.user_id}`}>
                                   {` - ${users.find(u => u.id === tm.user_id)?.profile.steam_name ?? users.find(u => u.id === tm.user_id)?.name}`}
-                                </>
+                                </div>
                               ))}
                               {/* <br />- FailSpawner<br />- Maluke<br />- eklipselol */}
                             </h4>
@@ -87,7 +86,7 @@ export default function Landing() {
                   <h3 className="text-3xl font-semibold text-blueGray-200">Open</h3>
                   <ul className="list-none mt-6">
                     {openTeams.sort(firstBy('name')).filter(t => t.team_members.length).map(t => (
-                      <li className="py-2">
+                      <li key={`o-${t.id}`} className="py-2">
                         <div className="flex items-center">
                           <div>
                             <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-100 mr-3">
@@ -98,10 +97,9 @@ export default function Landing() {
                             <h4 className="text-blueGray-200">
                               <strong>{t.name}</strong>
                               {t.team_members.map(tm => (
-                                <>
-                                  <br />
+                                <div key={`otm-${tm.user_id}`}>
                                   {` - ${users.find(u => u.id === tm.user_id)?.profile.steam_name ?? users.find(u => u.id === tm.user_id)?.name}`}
-                                </>
+                                </div>
                               ))}
                               {/* <br />- FailSpawner<br />- Maluke<br />- eklipselol */}
                             </h4>
