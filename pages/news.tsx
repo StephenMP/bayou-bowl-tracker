@@ -73,23 +73,20 @@ export default function Landing() {
             <div className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
                 <h6 className="text-lg mb-2 font-semibold leading-normal">
-                  Teams Page Is Now Data Driven
+                  Prizes for Winners Officially Announced
                 </h6>
                 <h6 className="text-sm mb-2 font-semibold leading-normal">
                   12 July 2021
                 </h6>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  The list of teams at <strong><a href="https://bayoubowl.gg/teams">bayoubowl.gg/teams</a></strong> is now 100% data driven based on the data we have in our system.
+                  Prizes for Bayou Bowl II are officially announced!
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  If you do not see your team on the teams list, it's because your team captain has not followed the instructions which were emailed to them at the email which they provided when applying to compete. So, if you do not see your team, make sure to remind your team captain to check their email for instructions.
-                </p>
-                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  The player names on the teams list page are driven off of your steam name in your user profile. So, if your name is incorrect on the list or is missing, please make sure to sign in and update your user profile with correct information.
+                  The top three teams in the Seeded tier will receive 3 official Hunt: Showdown t-shirts and a selection of DLCs. 10 random-selected Open tier teams will receive DLC packs of their choice. Prizes are graciously provided by Crytek.
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <img src="/img/news/Team_List_Data_Driven.png" />
+                <img src="/img/news/Prizes_Announcement.png" />
               </div>
             </div>
           </div>
