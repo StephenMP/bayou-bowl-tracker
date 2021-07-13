@@ -1,4 +1,4 @@
-import useSWR, { SWRConfiguration } from "swr"
+import useSWR, { mutate, SWRConfiguration } from "swr"
 import { fetcher } from "."
 import { Team } from "../../types/prisma"
 import { routes } from "../../util/routes"
@@ -31,6 +31,7 @@ export function useTeamsForEvent(eventId: string, options?: SWRConfiguration) {
         teams: data,
         error: error,
         isLoading: !error && !data,
+        mutate: () => mutate(routes.api.teams.eventId(eventId))
     }
 }
 
@@ -41,5 +42,6 @@ export function useAllTeams(options?: SWRConfiguration) {
         teams: data,
         error: error,
         isLoading: !error && !data,
+        mutate: () => mutate(routes.api.teams.index)
     }
 }

@@ -1,14 +1,39 @@
 import { TeamMemberType } from "@prisma/client";
 import PropTypes from "prop-types";
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
+import { useToasts } from 'react-toast-notifications';
 import { firstBy } from "thenby";
-import { useTeamsForEvent } from "../../lib/swr";
+import { fetcher, useAllTeams } from "../../lib/swr";
 import { useAllUsers } from "../../lib/swr/users";
+import { Team } from "../../types/prisma";
+import { routes } from "../../util/routes";
 import Spinner from "../PageChange/Spinner";
 
 function AllTeams({ color }) {
   const { users, isLoading: usersLoading } = useAllUsers({ suspense: false })
-  const { teams, isLoading } = useTeamsForEvent('d3904f36-d679-47c5-bbc0-9cd32a517786', { suspense: false })
+  const { teams, isLoading, mutate: mutateTeams } = useAllTeams({ suspense: false })
+  const [canDelete, setCanDelete] = useState<boolean>(true)
+  const { addToast, updateToast } = useToasts()
+  const banTeam = async (team: Team) => {
+    addToast('Banning team...', { appearance: 'info', autoDismiss: true }, async toastId => {
+      setCanDelete(false)
+
+      await fetcher(routes.api.team.teamId(team.id), {
+        method: 'DELETE',
+        body: JSON.stringify(team.id),
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        })
+      })
+
+      updateToast(toastId, { content: 'Banned successfully!', appearance: 'success', autoDismiss: true });
+      mutateTeams()
+
+      setCanDelete(true)
+    })
+  }
+
 
   if (usersLoading || isLoading) {
     return (
@@ -103,6 +128,14 @@ function AllTeams({ color }) {
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   {users.filter(u => team.team_members.find(t => t.user_id === u.id && t.member_type !== TeamMemberType.CAPTAIN)).map(u => u.name).join(', ')}
+                </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                  <button
+                    disabled={!canDelete}
+                    onClick={() => banTeam(team)}
+                  >
+                    <i className={canDelete ? "fas fa-trash-alt" : "fas fa-spinner fa-spin"}></i>
+                  </button>
                 </td>
               </tr>
             )}
