@@ -86,6 +86,16 @@ function AllTeams({ color }) {
                     : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
                 }
               >
+                Event
+              </th>
+              <th
+                className={
+                  "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                  (color === "light"
+                    ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                    : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
+                }
+              >
                 Team
               </th>
               <th
@@ -113,6 +123,9 @@ function AllTeams({ color }) {
           <tbody>
             {teams.sort(firstBy('name')).map(team =>
               <tr key={team.id}>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                  {team.event.name}
+                </td>
                 <th className="border-t-0 px-2 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <span
                     className={
@@ -124,10 +137,10 @@ function AllTeams({ color }) {
                   </span>
                 </th>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {users.find(u => u.id === team.team_members.find(t => t.member_type === TeamMemberType.CAPTAIN)?.user_id)?.name}
+                  {users.find(u => u.id === team.team_members.find(t => t.member_type === TeamMemberType.CAPTAIN)?.user_id)?.profile?.steam_name}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {users.filter(u => team.team_members.find(t => t.user_id === u.id && t.member_type !== TeamMemberType.CAPTAIN)).map(u => u.name).join(', ')}
+                  {users.filter(u => team.team_members.find(t => t.user_id === u.id && t.member_type !== TeamMemberType.CAPTAIN)).map(u => u.profile.steam_name).join(', ')}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <button

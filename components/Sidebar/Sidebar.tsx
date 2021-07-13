@@ -195,50 +195,6 @@ const Sidebar = withPageAuthRequired(() => {
                       </a>
                     </Link>
                   </li>
-                  <li className="items-center">
-                    <Link href={routes.admin.teams.open}>
-                      <a
-                        onClick={() => setCollapseShow("hidden")}
-                        className={
-                          "text-xs uppercase py-3 font-bold block " +
-                          (router.pathname.indexOf(routes.admin.teams.open) !== -1
-                            ? "text-lightBlue-500 hover:text-lightBlue-600"
-                            : "text-blueGray-700 hover:text-blueGray-500")
-                        }
-                      >
-                        <i className={
-                          "fas fa-users mr-2 text-sm " +
-                          (router.pathname.indexOf(routes.admin.teams.open) !== -1
-                            ? "opacity-75"
-                            : "text-blueGray-500")
-                        }
-                        ></i>{" "}
-                        Open Teams
-                      </a>
-                    </Link>
-                  </li>
-                  <li className="items-center">
-                    <Link href={routes.admin.teams.seeded}>
-                      <a
-                        onClick={() => setCollapseShow("hidden")}
-                        className={
-                          "text-xs uppercase py-3 font-bold block " +
-                          (router.pathname.indexOf(routes.admin.teams.seeded) !== -1
-                            ? "text-lightBlue-500 hover:text-lightBlue-600"
-                            : "text-blueGray-700 hover:text-blueGray-500")
-                        }
-                      >
-                        <i className={
-                          "fas fa-users mr-2 text-sm " +
-                          (router.pathname.indexOf(routes.admin.teams.seeded) !== -1
-                            ? "opacity-75"
-                            : "text-blueGray-500")
-                        }
-                        ></i>{" "}
-                        Seeded Teams
-                      </a>
-                    </Link>
-                  </li>
                 </ul></> : <></>}
 
             {/* Divider */}

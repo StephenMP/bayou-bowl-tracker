@@ -10,7 +10,8 @@ export default async function handler(req, res) {
                     }
                 },
                 include: {
-                    team_members: true
+                    team_members: true,
+                    event: true
                 }
             })
 
