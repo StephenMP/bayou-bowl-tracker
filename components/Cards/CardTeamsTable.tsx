@@ -5,15 +5,38 @@ import { useToasts } from 'react-toast-notifications';
 import { firstBy } from "thenby";
 import { fetcher, useAllTeams } from "../../lib/swr";
 import { useAllUsers } from "../../lib/swr/users";
-import { Team } from "../../types/prisma";
+import { Team, User } from "../../types/prisma";
 import { routes } from "../../util/routes";
 import Spinner from "../PageChange/Spinner";
+
+function getName(user: User) {
+
+  return user.profile?.steam_name ?? `${user.name}*`
+}
 
 function AllTeams({ color }) {
   const { users, isLoading: usersLoading } = useAllUsers({ suspense: false })
   const { teams, isLoading, mutate: mutateTeams } = useAllTeams({ suspense: false })
   const [canDelete, setCanDelete] = useState<boolean>(true)
   const { addToast, updateToast } = useToasts()
+
+  const getTeamMembers = (team: Team) => {
+    const members = team.team_members.filter(t => t.member_type === TeamMemberType.MEMBER)
+    return members.map(m => {
+      const user = users.find(u => u.id === m.user_id)
+      return user?.profile?.steam_name ?? user.name
+    }).join(', ')
+  }
+
+  const getCaptain = (team: Team) => {
+    const user = users.find(u => u.id === team.team_members.find(t => t.member_type === TeamMemberType.CAPTAIN)?.user_id)
+    if (user) {
+      return user.profile?.steam_name ?? user.name
+    }
+    
+    return null
+  }
+
   const banTeam = async (team: Team) => {
     addToast('Banning team...', { appearance: 'info', autoDismiss: true }, async toastId => {
       setCanDelete(false)
@@ -137,10 +160,10 @@ function AllTeams({ color }) {
                   </span>
                 </th>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {users.find(u => u.id === team.team_members.find(t => t.member_type === TeamMemberType.CAPTAIN)?.user_id)?.profile?.steam_name}
+                  {getCaptain(team)}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {users.filter(u => team.team_members.find(t => t.user_id === u.id && t.member_type !== TeamMemberType.CAPTAIN)).map(u => u.profile.steam_name).join(', ')}
+                  {getTeamMembers(team)}
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <button
