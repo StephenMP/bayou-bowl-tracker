@@ -56,20 +56,24 @@ model User {
 }
 
 model UserProfile {
-  id           String  @id @default(uuid())
+  id           String   @id @default(uuid())
+  createdDate  DateTime @default(now())
+  updatedDate  DateTime @default(now())
   steam_name   String?
   twitch_name  String?
   discord_name String?
   twitter_name String?
   about_me     String?
-  user         User    @relation(fields: [user_id], references: [id])
-  user_id      String  @unique
+  user         User     @relation(fields: [user_id], references: [id])
+  user_id      String   @unique
 
   @@index([user_id])
 }
 
 model Team {
   id           String       @id @default(uuid())
+  createdDate  DateTime     @default(now())
+  updatedDate  DateTime     @default(now())
   name         String
   event        Event        @relation(fields: [event_id], references: [id])
   event_id     String
@@ -88,34 +92,42 @@ enum TeamMemberType {
 model TeamMember {
   team_id     String
   user_id     String
+  createdDate DateTime       @default(now())
+  updatedDate DateTime       @default(now())
   member_type TeamMemberType @default(CAPTAIN)
   team        Team           @relation(fields: [team_id], references: [id])
   user        User           @relation(fields: [user_id], references: [id])
 
   @@id([team_id, user_id])
-  @@index([member_type])
+  @@index([team_id, user_id, member_type])
 }
 
 model EventScore {
   event_id      String
   team_id       String
   round_num     Int
+  createdDate   DateTime      @default(now())
+  updatedDate   DateTime      @default(now())
   event         Event         @relation(fields: [event_id], references: [id])
   team          Team          @relation(fields: [team_id], references: [id])
   team_score    TeamScore?
   player_scores PlayerScore[]
 
   @@id([event_id, team_id, round_num])
+  @@index([event_id, team_id])
 }
 
 model TeamScore {
   event_id    String
   team_id     String
   round_num   Int
+  createdDate DateTime   @default(now())
+  updatedDate DateTime   @default(now())
   bounties    Int
   event_score EventScore @relation(fields: [event_id, team_id, round_num], references: [event_id, team_id, round_num])
 
   @@id([event_id, team_id, round_num])
+  @@index([event_id, team_id])
 }
 
 model PlayerScore {
@@ -123,9 +135,12 @@ model PlayerScore {
   team_id     String
   round_num   Int
   user_id     String
+  createdDate DateTime   @default(now())
+  updatedDate DateTime   @default(now())
   kills       Int
   event_score EventScore @relation(fields: [event_id, team_id, round_num], references: [event_id, team_id, round_num])
   user        User       @relation(fields: [user_id], references: [id])
 
   @@id([event_id, team_id, round_num, user_id])
+  @@index([event_id, team_id, user_id])
 }
