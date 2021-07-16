@@ -325,7 +325,9 @@ function Page({ eventId }: { eventId: string }) {
                     kills: userKills ?? 0,
                     round_num: eventScores.length + 1,
                     team_id: team.id,
-                    user_id: tm.user_id
+                    user_id: tm.user_id,
+                    createdDate: new Date(),
+                    updatedDate: new Date(),
                 }
             })
 
@@ -333,13 +335,17 @@ function Page({ eventId }: { eventId: string }) {
                 bounties: addScoreForm.bounties,
                 event_id: eventId,
                 round_num: eventScores.length + 1,
-                team_id: team.id
+                team_id: team.id,
+                createdDate: new Date(),
+                updatedDate: new Date(),
             }
 
             const eventScore: EventScore = {
                 event_id: eventId,
                 round_num: eventScores.length + 1,
                 team_id: team.id,
+                createdDate: new Date(),
+                updatedDate: new Date(),
                 player_scores: playerScores,
                 team_score: teamScore
             }
