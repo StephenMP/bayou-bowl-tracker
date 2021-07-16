@@ -1,7 +1,9 @@
-import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import { UserType } from "@prisma/client";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import { useCurrentUser } from "../../lib/swr/user";
 import { constants } from "../../util/constants";
 import { routes } from "../../util/routes";
 import UserDropdown from "../Dropdowns/UserDropdown";
@@ -9,7 +11,7 @@ import UserDropdown from "../Dropdowns/UserDropdown";
 const Sidebar = withPageAuthRequired(() => {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
   const router = useRouter();
-  const { user, error, isLoading } = useUser();
+  const { user, error, isLoading } = useCurrentUser();
 
   if (isLoading) return <div></div>;
   if (error) return <div>{error.message}</div>;
@@ -122,7 +124,7 @@ const Sidebar = withPageAuthRequired(() => {
               </li>
             </ul>
 
-            {user.email === "gameswithdeathtv@gmail.com" || user.email === 'itsspwn@gmail.com' ?
+            {user.user_type === UserType.ADMIN ?
               <>
                 <hr className="my-4 md:min-w-full" />
                 <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">

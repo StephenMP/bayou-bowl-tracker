@@ -32,10 +32,16 @@ model Event {
   scores      EventScore[]
 }
 
+enum UserType {
+  USER
+  ADMIN
+}
+
 model User {
   id             String        @id
   createdDate    DateTime      @default(now())
   updatedDate    DateTime      @default(now())
+  user_type      UserType      @default(USER)
   nickname       String?
   name           String?
   picture        String?
@@ -44,6 +50,7 @@ model User {
   sub            String?
   profile        UserProfile?
   player_scores  PlayerScore[]
+  member_of_team TeamMember[]
 
   @@index([email, sub])
 }
@@ -83,6 +90,7 @@ model TeamMember {
   user_id     String
   member_type TeamMemberType @default(CAPTAIN)
   team        Team           @relation(fields: [team_id], references: [id])
+  user        User           @relation(fields: [user_id], references: [id])
 
   @@id([team_id, user_id])
   @@index([member_type])
