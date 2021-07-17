@@ -36,7 +36,7 @@ function TeamCard({ teamMember }: { teamMember: TeamMember }) {
         </div>
         <div className="text-center mt-12">
           <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-            {user.name}
+            {user.profile?.steam_name ?? user.name}
           </h3>
           <div className="mb-2 text-blueGray-600">
             <a href={user.profile?.twitch_name ? `https://twitch.tv/${user.profile.twitch_name}` : '#'} target='_blank'>
