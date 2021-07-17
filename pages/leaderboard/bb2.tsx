@@ -114,7 +114,7 @@ function Page() {
                 {isLoading ? <Spinner light={true} /> : <Table scores={bb2EventScores.seeded} isSeeded={true} />}
             </div>
             <div className="w-full md:w-6/12 pl-3">
-            {isLoading ? <Spinner light={true} /> : <Table scores={bb2EventScores.seeded} isSeeded={false} />}
+            {isLoading ? <Spinner light={true} /> : <Table scores={bb2EventScores.open} isSeeded={false} />}
             </div>
         </div >
     )
