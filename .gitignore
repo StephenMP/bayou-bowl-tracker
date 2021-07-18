@@ -33,3 +33,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# DB Backups
+c49c31ee-6595-412f-8be4-14e7ec25215a
