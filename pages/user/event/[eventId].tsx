@@ -359,8 +359,6 @@ function Page({ eventId }: { eventId: string }) {
                 return newData
             }, false)
 
-            console.log(JSON.stringify(eventScore, null, 2))
-
             // Update data
             const response = await fetcher(routes.api.event_scores.index, {
                 method: 'POST',
@@ -370,8 +368,6 @@ function Page({ eventId }: { eventId: string }) {
                     Accept: 'application/json',
                 })
             })
-
-            console.log(response);
 
             // Mutate SWR with a revalidate
             updateToast(toastId, { content: 'Added score successfully!', appearance: 'success', autoDismiss: true });
