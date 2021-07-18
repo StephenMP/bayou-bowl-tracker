@@ -359,6 +359,8 @@ function Page({ eventId }: { eventId: string }) {
                 return newData
             }, false)
 
+            console.log(JSON.stringify(eventScore, null, 2))
+
             // Update data
             const response = await fetcher(routes.api.event_scores.index, {
                 method: 'POST',
