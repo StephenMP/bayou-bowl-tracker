@@ -56,6 +56,7 @@ export async function createEventScore(eventScore: EventScore): Promise<void> {
     }
     catch (e) {
         console.log("ERROR: ", e.message)
+        throw e
     }
 }
 

@@ -5,8 +5,14 @@ import { EventScore } from '../../../types/prisma';
 export default withApiAuthRequired(async function handler(req, res) {
     switch (req.method) {
         case 'POST':
+        try{
             const eventScoreToCreate: EventScore = req.body as EventScore
             await eventScoreRepository.createEventScore(eventScoreToCreate)
+        }
+
+        catch(e) {
+            res.status(500).json(e)
+        }
 
             res.status(200).json({})
             break
