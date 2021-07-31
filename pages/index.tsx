@@ -1,6 +1,5 @@
 import React from "react";
 import CookieConsent from "react-cookie-consent";
-import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import Footer from "../components/Footers/Footer";
 import Navbar from "../components/Navbars/AuthNavbar";
 import { routes } from "../util/routes";
@@ -84,7 +83,7 @@ export default function Landing() {
                     src="https://trello-attachments.s3.amazonaws.com/604fe9255c0c0230f7cab23a/6071fcc18b72e86c34967f2b/e7744589e781dbaaefe4442ebfcee7b2/The_Bayou_Bowl.png"
                   />
                   {/* {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />} */}
-                  <div className="items-center flex flex-wrap mt-5 text-3xl">
+                  {/* <div className="items-center flex flex-wrap mt-5 text-3xl">
                     <div className="w-full lg:w-3/12 uppercase md-hide px-4 ml-auto mr-auto text-center">
                       <CountdownCircleTimer
                         {...timerProps}
@@ -135,7 +134,7 @@ export default function Landing() {
                   </div>
                   <h3 className="mt-4 text-6xl uppercase font-bold text-blueGray-200">
                     17 July 2021 Noon EST
-                  </h3>
+                  </h3> */}
                 </div>
               </div>
             </div>
