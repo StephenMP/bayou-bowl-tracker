@@ -52,7 +52,7 @@ const plyrStyle: React.CSSProperties = {
 
 export default function Landing() {
   const startTime = Date.now() / 1000
-  const endTime = new Date('2021-07-17T16:00:00.000Z').getTime() / 1000
+  const endTime = new Date('2021-12-04T16:00:00.000Z').getTime() / 1000
   const remainingTime = endTime - startTime;
   const days = Math.ceil(remainingTime / daySeconds);
   const daysDuration = days * daySeconds;
@@ -133,7 +133,7 @@ export default function Landing() {
                     </div>
                   </div>
                   <h3 className="mt-4 text-6xl uppercase font-bold text-blueGray-200">
-                    17 July 2021 Noon EST
+                    04 December 2021 Noon EST
                   </h3> */}
                 </div>
               </div>
@@ -477,7 +477,7 @@ export default function Landing() {
           </div>
         </section>
 
-        <section id="partners" className="pb-20 relative block bg-blueGray-800">
+        {/* <section id="partners" className="pb-20 relative block bg-blueGray-800">
           <div
             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
             style={{ transform: "translateZ(0)" }}
@@ -550,8 +550,8 @@ export default function Landing() {
               </div>
             </div>
           </div>
-        </section>
-        <section className="relative block py-24 lg:pt-0 bg-blueGray-800">
+        </section> */}
+        {/* <section className="relative block py-24 lg:pt-0 bg-blueGray-800">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">
               <div className="w-full lg:w-6/12 px-4">
@@ -618,7 +618,7 @@ export default function Landing() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
       </main>
       <CookieConsent
