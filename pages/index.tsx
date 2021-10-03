@@ -309,7 +309,7 @@ export default function Landing() {
               </div>
             </div>
             <div className="flex flex-wrap">
-              <div className="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
+              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                 <div className="px-6">
                   <img
                     alt="..."
@@ -319,7 +319,7 @@ export default function Landing() {
                   <div className="pt-6 text-center">
                     <h5 className="text-xl font-bold">GameswithDeath</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                      Co-Mastermind, Content Creator
+                      Co-Mastermind
                     </p>
                     <div className="mt-6">
                       <a href="https://twitter.com/GameswithDeath" target="_blank">
@@ -350,7 +350,7 @@ export default function Landing() {
                   </div>
                 </div>
               </div>
-              <div className="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
+              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                 <div className="px-6">
                   <img
                     alt="..."
@@ -360,7 +360,7 @@ export default function Landing() {
                   <div className="pt-6 text-center">
                     <h5 className="text-xl font-bold">SaltyOctopus</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                      Co-Mastermind, Content Creator
+                      Co-Mastermind
                     </p>
                     <div className="mt-6">
                       <a href="https://twitter.com/saltyoctopusttv" target="_blank">
@@ -391,7 +391,7 @@ export default function Landing() {
                   </div>
                 </div>
               </div>
-              <div className="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
+              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                 <div className="px-6">
                   <img
                     alt="..."
@@ -432,11 +432,52 @@ export default function Landing() {
                   </div>
                 </div>
               </div>
+              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+                <div className="px-6">
+                  <img
+                    alt="..."
+                    src="https://pbs.twimg.com/profile_images/1399126715687968771/2Q6udYwV_400x400.jpg"
+                    className="shadow-lg rounded-full mx-auto max-w-120-px"
+                  />
+                  <div className="pt-6 text-center">
+                    <h5 className="text-xl font-bold">CrankItMan</h5>
+                    <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
+                      Operations Mastermind
+                    </p>
+                    <div className="mt-6">
+                      <a href="https://twitter.com/CrankItMan" target="_blank">
+                        <button
+                          className="bg-lightBlue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <i className="fab fa-twitter"></i>
+                        </button>
+                      </a>
+                      <a href="https://twitch.tv/CrankItMan" target="_blank">
+                        <button
+                          className="bg-purple-twitch text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <i className="fab fa-twitch"></i>
+                        </button>
+                      </a>
+                      <a href="https://www.youtube.com/channel/UCv3h8rXbubHbROZvgzWDb-g" target="_blank">
+                        <button
+                          className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                          type="button"
+                        >
+                          <i className="fab fa-youtube"></i>
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* <section id="partners" className="pb-20 relative block bg-blueGray-800">
+        <section id="partners" className="pb-20 relative block bg-blueGray-800">
           <div
             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
             style={{ transform: "translateZ(0)" }}
@@ -509,8 +550,8 @@ export default function Landing() {
               </div>
             </div>
           </div>
-        </section> */}
-        {/* <section className="relative block py-24 lg:pt-0 bg-blueGray-800">
+        </section>
+        <section className="relative block py-24 lg:pt-0 bg-blueGray-800">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">
               <div className="w-full lg:w-6/12 px-4">
@@ -577,7 +618,7 @@ export default function Landing() {
               </div>
             </div>
           </div>
-        </section> */}
+        </section>
 
       </main>
       <CookieConsent
