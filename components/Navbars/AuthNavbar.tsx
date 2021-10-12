@@ -101,7 +101,7 @@ export default function Navbar() {
               <li className="flex items-center">
                 <a href="/pdf/Bayou_Bowl_III_Rules_V1-1.pdf" target='_blank'>
                   <a className={navLinkClassName} >
-                    Rules
+                    BB3 Rules
                   </a>
                 </a>
               </li>
