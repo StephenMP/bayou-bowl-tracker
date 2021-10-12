@@ -72,6 +72,28 @@ export default function Landing() {
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
+              <h6 className="text-lg mb-2 font-semibold leading-normal">
+                  Bayou Bowl III is Officially Announced
+                </h6>
+                <h6 className="text-sm mb-2 font-semibold leading-normal">
+                  11 Oct 2021
+                </h6>
+                <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+                  Bayou Bowl III will be on Saturday, 4 December 2021 from 1 to 4 PM EST. This time there is no tiers, no teams, and no hiding! This will be a solo quickplay competition and, for the first time ever, the Bayou Bowl victors will receive cash prizes.
+                </p>
+                <p className="text-lg font-light leading-relaxres enteed mt-0 mb-4 text-blueGray-600">
+                  Registration will be open from 30 October to 20 November 2021 at bayoubowl.gg. Official rules and more details to be released soon. We look forward to an exciting event. See you soon Hunters!
+                </p>
+              </div>
+              <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
+                <img src="/img/news/BB3_Announced.png" />
+              </div>
+            </div>
+          </div>
+          
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap items-center mt-32">
+              <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
                 <h6 className="text-lg mb-2 font-semibold leading-normal">
                   Prizes for Winners Officially Announced
                 </h6>

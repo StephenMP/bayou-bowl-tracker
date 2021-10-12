@@ -1,5 +1,6 @@
 import React from "react";
 import CookieConsent from "react-cookie-consent";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import Footer from "../components/Footers/Footer";
 import Navbar from "../components/Navbars/AuthNavbar";
 import { routes } from "../util/routes";
@@ -12,15 +13,14 @@ const timerProps = {
   isPlaying: true,
   size: 170,
   strokeWidth: 10,
-  colors: "#00a1b3"
+  colors: "#ba0010"
 };
 
 const getTimeSeconds = (time: number) => (minuteSeconds - time) | 0;
 const getTimeMinutes = (time: number) => ((time % hourSeconds) / minuteSeconds) | 0;
 const getTimeHours = (time: number) => ((time % daySeconds) / hourSeconds) | 0;
 const getTimeDays = (time: number) => (time / daySeconds) | 0;
-
-const renderTime = (dimension, time) => {
+const renderTime = (dimension: string, time: number) => {
   return (
     <div className="time-wrapper">
       <div className="time">{time}</div>
@@ -29,26 +29,26 @@ const renderTime = (dimension, time) => {
   );
 };
 
-const videoOpts: Plyr.Options = {
-  ads: { enabled: false, publisherId: '' },
-  hideControls: true
-}
+// const videoOpts: Plyr.Options = {
+//   ads: { enabled: false, publisherId: '' },
+//   hideControls: true
+// }
 
-const videoSrc2: Plyr.SourceInfo = {
-  type: "video",
-  sources: [
-    {
-      src: "--qrNHvfcSs",
-      size: 720,
-      provider: 'youtube'
-    }
-  ]
-};
+// const videoSrc2: Plyr.SourceInfo = {
+//   type: "video",
+//   sources: [
+//     {
+//       src: "--qrNHvfcSs",
+//       size: 720,
+//       provider: 'youtube'
+//     }
+//   ]
+// };
 
-const plyrStyle: React.CSSProperties = {
-  height: 500,
-  width: 500
-}
+// const plyrStyle: React.CSSProperties = {
+//   height: 500,
+//   width: 500
+// }
 
 export default function Landing() {
   const startTime = Date.now() / 1000
@@ -80,10 +80,10 @@ export default function Landing() {
                     height="50%"
                     width="50%"
                     className="max-w-full rounded-lg shadow-lg"
-                    src="https://trello-attachments.s3.amazonaws.com/604fe9255c0c0230f7cab23a/6071fcc18b72e86c34967f2b/e7744589e781dbaaefe4442ebfcee7b2/The_Bayou_Bowl.png"
+                    src="/img/brand/The_Bayou_Bowl_Header.png"
                   />
                   {/* {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />} */}
-                  {/* <div className="items-center flex flex-wrap mt-5 text-3xl">
+                  <div className="items-center flex flex-wrap mt-5 text-3xl">
                     <div className="w-full lg:w-3/12 uppercase md-hide px-4 ml-auto mr-auto text-center">
                       <CountdownCircleTimer
                         {...timerProps}
@@ -134,7 +134,7 @@ export default function Landing() {
                   </div>
                   <h3 className="mt-4 text-6xl uppercase font-bold text-blueGray-200">
                     04 December 2021 Noon EST
-                  </h3> */}
+                  </h3>
                 </div>
               </div>
             </div>
@@ -171,9 +171,7 @@ export default function Landing() {
                     </div>
                     <h6 className="text-xl font-semibold">@GameswithDeath</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      CONGRATULATIONS to @TheFailSpawner and Maluke for claiming 1st Place
-                      in the Bayou Bowl I for @HuntShowdown! Thank you to all our participants,
-                      volunteers, and supporters for making this such an amazing event.Skull
+                      THE OFFICIAL WINNERS OF BAYOU BOWL II: THE ITALIAN DREAM. Congratulations to all the participants!
                     </p>
                   </div>
                 </div>
@@ -185,9 +183,9 @@ export default function Landing() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
                       <i className="fab fa-twitter"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">@kowalyshen</h6>
+                    <h6 className="text-xl font-semibold">@michaelexile</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      This was amazing to watch all the streamers play! Well done!
+                    I’m here for this, sign me the hell up
                     </p>
                   </div>
                 </div>
@@ -199,12 +197,9 @@ export default function Landing() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
                       <i className="fab fa-twitter"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">@gunsmackk</h6>
+                    <h6 className="text-xl font-semibold">@LordJamesD</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      Absolutely Insane Stream Today! Shout out @GameswithDeath and @saltyoctopusttv
-                      for setting up this tournament was INSANELY well balanced, and very fun to play in!!
-                      @vombuz and I smashed 3rd place with sunglasses GGS to everyone, and much
-                      love to everyone that supported me today
+                      seeing my main partner Beru finish first is the same feeling that a master has a student after he surpasses him.
                     </p>
                   </div>
                 </div>
@@ -221,23 +216,23 @@ export default function Landing() {
                   Latest News
                 </h3>
                 <h6 className="text-lg mb-2 font-semibold leading-normal">
-                  Prizes for Winners Officially Announced
+                  Bayou Bowl III is Officially Announced
                 </h6>
                 <h6 className="text-sm mb-2 font-semibold leading-normal">
-                  12 July 2021
+                  11 Oct 2021
                 </h6>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  Prizes for Bayou Bowl II are officially announced!
+                  Bayou Bowl III will be on Saturday, 4 December 2021 from 1 to 4 PM EST. This time there is no tiers, no teams, and no hiding! This will be a solo quickplay competition and, for the first time ever, the Bayou Bowl victors will receive cash prizes.
                 </p>
                 <p className="text-lg font-light leading-relaxres enteed mt-0 mb-4 text-blueGray-600">
-                  The top three teams in the Seeded tier will receive 3 official Hunt: Showdown t-shirts and a selection of DLCs. 10 random-selected Open tier teams will receive DLC packs of their choice. Prizes are graciously provided by Crytek.
+                  Registration will be open from 30 October to 20 November 2021 at bayoubowl.gg. Official rules and more details to be released soon. We look forward to an exciting event. See you soon Hunters!
                 </p>
                 <p>
                   <a href={routes.news}>Read More News</a>
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <img src="/img/news/Prizes_Announcement.png" />
+                <img src="/img/news/BB3_Announced.png" />
               </div>
             </div>
           </div>
@@ -250,7 +245,7 @@ export default function Landing() {
                 <img
                   alt="..."
                   className="max-w-full rounded-lg shadow-lg"
-                  src="https://trello-attachments.s3.amazonaws.com/604fe9255c0c0230f7cab23a/6071fcc18b72e86c34967f2b/e7744589e781dbaaefe4442ebfcee7b2/The_Bayou_Bowl.png"
+                  src="/img/brand/bayoubowl-logo.png"
                 />
               </div>
               <div className="w-full md:w-5/12 ml-auto mr-auto px-4">
