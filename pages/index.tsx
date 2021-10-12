@@ -53,7 +53,7 @@ const renderTime = (dimension: string, time: number) => {
 export default function Landing() {
   const startTime = Date.now() / 1000
   const endTime = new Date('2021-12-04T17:00:00.000Z').getTime() / 1000
-  const eventDateString="04 December 2021 1 PM EST"
+  const eventDateString = "04 December 2021 1 PM EST"
   const remainingTime = endTime - startTime;
   const days = Math.ceil(remainingTime / daySeconds);
   const daysDuration = days * daySeconds;
@@ -186,7 +186,7 @@ export default function Landing() {
                     </div>
                     <h6 className="text-xl font-semibold">@michaelexile</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                    I’m here for this, sign me the hell up
+                      I’m here for this, sign me the hell up
                     </p>
                   </div>
                 </div>

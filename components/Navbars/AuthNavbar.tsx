@@ -99,28 +99,28 @@ export default function Navbar() {
               </li>
 
               <li className="flex items-center">
-                <Link href={routes.rules}>
+                <a href="/pdf/Bayou_Bowl_III_Rules_V1-1.pdf" target='_blank'>
                   <a className={navLinkClassName} >
                     Rules
                   </a>
-                </Link>
+                </a>
               </li>
 
-              <li className="flex items-center">
+              {/* <li className="flex items-center">
                 <Link href={routes.teams}>
                   <a className={navLinkClassName} >
                     Teams
                   </a>
                 </Link>
-              </li>
+              </li> */}
 
-              <li className="flex items-center">
+              {/* <li className="flex items-center">
                 <Link href={routes.instructions}>
                   <a className={navLinkClassName} >
                     How To Compete
                   </a>
                 </Link>
-              </li>
+              </li> */}
 
               <li className="flex items-center">
                 <Link href={routes.leaderboard.bb2}>
