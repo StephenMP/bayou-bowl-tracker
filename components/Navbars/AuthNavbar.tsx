@@ -3,6 +3,9 @@ import Link from "next/link";
 import React from "react";
 import { constants } from "../../util/constants";
 import { routes } from '../../util/routes';
+import LeaderboardsDropdown from "../Dropdowns/LeaderboardsDropdown";
+import RulesDropdown from "../Dropdowns/RulesDropdown";
+import TeamsDropdown from "../Dropdowns/TeamsDropdown";
 
 const navLinkClassName = "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
 const navButtonClassName = "bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
@@ -99,20 +102,12 @@ export default function Navbar() {
               </li>
 
               <li className="flex items-center">
-                <a href="/pdf/Bayou_Bowl_III_Rules_V1-1.pdf" target='_blank'>
-                  <a className={navLinkClassName} >
-                    BB3 Rules
-                  </a>
-                </a>
+                <RulesDropdown />
               </li>
 
-              {/* <li className="flex items-center">
-                <Link href={routes.teams}>
-                  <a className={navLinkClassName} >
-                    Teams
-                  </a>
-                </Link>
-              </li> */}
+              <li className="flex items-center">
+                <TeamsDropdown />
+              </li>
 
               {/* <li className="flex items-center">
                 <Link href={routes.instructions}>
@@ -123,11 +118,7 @@ export default function Navbar() {
               </li> */}
 
               <li className="flex items-center">
-                <Link href={routes.leaderboard.bb2}>
-                  <a className={navLinkClassName} >
-                    BB2 Leaderboards
-                  </a>
-                </Link>
+                <LeaderboardsDropdown />
               </li>
 
               {/* <li className="flex items-center">
@@ -136,15 +127,7 @@ export default function Navbar() {
                     Partners
                 </a>
                 </Link>
-              </li>
-
-              <li className="flex items-center">
-                <Link href="#leaderboards">
-                  <a className={navLinkClassName} >
-                    Leaderboards
-                  </a>
-                </Link>
-              </li> */}
+              </li>*/}
 
               <AuthedNavs />
             </ul>
