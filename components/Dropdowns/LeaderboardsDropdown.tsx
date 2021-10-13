@@ -28,7 +28,7 @@ const LeaderboardsDropdown = () => {
           dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
         }}
       >
-        Ladearboards
+        Leaderboards
       </a>
       <div
         ref={popoverDropdownRef}
