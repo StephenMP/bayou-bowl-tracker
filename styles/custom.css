@@ -1,3 +1,12 @@
+.bg-purple-twitch {
+  background-color: #6441a5;
+}
+
+.text-purple-twitch {
+  --tw-text-opacity: 1;
+  color: rgba(100, 65, 165, var(--tw-text-opacity));
+}
+
 .text-7xl {
     font-size: 4.5rem;
     line-height: 1;

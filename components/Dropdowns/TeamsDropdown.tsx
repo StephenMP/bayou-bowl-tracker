@@ -1,6 +1,7 @@
 import { createPopper } from "@popperjs/core";
 import Link from "next/link";
 import React from "react";
+import usePopdownCloseEvents from "../../hooks/usePopdownCloseEvents";
 import { routes } from "../../util/routes";
 
 const TeamsDropdown = () => {
@@ -9,19 +10,33 @@ const TeamsDropdown = () => {
   const btnDropdownRef = React.createRef<HTMLAnchorElement>();
   const popoverDropdownRef = React.createRef<HTMLDivElement>();
   const openDropdownPopover = () => {
-    createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
-      placement: "bottom-start",
-    });
-    setDropdownPopoverShow(true);
-  };
-  const closeDropdownPopover = () => {
-    setDropdownPopoverShow(false);
-  };
+    createPopper(btnDropdownRef.current, popoverDropdownRef.current, { placement: "bottom-start", })
+    setDropdownPopoverShow(true)
+  }
+  const closeDropdownPopover = () => setDropdownPopoverShow(false)
+  const ref = usePopdownCloseEvents(closeDropdownPopover)
+
+  function NavLinks() {
+    return (
+      <>
+        <span className="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"></span>
+        <Link href={routes.teams}>
+          <a
+            href="#"
+            className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+          >
+            BayouBowl II
+          </a>
+        </Link>
+      </>
+    )
+  }
+
   return (
-    <>
+    <div ref={ref}>
       <a
         className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-        href="#pablo"
+        href="#"
         ref={btnDropdownRef}
         onClick={(e) => {
           e.preventDefault();
@@ -37,44 +52,9 @@ const TeamsDropdown = () => {
           "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
         }
       >
-        <span
-          className={
-            "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
-          }
-        >
-        </span>
-        <Link href="#">
-          <a
-            href="#pablo"
-            className={
-              "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-            }
-            onClick={() => { alert('BayouBowl I participants are not yet available.') }}
-          >
-            BayouBowl I
-          </a>
-        </Link>
-        <Link href={routes.teams}>
-          <a
-            href="#"
-            className={
-              "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-            }
-          >
-            BayouBowl II
-          </a>
-        </Link>
-        <a
-          href="#"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-          }
-          onClick={() => { alert('BayouBowl III participants are not yet available.') }}
-        >
-          BayouBowl III
-        </a>
+        <NavLinks />
       </div>
-    </>
+    </div>
   );
 };
 
