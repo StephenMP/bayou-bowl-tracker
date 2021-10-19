@@ -10,6 +10,26 @@ import TeamsDropdown from "../Dropdowns/TeamsDropdown";
 const navLinkClassName = "lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
 const navButtonClassName = "bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
 
+function SocialLinks() {
+  return (
+    <>
+      <li className="flex items-center">
+        <a className={navLinkClassName} href="https://twitter.com/MndyNghtHnts" target="_blank" >
+          <i className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 text-lg leading-lg fab fa-twitter" />
+          <span className="lg:hidden inline-block ml-2">Twitter</span>
+        </a>
+      </li>
+
+      <li className="flex items-center">
+        <a className={navLinkClassName} href="https://www.twitch.tv/MondayNightHunts" target="_blank">
+          <i className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 text-lg leading-lg fab fa-twitch" />
+          <span className="lg:hidden inline-block ml-2">Twitch</span>
+        </a>
+      </li>
+    </>
+  )
+}
+
 function AuthedNavs() {
   const { user, isLoading } = useUser();
 
@@ -23,13 +43,14 @@ function AuthedNavs() {
 
   return (
     <>
-      {user && <li className="flex items-center">
+      {!user && <SocialLinks />}
+      {user && <><li className="flex items-center">
         <Link href={routes.user.profile}>
           <a className={navLinkClassName} >
             Account
           </a>
         </Link>
-      </li>}
+      </li><SocialLinks /></>}
       <li className="flex items-center">
         <a href={user ? routes.api.auth.logout : routes.api.auth.login}>
           <button className={navButtonClassName} type="button">
