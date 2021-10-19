@@ -1,5 +1,5 @@
 import { withApiAuthRequired } from '@auth0/nextjs-auth0';
-import prisma from '../../../../lib/prisma';
+import { prisma } from '../../../../lib/prisma';
 import { queryParamAsString } from '../../../../util/routes';
 
 export default withApiAuthRequired(async function handler(req, res) {

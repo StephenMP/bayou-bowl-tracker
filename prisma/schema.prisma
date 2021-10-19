@@ -11,6 +11,7 @@ generator client {
 }
 
 enum EventMatchType {
+  QUICKPLAY
   SOLOS
   SOLOSvDUOS
   SOLOSvTRIOS
@@ -64,7 +65,7 @@ model UserProfile {
   discord_name String?
   twitter_name String?
   about_me     String?
-  user         User     @relation(fields: [user_id], references: [id])
+  user         User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
   user_id      String   @unique
 
   @@index([user_id])
@@ -75,7 +76,7 @@ model Team {
   createdDate  DateTime     @default(now())
   updatedDate  DateTime     @default(now())
   name         String
-  event        Event        @relation(fields: [event_id], references: [id])
+  event        Event        @relation(fields: [event_id], references: [id], onDelete: Cascade)
   event_id     String
   team_members TeamMember[]
   EventScore   EventScore[]
@@ -95,8 +96,8 @@ model TeamMember {
   createdDate DateTime       @default(now())
   updatedDate DateTime       @default(now())
   member_type TeamMemberType @default(CAPTAIN)
-  team        Team           @relation(fields: [team_id], references: [id])
-  user        User           @relation(fields: [user_id], references: [id])
+  team        Team           @relation(fields: [team_id], references: [id], onDelete: Cascade)
+  user        User           @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@id([team_id, user_id])
   @@index([team_id, user_id, member_type])
@@ -108,8 +109,8 @@ model EventScore {
   round_num     Int
   createdDate   DateTime      @default(now())
   updatedDate   DateTime      @default(now())
-  event         Event         @relation(fields: [event_id], references: [id])
-  team          Team          @relation(fields: [team_id], references: [id])
+  event         Event         @relation(fields: [event_id], references: [id], onDelete: Cascade)
+  team          Team          @relation(fields: [team_id], references: [id], onDelete: Cascade)
   team_score    TeamScore?
   player_scores PlayerScore[]
 
@@ -118,13 +119,14 @@ model EventScore {
 }
 
 model TeamScore {
-  event_id    String
-  team_id     String
-  round_num   Int
-  createdDate DateTime   @default(now())
-  updatedDate DateTime   @default(now())
-  bounties    Int
-  event_score EventScore @relation(fields: [event_id, team_id, round_num], references: [event_id, team_id, round_num])
+  event_id     String
+  team_id      String
+  round_num    Int
+  createdDate  DateTime   @default(now())
+  updatedDate  DateTime   @default(now())
+  bounties     Int
+  hunt_dollars Int        @default(0)
+  event_score  EventScore @relation(fields: [event_id, team_id, round_num], references: [event_id, team_id, round_num])
 
   @@id([event_id, team_id, round_num])
   @@index([event_id, team_id])
