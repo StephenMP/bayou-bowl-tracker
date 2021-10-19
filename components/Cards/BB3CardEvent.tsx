@@ -30,6 +30,9 @@ async function registerForEvent(eventId: string, isRegistering: boolean, setRegi
   catch (e) {
     addToast('There was an error, please contact support', { appearance: 'error', autoDismiss: false })
   }
+  finally {
+    setRegistering(false)
+  }
 }
 
 function GoToEventPage({ eventId }: { eventId: string }) {
