@@ -338,6 +338,7 @@ function Page({ eventId }: { eventId: string }) {
                 team_id: team.id,
                 createdDate: new Date(),
                 updatedDate: new Date(),
+                hunt_dollars: 0,
             }
 
             const eventScore: EventScore = {
