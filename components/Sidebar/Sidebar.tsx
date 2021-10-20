@@ -99,7 +99,7 @@ const Sidebar = withPageAuthRequired(() => {
                 </Link>
               </li>
 
-              <li className="items-center">
+              {/* <li className="items-center">
                 <Link href={routes.user.events}>
                   <a
                     onClick={() => setCollapseShow("hidden")}
@@ -121,7 +121,7 @@ const Sidebar = withPageAuthRequired(() => {
                     Events
                   </a>
                 </Link>
-              </li>
+              </li> */}
             </ul>
 
             {user.user_type === UserType.ADMIN ?
