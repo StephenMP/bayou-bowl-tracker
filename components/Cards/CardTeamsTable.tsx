@@ -16,7 +16,7 @@ function getName(user: User) {
 
 function AllTeams({ color }) {
   const { users, isLoading: usersLoading } = useAllUsers({ suspense: false })
-  const { teams: allTeams , isLoading, mutate: mutateTeams } = useAllTeams({ suspense: false })
+  const { teams: allTeams, isLoading, mutate: mutateTeams } = useAllTeams({ suspense: false })
   const [canDelete, setCanDelete] = useState<boolean>(true)
   const { addToast, updateToast } = useToasts()
 
@@ -33,7 +33,7 @@ function AllTeams({ color }) {
     if (user) {
       return user.profile?.steam_name ?? user.name
     }
-    
+
     return null
   }
 
@@ -77,20 +77,6 @@ function AllTeams({ color }) {
           <div className="relative w-full px-4 max-w-full flex-grow flex-1">
             <h3 className={"font-semibold text-lg " + (color === "light" ? "text-blueGray-700" : "text-white")}>
               Total Teams: {teams.length}
-              <br />
-            </h3>
-            <h3 className={"font-semibold text-lg " + (color === "light" ? "text-blueGray-700" : "text-white")}>
-              Completed Teams: {teams.filter(t => t.team_members.length === 3).length}
-              <br />
-            </h3>
-            <h3 className={"font-semibold text-lg " + (color === "light" ? "text-blueGray-700" : "text-white")}>
-              Missing Captain: {teams.filter(t => t.team_members.length === 0).length}
-              <br />
-            </h3>
-
-            <h3 className={"font-semibold text-lg " + (color === "light" ? "text-blueGray-700" : "text-white")}>
-              Missing Members: {teams.filter(t => t.team_members.length < 3).length}
-              <br />
             </h3>
           </div>
           <div>

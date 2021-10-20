@@ -14,7 +14,7 @@ function SocialLinks() {
   return (
     <>
       <li className="flex items-center">
-        <a className={navLinkClassName} href="https://twitter.com/MndyNghtHnts" target="_blank" >
+        <a className={navLinkClassName} href="https://twitter.com/mnh_gg" target="_blank" >
           <i className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 text-lg leading-lg fab fa-twitter" />
           <span className="lg:hidden inline-block ml-2">Twitter</span>
         </a>
