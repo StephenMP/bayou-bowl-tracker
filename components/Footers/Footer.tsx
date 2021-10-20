@@ -132,6 +132,9 @@ export default function Footer() {
               <div className="text-sm text-blueGray-500 font-semibold py-1">
                 Copyright © {new Date().getFullYear()} Monday Night Hunts
               </div>
+              <div className="text-sm text-blueGray-500 font-semibold py-1">
+                Not affiliated with Crytek or Hunt: Showdown.
+              </div>
             </div>
           </div>
         </div>
