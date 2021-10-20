@@ -305,7 +305,7 @@ export default function Landing() {
               </div>
             </div>
             <div className="flex flex-wrap">
-              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+              <div className="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
                 <div className="px-6">
                   <img
                     alt="..."
@@ -315,7 +315,7 @@ export default function Landing() {
                   <div className="pt-6 text-center">
                     <h5 className="text-xl font-bold">GameswithDeath</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                      Co-Mastermind
+                      Mastermind
                     </p>
                     <div className="mt-6">
                       <a href="https://twitter.com/GameswithDeath" target="_blank">
@@ -346,48 +346,8 @@ export default function Landing() {
                   </div>
                 </div>
               </div>
-              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
-                <div className="px-6">
-                  <img
-                    alt="..."
-                    src="https://pbs.twimg.com/profile_images/1275889472068972544/kMF6bUQg_400x400.jpg"
-                    className="shadow-lg rounded-full mx-auto max-w-120-px"
-                  />
-                  <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">SaltyOctopus</h5>
-                    <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                      Co-Mastermind
-                    </p>
-                    <div className="mt-6">
-                      <a href="https://twitter.com/saltyoctopusttv" target="_blank">
-                        <button
-                          className="bg-lightBlue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                          type="button"
-                        >
-                          <i className="fab fa-twitter"></i>
-                        </button>
-                      </a>
-                      <a href="https://www.twitch.tv/saltyoctopus" target="_blank">
-                        <button
-                          className="bg-purple-twitch text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                          type="button"
-                        >
-                          <i className="fab fa-twitch"></i>
-                        </button>
-                      </a>
-                      <a href="https://www.youtube.com/channel/UC1MJ_Z8Jkj4PWnS-mb1aRyw" target="_blank">
-                        <button
-                          className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                          type="button"
-                        >
-                          <i className="fab fa-youtube"></i>
-                        </button>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+
+              <div className="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
                 <div className="px-6">
                   <img
                     alt="..."
@@ -428,11 +388,12 @@ export default function Landing() {
                   </div>
                 </div>
               </div>
-              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+
+              <div className="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
                 <div className="px-6">
                   <img
                     alt="..."
-                    src="https://pbs.twimg.com/profile_images/1399126715687968771/2Q6udYwV_400x400.jpg"
+                    src="/img/index/CrankItLogo.png"
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
