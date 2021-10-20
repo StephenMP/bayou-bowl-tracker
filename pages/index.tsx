@@ -393,7 +393,7 @@ export default function Landing() {
                 <div className="px-6">
                   <img
                     alt="..."
-                    src="https://pbs.twimg.com/profile_images/1399126715687968771/2Q6udYwV_400x400.jpg"
+                    src="/img/index/CrankItLogo.png"
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
