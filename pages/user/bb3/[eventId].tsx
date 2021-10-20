@@ -13,20 +13,24 @@
 // import { queryParamAsString, routes } from '../../../util/routes';
 
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
+import { useRouter } from 'next/router';
 import React from "react";
+import Spinner from '../../../components/PageChange/Spinner';
 import Admin from "../../../layouts/Admin";
+import { useEvent } from '../../../lib/swr';
+import { queryParamAsString } from '../../../util/routes';
 
-// function parseTimeFromDate(date: Date) {
-//     let hour = date.getHours()
-//     const amPm = hour >= 12 ? 'pm' : 'am'
-//     let min: string | number = date.getMinutes()
-  
-//     hour = hour % 12;
-//     hour = hour ? hour : 12
-//     min = min < 10 ? '0' + min : min
-  
-//     return `${hour}:${min} ${amPm} ${Intl.DateTimeFormat().resolvedOptions().timeZone}`
-//   }
+function parseTimeFromDate(date: Date) {
+    let hour = date.getHours()
+    const amPm = hour >= 12 ? 'pm' : 'am'
+    let min: string | number = date.getMinutes()
+
+    hour = hour % 12;
+    hour = hour ? hour : 12
+    min = min < 10 ? '0' + min : min
+
+    return `${hour}:${min} ${amPm} ${Intl.DateTimeFormat().resolvedOptions().timeZone}`
+}
 
 // function calculateBountyScore(totalBounties: number) {
 //     let bountyScore = 0
@@ -510,15 +514,43 @@ import Admin from "../../../layouts/Admin";
 // }
 
 const EventPage = withPageAuthRequired(() => {
-    // const router = useRouter()
-    // const eventId = queryParamAsString(router.query.eventId)
+    const router = useRouter()
+    const eventId = queryParamAsString(router.query.eventId)
+    const { event, isLoading } = useEvent(eventId, { suspense: false })
 
     // return (
     //     <React.Suspense fallback={<Spinner light={true} />}>
     //         <Page eventId={eventId} />
     //     </React.Suspense>
     // )
-    return (<></>)
+
+    if (isLoading) {
+        return (
+            <Spinner light={true} />
+        )
+    }
+
+    const startDate = new Date(event.startDate)
+    return (
+        <div className="flex justify-center">
+            <div className="relative max-w-4xl mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+                <div className="rounded-t bg-white mb-0 px-6 py-6">
+                    <div className="text-center flex justify-between">
+                        <h6 className="text-blueGray-700 text-xl font-bold">
+                            Event starts {`${startDate.toDateString()} at ${parseTimeFromDate(startDate)}`}
+                        </h6>
+                    </div>
+                </div>
+                <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
+                    <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                        When the event becomes active, this page will auto-refresh and allow
+                        you to begin adding scores. If you don't see the page auto-refresh,
+                        try clicking the page. If that does not work, please manually refresh.
+                    </h6>
+                </div>
+            </div>
+        </div>
+    )
 })
 
 EventPage['layout'] = Admin;

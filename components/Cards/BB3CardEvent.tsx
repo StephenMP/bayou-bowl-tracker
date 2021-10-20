@@ -95,7 +95,7 @@ function CardButtons({ teams, eventId }: { teams: Team[], eventId: string }) {
   if (isRegistered) {
     return (
       <>
-        {/* <GoToEventPage eventId={eventId} /> */}
+        <GoToEventPage eventId={eventId} />
         <Register eventId={eventId} isRegister={false} />
       </>
     )
