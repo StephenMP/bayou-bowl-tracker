@@ -19,7 +19,6 @@ function AllTeams({ color }) {
   const { teams: allTeams , isLoading, mutate: mutateTeams } = useAllTeams({ suspense: false })
   const [canDelete, setCanDelete] = useState<boolean>(true)
   const { addToast, updateToast } = useToasts()
-  const teams = allTeams.filter(t => t.event.name === 'Bayou Bowl III')
 
   const getTeamMembers = (team: Team) => {
     const members = team.team_members.filter(t => t.member_type === TeamMemberType.MEMBER)
@@ -65,6 +64,7 @@ function AllTeams({ color }) {
     )
   }
 
+  const teams = allTeams.filter(t => t.event.name === 'Bayou Bowl III')
   return (
     <div
       className={
