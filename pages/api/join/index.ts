@@ -1,6 +1,6 @@
 import { getSession } from '@auth0/nextjs-auth0';
 import { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../../lib/prisma';
+import { prisma } from '../../../lib/prisma';
 import { userIdFromAuth0Sub } from '../../../repositories/user';
 import { Team, TeamMemberType } from '../../../types/prisma';
 import { queryParamAsString } from '../../../util/routes';

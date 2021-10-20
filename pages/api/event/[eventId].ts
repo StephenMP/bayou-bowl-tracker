@@ -1,4 +1,4 @@
-import prisma from '../../../lib/prisma';
+import { prisma } from '../../../lib/prisma';
 import { queryParamAsString } from '../../../util/routes';
 
 async function getEventById(id: string) {

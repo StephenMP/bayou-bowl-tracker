@@ -1,4 +1,4 @@
-import prisma from '../../../lib/prisma';
+import { prisma } from '../../../lib/prisma';
 import { readTeam } from '../../../repositories/team';
 import { queryParamAsString } from '../../../util/routes';
 

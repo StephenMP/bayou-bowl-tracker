@@ -1,7 +1,6 @@
-import { getSession } from '@auth0/nextjs-auth0'
-import { withApiAuthRequired } from '@auth0/nextjs-auth0';
+import { getSession, withApiAuthRequired } from '@auth0/nextjs-auth0';
 import { UserProfile } from '@prisma/client';
-import prisma from '../../../lib/prisma'
+import { prisma } from '../../../lib/prisma';
 
 async function getUserProfile(sub: string) {
     const userId = sub.split('|')[1]
