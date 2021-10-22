@@ -69,18 +69,30 @@ export default function Footer() {
                 Find us on any of these platforms.
               </h5>
               <div className="mt-6 lg:mb-0 mb-6">
-                <button
-                  className="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                  type="button"
-                >
-                  <i className="fab fa-twitter"></i>
-                </button>
-                <button
-                  className="bg-white text-purple-twitch shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                  type="button"
-                >
-                  <i className="fab fa-twitch"></i>
-                </button>
+                <a href="https://twitter.com/mnh_gg" target="_blank" >
+                  <button
+                    className="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+                    type="button"
+                  >
+                    <i className="fab fa-twitter"></i>
+                  </button>
+                </a>
+                <a href="https://www.twitch.tv/MondayNightHunts" target="_blank">
+                  <button
+                    className="bg-white text-purple-twitch shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+                    type="button"
+                  >
+                    <i className="fab fa-twitch"></i>
+                  </button>
+                </a>
+                <a href="https://discord.gg/eR87mZtq6F" target="_blank">
+                  <button
+                    className="bg-white text-purple-twitch shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+                    type="button"
+                  >
+                    <i className="fab fa-discord"></i>
+                  </button>
+                </a>
               </div>
             </div>
             <div className="w-full lg:w-6/12 px-4">

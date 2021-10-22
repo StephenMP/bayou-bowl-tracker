@@ -203,6 +203,45 @@ const Sidebar = withPageAuthRequired(() => {
             <hr className="my-4 md:min-w-full" />
             {/* Heading */}
             <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+              Social
+            </h6>
+            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+              <li className="items-center">
+                <a
+                  href="https://twitter.com/mnh_gg"
+                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                  target="_blank"
+                >
+                  <i className="fab fa-twitch text-blueGray-500 mr-2 text-sm"></i>{" "}
+                  Twitch
+                </a>
+              </li>
+              <li className="items-center">
+                <a
+                  href="https://www.twitch.tv/MondayNightHunts"
+                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                  target="_blank"
+                >
+                  <i className="fab fa-twitter text-blueGray-500 mr-2 text-sm"></i>{" "}
+                  Twitter
+                </a>
+              </li>
+              <li className="items-center">
+                <a
+                  href="https://discord.gg/eR87mZtq6F"
+                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                  target="_blank"
+                >
+                  <i className="fab fa-discord text-blueGray-500 mr-2 text-sm"></i>{" "}
+                  Discord
+                </a>
+              </li>
+            </ul>
+
+            {/* Divider */}
+            <hr className="my-4 md:min-w-full" />
+            {/* Heading */}
+            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
               Other
             </h6>
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">

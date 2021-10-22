@@ -26,6 +26,13 @@ function SocialLinks() {
           <span className="lg:hidden inline-block ml-2">Twitch</span>
         </a>
       </li>
+
+      <li className="flex items-center">
+        <a className={navLinkClassName} href="https://discord.gg/eR87mZtq6F" target="_blank">
+          <i className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 text-lg leading-lg fab fa-discord" />
+          <span className="lg:hidden inline-block ml-2">Discord</span>
+        </a>
+      </li>
     </>
   )
 }
