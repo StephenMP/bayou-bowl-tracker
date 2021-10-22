@@ -72,7 +72,29 @@ export default function Landing() {
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
-              <h6 className="text-lg mb-2 font-semibold leading-normal">
+                <h6 className="text-lg mb-2 font-semibold leading-normal">
+                  Bayou Bowl III Rules Now Available
+                </h6>
+                <h6 className="text-sm mb-2 font-semibold leading-normal">
+                  22 Oct 2021
+                </h6>
+                <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+                  The Official Rules for Bayou Bowl III are now available. As is our goal with all of our competitions, we strive to create a rule set that ensures the fairest playing field for all hunters.
+                </p>
+                <p className="text-lg font-light leading-relaxres enteed mt-0 mb-4 text-blueGray-600">
+                  All hunters should take some time to read the rules, so that they are aware of their responsibilities when competing. If you have any questions on the rules, please feel free to ask them in the <strong><a className="underline" href="https://discord.gg/eR87mZtq6F" target="_blank">MNH Discord</a></strong>
+                </p>
+              </div>
+              <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
+                <img src="/img/news/BB3_Announced.png" />
+              </div>
+            </div>
+          </div>
+
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap items-center mt-32">
+              <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
+                <h6 className="text-lg mb-2 font-semibold leading-normal">
                   Bayou Bowl III is Officially Announced
                 </h6>
                 <h6 className="text-sm mb-2 font-semibold leading-normal">
@@ -90,7 +112,7 @@ export default function Landing() {
               </div>
             </div>
           </div>
-          
+
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">

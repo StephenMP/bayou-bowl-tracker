@@ -31,7 +31,7 @@ const RulesDropdown = () => {
           </a>
         </Link>
         <a
-          href="/pdf/Bayou_Bowl_III_Rules_V1-1.pdf"
+          href="/pdf/Bayou_Bowl_III_Rules.pdf"
           target="_blank"
           className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
         >
