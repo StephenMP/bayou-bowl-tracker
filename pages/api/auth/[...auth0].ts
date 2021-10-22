@@ -1,4 +1,4 @@
-import { handleAuth, handleCallback, Session, UserProfile } from '@auth0/nextjs-auth0';
+import { handleAuth, handleCallback, handleLogin, Session, UserProfile } from '@auth0/nextjs-auth0';
 import { User } from '@prisma/client';
 import { NextApiRequest } from 'next';
 import { createUser } from '../../../repositories/user';
@@ -18,6 +18,11 @@ async function saveNewUser(auth0User: UserProfile) {
 }
 
 export default handleAuth({
+    login: async (req, res) => {
+        await handleLogin(req, res, {
+            returnTo: "/user/profile",
+          });
+    },
     callback: async (req: NextApiRequest, res: NextApiResponseServerIO) => {
         try {
             await handleCallback(req, res, {

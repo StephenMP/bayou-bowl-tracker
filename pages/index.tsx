@@ -12,8 +12,9 @@ const daySeconds = 86400;
 const timerProps = {
   isPlaying: true,
   size: 170,
-  strokeWidth: 10,
-  colors: "#ba0010"
+  strokeWidth: 0,
+  colors: "#fff",
+
 };
 
 const getTimeSeconds = (time: number) => (minuteSeconds - time) | 0;
@@ -84,7 +85,7 @@ export default function Landing() {
                     src="/img/brand/The_Bayou_Bowl_Header.png"
                   />
                   {/* {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />} */}
-                  <div className="items-center flex flex-wrap mt-5 text-3xl">
+                  <div className="items-center flex flex-wrap mt-5 text-4xl">
                     <div className="w-full lg:w-3/12 uppercase md-hide px-4 ml-auto mr-auto text-center">
                       <CountdownCircleTimer
                         {...timerProps}
@@ -133,7 +134,7 @@ export default function Landing() {
                       </CountdownCircleTimer>
                     </div>
                   </div>
-                  <h3 className="mt-4 text-6xl uppercase font-bold text-blueGray-200">
+                  <h3 className="mt-4 text-6xl uppercase  text-blueGray-200">
                     {eventDateString}
                   </h3>
                 </div>
@@ -223,10 +224,10 @@ export default function Landing() {
                   22 Oct 2021
                 </h6>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  The Official Rules for Bayou Bowl III are now available. As is our goal with all of our competitions, we strive to create a rule set that ensures the fairest playing field for all hunters.
+                  The Official Rules for Bayou Bowl III are now available <a className="font-bold" href='/pdf/Bayou_Bowl_III_Rules.pdf' target="_blank">here</a>. As is our goal with all of our competitions, we strive to create a rule set that ensures the fairest playing field for all hunters.
                 </p>
                 <p className="text-lg font-light leading-relaxres enteed mt-0 mb-4 text-blueGray-600">
-                  All hunters should take some time to read the rules, so that they are aware of their responsibilities when competing. If you have any questions on the rules, please feel free to ask them in the <strong><a className="underline" href="https://discord.gg/eR87mZtq6F" target="_blank">MNH Discord</a></strong>
+                  All hunters should take some time to read the rules, so that they are aware of their responsibilities when competing. If you have any questions on the rules, please feel free to ask them in the <a className="font-bold" href="https://discord.gg/eR87mZtq6F" target="_blank">MNH Discord</a>
                 </p>
                 <p>
                   <a href={routes.news}>Read More News</a>
