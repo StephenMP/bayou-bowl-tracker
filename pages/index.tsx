@@ -217,23 +217,23 @@ export default function Landing() {
                   Latest News
                 </h3>
                 <h6 className="text-lg mb-2 font-semibold leading-normal">
-                  Bayou Bowl III is Officially Announced
+                  Bayou Bowl III Rules Now Available
                 </h6>
                 <h6 className="text-sm mb-2 font-semibold leading-normal">
-                  11 Oct 2021
+                  22 Oct 2021
                 </h6>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  Bayou Bowl III will be on Saturday, 4 December 2021 from 1 to 4 PM EST. This time there is no tiers, no teams, and no hiding! This will be a solo quickplay competition and, for the first time ever, the Bayou Bowl victors will receive cash prizes.
+                  The Official Rules for Bayou Bowl III are now available. As is our goal with all of our competitions, we strive to create a rule set that ensures the fairest playing field for all hunters.
                 </p>
                 <p className="text-lg font-light leading-relaxres enteed mt-0 mb-4 text-blueGray-600">
-                  Registration will be open from 30 October to 20 November 2021 at bayoubowl.gg. Official rules and more details to be released soon. We look forward to an exciting event. See you soon Hunters!
+                  All hunters should take some time to read the rules, so that they are aware of their responsibilities when competing. If you have any questions on the rules, please feel free to ask them in the <strong><a className="underline" href="https://discord.gg/eR87mZtq6F" target="_blank">MNH Discord</a></strong>
                 </p>
                 <p>
                   <a href={routes.news}>Read More News</a>
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <img src="/img/news/BB3_Announced.png" />
+                <img src="/img/news/BB3_Rules_Released.png" />
               </div>
             </div>
           </div>

@@ -165,7 +165,7 @@ export default function BB3CardEvent({ event }: { event: Event }) {
               </div>
             </div>
             <div className="w-full lg:w-12/12">
-              <a href='/pdf/Bayou_Bowl_III_Rules_V1-1.pdf' target="_blank" className="md:block text-center md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
+              <a href='/pdf/Bayou_Bowl_III_Rules.pdf' target="_blank" className="md:block text-center md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
                 Official Rules <i className="fas fa-link ml-2 text-xs text-blueGray-400"></i>
               </a>
             </div>
