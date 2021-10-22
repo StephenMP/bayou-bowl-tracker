@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import React from "react";
 import { useCurrentUserTeams } from "../../lib/swr/user";
 import { Event } from '../../types/prisma';
+import { parseTimeFromDate } from '../../util/dates';
 import { routes } from '../../util/routes';
 import Spinner from '../PageChange/Spinner';
 
@@ -33,18 +34,6 @@ function Register({ eventId }: { eventId: string }) {
       </button>
     </Link>
   )
-}
-
-function parseTimeFromDate(date: Date) {
-  let hour = date.getHours()
-  const amPm = hour >= 12 ? 'pm' : 'am'
-  let min: string | number = date.getMinutes()
-
-  hour = hour % 12;
-  hour = hour ? hour : 12
-  min = min < 10 ? '0' + min : min
-
-  return `${hour}:${min} ${amPm} ${Intl.DateTimeFormat().resolvedOptions().timeZone}`
 }
 
 export default function CardEvent({ event }: { event: Event }) {

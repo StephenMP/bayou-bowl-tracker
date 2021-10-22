@@ -6,6 +6,7 @@ import { mutate } from 'swr';
 import { fetcher } from '../../lib/swr';
 import { useCurrentUser, useCurrentUserTeams } from "../../lib/swr/user";
 import { Event, Team, User } from '../../types/prisma';
+import { isCurrentlyDST, isDST, parseTimeFromDate } from '../../util/dates';
 import { routes } from '../../util/routes';
 import Spinner from '../PageChange/Spinner';
 
@@ -84,18 +85,6 @@ function Register({ eventId, isRegister }: { eventId: string, isRegister: boolea
       {isRegister ? 'Register' : 'Unregister'}
     </button>
   )
-}
-
-function parseTimeFromDate(date: Date) {
-  let hour = date.getHours()
-  const amPm = hour >= 12 ? 'pm' : 'am'
-  let min: string | number = date.getMinutes()
-
-  hour = hour % 12;
-  hour = hour ? hour : 12
-  min = min < 10 ? '0' + min : min
-
-  return `${hour}:${min} ${amPm} ${Intl.DateTimeFormat().resolvedOptions().timeZone}`
 }
 
 function CardButtons({ teams, eventId }: { teams: Team[], eventId: string }) {

@@ -18,19 +18,8 @@ import React from "react";
 import Spinner from '../../../components/PageChange/Spinner';
 import Admin from "../../../layouts/Admin";
 import { useEvent } from '../../../lib/swr';
+import { parseTimeFromDate } from '../../../util/dates';
 import { queryParamAsString } from '../../../util/routes';
-
-function parseTimeFromDate(date: Date) {
-    let hour = date.getHours()
-    const amPm = hour >= 12 ? 'pm' : 'am'
-    let min: string | number = date.getMinutes()
-
-    hour = hour % 12;
-    hour = hour ? hour : 12
-    min = min < 10 ? '0' + min : min
-
-    return `${hour}:${min} ${amPm} ${Intl.DateTimeFormat().resolvedOptions().timeZone}`
-}
 
 // function calculateBountyScore(totalBounties: number) {
 //     let bountyScore = 0
