@@ -42,7 +42,7 @@ function Page({ eventId, take }: PageProps) {
     const sortedEventScoresByTeam = eventScoresByTeam?.sort(firstBy('totalScore', 'desc').thenBy('totalRounds').thenBy('kills', 'desc').thenBy('bounties', 'desc')).slice(0, take)
 
     return (
-        <div className="flex flex-wrap max-w-5xl">
+        <div className="flex flex-wrap max-w-7xl font-bold text-4xl">
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blueGray-700" >
                 <div className="rounded-t mb-0 px-4 py-3 border-0">
                     <div className="flex flex-wrap items-center">
@@ -116,7 +116,7 @@ const EventPage = () => {
 
     useEffect(() => {
         document.body.classList.remove('bg-blueGray-200')
-        document.body.classList.add('bg-green')
+        document.body.classList.add('bg-none')
 
         document.getElementById('rcc-confirm-button')?.click()
     })

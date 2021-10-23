@@ -26,6 +26,10 @@
     background-color: rgba(0, 255, 0, 100);
 }
 
+.bg-none {
+  background-color: rgba(0,0,0,0)!important
+}
+
 .max-w-5xl {
     max-width: 75rem;
   }

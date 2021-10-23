@@ -64,7 +64,7 @@ export default function CardProfile() {
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-twitch mr-2 text-lg text-blueGray-400"></i>
-              <a href={"https://twitch.tv/" + userProfile.twitch_name} target="_blank">{userProfile.twitch_name}</a>
+              <a href={"https://twitch.tv/" + userProfile.twitch_name} target="_blank" rel="noopener noreferrer">{userProfile.twitch_name}</a>
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-steam mr-2 text-lg text-blueGray-400"></i>
@@ -76,7 +76,7 @@ export default function CardProfile() {
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-twitter mr-2 text-lg text-blueGray-400"></i>
-              <a href={"https://twitter.com/" + userProfile.twitter_name} rel="noreferrer" target="_blank">{userProfile.twitter_name}</a>
+              <a href={"https://twitter.com/" + userProfile.twitter_name} target="_blank" rel="noopener noreferrer">{userProfile.twitter_name}</a>
             </div>
           </div>
           <div className="mt-10 py-10 border-t border-blueGray-200 text-center">

@@ -14,21 +14,21 @@ function SocialLinks() {
   return (
     <>
       <li className="flex items-center">
-        <a className={navLinkClassName} href="https://twitter.com/mnh_gg" target="_blank" >
+        <a className={navLinkClassName} href="https://twitter.com/mnh_gg" target="_blank" rel="noopener noreferrer" >
           <i className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 text-lg leading-lg fab fa-twitter" />
           <span className="lg:hidden inline-block ml-2">Twitter</span>
         </a>
       </li>
 
       <li className="flex items-center">
-        <a className={navLinkClassName} href="https://www.twitch.tv/MondayNightHunts" target="_blank">
+        <a className={navLinkClassName} href="https://www.twitch.tv/MondayNightHunts" target="_blank" rel="noopener noreferrer">
           <i className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 text-lg leading-lg fab fa-twitch" />
           <span className="lg:hidden inline-block ml-2">Twitch</span>
         </a>
       </li>
 
       <li className="flex items-center">
-        <a className={navLinkClassName} href="https://discord.gg/eR87mZtq6F" target="_blank">
+        <a className={navLinkClassName} href="https://discord.gg/eR87mZtq6F" target="_blank" rel="noopener noreferrer">
           <i className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 text-lg leading-lg fab fa-discord" />
           <span className="lg:hidden inline-block ml-2">Discord</span>
         </a>

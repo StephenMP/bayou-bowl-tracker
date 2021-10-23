@@ -32,7 +32,7 @@ const RulesDropdown = () => {
         </Link>
         <a
           href="/pdf/Bayou_Bowl_III_Rules.pdf"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
         >
           BayouBowl III

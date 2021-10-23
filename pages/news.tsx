@@ -79,10 +79,10 @@ export default function Landing() {
                   22 Oct 2021
                 </h6>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  The Official Rules for Bayou Bowl III are now available <a className="font-bold" href='/pdf/Bayou_Bowl_III_Rules.pdf' target="_blank">here</a>. As is our goal with all of our competitions, we strive to create a rule set that ensures the fairest playing field for all hunters.
+                  The Official Rules for Bayou Bowl III are now available <a className="font-bold" href='/pdf/Bayou_Bowl_III_Rules.pdf' target="_blank" rel="noopener noreferrer">here</a>. As is our goal with all of our competitions, we strive to create a rule set that ensures the fairest playing field for all hunters.
                 </p>
                 <p className="text-lg font-light leading-relaxres enteed mt-0 mb-4 text-blueGray-600">
-                  All hunters should take some time to read the rules, so that they are aware of their responsibilities when competing. If you have any questions on the rules, please feel free to ask them in the <a className="font-bold" href="https://discord.gg/eR87mZtq6F" target="_blank">MNH Discord</a>
+                  All hunters should take some time to read the rules, so that they are aware of their responsibilities when competing. If you have any questions on the rules, please feel free to ask them in the <a className="font-bold" href="https://discord.gg/eR87mZtq6F" target="_blank" rel="noopener noreferrer">MNH Discord</a>
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">

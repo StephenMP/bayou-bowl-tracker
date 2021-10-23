@@ -88,12 +88,12 @@ export default function CardEvent({ event }: { event: Event }) {
               </div>
             </div>
             <div className="w-full lg:w-12/12">
-              <a href={routes.rules} target="_blank" className="md:block text-center md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
+              <a href={routes.rules} target="_blank" rel="noopener noreferrer" className="md:block text-center md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
                 Official Rules <i className="fas fa-link ml-2 text-xs text-blueGray-400"></i>
               </a>
             </div>
             <div className="w-full lg:w-12/12">
-              <a href={routes.instructions} target="_blank" className="md:block text-center md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
+              <a href={routes.instructions} target="_blank" rel="noopener noreferrer" className="md:block text-center md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
                 Instructions to Compete <i className="fas fa-link ml-2 text-xs text-blueGray-400"></i>
               </a>
             </div>

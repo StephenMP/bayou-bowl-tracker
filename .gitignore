@@ -36,3 +36,12 @@ yarn-error.log*
 
 # DB Backups
 c49c31ee-6595-412f-8be4-14e7ec25215a
+
+# Sentry
+.sentryclirc
+
+# Sentry
+.sentryclirc
+
+# Sentry
+.sentryclirc
