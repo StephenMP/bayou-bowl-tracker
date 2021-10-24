@@ -13,12 +13,12 @@ import Image from 'next/image'
 
 async function registerForEvent(user: User, eventId: string, isRegistering: boolean, setRegistering: React.Dispatch<React.SetStateAction<boolean>>, addToast: AddToast) {
   try {
-    setRegistering(true)
     if (user.user_type !== UserType.ADMIN) {
       alert("Registration will not be open until 30 Oct 2021 :)")
     }
 
     else {
+      setRegistering(true)
       const response = await fetcher(`/api/event/register`, {
         method: isRegistering ? 'POST' : 'DELETE',
         body: JSON.stringify({ eventId }),
