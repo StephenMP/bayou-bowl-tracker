@@ -2,6 +2,7 @@ import { useUser } from "@auth0/nextjs-auth0";
 import { createPopper } from "@popperjs/core";
 import React from "react";
 import { routes } from "../../util/routes";
+import Image from 'next/image'
 
 const UserDropdown = () => {
   // dropdown props
@@ -37,11 +38,15 @@ const UserDropdown = () => {
       >
         <div className="items-center flex">
           <span className="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
-            <img
-              alt="..."
-              className="w-full rounded-full align-middle border-none shadow-lg"
-              src={user.picture}
-            />
+            <div className="align-middle">
+              <Image
+                alt="..."
+                height={130}
+                width={130}
+                className="w-full rounded-full border-none shadow-lg"
+                src={user.picture}
+              />
+            </div>
           </span>
         </div>
       </a>

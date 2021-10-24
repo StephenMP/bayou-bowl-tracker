@@ -3,6 +3,7 @@ import React from "react";
 import { useRecoilValue } from 'recoil';
 import { useCurrentUser } from '../../lib/swr/user';
 import { userNameState, userProfileState } from '../../state/atoms';
+import Image from 'next/image'
 
 export default function CardProfile() {
   const { user } = useCurrentUser({ suspense: true })
@@ -16,13 +17,15 @@ export default function CardProfile() {
           <div className="flex flex-wrap justify-center">
             <div className="w-full px-4 flex justify-center">
               <div className="relative">
-                <img
-                  alt="..."
-                  height={800}
-                  width={800}
-                  src={user.picture}
-                  className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
-                />
+                <div className="h-auto align-middle absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px">
+                  <Image
+                    alt="..."
+                    height={150}
+                    width={150}
+                    src={user.picture}
+                    className="shadow-xl rounded-full border-none"
+                  />
+                </div>
               </div>
             </div>
             <div className="w-full px-4 text-center mt-20">
@@ -64,7 +67,7 @@ export default function CardProfile() {
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-twitch mr-2 text-lg text-blueGray-400"></i>
-              <a href={"https://twitch.tv/" + userProfile.twitch_name} target="_blank">{userProfile.twitch_name}</a>
+              <a href={"https://twitch.tv/" + userProfile.twitch_name} target="_blank" rel="noopener noreferrer">{userProfile.twitch_name}</a>
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-steam mr-2 text-lg text-blueGray-400"></i>
@@ -76,7 +79,7 @@ export default function CardProfile() {
             </div>
             <div className="mb-2 text-blueGray-600">
               <i className="fab fa-twitter mr-2 text-lg text-blueGray-400"></i>
-              <a href={"https://twitter.com/" + userProfile.twitter_name} rel="noreferrer" target="_blank">{userProfile.twitter_name}</a>
+              <a href={"https://twitter.com/" + userProfile.twitter_name} target="_blank" rel="noopener noreferrer">{userProfile.twitter_name}</a>
             </div>
           </div>
           <div className="mt-10 py-10 border-t border-blueGray-200 text-center">

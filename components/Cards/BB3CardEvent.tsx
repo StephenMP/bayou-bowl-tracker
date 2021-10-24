@@ -6,9 +6,10 @@ import { mutate } from 'swr';
 import { fetcher } from '../../lib/swr';
 import { useCurrentUser, useCurrentUserTeams } from "../../lib/swr/user";
 import { Event, Team, User } from '../../types/prisma';
-import { isCurrentlyDST, isDST, parseTimeFromDate } from '../../util/dates';
+import { parseTimeFromDate } from '../../util/dates';
 import { routes } from '../../util/routes';
 import Spinner from '../PageChange/Spinner';
+import Image from 'next/image'
 
 async function registerForEvent(user: User, eventId: string, isRegistering: boolean, setRegistering: React.Dispatch<React.SetStateAction<boolean>>, addToast: AddToast) {
   try {
@@ -32,14 +33,13 @@ async function registerForEvent(user: User, eventId: string, isRegistering: bool
       }
 
       addToast(`Successfully ${isRegistering ? "registered" : "unregistered"}`, { appearance: 'success', autoDismiss: true })
-      await mutate(routes.api.user.teams)
     }
   }
   catch (e) {
     addToast('There was an error, please contact support', { appearance: 'error', autoDismiss: false })
   }
   finally {
-    setRegistering(false)
+    await mutate(routes.api.user.teams)
   }
 }
 
@@ -113,14 +113,16 @@ export default function BB3CardEvent({ event }: { event: Event }) {
         <div className="px-6">
           <div className="flex flex-wrap justify-center">
             <div className="w-full px-4 flex justify-center">
-              <div className="relative">
-                <img
-                  alt="..."
-                  height={150}
-                  width={150}
-                  src={event.picture}
-                  className="shadow-xl h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
-                />
+              <div className="relative h-auto align-middle absolute -m-16 -ml-20 lg:-ml-16">
+                <div>
+                  <Image
+                    alt="BB3 Event Card"
+                    width={256}
+                    height={144}
+                    src={event.picture}
+                    className="shadow-xl border-none"
+                  />
+                </div>
               </div>
             </div>
             <div className="w-full px-4 text-center mt-20"></div>
@@ -154,7 +156,7 @@ export default function BB3CardEvent({ event }: { event: Event }) {
               </div>
             </div>
             <div className="w-full lg:w-12/12">
-              <a href='/pdf/Bayou_Bowl_III_Rules.pdf' target="_blank" className="md:block text-center md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
+              <a href='/pdf/Bayou_Bowl_III_Rules.pdf' target="_blank" rel="noopener noreferrer" className="md:block text-center md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
                 Official Rules <i className="fas fa-link ml-2 text-xs text-blueGray-400"></i>
               </a>
             </div>

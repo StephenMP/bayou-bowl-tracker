@@ -210,7 +210,7 @@ const Sidebar = withPageAuthRequired(() => {
                 <a
                   href="https://twitter.com/mnh_gg"
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  target="_blank"
+                  target="_blank" rel="noopener noreferrer"
                 >
                   <i className="fab fa-twitch text-blueGray-500 mr-2 text-sm"></i>{" "}
                   Twitch
@@ -220,7 +220,7 @@ const Sidebar = withPageAuthRequired(() => {
                 <a
                   href="https://www.twitch.tv/MondayNightHunts"
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  target="_blank"
+                  target="_blank" rel="noopener noreferrer"
                 >
                   <i className="fab fa-twitter text-blueGray-500 mr-2 text-sm"></i>{" "}
                   Twitter
@@ -230,7 +230,7 @@ const Sidebar = withPageAuthRequired(() => {
                 <a
                   href="https://discord.gg/eR87mZtq6F"
                   className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-                  target="_blank"
+                  target="_blank" rel="noopener noreferrer"
                 >
                   <i className="fab fa-discord text-blueGray-500 mr-2 text-sm"></i>{" "}
                   Discord

@@ -72,7 +72,6 @@ export default function Landing() {
                                   {` - ${users.find(u => u.id === tm.user_id)?.profile.steam_name ?? "MISSING STEAM NAME"}`}
                                 </div>
                               ))}
-                              {/* <br />- FailSpawner<br />- Maluke<br />- eklipselol */}
                             </h4>
                           </div>
                         </div>
@@ -101,7 +100,6 @@ export default function Landing() {
                                   {` - ${users.find(u => u.id === tm.user_id)?.profile.steam_name ?? "MISSING STEAM NAME"}`}
                                 </div>
                               ))}
-                              {/* <br />- FailSpawner<br />- Maluke<br />- eklipselol */}
                             </h4>
                           </div>
                         </div>

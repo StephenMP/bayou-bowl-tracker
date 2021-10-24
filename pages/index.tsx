@@ -4,10 +4,7 @@ import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import Footer from "../components/Footers/Footer";
 import Navbar from "../components/Navbars/AuthNavbar";
 import { routes } from "../util/routes";
-
-const minuteSeconds = 60;
-const hourSeconds = 3600;
-const daySeconds = 86400;
+import Image from 'next/image'
 
 const timerProps = {
   isPlaying: true,
@@ -17,6 +14,9 @@ const timerProps = {
 
 };
 
+const minuteSeconds = 60;
+const hourSeconds = 3600;
+const daySeconds = 86400;
 const getTimeSeconds = (time: number) => (minuteSeconds - time) | 0;
 const getTimeMinutes = (time: number) => ((time % hourSeconds) / minuteSeconds) | 0;
 const getTimeHours = (time: number) => ((time % daySeconds) / hourSeconds) | 0;
@@ -77,13 +77,9 @@ export default function Landing() {
             <div className="flex flex-wrap items-center">
               <div className="w-full px-4 ml-auto mr-auto text-center">
                 <div className="flex justify-center flex-wrap pr-12 mt-10">
-                  <img
-                    alt="..."
-                    height="50%"
-                    width="50%"
-                    className="max-w-full rounded-lg shadow-lg"
-                    src="/img/brand/The_Bayou_Bowl_Header.png"
-                  />
+                  <div className="max-w-full rounded-lg shadow-lg" >
+                    <Image alt="BayouBowl 3 Header" width={592} height={333} src="/img/brand/The_Bayou_Bowl_Header.png" />
+                  </div>
                   {/* {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />} */}
                   <div className="items-center flex flex-wrap mt-5 text-4xl">
                     <div className="w-full lg:w-3/12 uppercase md-hide px-4 ml-auto mr-auto text-center">
@@ -224,17 +220,17 @@ export default function Landing() {
                   22 Oct 2021
                 </h6>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  The Official Rules for Bayou Bowl III are now available <a className="font-bold" href='/pdf/Bayou_Bowl_III_Rules.pdf' target="_blank">here</a>. As is our goal with all of our competitions, we strive to create a rule set that ensures the fairest playing field for all hunters.
+                  The Official Rules for Bayou Bowl III are now available <a className="font-bold" href='/pdf/Bayou_Bowl_III_Rules.pdf' target="_blank" rel="noopener noreferrer">here</a>. As is our goal with all of our competitions, we strive to create a rule set that ensures the fairest playing field for all hunters.
                 </p>
                 <p className="text-lg font-light leading-relaxres enteed mt-0 mb-4 text-blueGray-600">
-                  All hunters should take some time to read the rules, so that they are aware of their responsibilities when competing. If you have any questions on the rules, please feel free to ask them in the <a className="font-bold" href="https://discord.gg/eR87mZtq6F" target="_blank">MNH Discord</a>
+                  All hunters should take some time to read the rules, so that they are aware of their responsibilities when competing. If you have any questions on the rules, please feel free to ask them in the <a className="font-bold" href="https://discord.gg/eR87mZtq6F" target="_blank" rel="noopener noreferrer">MNH Discord</a>
                 </p>
                 <p>
                   <a href={routes.news}>Read More News</a>
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <img src="/img/news/BB3_Rules_Released.png" />
+                <Image alt="BB3 News Rules" src="/img/news/BB3_Rules_Released.png" width={592} height={333} />
               </div>
             </div>
           </div>
@@ -244,8 +240,10 @@ export default function Landing() {
           <div className="container mx-auto px-4">
             <div className="items-center flex flex-wrap">
               <div className="w-full md:w-4/12 ml-auto mr-auto px-4">
-                <img
-                  alt="..."
+                <Image
+                  alt="Monday Night Hunts Logo"
+                  width={300}
+                  height={300}
                   className="max-w-full rounded-lg shadow-lg"
                   src="/img/brand/bayoubowl-logo.png"
                 />
@@ -298,9 +296,9 @@ export default function Landing() {
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap justify-center text-center mb-24">
               <div className="w-full lg:w-6/12 px-4">
-                <h2 className="text-4xl font-semibold">The Chosen Ones</h2>
+                <h2 className="text-4xl font-semibold">The Monday Night Hunts Team</h2>
                 <p className="text-lg leading-relaxed m-4 text-blueGray-500">
-                  The following individuals are the ones responsible for
+                  The following individuals are the masterminds behind MNG and are the ones responsible for
                   helping bring you the Bayou Bowl tournament.
                 </p>
               </div>
@@ -308,18 +306,22 @@ export default function Landing() {
             <div className="flex flex-wrap">
               <div className="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
                 <div className="px-6">
-                  <img
-                    alt="..."
-                    src="https://pbs.twimg.com/profile_images/1294386456870490113/TE3r2BiW_400x400.jpg"
-                    className="shadow-lg rounded-full mx-auto max-w-120-px"
-                  />
+                  <div className=" mx-auto max-w-120-px">
+                    <Image
+                      alt="GamesWithDeath Logo"
+                      height={130}
+                      width={130}
+                      src="/img/index/DeathLogo.png"
+                      className="rounded-full shadow-lg"
+                    />
+                  </div>
                   <div className="pt-6 text-center">
                     <h5 className="text-xl font-bold">GameswithDeath</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
                       Mastermind
                     </p>
                     <div className="mt-6">
-                      <a href="https://twitter.com/GameswithDeath" target="_blank">
+                      <a href="https://twitter.com/GameswithDeath" target="_blank" rel="noopener noreferrer">
                         <button
                           className="bg-lightBlue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                           type="button"
@@ -327,7 +329,7 @@ export default function Landing() {
                           <i className="fab fa-twitter"></i>
                         </button>
                       </a>
-                      <a href="https://www.twitch.tv/gameswithdeath" target="_blank">
+                      <a href="https://www.twitch.tv/gameswithdeath" target="_blank" rel="noopener noreferrer">
                         <button
                           className="bg-purple-twitch text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                           type="button"
@@ -335,7 +337,7 @@ export default function Landing() {
                           <i className="fab fa-twitch"></i>
                         </button>
                       </a>
-                      <a href="https://www.youtube.com/channel/UC_GOJ8g3nYIoa_5VbENLTJw?" target="_blank">
+                      <a href="https://www.youtube.com/channel/UC_GOJ8g3nYIoa_5VbENLTJw?" target="_blank" rel="noopener noreferrer">
                         <button
                           className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                           type="button"
@@ -350,18 +352,22 @@ export default function Landing() {
 
               <div className="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
                 <div className="px-6">
-                  <img
-                    alt="..."
-                    src="https://pbs.twimg.com/profile_images/1151363706241945600/60_I1A0o_400x400.png"
-                    className="shadow-lg rounded-full mx-auto max-w-120-px"
-                  />
+                  <div className="mx-auto max-w-120-px">
+                    <Image
+                      alt="MrSpwn Logo"
+                      height={130}
+                      width={130}
+                      src="/img/index/MrSpwnLogo.png"
+                      className="rounded-full shadow-lg"
+                    />
+                  </div>
                   <div className="pt-6 text-center">
                     <h5 className="text-xl font-bold">MrSpwn</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
                       Software Mastermind
                     </p>
                     <div className="mt-6">
-                      <a href="https://twitter.com/Mr_Spwn" target="_blank">
+                      <a href="https://twitter.com/Mr_Spwn" target="_blank" rel="noopener noreferrer">
                         <button
                           className="bg-lightBlue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                           type="button"
@@ -369,7 +375,7 @@ export default function Landing() {
                           <i className="fab fa-twitter"></i>
                         </button>
                       </a>
-                      <a href="https://twitch.tv/MrSpwn" target="_blank">
+                      <a href="https://twitch.tv/MrSpwn" target="_blank" rel="noopener noreferrer">
                         <button
                           className="bg-purple-twitch text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                           type="button"
@@ -377,7 +383,7 @@ export default function Landing() {
                           <i className="fab fa-twitch"></i>
                         </button>
                       </a>
-                      <a href="https://youtube.com/c/MrSpwn" target="_blank">
+                      <a href="https://youtube.com/c/MrSpwn" target="_blank" rel="noopener noreferrer">
                         <button
                           className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                           type="button"
@@ -392,18 +398,22 @@ export default function Landing() {
 
               <div className="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
                 <div className="px-6">
-                  <img
-                    alt="..."
-                    src="/img/index/CrankItLogo.png"
-                    className="shadow-lg rounded-full mx-auto max-w-120-px"
-                  />
+                  <div className=" mx-auto max-w-120-px">
+                    <Image
+                      alt="CrankIt Logo"
+                      height={130}
+                      width={130}
+                      src="/img/index/CrankItLogo.png"
+                      className="shadow-lg rounded-full"
+                    />
+                  </div>
                   <div className="pt-6 text-center">
                     <h5 className="text-xl font-bold">CrankItMan</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
                       Operations Mastermind
                     </p>
                     <div className="mt-6">
-                      <a href="https://twitter.com/CrankItMan" target="_blank">
+                      <a href="https://twitter.com/CrankItMan" target="_blank" rel="noopener noreferrer">
                         <button
                           className="bg-lightBlue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                           type="button"
@@ -411,7 +421,7 @@ export default function Landing() {
                           <i className="fab fa-twitter"></i>
                         </button>
                       </a>
-                      <a href="https://twitch.tv/CrankItMan" target="_blank">
+                      <a href="https://twitch.tv/CrankItMan" target="_blank" rel="noopener noreferrer">
                         <button
                           className="bg-purple-twitch text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                           type="button"
@@ -419,7 +429,7 @@ export default function Landing() {
                           <i className="fab fa-twitch"></i>
                         </button>
                       </a>
-                      <a href="https://www.youtube.com/channel/UCv3h8rXbubHbROZvgzWDb-g" target="_blank">
+                      <a href="https://www.youtube.com/channel/UCv3h8rXbubHbROZvgzWDb-g" target="_blank" rel="noopener noreferrer">
                         <button
                           className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                           type="button"

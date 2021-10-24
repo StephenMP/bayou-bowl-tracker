@@ -3,8 +3,9 @@ import { User } from '@prisma/client';
 import { NextApiRequest } from 'next';
 import { createUser } from '../../../repositories/user';
 import { NextApiResponseServerIO } from '../../../types/next';
+import { logger } from '../../../lib/logtail'
 
-async function saveNewUser(auth0User: UserProfile) {
+async function saveNewUser(auth0User: UserProfile): Promise<User> {
     const user = {
         email: auth0User.email,
         email_verified: auth0User.email_verified,
@@ -14,20 +15,24 @@ async function saveNewUser(auth0User: UserProfile) {
         sub: auth0User.sub
     } as User
 
-    createUser(user)
+    await createUser(user)
+    return user
 }
 
 export default handleAuth({
     login: async (req, res) => {
         await handleLogin(req, res, {
             returnTo: "/user/profile",
-          });
+        });
     },
     callback: async (req: NextApiRequest, res: NextApiResponseServerIO) => {
         try {
             await handleCallback(req, res, {
-                afterCallback: (req: NextApiRequest, res: NextApiResponseServerIO, session: Session, state) => {
-                    saveNewUser(session.user)
+                afterCallback: async (req: NextApiRequest, res: NextApiResponseServerIO, session: Session, state) => {
+                    const user = await saveNewUser(session.user)
+                    logger.info('User signed in successfully', {
+                        user
+                    })
                     return session
                 }
             })

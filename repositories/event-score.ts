@@ -1,5 +1,6 @@
 import { prisma } from '../lib/prisma'
 import { EventScore } from '../types/prisma'
+import { logger } from '../lib/logtail'
 
 const client = () => prisma.eventScore
 
@@ -55,7 +56,7 @@ export async function createEventScore(eventScore: EventScore): Promise<void> {
         })
     }
     catch (e) {
-        console.log("ERROR: ", e.message)
+        logger.error("ERROR: ", e.message)
         throw e
     }
 }
@@ -94,7 +95,7 @@ export async function deleteEventScore(eventId: string, teamId: string, roundNum
     }
 
     catch (e) {
-        console.log("ERROR: ", e.message)
+        logger.error("ERROR: ", e.message)
     }
 }
 

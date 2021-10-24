@@ -104,15 +104,9 @@ export default function Profile() {
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                 <div className="pr-12 mt-10">
-                  {/* <img
-                    alt="..."
-                    className="max-w-full rounded-lg shadow-lg"
-                    src="https://trello-attachments.s3.amazonaws.com/604fe9255c0c0230f7cab23a/6071fcc18b72e86c34967f2b/e7744589e781dbaaefe4442ebfcee7b2/The_Bayou_Bowl.png"
-                  /> */}
                   <h3 className="mt-4 text-6xl uppercase font-bold text-blueGray-200">
                     {team.name}
                   </h3>
-                  {/* {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />} */}
                 </div>
               </div>
             </div>

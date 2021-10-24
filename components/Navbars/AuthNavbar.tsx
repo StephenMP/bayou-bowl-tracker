@@ -1,5 +1,6 @@
 import { useUser } from "@auth0/nextjs-auth0";
 import Link from "next/link";
+import Image from 'next/image'
 import React from "react";
 import { constants } from "../../util/constants";
 import { routes } from '../../util/routes';
@@ -14,21 +15,21 @@ function SocialLinks() {
   return (
     <>
       <li className="flex items-center">
-        <a className={navLinkClassName} href="https://twitter.com/mnh_gg" target="_blank" >
+        <a className={navLinkClassName} href="https://twitter.com/mnh_gg" target="_blank" rel="noopener noreferrer" >
           <i className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 text-lg leading-lg fab fa-twitter" />
           <span className="lg:hidden inline-block ml-2">Twitter</span>
         </a>
       </li>
 
       <li className="flex items-center">
-        <a className={navLinkClassName} href="https://www.twitch.tv/MondayNightHunts" target="_blank">
+        <a className={navLinkClassName} href="https://www.twitch.tv/MondayNightHunts" target="_blank" rel="noopener noreferrer">
           <i className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 text-lg leading-lg fab fa-twitch" />
           <span className="lg:hidden inline-block ml-2">Twitch</span>
         </a>
       </li>
 
       <li className="flex items-center">
-        <a className={navLinkClassName} href="https://discord.gg/eR87mZtq6F" target="_blank">
+        <a className={navLinkClassName} href="https://discord.gg/eR87mZtq6F" target="_blank" rel="noopener noreferrer">
           <i className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 text-lg leading-lg fab fa-discord" />
           <span className="lg:hidden inline-block ml-2">Discord</span>
         </a>
@@ -80,7 +81,9 @@ export default function Navbar() {
     <>
       <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <img src="/img/brand/bayoubowl-logo.png" height={40} width={40} className="mr-3 md-hide" />
+          <div className="mr-3 md-hide">
+          <Image src="/img/brand/bayoubowl-logo.png" height={40} width={40} />
+          </div>
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <Link href={routes.home}>
               <a

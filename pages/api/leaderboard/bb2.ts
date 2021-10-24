@@ -1,3 +1,4 @@
+import { readFromCache } from '../../../lib/redis';
 import { EventScoreByTeam } from '../../../lib/swr/event-score';
 import * as eventScoreRepository from '../../../repositories/event-score';
 import { EventScore, PlayerScore } from '../../../types/prisma';
@@ -72,10 +73,14 @@ export type BB2LeaderboardScores = {
 export default async function handler(req, res) {
     switch (req.method) {
         case 'GET':
-            const result: BB2LeaderboardScores = {
-                seeded: await GetScores('623e0a1f-59a5-4d91-9edd-e20caf442ec5'),
-                open: await GetScores('a0f7848a-d1c2-456c-a0ce-47ea0873b8dc'),
-            }
+            const result = await readFromCache('leaderboard-bb2', async () => {
+                const data: BB2LeaderboardScores = {
+                    seeded: await GetScores('623e0a1f-59a5-4d91-9edd-e20caf442ec5'),
+                    open: await GetScores('a0f7848a-d1c2-456c-a0ce-47ea0873b8dc'),
+                }
+
+                return data
+            }, 86400)
 
             res.status(200).json(result)
             break
