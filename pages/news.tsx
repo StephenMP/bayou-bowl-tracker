@@ -78,7 +78,7 @@ export default function Landing() {
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <Image alt="News Article Image" width={592} height={333} src="/img/news/BB3_Announced.png" />
+                <Image alt="BB3 News Rules" src="/img/news/BB3_Rules_Released.png" width={592} height={333} />
               </div>
             </div>
           </div>
