@@ -9,6 +9,7 @@ import { Event, Team, User } from '../../types/prisma';
 import { parseTimeFromDate } from '../../util/dates';
 import { routes } from '../../util/routes';
 import Spinner from '../PageChange/Spinner';
+import Image from 'next/image'
 
 async function registerForEvent(user: User, eventId: string, isRegistering: boolean, setRegistering: React.Dispatch<React.SetStateAction<boolean>>, addToast: AddToast) {
   try {
@@ -112,14 +113,16 @@ export default function BB3CardEvent({ event }: { event: Event }) {
         <div className="px-6">
           <div className="flex flex-wrap justify-center">
             <div className="w-full px-4 flex justify-center">
-              <div className="relative">
-                <img
-                  alt="..."
-                  height={150}
-                  width={150}
-                  src={event.picture}
-                  className="shadow-xl h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
-                />
+              <div className="relative h-auto align-middle absolute -m-16 -ml-20 lg:-ml-16">
+                <div>
+                  <Image
+                    alt="BB3 Event Card"
+                    width={256}
+                    height={144}
+                    src={event.picture}
+                    className="shadow-xl border-none"
+                  />
+                </div>
               </div>
             </div>
             <div className="w-full px-4 text-center mt-20"></div>

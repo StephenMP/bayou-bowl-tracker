@@ -2,6 +2,7 @@ import Plyr from 'plyr-react';
 import React from "react";
 import Footer from "../components/Footers/Footer";
 import Navbar from "../components/Navbars/AuthNavbar";
+import Image from 'next/image'
 
 export default function Landing() {
   const videoOpts: Plyr.Options = {
@@ -9,31 +10,22 @@ export default function Landing() {
     hideControls: true
   }
 
-  const videoSrc: Plyr.SourceInfo = {
-    type: "video",
-    sources: [
-      {
-        src: "nhsXk4GK078",
-        size: 720,
-        provider: 'youtube'
-      }
-    ]
-  };
-
-  const videoSrc2: Plyr.SourceInfo = {
-    type: "video",
-    sources: [
-      {
-        src: "--qrNHvfcSs",
-        size: 720,
-        provider: 'youtube'
-      }
-    ]
-  };
+  const plyrSourceInfo = (src: string) => {
+    return {
+      type: "video",
+      sources: [
+        {
+          src,
+          size: 720,
+          provider: 'youtube'
+        }
+      ]
+    } as Plyr.SourceInfo
+  }
 
   const plyrStyle: React.CSSProperties = {
-    height: 500,
-    width: 500
+    height: 592,
+    width: 333
   }
 
   return (
@@ -86,7 +78,7 @@ export default function Landing() {
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <img src="/img/news/BB3_Announced.png" />
+                <Image alt="News Article Image" width={592} height={333} src="/img/news/BB3_Announced.png" />
               </div>
             </div>
           </div>
@@ -108,7 +100,7 @@ export default function Landing() {
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <img src="/img/news/BB3_Announced.png" />
+                <Image alt="News Article Image" width={592} height={333} src="/img/news/BB3_Announced.png" />
               </div>
             </div>
           </div>
@@ -130,7 +122,7 @@ export default function Landing() {
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <img src="/img/news/Prizes_Announcement.png" />
+                <Image alt="News Article Image" width={592} height={333} src="/img/news/Prizes_Announcement.png" />
               </div>
             </div>
           </div>
@@ -155,7 +147,7 @@ export default function Landing() {
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <Plyr source={videoSrc2} options={videoOpts} style={plyrStyle} />
+                <Plyr source={plyrSourceInfo("--qrNHvfcSs")} options={videoOpts} style={plyrStyle} />
               </div>
             </div>
           </div>
@@ -177,7 +169,7 @@ export default function Landing() {
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <img src="/img/news/Official_Team_List_is_Out.png" />
+                <Image alt="News Article Image" width={592} height={333} src="/img/news/Official_Team_List_is_Out.png" />
               </div>
             </div>
           </div>
@@ -202,7 +194,7 @@ export default function Landing() {
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <img src="/img/news/Tiered_Splash.png" />
+                <Image alt="News Article Image" width={592} height={333} src="/img/news/Tiered_Splash.png" />
               </div>
             </div>
           </div>
@@ -224,7 +216,7 @@ export default function Landing() {
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <img src="/img/news/Sign-Ups_Open_Splash.png" />
+                <Image alt="News Article Image" width={592} height={333} src="/img/news/Sign-Ups_Open_Splash.png" />
               </div>
             </div>
           </div>
@@ -253,7 +245,7 @@ export default function Landing() {
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <Plyr source={videoSrc} options={videoOpts} style={plyrStyle} />
+                <Plyr source={plyrSourceInfo("nhsXk4GK078")} options={videoOpts} style={plyrStyle} />
               </div>
             </div>
           </div>

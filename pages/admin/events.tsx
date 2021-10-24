@@ -8,6 +8,7 @@ import Admin from "../../layouts/Admin"
 import { fetcher, useEvent, useEvents } from "../../lib/swr"
 import { Event } from "../../types/prisma"
 import { routes } from '../../util/routes'
+import Image from 'next/image'
 
 function EventCard({ eventId }: { eventId: string }) {
   const { addToast, updateToast } = useToasts()
@@ -34,13 +35,13 @@ function EventCard({ eventId }: { eventId: string }) {
         <div className="px-6">
           <div className="flex flex-wrap justify-center">
             <div className="w-full px-4 flex justify-center">
-              <div className="relative">
-                <img
-                  alt="..."
-                  height={150}
-                  width={150}
+              <div className="relative h-auto align-middle -m-16 -ml-20 lg:-ml-16">
+                <Image
+                  alt="BB Event Card"
+                  width={256}
+                  height={144}
                   src={event.picture}
-                  className="shadow-xl h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
+                  className="shadow-xl border-none"
                 />
               </div>
             </div>

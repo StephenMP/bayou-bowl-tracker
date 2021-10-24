@@ -3,6 +3,7 @@ import React from "react";
 import { useRecoilValue } from 'recoil';
 import { useCurrentUser } from '../../lib/swr/user';
 import { userNameState, userProfileState } from '../../state/atoms';
+import Image from 'next/image'
 
 export default function CardProfile() {
   const { user } = useCurrentUser({ suspense: true })
@@ -16,13 +17,15 @@ export default function CardProfile() {
           <div className="flex flex-wrap justify-center">
             <div className="w-full px-4 flex justify-center">
               <div className="relative">
-                <img
-                  alt="..."
-                  height={800}
-                  width={800}
-                  src={user.picture}
-                  className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
-                />
+                <div className="h-auto align-middle absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px">
+                  <Image
+                    alt="..."
+                    height={150}
+                    width={150}
+                    src={user.picture}
+                    className="shadow-xl rounded-full border-none"
+                  />
+                </div>
               </div>
             </div>
             <div className="w-full px-4 text-center mt-20">

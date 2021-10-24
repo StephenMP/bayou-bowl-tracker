@@ -7,6 +7,9 @@ const { withSentryConfig } = require('@sentry/nextjs');
 
 const moduleExports = {
   // Your existing module.exports
+  images: {
+    domains: ['pbs.twimg.com', 'lh3.googleusercontent.com', 'trello-attachments.s3.amazonaws.com'],
+  }
 };
 
 const sentryWebpackPluginOptions = {
