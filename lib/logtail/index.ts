@@ -45,7 +45,7 @@ function getLogtail(): ILogger {
     let logger = new Logger(console)
 
     if (process.env.NODE_ENV === 'production') {
-        logger = new Logger((global.logtail || new Logtail(process.env.LOGTAIL_SOURCE_TOKEN)) as Logtail)
+        logger = new Logger((global.gLogger || new Logtail(process.env.LOGTAIL_SOURCE_TOKEN)) as Logtail)
         logger.use(enrichLogs)
     }
 
@@ -55,5 +55,5 @@ function getLogtail(): ILogger {
 export const logger: ILogger = getLogtail()
 
 if (process.env.NODE_ENV == 'production') {
-    global.logtail = logger
+    global.gLogger = logger
 }
