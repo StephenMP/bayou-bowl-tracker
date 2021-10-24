@@ -33,7 +33,7 @@ export default function Admin({ children }) {
         <br />
         <a
           href="https://www.freeprivacypolicy.com/live/87f9752a-671b-4179-866f-654a4ef87db8"
-          target='_blank'
+          target='_blank' rel="noopener noreferrer"
           className="text-blueGray-500 hover:text-blueGray-800"
         >
           Our Privacy Policy
