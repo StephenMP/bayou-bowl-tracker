@@ -11,12 +11,6 @@ export default function Landing() {
   const { teams: openTeams, isLoading: openLoading } = useTeamsForEvent('a0f7848a-d1c2-456c-a0ce-47ea0873b8dc', { suspense: false })
   const { users, isLoading: usersLoading } = useAllUsers({ suspense: false })
 
-  if (seededLoading || openLoading || usersLoading) {
-    return (
-      <Spinner light={true} />
-    )
-  }
-
   return (
     <>
       <Navbar />
@@ -56,7 +50,8 @@ export default function Landing() {
                 <div className="md:pr-12">
                   <h3 className="text-3xl font-semibold text-blueGray-200">Seeded</h3>
                   <ul className="list-none mt-6">
-                    {seededTeams.sort(firstBy('name')).filter(t => t.team_members.length).map(t => (
+                    {seededLoading && <Spinner light={true} />}
+                    {!seededLoading && seededTeams && seededTeams.sort(firstBy('name')).filter(t => t.team_members.length).map(t => (
                       <li key={`s-${t.id}`} className="py-2">
                         <div className="flex items-center">
                           <div>
@@ -69,7 +64,7 @@ export default function Landing() {
                               <strong><a href={"/team/" + t.id}>{t.name}</a></strong>
                               {t.team_members.map(tm => (
                                 <div key={`stm-${tm.user_id}`}>
-                                  {` - ${users.find(u => u.id === tm.user_id)?.profile.steam_name ?? "MISSING STEAM NAME"}`}
+                                  {users && ` - ${users.find(u => u.id === tm.user_id)?.profile.steam_name ?? "MISSING STEAM NAME"}`}
                                 </div>
                               ))}
                             </h4>
@@ -84,7 +79,8 @@ export default function Landing() {
                 <div className="md:pr-12">
                   <h3 className="text-3xl font-semibold text-blueGray-200">Open</h3>
                   <ul className="list-none mt-6">
-                    {openTeams.sort(firstBy('name')).filter(t => t.team_members.length).map(t => (
+                    {openLoading && <Spinner light={true} />}
+                    {!openLoading && openTeams && openTeams.sort(firstBy('name')).filter(t => t.team_members.length).map(t => (
                       <li key={`o-${t.id}`} className="py-2">
                         <div className="flex items-center">
                           <div>
@@ -97,7 +93,7 @@ export default function Landing() {
                               <strong><a href={"/team/" + t.id}>{t.name}</a></strong>
                               {t.team_members.map(tm => (
                                 <div key={`otm-${tm.user_id}`}>
-                                  {` - ${users.find(u => u.id === tm.user_id)?.profile.steam_name ?? "MISSING STEAM NAME"}`}
+                                  {users && ` - ${users.find(u => u.id === tm.user_id)?.profile.steam_name ?? "MISSING STEAM NAME"}`}
                                 </div>
                               ))}
                             </h4>
