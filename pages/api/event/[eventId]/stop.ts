@@ -1,5 +1,7 @@
 import { withApiAuthRequired } from '@auth0/nextjs-auth0';
+import { logger } from '../../../../lib/logtail';
 import { prisma } from '../../../../lib/prisma';
+import { purgeFromCache } from '../../../../lib/redis';
 import { queryParamAsString } from '../../../../util/routes';
 
 export default withApiAuthRequired(async function handler(req, res) {
@@ -17,6 +19,8 @@ export default withApiAuthRequired(async function handler(req, res) {
                     }
                 })
 
+                logger.info('Stopped event successfully', { eventId })
+                await purgeFromCache('events')
                 res.status(200).json({})
             }
 

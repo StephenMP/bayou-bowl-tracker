@@ -1,8 +1,10 @@
 import { PrismaClient } from '@prisma/client'
 import { Node as Logtail } from '@logtail/js'
 import { ILogger } from '../lib/logtail'
+import { Redis } from 'ioredis'
 
 declare global {
-    var prisma: PrismaClient | undefined
-    var logtail: ILogger | undefined
+    var gPrisma: PrismaClient | undefined
+    var gLogger: ILogger | undefined
+    var gRedis: Redis | undefined
   }

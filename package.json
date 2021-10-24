@@ -25,7 +25,7 @@
     "cross-env": "^7.0.3",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
-    "ioredis": "^4.26.0",
+    "ioredis": "^4.28.0",
     "mysql": "^2.18.1",
     "next": "^11.1.2",
     "plyr-react": "^3.2.0",
@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@types/auth0": "^2.33.3",
-    "@types/ioredis": "^4.26.4",
+    "@types/ioredis": "^4.27.8",
     "@types/node": "^15.0.2",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.4",

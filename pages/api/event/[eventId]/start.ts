@@ -4,6 +4,7 @@ import { queryParamAsString } from '../../../../util/routes';
 import { logger } from '../../../../lib/logtail'
 import { withSentry } from '@sentry/nextjs';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { purgeFromCache } from '../../../../lib/redis';
 
 export const config = {
     api: {
@@ -27,6 +28,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
                 })
 
                 logger.info('Started event successfully', { eventId })
+                await purgeFromCache('events')
                 res.status(200).json({})
             }
 
