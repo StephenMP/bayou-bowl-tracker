@@ -2,7 +2,6 @@ import { readFromCache } from '../../../lib/redis';
 import { EventScoreByTeam } from '../../../lib/swr/event-score';
 import * as eventScoreRepository from '../../../repositories/event-score';
 import { EventScore, PlayerScore } from '../../../types/prisma';
-import withCache from '../../../util/cache';
 
 function calculateBountyScore(totalBounties: number) {
     let bountyScore = 0
