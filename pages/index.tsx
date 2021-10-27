@@ -5,6 +5,7 @@ import Footer from "../components/Footers/Footer";
 import Navbar from "../components/Navbars/AuthNavbar";
 import { routes } from "../util/routes";
 import Image from 'next/image'
+import bb3Banner from '../public/img/brand/The_Bayou_Bowl_Header.png'
 
 const timerProps = {
   isPlaying: true,
@@ -78,7 +79,7 @@ export default function Landing() {
               <div className="w-full px-4 ml-auto mr-auto text-center">
                 <div className="flex justify-center flex-wrap pr-12 mt-10">
                   <div className="max-w-full rounded-lg shadow-lg" >
-                    <Image alt="BayouBowl 3 Header" width={592} height={333} src="/img/brand/The_Bayou_Bowl_Header.png" />
+                    <Image alt="BayouBowl 3 Header" width={592} height={333} src={bb3Banner} priority />
                   </div>
                   {/* {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />} */}
                   <div className="items-center flex flex-wrap mt-5 text-4xl">

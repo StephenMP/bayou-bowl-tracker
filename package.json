@@ -12,6 +12,13 @@
     "prisma:studio": "prisma studio",
     "prisma:generate": "prisma generate"
   },
+  "prettier": {
+    "printWidth": 120,
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": false,
+    "singleQuote": true
+  },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.2.0",
     "@fortawesome/fontawesome-free": "5.15.3",

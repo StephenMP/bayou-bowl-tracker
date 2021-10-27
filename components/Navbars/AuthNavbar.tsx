@@ -39,30 +39,16 @@ function SocialLinks() {
 }
 
 function AuthedNavs() {
-  const { user, isLoading } = useUser();
-
-  if (isLoading) {
-    return (
-      <button className={navButtonClassName} type="button">
-        <i className="fas fa-spinner animate-spin mx-auto"></i>
-      </button>
-    )
-  }
+  const { user, isLoading } = useUser()
+  const icon = isLoading ? "fa-sign-in-alt" : user ? "fa-user" : "fa-sign-in-alt"
+  const text = isLoading ? "Sign In" : user ? "My Account" : "Sign In"
 
   return (
     <>
-      {!user && <SocialLinks />}
-      {user && <><li className="flex items-center">
-        <Link href={routes.user.profile}>
-          <a className={navLinkClassName} >
-            Account
-          </a>
-        </Link>
-      </li><SocialLinks /></>}
       <li className="flex items-center">
-        <a href={user ? routes.api.auth.logout : routes.api.auth.login}>
+        <a href={routes.api.auth.login}>
           <button className={navButtonClassName} type="button">
-            <i className={user ? "fas fa-sign-out-alt" : "fas fa-sign-in-alt"}></i> {user ? 'Sign Out' : 'Sign In'}
+            <i className={"fas " + icon}></i> {text}
           </button>
         </a>
       </li>
@@ -73,16 +59,12 @@ function AuthedNavs() {
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
-  const alertNotOpen = () => {
-    alert('Applications to compete are currently not open, but they will be soon!')
-  }
-
   return (
     <>
       <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="mr-3 md-hide">
-          <Image src="/img/brand/bayoubowl-logo.png" height={40} width={40} />
+            <Image src="/img/brand/bayoubowl-logo.png" height={40} width={40} />
           </div>
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <Link href={routes.home}>
@@ -140,14 +122,6 @@ export default function Navbar() {
                 <TeamsDropdown />
               </li>
 
-              {/* <li className="flex items-center">
-                <Link href={routes.instructions}>
-                  <a className={navLinkClassName} >
-                    How To Compete
-                  </a>
-                </Link>
-              </li> */}
-
               <li className="flex items-center">
                 <LeaderboardsDropdown />
               </li>
@@ -160,6 +134,7 @@ export default function Navbar() {
                 </Link>
               </li>*/}
 
+              <SocialLinks />
               <AuthedNavs />
             </ul>
           </div>

@@ -2,6 +2,7 @@ import { readFromCache } from '../../../lib/redis';
 import { EventScoreByTeam } from '../../../lib/swr/event-score';
 import * as eventScoreRepository from '../../../repositories/event-score';
 import { EventScore, PlayerScore } from '../../../types/prisma';
+import withCache from '../../../util/cache';
 
 function calculateBountyScore(totalBounties: number) {
     let bountyScore = 0
@@ -70,7 +71,7 @@ export type BB2LeaderboardScores = {
     open: EventScoreByTeam[],
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
     switch (req.method) {
         case 'GET':
             const result = await readFromCache('leaderboard-bb2', async () => {
@@ -90,3 +91,5 @@ export default async function handler(req, res) {
             break
     }
 }
+
+export default withCache<BB2LeaderboardScores>(handler)
