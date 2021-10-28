@@ -1,4 +1,5 @@
 import { prisma } from '../lib/prisma'
+import { getCachedItem, purgeFromCache } from '../lib/redis'
 import { User } from '../types/prisma'
 
 const client = () => prisma.user
@@ -22,7 +23,7 @@ const DefaultReadOpts: UserReadOpts = {
 }
 
 export async function createUser(user: User): Promise<void> {
-    await client().upsert({
+    const createdUser = await client().upsert({
         where: { id: user.id ?? userIdFromAuth0Sub(user.sub) },
         update: {},
         create: {
@@ -33,6 +34,9 @@ export async function createUser(user: User): Promise<void> {
             }
         }
     })
+
+    // Update cache
+    await purgeFromCache('users')
 }
 
 export async function updateUser(user: User): Promise<void> {

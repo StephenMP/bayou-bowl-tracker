@@ -70,7 +70,7 @@ export type BB2LeaderboardScores = {
     open: EventScoreByTeam[],
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
     switch (req.method) {
         case 'GET':
             const result = await readFromCache('leaderboard-bb2', async () => {
@@ -90,3 +90,5 @@ export default async function handler(req, res) {
             break
     }
 }
+
+export default handler

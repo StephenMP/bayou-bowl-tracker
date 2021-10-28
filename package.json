@@ -12,6 +12,13 @@
     "prisma:studio": "prisma studio",
     "prisma:generate": "prisma generate"
   },
+  "prettier": {
+    "printWidth": 120,
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
+  },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.2.0",
     "@fortawesome/fontawesome-free": "5.15.3",
@@ -36,7 +43,7 @@
     "react-dom": "17.0.1",
     "react-scripts": "4.0.3",
     "react-toast-notifications": "^2.4.4",
-    "recoil": "^0.2.0",
+    "recoil": "^0.4.1",
     "reflect-metadata": "^0.1.13",
     "socket.io": "^4.1.2",
     "socket.io-client": "^4.1.2",
