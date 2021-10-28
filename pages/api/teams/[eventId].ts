@@ -15,7 +15,7 @@ export default async function handler(req, res) {
                         team_members: true
                     }
                 })
-            }, 86400)
+            }, 30)
 
             res.status(200).json(result)
             break

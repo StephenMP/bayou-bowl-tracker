@@ -4,6 +4,7 @@ import Footer from '../../components/Footers/Footer'
 import Navbar from '../../components/Navbars/AuthNavbar'
 import Spinner from '../../components/PageChange/Spinner'
 import { useTeamsForEvent } from '../../lib/swr'
+import { useCurrentUserTeams } from '../../lib/swr/user'
 import { useAllUsers } from '../../lib/swr/users'
 
 export default function Landing() {
@@ -68,6 +69,11 @@ export default function Landing() {
                               <a href={'/team/' + t.id}>{t.name}</a>
                             </strong>
                           </h4>
+                        </div>
+                        <div>
+                          <span className="text-xs font-semibold py-1 px-2 text-blueGray-200 mr-3">
+                            <a href={`https://twitch.tv/${t.name}`} target="_blank" rel="noopenner noreferrer"><i className="fab fa-twitch"></i></a>
+                          </span>
                         </div>
                       </div>
                     ))}
