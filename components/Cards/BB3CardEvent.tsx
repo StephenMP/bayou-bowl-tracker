@@ -20,7 +20,7 @@ async function registerForEvent(
 ) {
   const now = new Date()
   const oct30 = new Date('2021-10-30T00:00:00.000Z')
-  const nov20 = new Date('2021-11-20T00:00:00.000Z')
+  const nov20 = new Date('2021-11-20T23:59:59.000Z')
   try {
     if (now < oct30 && user.user_type !== UserType.ADMIN) {
       alert('Registration for The Bayou Bowl III will not be open until 30 Oct 2021 :)')
