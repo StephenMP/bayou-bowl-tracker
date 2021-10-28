@@ -91,4 +91,4 @@ async function handler(req, res) {
     }
 }
 
-export default withCache<BB2LeaderboardScores>(handler)
+export default handler

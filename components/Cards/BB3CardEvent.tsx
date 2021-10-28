@@ -1,23 +1,32 @@
-import { UserType } from '.prisma/client';
-import Link from 'next/link';
-import React, { useState } from "react";
-import { AddToast, useToasts } from 'react-toast-notifications';
-import { mutate } from 'swr';
-import { fetcher } from '../../lib/swr';
-import { useCurrentUser, useCurrentUserTeams } from "../../lib/swr/user";
-import { Event, Team, User } from '../../types/prisma';
-import { parseTimeFromDate } from '../../util/dates';
-import { routes } from '../../util/routes';
-import Spinner from '../PageChange/Spinner';
+import { UserType } from '.prisma/client'
+import Link from 'next/link'
+import React, { useState } from 'react'
+import { AddToast, useToasts } from 'react-toast-notifications'
+import { mutate } from 'swr'
+import { fetcher } from '../../lib/swr'
+import { useCurrentUser, useCurrentUserTeams } from '../../lib/swr/user'
+import { Event, Team, User } from '../../types/prisma'
+import { parseTimeFromDate } from '../../util/dates'
+import { routes } from '../../util/routes'
+import Spinner from '../PageChange/Spinner'
 import Image from 'next/image'
 
-async function registerForEvent(user: User, eventId: string, isRegistering: boolean, setRegistering: React.Dispatch<React.SetStateAction<boolean>>, addToast: AddToast) {
+async function registerForEvent(
+  user: User,
+  eventId: string,
+  isRegistering: boolean,
+  setRegistering: React.Dispatch<React.SetStateAction<boolean>>,
+  addToast: AddToast
+) {
+  const now = new Date()
+  const oct30 = new Date('2021-10-30T00:00:00.000Z')
+  const nov20 = new Date('2021-11-20T00:00:00.000Z')
   try {
-    if (user.user_type !== UserType.ADMIN) {
-      alert("Registration will not be open until 30 Oct 2021 :)")
-    }
-
-    else {
+    if (now < oct30 && user.user_type !== UserType.ADMIN) {
+      alert('Registration for The Bayou Bowl III will not be open until 30 Oct 2021 :)')
+    } else if (now > nov20 && user.user_type !== UserType.ADMIN) {
+      alert('Registration for The Bayou Bowl III has closed :(')
+    } else {
       setRegistering(true)
       const response = await fetcher(`/api/event/register`, {
         method: isRegistering ? 'POST' : 'DELETE',
@@ -25,46 +34,43 @@ async function registerForEvent(user: User, eventId: string, isRegistering: bool
         headers: new Headers({
           'Content-Type': 'application/json',
           Accept: 'application/json',
-        })
+        }),
       })
 
       if (response && response.error) {
         alert(response.error)
       }
 
-      addToast(`Successfully ${isRegistering ? "registered" : "unregistered"}`, { appearance: 'success', autoDismiss: true })
+      addToast(`Successfully ${isRegistering ? 'registered' : 'unregistered'}`, {
+        appearance: 'success',
+        autoDismiss: true,
+      })
     }
-  }
-  catch (e) {
+  } catch (e) {
     addToast('There was an error, please contact support', { appearance: 'error', autoDismiss: false })
-  }
-  finally {
+  } finally {
     await mutate(routes.api.user.teams)
   }
 }
 
 function GoToEventPage({ eventId }: { eventId: string }) {
   return (
-    <Link href={`/user/bb3/${eventId}`} >
-      <button
-        className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-      >
+    <Link href={`/user/bb3/${eventId}`}>
+      <button className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
         Go To Event Page
       </button>
     </Link>
   )
 }
 
-function Register({ eventId, isRegister }: { eventId: string, isRegister: boolean }) {
+function Register({ eventId, isRegister }: { eventId: string; isRegister: boolean }) {
   const [isLoading, setLoading] = useState<boolean>(false)
   const { addToast } = useToasts()
   const { user } = useCurrentUser()
 
   if (isLoading) {
     return (
-      <button
-        className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-      >
+      <button className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
         <i className="fas fa-spinner animate-spin mx-auto text-white"></i>
       </button>
     )
@@ -76,8 +82,7 @@ function Register({ eventId, isRegister }: { eventId: string, isRegister: boolea
       onClick={() => {
         if (isRegister) {
           registerForEvent(user, eventId, isRegister, setLoading, addToast)
-        }
-        else {
+        } else {
           registerForEvent(user, eventId, isRegister, setLoading, addToast)
         }
       }}
@@ -87,8 +92,8 @@ function Register({ eventId, isRegister }: { eventId: string, isRegister: boolea
   )
 }
 
-function CardButtons({ teams, eventId }: { teams: Team[], eventId: string }) {
-  const isRegistered = teams.find(ut => ut.event_id === eventId)
+function CardButtons({ teams, eventId }: { teams: Team[]; eventId: string }) {
+  const isRegistered = teams.find((ut) => ut.event_id === eventId)
   if (isRegistered) {
     return (
       <>
@@ -97,9 +102,7 @@ function CardButtons({ teams, eventId }: { teams: Team[], eventId: string }) {
       </>
     )
   }
-  return (
-    <Register eventId={eventId} isRegister={true} />
-  )
+  return <Register eventId={eventId} isRegister={true} />
 }
 
 export default function BB3CardEvent({ event }: { event: Event }) {
@@ -156,7 +159,12 @@ export default function BB3CardEvent({ event }: { event: Event }) {
               </div>
             </div>
             <div className="w-full lg:w-12/12">
-              <a href='/pdf/Bayou_Bowl_III_Rules.pdf' target="_blank" rel="noopener noreferrer" className="md:block text-center md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0">
+              <a
+                href="/pdf/Bayou_Bowl_III_Rules.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="md:block text-center md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
+              >
                 Official Rules <i className="fas fa-link ml-2 text-xs text-blueGray-400"></i>
               </a>
             </div>
@@ -176,5 +184,5 @@ export default function BB3CardEvent({ event }: { event: Event }) {
         </div>
       </div>
     </>
-  );
+  )
 }

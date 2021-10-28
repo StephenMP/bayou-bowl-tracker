@@ -4,7 +4,7 @@ export const routes = {
     instructions: '/instructions',
     news: '/news',
     rules: '/rules',
-    teams: '/teams',
+    teams: '/teams/bb2',
     admin: {
         events: '/admin/events',
         users: '/admin/users',

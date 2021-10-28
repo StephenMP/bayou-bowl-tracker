@@ -1,10 +1,10 @@
 import React from "react";
 import { firstBy } from "thenby";
-import Footer from "../components/Footers/Footer";
-import Navbar from "../components/Navbars/AuthNavbar";
-import Spinner from "../components/PageChange/Spinner";
-import { useTeamsForEvent } from "../lib/swr";
-import { useAllUsers } from "../lib/swr/users";
+import Footer from "../../components/Footers/Footer";
+import Navbar from "../../components/Navbars/AuthNavbar";
+import Spinner from "../../components/PageChange/Spinner";
+import { useTeamsForEvent } from "../../lib/swr";
+import { useAllUsers } from "../../lib/swr/users";
 
 export default function Landing() {
   const { teams: seededTeams, isLoading: seededLoading } = useTeamsForEvent('623e0a1f-59a5-4d91-9edd-e20caf442ec5', { suspense: false })

@@ -34,6 +34,17 @@
     max-width: 75rem;
   }
 
+  @media screen and (min-width: 1024px) {
+    .md-show {
+      visibility: show;
+      clear: both;
+      float: left;
+      margin: 10px auto 5px 20px;
+      width: 28%;
+      display: none;
+    }
+  }
+
 @media screen and (max-width: 1024px) {
     .md-hide {
       visibility: hidden;

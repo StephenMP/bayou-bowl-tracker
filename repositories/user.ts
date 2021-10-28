@@ -1,5 +1,5 @@
 import { prisma } from '../lib/prisma'
-import { getCachedItem } from '../lib/redis'
+import { getCachedItem, purgeFromCache } from '../lib/redis'
 import { User } from '../types/prisma'
 
 const client = () => prisma.user
@@ -36,16 +36,7 @@ export async function createUser(user: User): Promise<void> {
     })
 
     // Update cache
-    const cachedUsers = await getCachedItem<User[]>('users')
-    if(cachedUsers) {
-        const cachedUserIndex = cachedUsers.findIndex(u => u.id === createdUser.id)
-        if(cachedUserIndex > -1) {
-            cachedUsers[cachedUserIndex] = createdUser
-        }
-        else {
-            cachedUsers.push(createdUser)
-        }
-    }
+    await purgeFromCache('users')
 }
 
 export async function updateUser(user: User): Promise<void> {
