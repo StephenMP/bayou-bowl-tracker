@@ -27,11 +27,11 @@ export default withApiAuthRequired(async function handler(req, res) {
     const currentUser = await getUser(req, res)
     const { eventId } = req.body
 
-    if (currentUser.profile && currentUser.profile.steam_name) {
+    if (currentUser.profile && currentUser.profile.twitch_name) {
       try {
         await prisma.team.create({
           data: {
-            name: currentUser.profile.steam_name,
+            name: currentUser.profile.twitch_name,
             event: {
               connect: {
                 id: eventId as string,
@@ -55,7 +55,7 @@ export default withApiAuthRequired(async function handler(req, res) {
       }
     } else {
       res.status(400).json({
-        error: 'You must set your Steam Username in your account profile before registering for this event',
+        error: 'You must set your Twitch Name (NOT your URL) in your account profile before registering for this event',
       })
     }
   } else if (req.method === 'DELETE') {
