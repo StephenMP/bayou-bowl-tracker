@@ -6,6 +6,11 @@ import Navbar from "../components/Navbars/AuthNavbar";
 import { routes } from "../util/routes";
 import Image from 'next/image'
 import bb3Banner from '../public/img/brand/The_Bayou_Bowl_Header.png'
+import newsImage from '../public/img/news/BB3_Rules_Released.png'
+import logo from '../public/img/news/bayoubowl-logo.png'
+import logo_death from '../public/img/index/DeathLogo.png'
+import logo_spwn from '../public/img/index/MrSpwnLogo.png'
+import logo_crankit from '../public/img/index/CrankItLogo.png'
 
 const timerProps = {
   isPlaying: true,
@@ -231,7 +236,7 @@ export default function Landing() {
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <Image alt="BB3 News Rules" src="/img/news/BB3_Rules_Released.png" width={592} height={333} />
+                <Image alt="BB3 News Rules" src={newsImage} width={592} height={333} />
               </div>
             </div>
           </div>
@@ -246,7 +251,7 @@ export default function Landing() {
                   width={300}
                   height={300}
                   className="max-w-full rounded-lg shadow-lg"
-                  src="/img/brand/bayoubowl-logo.png"
+                  src={logo}
                 />
               </div>
               <div className="w-full md:w-5/12 ml-auto mr-auto px-4">
@@ -312,7 +317,7 @@ export default function Landing() {
                       alt="GamesWithDeath Logo"
                       height={130}
                       width={130}
-                      src="/img/index/DeathLogo.png"
+                      src={logo_death}
                       className="rounded-full shadow-lg"
                     />
                   </div>
@@ -358,7 +363,7 @@ export default function Landing() {
                       alt="MrSpwn Logo"
                       height={130}
                       width={130}
-                      src="/img/index/MrSpwnLogo.png"
+                      src={logo_spwn}
                       className="rounded-full shadow-lg"
                     />
                   </div>
@@ -404,7 +409,7 @@ export default function Landing() {
                       alt="CrankIt Logo"
                       height={130}
                       width={130}
-                      src="/img/index/CrankItLogo.png"
+                      src={logo_crankit}
                       className="shadow-lg rounded-full"
                     />
                   </div>

@@ -7,6 +7,7 @@ import { routes } from '../../util/routes'
 import LeaderboardsDropdown from '../Dropdowns/LeaderboardsDropdown'
 import RulesDropdown from '../Dropdowns/RulesDropdown'
 import TeamsDropdown from '../Dropdowns/TeamsDropdown'
+import logo from '../../public/img/brand/bayoubowl-logo.png'
 
 const navLinkClassName =
   'lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold'
@@ -78,7 +79,7 @@ export default function Navbar() {
       <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="mr-3 md-hide">
-            <Image src="/img/brand/bayoubowl-logo.png" height={40} width={40} />
+            <Image src={logo} height={40} width={40} />
           </div>
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <Link href={routes.home}>
