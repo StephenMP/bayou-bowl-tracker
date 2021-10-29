@@ -1,40 +1,41 @@
-import React from "react";
-import CookieConsent from "react-cookie-consent";
-import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import Footer from "../components/Footers/Footer";
-import Navbar from "../components/Navbars/AuthNavbar";
-import { routes } from "../util/routes";
+import React from 'react'
+import CookieConsent from 'react-cookie-consent'
+import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+import Footer from '../components/Footers/Footer'
+import Navbar from '../components/Navbars/AuthNavbar'
+import { routes } from '../util/routes'
 import Image from 'next/image'
 import bb3Banner from '../public/img/brand/The_Bayou_Bowl_Header.png'
 import newsImage from '../public/img/news/BB3_Rules_Released.png'
-import logo from '../public/img/news/bayoubowl-logo.png'
+import logo from '../public/img/brand/bayoubowl-logo.png'
 import logo_death from '../public/img/index/DeathLogo.png'
 import logo_spwn from '../public/img/index/MrSpwnLogo.png'
 import logo_crankit from '../public/img/index/CrankItLogo.png'
+import Plyr from 'plyr-react'
+import { plyrSourceInfo, plyrStyle, videoOpts } from './news'
 
 const timerProps = {
   isPlaying: true,
   size: 170,
   strokeWidth: 0,
-  colors: "#fff",
+  colors: '#fff',
+}
 
-};
-
-const minuteSeconds = 60;
-const hourSeconds = 3600;
-const daySeconds = 86400;
-const getTimeSeconds = (time: number) => (minuteSeconds - time) | 0;
-const getTimeMinutes = (time: number) => ((time % hourSeconds) / minuteSeconds) | 0;
-const getTimeHours = (time: number) => ((time % daySeconds) / hourSeconds) | 0;
-const getTimeDays = (time: number) => (time / daySeconds) | 0;
+const minuteSeconds = 60
+const hourSeconds = 3600
+const daySeconds = 86400
+const getTimeSeconds = (time: number) => (minuteSeconds - time) | 0
+const getTimeMinutes = (time: number) => ((time % hourSeconds) / minuteSeconds) | 0
+const getTimeHours = (time: number) => ((time % daySeconds) / hourSeconds) | 0
+const getTimeDays = (time: number) => (time / daySeconds) | 0
 const renderTime = (dimension: string, time: number) => {
   return (
     <div className="time-wrapper">
       <div className="time">{time}</div>
       <div>{dimension}</div>
     </div>
-  );
-};
+  )
+}
 
 // const videoOpts: Plyr.Options = {
 //   ads: { enabled: false, publisherId: '' },
@@ -60,10 +61,10 @@ const renderTime = (dimension: string, time: number) => {
 export default function Landing() {
   const startTime = Date.now() / 1000
   const endTime = new Date('2021-12-04T17:00:00.000Z').getTime() / 1000
-  const eventDateString = "04 December 2021 1 PM EST"
-  const remainingTime = endTime - startTime;
-  const days = Math.ceil(remainingTime / daySeconds);
-  const daysDuration = days * daySeconds;
+  const eventDateString = '04 December 2021 1 PM EST'
+  const remainingTime = endTime - startTime
+  const days = Math.ceil(remainingTime / daySeconds)
+  const daysDuration = days * daySeconds
 
   return (
     <>
@@ -74,16 +75,13 @@ export default function Landing() {
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{ backgroundImage: "url('/img/headings/bg-landing.jpg')" }}
           >
-            <span
-              id="blackOverlay"
-              className="w-full h-full absolute opacity-50 bg-black"
-            ></span>
+            <span id="blackOverlay" className="w-full h-full absolute opacity-50 bg-black"></span>
           </div>
           <div className="container relative mx-auto">
             <div className="flex flex-wrap items-center">
               <div className="w-full px-4 ml-auto mr-auto text-center">
                 <div className="flex justify-center flex-wrap pr-12 mt-10">
-                  <div className="max-w-full rounded-lg shadow-lg" >
+                  <div className="max-w-full rounded-lg shadow-lg">
                     <Image alt="BayouBowl 3 Header" width={592} height={333} src={bb3Banner} priority />
                   </div>
                   {/* {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />} */}
@@ -94,9 +92,7 @@ export default function Landing() {
                         duration={daysDuration}
                         initialRemainingTime={remainingTime}
                       >
-                        {({ elapsedTime }) =>
-                          renderTime("days", getTimeDays(daysDuration - elapsedTime))
-                        }
+                        {({ elapsedTime }) => renderTime('days', getTimeDays(daysDuration - elapsedTime))}
                       </CountdownCircleTimer>
                     </div>
                     <div className="w-full lg:w-3/12 uppercase md-hide px-4 ml-auto mr-auto text-center">
@@ -106,9 +102,7 @@ export default function Landing() {
                         initialRemainingTime={remainingTime % daySeconds}
                         onComplete={(totalElapsedTime) => [remainingTime - totalElapsedTime > hourSeconds, 0]}
                       >
-                        {({ elapsedTime }) =>
-                          renderTime("hours", getTimeHours(daySeconds - elapsedTime))
-                        }
+                        {({ elapsedTime }) => renderTime('hours', getTimeHours(daySeconds - elapsedTime))}
                       </CountdownCircleTimer>
                     </div>
                     <div className="w-full lg:w-3/12 uppercase md-hide px-4 ml-auto mr-auto text-center">
@@ -118,9 +112,7 @@ export default function Landing() {
                         initialRemainingTime={remainingTime % hourSeconds}
                         onComplete={(totalElapsedTime) => [remainingTime - totalElapsedTime > minuteSeconds, 0]}
                       >
-                        {({ elapsedTime }) =>
-                          renderTime("minutes", getTimeMinutes(hourSeconds - elapsedTime))
-                        }
+                        {({ elapsedTime }) => renderTime('minutes', getTimeMinutes(hourSeconds - elapsedTime))}
                       </CountdownCircleTimer>
                     </div>
                     <div className="w-full lg:w-3/12 uppercase md-hide px-4 ml-auto mr-auto text-center">
@@ -130,22 +122,18 @@ export default function Landing() {
                         initialRemainingTime={remainingTime % minuteSeconds}
                         onComplete={(totalElapsedTime) => [remainingTime - totalElapsedTime > 0, 0]}
                       >
-                        {({ elapsedTime }) =>
-                          renderTime("seconds", getTimeSeconds(elapsedTime))
-                        }
+                        {({ elapsedTime }) => renderTime('seconds', getTimeSeconds(elapsedTime))}
                       </CountdownCircleTimer>
                     </div>
                   </div>
-                  <h3 className="mt-4 text-6xl uppercase  text-blueGray-200">
-                    {eventDateString}
-                  </h3>
+                  <h3 className="mt-4 text-6xl uppercase  text-blueGray-200">{eventDateString}</h3>
                 </div>
               </div>
             </div>
           </div>
           <div
             className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-16"
-            style={{ transform: "translateZ(0)" }}
+            style={{ transform: 'translateZ(0)' }}
           >
             <svg
               className="absolute bottom-0 overflow-hidden"
@@ -156,10 +144,7 @@ export default function Landing() {
               x="0"
               y="0"
             >
-              <polygon
-                className="text-blueGray-200 fill-current"
-                points="2560 0 2560 100 0 100"
-              ></polygon>
+              <polygon className="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
             </svg>
           </div>
         </div>
@@ -188,9 +173,7 @@ export default function Landing() {
                       <i className="fab fa-twitter"></i>
                     </div>
                     <h6 className="text-xl font-semibold">@michaelexile</h6>
-                    <p className="mt-2 mb-4 text-blueGray-500">
-                      I’m here for this, sign me the hell up
-                    </p>
+                    <p className="mt-2 mb-4 text-blueGray-500">I’m here for this, sign me the hell up</p>
                   </div>
                 </div>
               </div>
@@ -203,7 +186,8 @@ export default function Landing() {
                     </div>
                     <h6 className="text-xl font-semibold">@LordJamesD</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      seeing my main partner Beru finish first is the same feeling that a master has a student after he surpasses him.
+                      seeing my main partner Beru finish first is the same feeling that a master has a student after he
+                      surpasses him.
                     </p>
                   </div>
                 </div>
@@ -216,27 +200,31 @@ export default function Landing() {
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
-                <h3 className="text-3xl mb-2 font-semibold leading-normal">
-                  Latest News
-                </h3>
+                <h3 className="text-3xl mb-2 font-semibold leading-normal">Latest News</h3>
                 <h6 className="text-lg mb-2 font-semibold leading-normal">
-                  Bayou Bowl III Rules Now Available
+                  Registration for the Bayou Bowl III is Now Open!
                 </h6>
-                <h6 className="text-sm mb-2 font-semibold leading-normal">
-                  22 Oct 2021
-                </h6>
+                <h6 className="text-sm mb-2 font-semibold leading-normal">30 Oct 2021</h6>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  The Official Rules for Bayou Bowl III are now available <a className="font-bold" href='/pdf/Bayou_Bowl_III_Rules.pdf' target="_blank" rel="noopener noreferrer">here</a>. As is our goal with all of our competitions, we strive to create a rule set that ensures the fairest playing field for all hunters.
+                  Registration for the Bayou Bowl III has now officially opened. Registration is easy and takes less
+                  than 30 seconds.
                 </p>
                 <p className="text-lg font-light leading-relaxres enteed mt-0 mb-4 text-blueGray-600">
-                  All hunters should take some time to read the rules, so that they are aware of their responsibilities when competing. If you have any questions on the rules, please feel free to ask them in the <a className="font-bold" href="https://discord.gg/eR87mZtq6F" target="_blank" rel="noopener noreferrer">MNH Discord</a>
+                  To register, you must:
+                  <ol>
+                    <li className="ml-3">1. Sign in or create an account</li>
+                    <li className="ml-3">2. Make sure your Twitch Name (not URL) is filled in on your profile</li>
+                    <li className="ml-3">3. Click Events on the left side bar</li>
+                    <li className="ml-3">4. Under Bayou Bowl III, click Register</li>
+                    <li className="ml-3">5. DONE!</li>
+                  </ol>
                 </p>
                 <p>
                   <a href={routes.news}>Read More News</a>
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <Image alt="BB3 News Rules" src={newsImage} width={592} height={333} />
+                <Plyr source={plyrSourceInfo('Llmcs9rhfrQ')} options={videoOpts} style={plyrStyle} />
               </div>
             </div>
           </div>
@@ -258,19 +246,16 @@ export default function Landing() {
                 <div className="md:pr-12">
                   <h3 className="text-3xl font-semibold text-blueGray-200">About</h3>
                   <p className="mt-4 text-lg leading-relaxed text-blueGray-200">
-                    The Bayou Bowl is the premier Hunt: Showdown Esports competition.
-                    This competition hosts the fiercest and most competitive hunters,
-                    all who are seeking the glory of being crowned the best in the
-                    bayou. Our tournaments have facilitated competition between 200+
-                    players from 25+ different countries spanning 5 continents.
+                    The Bayou Bowl is the premier Hunt: Showdown Esports competition. This competition hosts the
+                    fiercest and most competitive hunters, all who are seeking the glory of being crowned the best in
+                    the bayou. Our tournaments have facilitated competition between 200+ players from 25+ different
+                    countries spanning 5 continents.
                   </p>
                   <p className="mt-4 text-lg leading-relaxed text-blueGray-200">
-                    Our goal is to host the most reliable, fair, and exciting
-                    tournaments to be found within the Hunt community. Our passion
-                    is to provide a stage for the best talent the game of
-                    Hunt: Showdown has to offer. We accomplish these objectives by
-                    offering a highly-advanced scoring infrastructure, reasonable
-                    and fair rule set, and professional commentary.
+                    Our goal is to host the most reliable, fair, and exciting tournaments to be found within the Hunt
+                    community. Our passion is to provide a stage for the best talent the game of Hunt: Showdown has to
+                    offer. We accomplish these objectives by offering a highly-advanced scoring infrastructure,
+                    reasonable and fair rule set, and professional commentary.
                   </p>
                 </div>
               </div>
@@ -281,7 +266,7 @@ export default function Landing() {
         <section className="pt-20 pb-48">
           <div
             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
-            style={{ transform: "translateZ(0)" }}
+            style={{ transform: 'translateZ(0)' }}
           >
             <svg
               className="absolute bottom-0 overflow-hidden"
@@ -292,10 +277,7 @@ export default function Landing() {
               x="0"
               y="0"
             >
-              <polygon
-                className="text-white fill-current"
-                points="2560 0 2560 100 0 100"
-              ></polygon>
+              <polygon className="text-white fill-current" points="2560 0 2560 100 0 100"></polygon>
             </svg>
           </div>
 
@@ -304,8 +286,8 @@ export default function Landing() {
               <div className="w-full lg:w-6/12 px-4">
                 <h2 className="text-4xl font-semibold">The Monday Night Hunts Team</h2>
                 <p className="text-lg leading-relaxed m-4 text-blueGray-500">
-                  The following individuals are the masterminds behind MNH and are the ones responsible for
-                  helping bring you the Bayou Bowl tournament.
+                  The following individuals are the masterminds behind MNH and are the ones responsible for helping
+                  bring you the Bayou Bowl tournament.
                 </p>
               </div>
             </div>
@@ -323,9 +305,7 @@ export default function Landing() {
                   </div>
                   <div className="pt-6 text-center">
                     <h5 className="text-xl font-bold">GameswithDeath</h5>
-                    <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                      Mastermind
-                    </p>
+                    <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">Mastermind</p>
                     <div className="mt-6">
                       <a href="https://twitter.com/GameswithDeath" target="_blank" rel="noopener noreferrer">
                         <button
@@ -343,7 +323,11 @@ export default function Landing() {
                           <i className="fab fa-twitch"></i>
                         </button>
                       </a>
-                      <a href="https://www.youtube.com/channel/UC_GOJ8g3nYIoa_5VbENLTJw?" target="_blank" rel="noopener noreferrer">
+                      <a
+                        href="https://www.youtube.com/channel/UC_GOJ8g3nYIoa_5VbENLTJw?"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <button
                           className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                           type="button"
@@ -369,9 +353,7 @@ export default function Landing() {
                   </div>
                   <div className="pt-6 text-center">
                     <h5 className="text-xl font-bold">MrSpwn</h5>
-                    <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                      Software Mastermind
-                    </p>
+                    <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">Software Mastermind</p>
                     <div className="mt-6">
                       <a href="https://twitter.com/Mr_Spwn" target="_blank" rel="noopener noreferrer">
                         <button
@@ -415,9 +397,7 @@ export default function Landing() {
                   </div>
                   <div className="pt-6 text-center">
                     <h5 className="text-xl font-bold">CrankItMan</h5>
-                    <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
-                      Operations Mastermind
-                    </p>
+                    <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">Operations Mastermind</p>
                     <div className="mt-6">
                       <a href="https://twitter.com/CrankItMan" target="_blank" rel="noopener noreferrer">
                         <button
@@ -435,7 +415,11 @@ export default function Landing() {
                           <i className="fab fa-twitch"></i>
                         </button>
                       </a>
-                      <a href="https://www.youtube.com/channel/UCv3h8rXbubHbROZvgzWDb-g" target="_blank" rel="noopener noreferrer">
+                      <a
+                        href="https://www.youtube.com/channel/UCv3h8rXbubHbROZvgzWDb-g"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <button
                           className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                           type="button"
@@ -593,27 +577,27 @@ export default function Landing() {
             </div>
           </div>
         </section> */}
-
       </main>
       <CookieConsent
         location="bottom"
         buttonText="I UNDERSTAND"
         cookieName="bayoubowlCookieConsent"
-        style={{ background: "#2B373B" }}
-        buttonStyle={{ background: '#e4e4e7', color: "#000", fontSize: "13px" }}
+        style={{ background: '#2B373B' }}
+        buttonStyle={{ background: '#e4e4e7', color: '#000', fontSize: '13px' }}
         expires={150}
       >
         This website uses cookies to enhance the user experience.
         <br />
         <a
           href="https://www.freeprivacypolicy.com/live/87f9752a-671b-4179-866f-654a4ef87db8"
-          target='_blank' rel="noopener noreferrer"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-blueGray-500 hover:text-blueGray-800"
         >
           Our Privacy Policy
-        </a>{" "}
+        </a>{' '}
       </CookieConsent>
       <Footer />
     </>
-  );
+  )
 }
