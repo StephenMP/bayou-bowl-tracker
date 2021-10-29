@@ -18,7 +18,7 @@ export default function Landing() {
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
-            style={{ backgroundImage: "url('/img/bg-landing.jpg')" }}
+            style={{ backgroundImage: "url('/img/headings/bg-landing.jpg')" }}
           >
             <span
               id="blackOverlay"
@@ -29,8 +29,11 @@ export default function Landing() {
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-7/12 px-4 ml-auto mr-auto text-center">
                 <div className="pr-12 mt-10">
-                  <h1 className="mt-4 text-8xl font-bold uppercase text-blueGray-200">
-                    Official Team List for The Bayou Bowl II
+                  <h1 className="mt-4 text-7xl font-bold uppercase text-blueGray-200">
+                    Bayou Bowl II
+                  </h1>
+                  <h1 className="mt-4 text-6xl font-bold uppercase text-blueGray-200">
+                    Teams
                   </h1>
                 </div>
               </div>

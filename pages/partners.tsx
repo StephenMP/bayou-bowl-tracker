@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import CookieConsent from 'react-cookie-consent'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import Footer from '../components/Footers/Footer'
@@ -6,8 +6,101 @@ import Navbar from '../components/Navbars/AuthNavbar'
 import { routes } from '../util/routes'
 import Image from 'next/image'
 import bb3Banner from '../public/img/brand/The_Bayou_Bowl_Header.png'
+import { fetcher } from '../lib/swr'
+import { useToasts } from 'react-toast-notifications'
+
+function isValidEmail(email: string): boolean {
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  return re.test(String(email).toLowerCase())
+}
+
+type Form = {
+  name: string
+  nameError?: string
+  company?: string
+  email: string
+  emailError?: string
+}
 
 export default function Landing() {
+  const [form, setForm] = useState<Form>({ name: '', email: '' })
+  const { addToast } = useToasts()
+
+  async function sendMessage() {
+    if (!form.name || !form.email) {
+      setForm({
+        ...form,
+        nameError: form.name ? '' : 'Name is required.',
+        emailError: form.email ? '' : 'Email is required.',
+      })
+
+      return
+    }
+
+    if (!isValidEmail(form.email)) {
+      setForm({
+        ...form,
+        emailError: 'The email you entered is not a valid email format.',
+      })
+
+      return
+    }
+
+    const body = {
+      name: form.name,
+      company: form.company || 'N/A',
+      email: form.email,
+    }
+
+    const response = await fetcher('/api/email', { method: 'POST', body: JSON.stringify(body) })
+
+    if (response.success) {
+      addToast('Success. We will get back to you as soon as possible.', { appearance: 'success', autoDismiss: true })
+      setForm({
+        name: '',
+        email: '',
+      })
+    } else if (response.nameMissing) {
+      addToast('Name was missing from the input.')
+      setForm({
+        ...form,
+        nameError: 'Name is required.',
+      })
+    } else if (response.emailMissing) {
+      addToast('Name was missing from the input.')
+      setForm({
+        ...form,
+        emailError: 'Email is required.',
+      })
+    } else {
+      addToast('An error occurred. Please email us directly at MondayNightHunts@gmail.com', { appearance: 'error' })
+    }
+  }
+
+  function updateName(event: ChangeEvent<HTMLInputElement>) {
+    setForm({
+      ...form,
+      nameError: '',
+      name: event.currentTarget.value,
+    })
+  }
+
+  function updateCompany(event: ChangeEvent<HTMLInputElement>) {
+    setForm({
+      ...form,
+      company: event.currentTarget.value,
+    })
+  }
+
+  function updateEmail(event: ChangeEvent<HTMLInputElement>) {
+    setForm({
+      ...form,
+      emailError: '',
+      email: event.currentTarget.value,
+    })
+  }
+
   return (
     <>
       <Navbar />
@@ -15,15 +108,27 @@ export default function Landing() {
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
-            style={{ backgroundImage: "url('/img/bg-landing.jpg')" }}
+            style={{
+              backgroundImage:
+                "url('https://images.unsplash.com/photo-1579869847557-1f67382cc158?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80')",
+            }}
           >
-            <span id="blackOverlay" className="w-full h-full absolute opacity-50 bg-black"></span>
+            <span id="blackOverlay" className="w-full h-full absolute opacity-80 bg-black"></span>
           </div>
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                <div className="pr-12 mt-10">
-                  <h1 className="mt-4 text-8xl uppercase font-bold text-blueGray-200">Partners</h1>
+                <div className="pr-12">
+                  <h1 className="text-white font-semibold text-8xl md-hide">Partners</h1>
+                  <h1 className="text-white font-semibold text-4xl md-show">Partners</h1>
+                  <p className="mt-4 text-xl text-blueGray-200 md-hide">
+                    We're seeking to partner with individuals, companies, and organizations to help us to continue to
+                    provide the best Esports experience the Hunt: Showdown community has ever seen.
+                  </p>
+                  <p className="mt-4 text-lg text-blueGray-200 md-show">
+                    We're seeking to partner with individuals, companies, and organizations to help us to continue to
+                    provide the best Esports experience the Hunt: Showdown community has ever seen.
+                  </p>
                 </div>
               </div>
             </div>
@@ -38,12 +143,7 @@ export default function Landing() {
           <div className="container mx-auto px-4 lg:pt-24 lg:pb-64">
             <div className="flex flex-wrap text-center justify-center">
               <div className="w-full lg:w-6/12 px-4">
-                <h2 className="text-4xl font-semibold">Partners</h2>
-                <p className="text-lg leading-relaxed m-4 text-blueGray-600">
-                  We are seeking to partner with individuals, companies, and organizations to help us to continue to
-                  provide the best Esports experience the Hunt: Showdown community has ever seen. Partnerships with
-                  Monday Night Hunts include the following benefits:
-                </p>
+                <h2 className="text-6xl font-semibold mb-4">Benefits</h2>
               </div>
             </div>
             <div className="flex flex-wrap mt-12 justify-center">
@@ -69,7 +169,8 @@ export default function Landing() {
                 </div>
                 <h5 className="text-xl mt-5 font-semibold">Branded Scoreboard</h5>
                 <p className="mt-2 mb-4 text-blueGray-600">
-                  Top Sponsor reserves exclusive right for their logos and branding to be displayed on the leadboards for the event.
+                  Top Sponsor reserves exclusive right for their logos and branding to be displayed on the leadboards
+                  for the event.
                 </p>
               </div>
 
@@ -120,12 +221,18 @@ export default function Landing() {
                       <label className="block uppercase text-blueGray-400 text-xs font-bold mb-2" htmlFor="full-name">
                         Name
                       </label>
+                      <span className="text-youtube-red">{form.nameError}</span>
                       <input
                         type="text"
                         maxLength={50}
                         className="border-0 px-3 py-3 placeholder-blueGray-600 text-blueGray-600 bg-blueGray-200 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Required"
+                        onChange={updateName}
+                        value={form.name}
                       />
+                      <span id="teamNameLength" className="text-blueGray-400 float-right">
+                        {form.name.length} / 50
+                      </span>
                     </div>
 
                     <div className="relative w-full mb-3">
@@ -137,25 +244,41 @@ export default function Landing() {
                         maxLength={50}
                         className="border-0 px-3 py-3 placeholder-blueGray-600 text-blueGray-600 bg-blueGray-200 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Optional"
+                        onChange={updateCompany}
+                        value={form.company || ''}
                       />
+                      <span id="teamNameLength" className="text-blueGray-400 float-right">
+                        {form.company?.length || 0} / 50
+                      </span>
                     </div>
 
                     <div className="relative w-full mb-3">
-                      <label className="block uppercase text-blueGray-400 text-xs font-bold mb-2" htmlFor="email">
-                        Email
-                      </label>
+                      <div className="flex flex-wrap">
+                        <label className="block uppercase text-blueGray-400 text-xs font-bold mb-2" htmlFor="email">
+                          Email
+                        </label>
+                      </div>
+                      <span className="text-youtube-red">{form.emailError}</span>
                       <input
                         type="email"
                         maxLength={320}
                         className="border-0 px-3 py-3 placeholder-blueGray-600 text-blueGray-600 bg-blueGray-200 rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="Required"
+                        onChange={updateEmail}
+                        value={form.email}
                       />
+                      <span id="teamNameLength" className="text-blueGray-400 float-right">
+                        {form.email.length} / 320
+                      </span>
                     </div>
 
                     <div className="text-center mt-6">
                       <button
                         className="bg-blueGray-200 active:bg-blueGray-300 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                         type="button"
+                        onClick={() => {
+                          sendMessage()
+                        }}
                       >
                         Send Message
                       </button>
@@ -193,10 +316,14 @@ export default function Landing() {
                   Not an individual, company, or organization looking to partner with Monday Night Hunts, but you would
                   still like to contribute to the Bayou Bowl III prize pool? We are accepting contributions from
                   individuals to expand the prize pool while not receiving partner rewards. If you would like
-                  anonymously contribute, please click on the button below.
+                  anonymously contribute, please click on the button below.*
                 </p>
                 <div className="mt-10">
-                  <a href="https://www.paypal.com/donate?hosted_button_id=6PEHX3JLDSAGL" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://www.paypal.com/donate?hosted_button_id=6PEHX3JLDSAGL"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <button
                       className="bg-blueGray-200 active:bg-blueGray-300 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
@@ -210,7 +337,12 @@ export default function Landing() {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer disclaimers={
+          [{
+              symbol: '*',
+              message: 'Contributions collected from non-partner contributors are used to cover competition costs and fund the competition prize pool. They are in no way a donation in the charitable sense.'
+          }]
+      } />
     </>
   )
 }

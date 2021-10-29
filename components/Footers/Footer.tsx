@@ -1,14 +1,23 @@
-import Link from 'next/link';
-import React from "react";
-import { routes } from "../../util/routes";
+import Link from 'next/link'
+import React from 'react'
+import { routes } from '../../util/routes'
 
-export default function Footer() {
+export type Disclaimer = {
+  symbol: string
+  message: string
+}
+
+type Props = {
+  disclaimers?: Disclaimer[]
+}
+
+export default function Footer({ disclaimers }: Props) {
   return (
     <>
       <footer className="relative bg-blueGray-200 pt-8 pb-6">
         <div
           className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
-          style={{ transform: "translateZ(0)" }}
+          style={{ transform: 'translateZ(0)' }}
         >
           <svg
             className="absolute bottom-0 overflow-hidden"
@@ -19,21 +28,16 @@ export default function Footer() {
             x="0"
             y="0"
           >
-            <polygon
-              className="text-blueGray-200 fill-current"
-              points="2560 0 2560 100 0 100"
-            ></polygon>
+            <polygon className="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
           </svg>
         </div>
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap text-center lg:text-left">
             <div className="w-full lg:w-6/12 px-4">
               <h4 className="text-3xl font-semibold">Let's keep in touch!</h4>
-              <h5 className="text-lg mt-0 mb-2 text-blueGray-600">
-                Find us on any of these platforms.
-              </h5>
+              <h5 className="text-lg mt-0 mb-2 text-blueGray-600">Find us on any of these platforms.</h5>
               <div className="mt-6 lg:mb-0 mb-6">
-                <a href="https://twitter.com/mnh_gg" target="_blank" rel="noopener noreferrer" >
+                <a href="https://twitter.com/mnh_gg" target="_blank" rel="noopener noreferrer">
                   <button
                     className="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
                     type="button"
@@ -57,7 +61,11 @@ export default function Footer() {
                     <i className="fab fa-discord"></i>
                   </button>
                 </a>
-                <a href="https://www.youtube.com/channel/UCN0CVMYGiMm-D3SolJHB28A" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.youtube.com/channel/UCN0CVMYGiMm-D3SolJHB28A"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <button
                     className="bg-white text-youtube-red shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
                     type="button"
@@ -70,12 +78,10 @@ export default function Footer() {
             <div className="w-full lg:w-6/12 px-4">
               <div className="flex flex-wrap items-top mb-6">
                 <div className="w-full lg:w-4/12 px-4 ml-auto">
-                  <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
-                    Useful Links
-                  </span>
+                  <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">Useful Links</span>
                   <ul className="list-unstyled">
                     <li>
-                      <Link href={routes.news} >
+                      <Link href={routes.news}>
                         <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm">
                           News
                         </a>
@@ -92,15 +98,14 @@ export default function Footer() {
                   </ul>
                 </div>
                 <div className="w-full lg:w-4/12 px-4">
-                  <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
-                    Other Resources
-                  </span>
+                  <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">Other Resources</span>
                   <ul className="list-unstyled">
                     <li>
                       <a
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
                         href="https://www.freeprivacypolicy.com/live/87f9752a-671b-4179-866f-654a4ef87db8"
-                        target="_blank" rel="noopener noreferrer"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         Privacy Policy
                       </a>
@@ -108,6 +113,16 @@ export default function Footer() {
                   </ul>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="flex flex-wrap items-center md:justify-between justify-center mt-4">
+            <div className="w-full px-4 mx-auto text-center">
+              {disclaimers?.map((d, idx) => (
+                <div key={`disc-${idx}`} className="text-sm text-blueGray-500 font-semibold py-1">
+                  {d.symbol}
+                  {d.message}
+                </div>
+              ))}
             </div>
           </div>
           <hr className="my-6 border-blueGray-300" />
@@ -124,5 +139,5 @@ export default function Footer() {
         </div>
       </footer>
     </>
-  );
+  )
 }

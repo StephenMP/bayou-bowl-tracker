@@ -39,7 +39,7 @@
   max-width: 75rem;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) {
   .md-show {
     visibility: show;
     clear: both;
@@ -59,4 +59,8 @@
     width: 28%;
     display: none;
   }
+}
+
+.opacity-80 {
+  opacity: 0.8;
 }

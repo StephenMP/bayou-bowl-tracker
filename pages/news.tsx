@@ -32,32 +32,32 @@ export default function Landing() {
     <>
       <Navbar />
       <main>
-        <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+      <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
-            style={{ backgroundImage: "url('/img/bg-landing.jpg')" }}
+            style={{
+              backgroundImage:
+                "url('/img/headings/bg-news.jpg')",
+            }}
           >
-            <span
-              id="blackOverlay"
-              className="w-full h-full absolute opacity-50 bg-black"
-            ></span>
+            <span id="blackOverlay" className="w-full h-full absolute opacity-80 bg-black"></span>
           </div>
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                <div className="pr-12 mt-10">
-                  <h1 className="mt-4 text-8xl uppercase font-bold text-blueGray-200">
-                    News
-                  </h1>
+                <div className="pr-12">
+                  <h1 className="text-white font-semibold text-8xl">News</h1>
+                  <p className="mt-4 text-4xl text-blueGray-200">
+                    Stay up to date with the latest Bayou Bowl News
+                  </p>
                 </div>
               </div>
             </div>
           </div>
           <div
             className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-16"
-            style={{ transform: "translateZ(0)" }}
-          >
-          </div>
+            style={{ transform: 'translateZ(0)' }}
+          ></div>
         </div>
 
         <section id="news" className="pb-20 bg-blueGray-200 -mt-24">
