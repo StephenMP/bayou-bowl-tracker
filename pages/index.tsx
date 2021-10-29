@@ -299,7 +299,7 @@ export default function Landing() {
               <div className="w-full lg:w-6/12 px-4">
                 <h2 className="text-4xl font-semibold">The Monday Night Hunts Team</h2>
                 <p className="text-lg leading-relaxed m-4 text-blueGray-500">
-                  The following individuals are the masterminds behind MNG and are the ones responsible for
+                  The following individuals are the masterminds behind MNH and are the ones responsible for
                   helping bring you the Bayou Bowl tournament.
                 </p>
               </div>
