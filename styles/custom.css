@@ -8,50 +8,55 @@
 }
 
 .text-7xl {
-    font-size: 4.5rem;
-    line-height: 1;
+  font-size: 4.5rem;
+  line-height: 1;
 }
 
 .text-8xl {
-    font-size: 5.25rem;
-    line-height: 1;
+  font-size: 5.25rem;
+  line-height: 1;
 }
 
 .text-9xl {
-    font-size: 6rem;
-    line-height: 1;
+  font-size: 6rem;
+  line-height: 1;
 }
 
 .bg-green {
-    background-color: rgba(0, 255, 0, 100);
+  background-color: rgba(0, 255, 0, 100);
 }
 
 .bg-none {
-  background-color: rgba(0,0,0,0)!important
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.text-youtube-red {
+  --tw-text-opacity: 1;
+  color: #c4302b
 }
 
 .max-w-5xl {
-    max-width: 75rem;
-  }
+  max-width: 75rem;
+}
 
-  @media screen and (min-width: 1024px) {
-    .md-show {
-      visibility: show;
-      clear: both;
-      float: left;
-      margin: 10px auto 5px 20px;
-      width: 28%;
-      display: none;
-    }
+@media screen and (min-width: 1024px) {
+  .md-show {
+    visibility: show;
+    clear: both;
+    float: left;
+    margin: 10px auto 5px 20px;
+    width: 28%;
+    display: none;
   }
+}
 
 @media screen and (max-width: 1024px) {
-    .md-hide {
-      visibility: hidden;
-      clear: both;
-      float: left;
-      margin: 10px auto 5px 20px;
-      width: 28%;
-      display: none;
-    }
+  .md-hide {
+    visibility: hidden;
+    clear: both;
+    float: left;
+    margin: 10px auto 5px 20px;
+    width: 28%;
+    display: none;
   }
+}

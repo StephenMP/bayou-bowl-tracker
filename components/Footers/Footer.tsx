@@ -57,6 +57,14 @@ export default function Footer() {
                     <i className="fab fa-discord"></i>
                   </button>
                 </a>
+                <a href="https://www.youtube.com/channel/UCN0CVMYGiMm-D3SolJHB28A" target="_blank" rel="noopener noreferrer">
+                  <button
+                    className="bg-white text-youtube-red shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+                    type="button"
+                  >
+                    <i className="fab fa-youtube"></i>
+                  </button>
+                </a>
               </div>
             </div>
             <div className="w-full lg:w-6/12 px-4">
