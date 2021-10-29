@@ -45,7 +45,7 @@ function SocialLinks() {
       <li className="flex items-center">
         <a className={navLinkClassName} href="https://www.youtube.com/channel/UCN0CVMYGiMm-D3SolJHB28A" target="_blank" rel="noopener noreferrer">
           <i className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 text-lg leading-lg fab fa-youtube" />
-          <span className="lg:hidden inline-block ml-2">Discord</span>
+          <span className="lg:hidden inline-block ml-2">YouTube</span>
         </a>
       </li>
     </>
