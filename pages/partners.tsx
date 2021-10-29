@@ -176,7 +176,7 @@ export default function Landing() {
 
               <div className="w-full lg:w-4/12 px-4 text-center">
                 <div className="text-blueGray-200 bg-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-                  <i className="fas fa-check text-xl"></i>
+                  <i className="fas fa-pager text-xl"></i>
                 </div>
                 <h5 className="text-xl mt-5 font-semibold">Home Page Listings</h5>
                 <p className="mt-2 mb-4 text-blueGray-600">
@@ -186,7 +186,7 @@ export default function Landing() {
 
               <div className="w-full lg:w-4/12 px-4 text-center">
                 <div className="text-blueGray-200 bg-blueGray-800 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-                  <i className="fas fa-ad text-xl"></i>
+                  <i className="fas fa-bullhorn text-xl"></i>
                 </div>
                 <h5 className="text-xl mt-5 font-semibold">Live and Recorded Advertising</h5>
                 <p className="mt-2 mb-4 text-blueGray-600">
