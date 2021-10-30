@@ -87,7 +87,7 @@ function Register({ eventId, isRegister }: { eventId: string; isRegister: boolea
         }
       }}
     >
-      {isRegister ? 'Register' : 'Unregister'}
+      {isRegister ? 'Register*' : 'Unregister'}
     </button>
   )
 }
