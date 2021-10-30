@@ -12,7 +12,7 @@ export default function FooterAdmin() {
                 By registering to compete, you certify that you are of at least 13 years of age, or the legal minimum
                 age required in your country to compete in a competitive tournament with a cash prize, and that if
                 considered a minor, have the permission of your legal guardian to compete in The Bayou Bowl III
-                tournament. Please refer to <a className="font-bold" href="/pdf/Bayou_Bowl_III_Rules.pdf" target="_blank" rel="noopener noreferrer">the official rules</a> for more information.
+                tournament. You also certify that you agree to our <a className="font-bold" href="/pdf/Bayou_Bowl_III_Rules.pdf" target="_blank" rel="noopener noreferrer">official rules</a> of The Bayou Bowl III competition.
               </div>
             </div>
           </div>
