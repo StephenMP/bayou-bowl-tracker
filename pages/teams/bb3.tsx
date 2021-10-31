@@ -15,7 +15,7 @@ export default function Landing() {
   })
   const { teams, isLoading: teamsLoading } = useTeamsForEvent('438fd5b5-3a3d-44ce-8e51-339fa5c4c916', {
     suspense: false,
-    refreshInterval: 30,
+    refreshInterval: 30000,
   })
 
   if (userIsLoading) {
@@ -46,8 +46,10 @@ export default function Landing() {
                     <h1 className="mt-4 text-7xl font-bold uppercase text-blueGray-200 md-hide">
                       Bayou Bowl III Competitors
                     </h1>
-                    <h1 className="mt-4 text-6xl font-bold uppercase text-blueGray-200 md-show">BB III</h1>
-                    <h1 className="mt-4 text-4xl font-bold uppercase text-blueGray-200 md-show">Competitors</h1>
+                    <div className="md-show">
+                      <h1 className="mt-4 text-6xl font-bold uppercase text-blueGray-200">BB III</h1>
+                      <h1 className="mt-4 text-4xl font-bold uppercase text-blueGray-200">Competitors</h1>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -61,7 +63,7 @@ export default function Landing() {
           <section id="rules" className="relative py-20 bg-blueGray-800">
             <div className="container mx-auto px-4">
               <div className="items-center">
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {teamsLoading && <Spinner light={true} />}
                   {!teamsLoading &&
                     teams &&
@@ -69,7 +71,7 @@ export default function Landing() {
                       .sort(firstBy('name'))
                       .filter((t) => t.team_members.length)
                       .map((t) => (
-                        <div className="flex items-center">
+                        <div className="flex items-center ml-4">
                           <div>
                             <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-100 mr-3">
                               <i className="fas fa-check"></i>

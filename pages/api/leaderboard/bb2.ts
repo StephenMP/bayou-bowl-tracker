@@ -51,7 +51,9 @@ async function GetScores(eventId: string): Promise<EventScoreByTeam[]> {
                         bounties: bounties,
                         kills: kills,
                         totalScore: calculateScore(score),
-                        totalRounds: 1
+                        totalRounds: 1,
+                        totalHuntDollars: 0,
+                        totalSurvives: 0
                     })
                 }
             });

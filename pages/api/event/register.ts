@@ -49,6 +49,15 @@ export default withApiAuthRequired(async function handler(req, res) {
         await purgeFromCache('teams-438fd5b5-3a3d-44ce-8e51-339fa5c4c916')
         res.status(200).json({})
       } catch (e) {
+      console.log("EVENT ID: ", eventId)
+      console.log("EVENT ID: ", eventId)
+      console.log("EVENT ID: ", eventId)
+      console.log("EVENT ID: ", eventId)
+      console.log("EVENT ID: ", eventId)
+      console.log("EVENT ID: ", eventId)
+      console.log("EVENT ID: ", eventId)
+
+        console.log(e)
         res.status(500).json({
           error: 'There was an error on the server. Please contact support.',
         })

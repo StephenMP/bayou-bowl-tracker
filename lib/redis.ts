@@ -76,28 +76,29 @@ export async function readFromCache<TData>(
   setCacheIfMissed: () => Promise<TData>,
   ttl?: number
 ): Promise<TData> {
-  if (redis.status !== 'connecting' && redis.status !== 'connect' && redis.status !== 'ready') {
-    try {
-      await redis.connect()
-    } catch (e) {
-      logger.error(e)
-      return setCacheIfMissed()
-    }
-  }
+  return await setCacheIfMissed()
+  // if (redis.status !== 'connecting' && redis.status !== 'connect' && redis.status !== 'ready') {
+  //   try {
+  //     await redis.connect()
+  //   } catch (e) {
+  //     logger.error(e)
+  //     return setCacheIfMissed()
+  //   }
+  // }
 
-  try {
-    let cached = await redis.get(key)
-    if (cached) {
-      logger.info('Returning cached data', { key })
-      return JSON.parse(cached)
-    } else {
-      logger.info('Cache miss', { key })
-      const result: TData = await setCacheIfMissed()
-      await redis.set(key, JSON.stringify(result), 'EX', ttl || '3600')
-      return result
-    }
-  } catch (e) {
-    logger.error(e)
-    return await setCacheIfMissed()
-  }
+  // try {
+  //   let cached = await redis.get(key)
+  //   if (cached) {
+  //     logger.info('Returning cached data', { key })
+  //     return JSON.parse(cached)
+  //   } else {
+  //     logger.info('Cache miss', { key })
+  //     const result: TData = await setCacheIfMissed()
+  //     await redis.set(key, JSON.stringify(result), 'EX', ttl || '3600')
+  //     return result
+  //   }
+  // } catch (e) {
+  //   logger.error(e)
+  //   return await setCacheIfMissed()
+  // }
 }

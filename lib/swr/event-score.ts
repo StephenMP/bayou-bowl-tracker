@@ -10,7 +10,9 @@ export type EventScoreByTeam = {
     kills: number,
     bounties: number,
     totalScore: number,
-    totalRounds: number
+    totalRounds: number,
+    totalSurvives: number,
+    totalHuntDollars: number
 }
 
 export function useEventScoreForEventByTeam(eventId: string, options?: SWRConfiguration) {
@@ -38,6 +40,16 @@ export function useEventScoresForBB2(options?: SWRConfiguration) {
 
     return {
         bb2EventScores: data,
+        error: error,
+        isLoading: !error && !data,
+    }
+}
+
+export function useEventScoresForBB3(options?: SWRConfiguration) {
+    const { data, error } = useSWR<EventScoreByTeam[]>(routes.api.event_scores.bb3, fetcher, options)
+
+    return {
+        bb3EventScores: data,
         error: error,
         isLoading: !error && !data,
     }

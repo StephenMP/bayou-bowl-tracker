@@ -126,6 +126,7 @@ model TeamScore {
   updatedDate  DateTime   @default(now())
   bounties     Int
   hunt_dollars Int        @default(0)
+  survived     Boolean?
   event_score  EventScore @relation(fields: [event_id, team_id, round_num], references: [event_id, team_id, round_num])
 
   @@id([event_id, team_id, round_num])

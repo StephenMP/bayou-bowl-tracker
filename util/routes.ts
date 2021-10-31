@@ -43,6 +43,7 @@ export const routes = {
             },
             index: '/api/event-scores',
             bb2: '/api/leaderboard/bb2',
+            bb3: '/api/leaderboard/bb3',
         },
         leaderboard: {
             eventId: (eventId: string) => `/api/leaderboard/${eventId}`,

@@ -38,7 +38,7 @@ async function registerForEvent(
       })
 
       if (response && response.error) {
-        alert(response.error)
+        throw new Error(response)
       }
 
       addToast(`Successfully ${isRegistering ? 'registered' : 'unregistered'}`, {
@@ -48,6 +48,7 @@ async function registerForEvent(
     }
   } catch (e) {
     addToast('There was an error, please contact support', { appearance: 'error', autoDismiss: false })
+    setRegistering(false)
   } finally {
     await mutate(routes.api.user.teams)
   }
@@ -55,7 +56,7 @@ async function registerForEvent(
 
 function GoToEventPage({ eventId }: { eventId: string }) {
   return (
-    <Link href={`/user/bb3/${eventId}`}>
+    <Link href={`/user/event/bb3/${eventId}`}>
       <button className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
         Go To Event Page
       </button>

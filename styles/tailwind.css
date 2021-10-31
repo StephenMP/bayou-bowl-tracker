@@ -1302,6 +1302,11 @@ select {
   background-color: rgba(248, 250, 252, var(--tw-bg-opacity));
 }
 
+.active\:bg-blueGray-300:active {
+  --tw-bg-opacity: 1;
+  background-color: rgba(203, 213, 225, var(--tw-bg-opacity));
+}
+
 .active\:bg-blueGray-600:active {
   --tw-bg-opacity: 1;
   background-color: rgba(71, 85, 105, var(--tw-bg-opacity));
@@ -1986,6 +1991,11 @@ select {
   line-height: 1;
 }
 
+.text-7xl {
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
 .text-8xl {
   font-size: 6rem;
   line-height: 1;
@@ -2139,6 +2149,10 @@ select {
   margin-bottom: 1rem;
 }
 
+.ml-4 {
+  margin-left: 1rem;
+}
+
 .mt-5 {
   margin-top: 1.25rem;
 }
@@ -2290,6 +2304,10 @@ select {
 
 .opacity-75 {
   opacity: 0.75;
+}
+
+.opacity-80 {
+  opacity: .8;
 }
 
 .outline-none {
@@ -2598,6 +2616,21 @@ select {
   color: rgba(203, 213, 225, var(--tw-placeholder-opacity));
 }
 
+.placeholder-blueGray-600::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgba(71, 85, 105, var(--tw-placeholder-opacity));
+}
+
+.placeholder-blueGray-600:-ms-input-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgba(71, 85, 105, var(--tw-placeholder-opacity));
+}
+
+.placeholder-blueGray-600::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgba(71, 85, 105, var(--tw-placeholder-opacity));
+}
+
 .pointer-events-none {
   pointer-events: none;
 }
@@ -2897,11 +2930,6 @@ select {
   color: rgba(100, 116, 139, var(--tw-text-opacity));
 }
 
-.hover\:text-blueGray-700:hover {
-  --tw-text-opacity: 1;
-  color: rgba(51, 65, 85, var(--tw-text-opacity));
-}
-
 .hover\:text-blueGray-800:hover {
   --tw-text-opacity: 1;
   color: rgba(30, 41, 59, var(--tw-text-opacity));
@@ -3128,6 +3156,10 @@ select {
   width: 50%;
 }
 
+.w-1\/12 {
+  width: 8.333333%;
+}
+
 .w-6\/12 {
   width: 50%;
 }
@@ -3178,10 +3210,6 @@ select {
 
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .transform {
@@ -3322,6 +3350,9 @@ select {
 }
 
 @media (min-width: 640px) {
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 768px) {
@@ -3459,8 +3490,8 @@ select {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .md\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -3612,6 +3643,10 @@ select {
 
   .lg\:w-9\/12 {
     width: 75%;
+  }
+
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
