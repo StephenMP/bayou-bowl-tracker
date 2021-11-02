@@ -103,7 +103,7 @@ export default function Footer({ disclaimers }: Props) {
                     <li>
                       <a
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://www.freeprivacypolicy.com/live/87f9752a-671b-4179-866f-654a4ef87db8"
+                        href="/privacy"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

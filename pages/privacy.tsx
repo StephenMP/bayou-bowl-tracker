@@ -13,7 +13,7 @@ export default function Privacy() {
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
-              backgroundImage: "url('/img/headings/bg-news.jpg')",
+              backgroundImage: "url('https://images.unsplash.com/photo-1548092372-0d1bd40894a3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1280&q=80')",
             }}
           >
             <span id="blackOverlay" className="w-full h-full absolute opacity-80 bg-black"></span>
