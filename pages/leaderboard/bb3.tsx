@@ -4,6 +4,7 @@ import Footer from '../../components/Footers/Footer'
 import Navbar from '../../components/Navbars/AuthNavbar'
 import Spinner from '../../components/PageChange/Spinner'
 import { EventScoreByTeam, useEventScoresForBB3 } from '../../lib/swr/event-score'
+import { truncate } from '../../util/string'
 
 function calculateBountyScore(totalBounties: number) {
   let bountyScore = 0
@@ -69,19 +70,20 @@ function Table({ scores }: { scores: EventScoreByTeam[] }) {
             <tbody>
               {scores
                 ?.sort(
-                  firstBy('totalScore', 'desc').thenBy('totalHuntDollars', 'desc').thenBy('totalSurvives', 'desc').thenBy('totalRounds')
+                  firstBy('totalScore', 'desc')
+                    .thenBy('totalHuntDollars', 'desc')
+                    .thenBy('totalSurvives', 'desc')
+                    .thenBy('totalRounds')
                 )
                 .map((score, index) => (
                   <tr key={score.teamId}>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {index + 1}
                     </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      <strong>
-                        <a href={`/team/${score.teamId}`} target="_blank">
-                          {score.teamName} <i className="fas fa-link ml-2 text-xs text-blueGray-400"></i>
-                        </a>
-                      </strong>
+                    <td className="border-t-0 font-bold px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      <a href={`/team/${score.teamId}`} target="_blank">
+                        {truncate(score.teamName, 18)} <i className="fas fa-link ml-2 text-xs text-blueGray-400"></i>
+                      </a>
                     </td>
                     <td className="border-t-0 md-hide px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {score.totalHuntDollars}

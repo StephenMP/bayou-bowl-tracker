@@ -1,5 +1,5 @@
 import { prisma } from '../lib/prisma'
-import { getCachedItem, purgeFromCache } from '../lib/redis'
+import { purgeFromCache } from '../lib/redis'
 import { User } from '../types/prisma'
 
 const client = () => prisma.user

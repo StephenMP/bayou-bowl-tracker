@@ -71,34 +71,56 @@ export async function setCachedItem(key: string, data: any) {
   }
 }
 
+async function connect() {
+  if (redis.status !== 'connecting' && redis.status !== 'connect' && redis.status !== 'ready') {
+    try {
+      await redis.connect()
+    } catch (e) {
+      logger.error(e)
+      throw e
+    }
+  }
+}
+
+export async function invalidateCache() {
+  await connect()
+  try {
+    await redis.flushall()
+  } catch (e) {
+    logger.error(e)
+    throw e
+  }
+}
+
 export async function readFromCache<TData>(
   key: string,
   setCacheIfMissed: () => Promise<TData>,
   ttl?: number
 ): Promise<TData> {
-  return await setCacheIfMissed()
-  // if (redis.status !== 'connecting' && redis.status !== 'connect' && redis.status !== 'ready') {
-  //   try {
-  //     await redis.connect()
-  //   } catch (e) {
-  //     logger.error(e)
-  //     return setCacheIfMissed()
-  //   }
-  // }
+  await connect()
+  let result: TData = {} as TData
 
-  // try {
-  //   let cached = await redis.get(key)
-  //   if (cached) {
-  //     logger.info('Returning cached data', { key })
-  //     return JSON.parse(cached)
-  //   } else {
-  //     logger.info('Cache miss', { key })
-  //     const result: TData = await setCacheIfMissed()
-  //     await redis.set(key, JSON.stringify(result), 'EX', ttl || '3600')
-  //     return result
-  //   }
-  // } catch (e) {
-  //   logger.error(e)
-  //   return await setCacheIfMissed()
-  // }
+  try {
+    const cached = await redis.get(key)
+    if (cached) {
+      try {
+        result = JSON.parse(cached) as TData
+        logger.info('Returning cached data', { key })
+      } catch (e) {
+        logger.error(e)
+        await purgeFromCache(key)
+        result = await setCacheIfMissed()
+        await redis.set(key, JSON.stringify(result), 'EX', ttl || '3600')
+      }
+    } else {
+      logger.info('Cache miss', { key })
+      result = await setCacheIfMissed()
+      await redis.set(key, JSON.stringify(result), 'EX', ttl || '3600')
+    }
+  } catch (e) {
+    logger.error(e)
+    result = await setCacheIfMissed()
+  } finally {
+    return result
+  }
 }

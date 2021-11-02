@@ -5,6 +5,7 @@ import Spinner from '../../../components/PageChange/Spinner'
 import { useEvent } from '../../../lib/swr'
 import { EventScoreByTeam, useEventScoreForEventByTeam } from '../../../lib/swr/event-score'
 import { queryParamAsString } from '../../../util/routes'
+import { truncate } from '../../../util/string'
 
 function calculateBountyScore(totalBounties: number) {
   let bountyScore = 0
@@ -94,7 +95,7 @@ function Page({ eventId, take }: PageProps) {
                     {index + 1}
                   </td>
                   <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-2">
-                    {score.teamName}
+                    {truncate(score.teamName, 18)}
                   </td>
                   <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-2">
                     {score.totalHuntDollars}
