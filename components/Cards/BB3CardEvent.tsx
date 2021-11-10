@@ -103,7 +103,25 @@ function CardButtons({ teams, eventId }: { teams: Team[]; eventId: string }) {
       </>
     )
   }
-  return <Register eventId={eventId} isRegister={true} />
+
+  return (
+    <>
+      <Register eventId={eventId} isRegister={true} />
+      <div className="mt-5">
+        * By registering to compete, you certify that you are of at least 13 years of age, or the legal minimum age
+        required in your state or country to compete in a competitive tournament with a cash prize, and that if legally
+        considered a minor, have the permission of your parent or legal guardian to compete in The Bayou Bowl III
+        tournament. You also certify that you agree to our{' '}
+        <a className="font-bold" href="/pdf/Bayou_Bowl_III_Rules.pdf" target="_blank" rel="noopener noreferrer">
+          official rules
+        </a>{' '}
+        of The Bayou Bowl III competition, and to our
+        <a className="font-bold" href={routes.terms_pdf} target="_blank" rel="noopener noreferrer">
+          Terms of Service
+        </a>{' .'}
+      </div>
+    </>
+  )
 }
 
 export default function BB3CardEvent({ event }: { event: Event }) {
@@ -172,13 +190,6 @@ export default function BB3CardEvent({ event }: { event: Event }) {
           </div>
           <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
             <React.Suspense fallback={<Spinner light={true} />}>
-              {/* <a href={routes.leaderboard.eventId(event.id)} target='_blank'>
-                <button
-                  className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                >
-                  Leaderboards
-                </button>
-              </a> */}
               <CardButtons teams={teams} eventId={event.id} />
             </React.Suspense>
           </div>

@@ -30,7 +30,6 @@ const UserEvents = withPageAuthRequired(() => {
             </React.Suspense>
           ))}
       </div>
-      <FooterAdmin />
     </>
   )
 })

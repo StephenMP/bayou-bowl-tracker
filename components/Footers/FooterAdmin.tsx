@@ -1,4 +1,5 @@
 import React from 'react'
+import { routes } from '../../util/routes'
 
 export default function FooterAdmin() {
   return (
@@ -7,16 +8,17 @@ export default function FooterAdmin() {
         <div className="container mx-auto px-4">
           <hr className="mb-4 border-b-1 border-blueGray-200" />
           <div className="flex flex-wrap items-center md:justify-between justify-center">
-            <div className="w-full px-4 mx-auto text-center">
-              <div className="text-sm text-blueGray-500 font-semibold py-1 text-center md:text-left">
-                * By registering to compete, you certify that you are of at least 13 years of age, or the legal minimum
-                age required in your state or country to compete in a competitive tournament with a cash prize, and that if
-                legally considered a minor, have the permission of your parent or legal guardian to compete in The Bayou Bowl III
-                tournament. You also certify that you agree to our{' '}
-                <a className="font-bold" href="/pdf/Bayou_Bowl_III_Rules.pdf" target="_blank" rel="noopener noreferrer">
-                  official rules
-                </a>{' '}
-                of The Bayou Bowl III competition.
+            <div className="w-full md:w-4/12 px-4 mx-auto text-center">
+              <div className="text-sm text-blueGray-500 font-semibold py-1">
+                Copyright © {new Date().getFullYear()} Monday Night Hunts
+              </div>
+              <div className="text-sm text-blueGray-500 font-semibold py-1">
+                <a href={routes.terms} target="_blank" rel="noopener noreferrer">Terms of Service</a>
+                {" | "}
+                <a href={routes.privacy} target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+              </div>
+              <div className="text-sm text-blueGray-500 font-semibold py-1">
+                Not affiliated with Crytek or Hunt: Showdown.
               </div>
             </div>
           </div>
