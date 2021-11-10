@@ -51,8 +51,8 @@ export default function Admin({ children }) {
         expires={150}
       >
         We have updated our Privacy Policy and added a new Terms of Service. Please use the following links to review
-        the Privacy Policy and Terms of Service. By clicking 'I AGREE', you are acknolwedging that you have read
-        the Privacy Policy and Terms of Service and accept them.
+        the Privacy Policy and Terms of Service. By clicking 'I AGREE' or continuing to use this service, you are
+        acknolwedging that you have read the Privacy Policy and Terms of Service and accept them.
         <br />
         <a
           href="/privacy"
