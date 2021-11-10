@@ -22,6 +22,11 @@
   line-height: 1;
 }
 
+.text-massive {
+  font-size: 10rem;
+  line-height: 1;
+}
+
 .bg-green {
   background-color: rgba(0, 255, 0, 100);
 }

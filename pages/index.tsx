@@ -13,6 +13,7 @@ import logo_spwn from '../public/img/index/MrSpwnLogo.png'
 import logo_crankit from '../public/img/index/CrankItLogo.png'
 import Plyr from 'plyr-react'
 import { plyrSourceInfo, plyrStyle, videoOpts } from './news'
+import CountUp from 'react-countup'
 
 const timerProps = {
   isPlaying: true,
@@ -65,6 +66,10 @@ export default function Landing() {
   const remainingTime = endTime - startTime
   const days = Math.ceil(remainingTime / daySeconds)
   const daysDuration = days * daySeconds
+  var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  });
 
   return (
     <>
@@ -80,12 +85,12 @@ export default function Landing() {
           <div className="container relative mx-auto">
             <div className="flex flex-wrap items-center">
               <div className="w-full px-4 ml-auto mr-auto text-center">
-                <div className="flex justify-center flex-wrap pr-12 mt-10">
+                <div className="flex justify-center flex-wrap mt-10">
                   <div className="max-w-full rounded-lg shadow-lg">
                     <Image alt="BayouBowl 3 Header" width={592} height={333} src={bb3Banner} priority />
                   </div>
                   {/* {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />} */}
-                  <div className="items-center flex flex-wrap mt-5 text-4xl">
+                  <div className="items-center flex flex-wrap text-4xl">
                     <div className="w-full lg:w-3/12 uppercase md-hide px-4 ml-auto mr-auto text-center">
                       <CountdownCircleTimer
                         {...timerProps}
@@ -126,7 +131,13 @@ export default function Landing() {
                       </CountdownCircleTimer>
                     </div>
                   </div>
-                  <h3 className="mt-4 text-6xl uppercase  text-blueGray-200">{eventDateString}</h3>
+                </div>
+                <div className="flex justify-center flex-wrap">
+                  <h3 className="mt-4 text-6xl uppercase text-blueGray-200">Cash Prize Pool</h3>
+                </div>
+                <div className="flex justify-center flex-wrap">
+                  <h3 className="mt-4 text-8xl uppercase text-blueGray-200"><CountUp end={2500} duration={3} formattingFn={(value: number) => formatter.format(value).split('.')[0]} /></h3>
+                  {/* <h3 className="mt-4 text-6xl uppercase text-blueGray-200">{eventDateString}</h3> */}
                 </div>
               </div>
             </div>
