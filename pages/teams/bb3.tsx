@@ -32,7 +32,7 @@ export default function Landing() {
       <>
         <Navbar />
         <main>
-          <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+          <div className="relative pt-16 pb-32 flex content-center items-center justify-center">
             <div
               className="absolute top-0 w-full h-full bg-center bg-cover"
               style={{ backgroundImage: "url('/img/headings/bg-landing.jpg')" }}
