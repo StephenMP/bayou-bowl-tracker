@@ -85,8 +85,8 @@ export default function Navbar() {
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <Link href={routes.home}>
-              <a className="text-white md-hide text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase">
-                <Image src={logo} height={20} width={70} />
+              <a className="text-white md-hide text-sm font-bold leading-relaxed inline-block whitespace-nowrap uppercase text-font-mnh">
+                Monday Night Hunts
               </a>
             </Link>
             <button
