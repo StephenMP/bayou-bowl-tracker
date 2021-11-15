@@ -108,16 +108,16 @@ function CardButtons({ teams, eventId }: { teams: Team[]; eventId: string }) {
     <>
       <Register eventId={eventId} isRegister={true} />
       <div className="mt-5">
-        * By registering to compete, you certify that you are of at least 13 years of age, or the legal minimum age
+        *By registering to compete, you certify that you are of at least 13 years of age, or the legal minimum age
         required in your state or country to compete in a competitive tournament with a cash prize, and that if legally
         considered a minor, have the permission of your parent or legal guardian to compete in The Bayou Bowl III
         tournament. You also certify that you agree to our{' '}
         <a className="font-bold" href="/pdf/Bayou_Bowl_III_Rules.pdf" target="_blank" rel="noopener noreferrer">
           official rules
         </a>{' '}
-        of The Bayou Bowl III competition, and to our
+        of The Bayou Bowl III competition, and to our{' '}
         <a className="font-bold" href={routes.terms_pdf} target="_blank" rel="noopener noreferrer">
-          Terms of Service
+        Terms of Service
         </a>{' .'}
       </div>
     </>
