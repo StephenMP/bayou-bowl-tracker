@@ -132,10 +132,10 @@ export default function Landing() {
                     </div>
                   </div>
                 </div>
-                <div className="flex justify-center flex-wrap text-font-mnh text-stroke-blackBlue-3">
+                <div className="flex justify-center flex-wrap text-font-mnh text-stroke-blackBlue-2">
                   <h3 className="mt-4 text-6xl uppercase text-blueGray-200">Cash Prize Pool</h3>
                 </div>
-                <div className="flex justify-center flex-wrap text-font-mnh text-stroke-blackBlue-3">
+                <div className="flex justify-center flex-wrap text-font-mnh text-stroke-blackBlue-2">
                   <h3 className="mt-4 text-8xl uppercase text-blueGray-200"><CountUp end={2500} duration={3} formattingFn={(value: number) => formatter.format(value).split('.')[0]} /></h3>
                   {/* <h3 className="mt-4 text-6xl uppercase text-blueGray-200">{eventDateString}</h3> */}
                 </div>
