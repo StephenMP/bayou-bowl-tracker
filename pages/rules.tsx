@@ -7,7 +7,7 @@ export default function Landing() {
     <>
       <Navbar />
       <main>
-        <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+        <div className="relative pt-16 pb-32 flex content-center items-center justify-center">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{ backgroundImage: "url('/img/headings/bg-rules.jpg')" }}
@@ -20,9 +20,9 @@ export default function Landing() {
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-7/12 px-4 ml-auto mr-auto text-center">
-                <div className="pr-12 mt-10">
+                <div className="pr-12 mt-10 text-font-mnh">
                   <h1 className="mt-4 text-8xl font-bold uppercase text-blueGray-200">
-                    Official Competition Rules for Bayou Bowl II
+                    Official Rules for Bayou Bowl II
                   </h1>
                 </div>
               </div>

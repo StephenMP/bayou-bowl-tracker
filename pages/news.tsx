@@ -32,7 +32,7 @@ export default function Landing() {
     <>
       <Navbar />
       <main>
-        <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+        <div className="relative pt-16 pb-32 flex content-center items-center justify-center">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
@@ -44,7 +44,7 @@ export default function Landing() {
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                <div className="pr-12">
+                <div className="pr-12 text-font-mnh">
                   <h1 className="text-white font-semibold text-8xl">News</h1>
                   <p className="mt-4 text-4xl text-blueGray-200">Stay up to date with the latest Bayou Bowl News</p>
                 </div>

@@ -8,6 +8,7 @@ import Image from 'next/image'
 import bb3Banner from '../public/img/brand/The_Bayou_Bowl_Header.png'
 import newsImage from '../public/img/news/BB3_Rules_Released.png'
 import logo from '../public/img/brand/bayoubowl-logo.png'
+import logo2 from '../public/img/brand/bayoubowl-logo-2.png'
 import logo_death from '../public/img/index/DeathLogo.png'
 import logo_spwn from '../public/img/index/MrSpwnLogo.png'
 import logo_crankit from '../public/img/index/CrankItLogo.png'
@@ -86,11 +87,10 @@ export default function Landing() {
             <div className="flex flex-wrap items-center">
               <div className="w-full px-4 ml-auto mr-auto text-center">
                 <div className="flex justify-center flex-wrap mt-10">
-                  <div className="max-w-full rounded-lg shadow-lg">
-                    <Image alt="BayouBowl 3 Header" width={592} height={333} src={bb3Banner} priority />
+                  <div className="max-w-full rounded-lg">
+                    <Image alt="BayouBowl 3 Header" width={592} height={520} src={bb3Banner} priority />
                   </div>
-                  {/* {isProduction ? <></> : <Countdown className="mt-4 text-lg text-blueGray-200" date={new Date(2021, 6, 17)} />} */}
-                  <div className="items-center flex flex-wrap text-4xl">
+                  <div className="items-center flex flex-wrap text-4xl text-font-mnh text-stroke-blackBlue-2">
                     <div className="w-full lg:w-3/12 uppercase md-hide px-4 ml-auto mr-auto text-center">
                       <CountdownCircleTimer
                         {...timerProps}
@@ -132,10 +132,10 @@ export default function Landing() {
                     </div>
                   </div>
                 </div>
-                <div className="flex justify-center flex-wrap">
+                <div className="flex justify-center flex-wrap text-font-mnh text-stroke-blackBlue-3">
                   <h3 className="mt-4 text-6xl uppercase text-blueGray-200">Cash Prize Pool</h3>
                 </div>
-                <div className="flex justify-center flex-wrap">
+                <div className="flex justify-center flex-wrap text-font-mnh text-stroke-blackBlue-3">
                   <h3 className="mt-4 text-8xl uppercase text-blueGray-200"><CountUp end={2500} duration={3} formattingFn={(value: number) => formatter.format(value).split('.')[0]} /></h3>
                   {/* <h3 className="mt-4 text-6xl uppercase text-blueGray-200">{eventDateString}</h3> */}
                 </div>
@@ -247,10 +247,10 @@ export default function Landing() {
               <div className="w-full md:w-4/12 ml-auto mr-auto px-4">
                 <Image
                   alt="Monday Night Hunts Logo"
-                  width={300}
-                  height={300}
+                  width={603}
+                  height={173}
                   className="max-w-full rounded-lg shadow-lg"
-                  src={logo}
+                  src={logo2}
                 />
               </div>
               <div className="w-full md:w-5/12 ml-auto mr-auto px-4">

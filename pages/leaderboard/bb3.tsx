@@ -132,7 +132,7 @@ const EventPage = () => {
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                <div className="pr-12 mt-10">
+                <div className="pr-12 mt-10 text-font-mnh">
                   <h1 className="mt-4 text-6xl uppercase font-bold text-blueGray-200">Bayou Bowl II Leaderboards</h1>
                 </div>
               </div>

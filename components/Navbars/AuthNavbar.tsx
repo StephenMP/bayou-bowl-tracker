@@ -44,7 +44,12 @@ function SocialLinks() {
       </li>
 
       <li className="flex items-center">
-        <a className={navLinkClassName} href="https://www.youtube.com/channel/UCN0CVMYGiMm-D3SolJHB28A" target="_blank" rel="noopener noreferrer">
+        <a
+          className={navLinkClassName}
+          href="https://www.youtube.com/channel/UCN0CVMYGiMm-D3SolJHB28A"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <i className="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 text-lg leading-lg fab fa-youtube" />
           <span className="lg:hidden inline-block ml-2">YouTube</span>
         </a>
@@ -78,13 +83,10 @@ export default function Navbar() {
     <>
       <nav className="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <div className="mr-3 md-hide">
-            <Image src={logo} height={40} width={40} />
-          </div>
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <Link href={routes.home}>
               <a className="text-white md-hide text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase">
-                {constants.APP_NAME}
+                <Image src={logo} height={20} width={70} />
               </a>
             </Link>
             <button

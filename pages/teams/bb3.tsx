@@ -42,7 +42,7 @@ export default function Landing() {
             <div className="container relative mx-auto">
               <div className="items-center flex flex-wrap">
                 <div className="w-full lg:w-7/12 px-4 ml-auto mr-auto text-center">
-                  <div className="pr-12 mt-10">
+                  <div className="pr-12 mt-10 text-font-mnh">
                     <h1 className="mt-4 text-7xl font-bold uppercase text-blueGray-200 md-hide">
                       Bayou Bowl III Competitors
                     </h1>

@@ -26,7 +26,7 @@ export default function Terms() {
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                <div className="pr-12">
+                <div className="pr-12  text-font-mnh">
                   <h1 className="text-white font-semibold text-8xl">MNH</h1>
                   <p className="mt-4 text-4xl text-blueGray-200">Terms of Service</p>
                   <a href={routes.terms_pdf} target="_blank" rel="noopener noreferrer">
