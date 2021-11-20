@@ -1,28 +1,22 @@
-import { readFromCache } from '../../../../lib/redis'
-import { EventScoreByTeam } from '../../../../lib/swr/event-score'
-import * as eventScoreRepository from '../../../../repositories/event-score'
-import { EventScore, PlayerScore } from '../../../../types/prisma'
+import { NextApiRequest, NextApiResponse } from 'next'
 import { queryParamAsString } from '../../../../util/routes'
 
-export default async function handler(req, res) {
-    switch (req.method) {
-        case 'GET':
-            const eventId = queryParamAsString(req.query.eventId)
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  switch (req.method) {
+    case 'GET':
+      const eventId = queryParamAsString(req.query.eventId)
 
-            if (eventId) {
-                const data = await readFromCache(`leaderboard/quickplay/${eventId}`, async () => {
-                    return Promise.resolve([])
-                })
+      if (eventId) {
+        const data = await Promise.resolve([])
+        res.status(200).json(data)
+      } else {
+        res.status(400).end()
+      }
 
-                res.status(200).json(data)
-            } else {
-                res.status(400).end()
-            }
+      break
 
-            break
-
-        default:
-            res.status(405).end()
-            break
-    }
+    default:
+      res.status(405).end()
+      break
+  }
 }

@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import { prisma } from '../../../lib/prisma'
 import { readFromCache } from '../../../lib/redis'
 import { EventScoreByTeam } from '../../../lib/swr/event-score'
 import * as eventScoreRepository from '../../../repositories/event-score'
@@ -69,7 +70,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       const result = await readFromCache(
         'leaderboard-bb3',
         async () => {
-          return await GetScores('c34c0105-349d-48f1-83e1-d3dd4e97765b')
+          const event = await prisma.event.findFirst({
+            where: {
+              name: 'Bayou Bowl III',
+            },
+          })
+
+          return await GetScores(event.id)
         },
         60
       )

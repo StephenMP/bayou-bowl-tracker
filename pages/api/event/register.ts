@@ -1,7 +1,6 @@
 import { getSession, withApiAuthRequired } from '@auth0/nextjs-auth0'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { prisma } from '../../../lib/prisma'
-import { purgeFromCache } from '../../../lib/redis'
 import { readEvents } from '../../../repositories/event'
 import { userIdFromAuth0Sub } from '../../../repositories/user'
 import { TeamMemberType, User } from '../../../types/prisma'
@@ -46,16 +45,15 @@ export default withApiAuthRequired(async function handler(req, res) {
           },
         })
 
-        await purgeFromCache('teams-438fd5b5-3a3d-44ce-8e51-339fa5c4c916')
         res.status(200).json({})
       } catch (e) {
-      console.log("EVENT ID: ", eventId)
-      console.log("EVENT ID: ", eventId)
-      console.log("EVENT ID: ", eventId)
-      console.log("EVENT ID: ", eventId)
-      console.log("EVENT ID: ", eventId)
-      console.log("EVENT ID: ", eventId)
-      console.log("EVENT ID: ", eventId)
+        console.log('EVENT ID: ', eventId)
+        console.log('EVENT ID: ', eventId)
+        console.log('EVENT ID: ', eventId)
+        console.log('EVENT ID: ', eventId)
+        console.log('EVENT ID: ', eventId)
+        console.log('EVENT ID: ', eventId)
+        console.log('EVENT ID: ', eventId)
 
         console.log(e)
         res.status(500).json({
@@ -89,7 +87,6 @@ export default withApiAuthRequired(async function handler(req, res) {
         },
       })
 
-      await purgeFromCache('teams-438fd5b5-3a3d-44ce-8e51-339fa5c4c916')
       res.status(200).json({})
     } catch (e) {
       res.status(500).json({

@@ -6,7 +6,7 @@ import Footer from '../../components/Footers/Footer'
 import Navbar from '../../components/Navbars/AuthNavbar'
 import Spinner from '../../components/PageChange/Spinner'
 import { useTeamsForEvent } from '../../lib/swr'
-import { useCurrentUser, useCurrentUserTeams, useUser } from '../../lib/swr/user'
+import { useCurrentUser } from '../../lib/swr/user'
 
 export default function Landing() {
   const router = useRouter()
@@ -50,6 +50,7 @@ export default function Landing() {
                       <h1 className="mt-4 text-6xl font-bold uppercase text-blueGray-200">BB III</h1>
                       <h1 className="mt-4 text-4xl font-bold uppercase text-blueGray-200">Competitors</h1>
                     </div>
+                    <h2 className="mt-4 text-4xl font-bold uppercase text-blueGray-200 md-hide">Total:</h2>
                   </div>
                 </div>
               </div>

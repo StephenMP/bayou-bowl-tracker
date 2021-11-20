@@ -20,29 +20,17 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export async function purgeFromCache(key: string) {
-  if (redis.status !== 'connecting' && redis.status !== 'connect' && redis.status !== 'ready') {
-    try {
-      await redis.connect()
-      logger.info('Purged from cache', { key })
-    } catch (e) {
-      logger.error(e)
-    }
+  try {
+    await redis.connect()
+    await redis.del(key)
+  } catch (e) {
+    logger.error(e)
   }
-
-  await redis.del(key)
 }
 
 export async function getCachedItem<TData>(key: string) {
-  if (redis.status !== 'connecting' && redis.status !== 'connect' && redis.status !== 'ready') {
-    try {
-      await redis.connect()
-    } catch (e) {
-      logger.error(e)
-      return null
-    }
-  }
-
   try {
+    await redis.connect()
     const cached = await redis.get(key)
     if (cached) {
       return JSON.parse(cached) as TData
@@ -54,16 +42,8 @@ export async function getCachedItem<TData>(key: string) {
 }
 
 export async function setCachedItem(key: string, data: any) {
-  if (redis.status !== 'connecting' && redis.status !== 'connect' && redis.status !== 'ready') {
-    try {
-      await redis.connect()
-    } catch (e) {
-      logger.error(e)
-      return null
-    }
-  }
-
   try {
+    await redis.connect()
     await redis.set(key, JSON.stringify(data))
   } catch (e) {
     logger.error(e)
@@ -83,12 +63,11 @@ async function connect() {
 }
 
 export async function invalidateCache() {
-  await connect()
   try {
+    await connect()
     await redis.flushall()
   } catch (e) {
     logger.error(e)
-    throw e
   }
 }
 
@@ -97,10 +76,10 @@ export async function readFromCache<TData>(
   setCacheIfMissed: () => Promise<TData>,
   ttl?: number
 ): Promise<TData> {
-  await connect()
   let result: TData = {} as TData
 
   try {
+    await connect()
     const cached = await redis.get(key)
     if (cached) {
       try {

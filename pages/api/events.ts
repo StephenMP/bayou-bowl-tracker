@@ -1,13 +1,11 @@
 import { withApiAuthRequired } from '@auth0/nextjs-auth0'
+import { NextApiRequest, NextApiResponse } from 'next'
 import { readEvents } from '../../repositories/event'
-import { readFromCache } from '../../lib/redis'
 
-export default withApiAuthRequired(async function handler(req, res) {
+export default withApiAuthRequired(async function handler(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
     case 'GET':
-      const result = await readFromCache('events', async () => {
-        return await readEvents()
-      })
+      const result = await readEvents()
 
       res.status(200).json(result)
       break

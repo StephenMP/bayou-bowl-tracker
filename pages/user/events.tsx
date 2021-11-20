@@ -1,8 +1,7 @@
 import { withPageAuthRequired } from '@auth0/nextjs-auth0'
 import React from 'react'
-import { firstBy } from 'thenby'
 import BB3CardEvent from '../../components/Cards/BB3CardEvent'
-import FooterAdmin from '../../components/Footers/FooterAdmin'
+import BB3TestEventCard from '../../components/Cards/BB3TestEventCard'
 import Spinner from '../../components/PageChange/Spinner'
 import Admin from '../../layouts/Admin'
 import { useEvents } from '../../lib/swr'
@@ -19,7 +18,7 @@ const UserEvents = withPageAuthRequired(() => {
   return (
     <>
       <div className="flex flex-wrap">
-        {events
+        {/* {events
           .filter((e) => e.name === 'Bayou Bowl III')
           .sort(firstBy('startDate'))
           .map((event) => (
@@ -28,7 +27,15 @@ const UserEvents = withPageAuthRequired(() => {
                 <BB3CardEvent event={event} />
               </div>
             </React.Suspense>
-          ))}
+          ))} */}
+        <React.Suspense fallback={<Spinner light={true} />}>
+          <div className="w-full lg:w-4/12 px-4">
+            <BB3TestEventCard event={events.find((e) => e.name === 'Bayou Bowl III - Test')} />
+          </div>
+          <div className="w-full lg:w-4/12 px-4">
+            <BB3CardEvent event={events.find((e) => e.name === 'Bayou Bowl III')} />
+          </div>
+        </React.Suspense>
       </div>
     </>
   )
