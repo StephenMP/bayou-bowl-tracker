@@ -11,21 +11,15 @@ import { routes } from '../../util/routes'
 import Spinner from '../PageChange/Spinner'
 import Image from 'next/image'
 
-async function registerForEvent(
-  user: User,
+async function unregisterForEvent(
   eventId: string,
-  isRegistering: boolean,
   setRegistering: React.Dispatch<React.SetStateAction<boolean>>,
   addToast: AddToast
 ) {
-  const now = new Date()
-  const oct30 = new Date('2021-10-30T00:00:00.000Z')
-  const nov20 = new Date('2021-11-20T10:59:59-07:00')
-  console.log('DATE: ', nov20)
   try {
     setRegistering(true)
     const response = await fetcher(`/api/event/register`, {
-      method: isRegistering ? 'POST' : 'DELETE',
+      method: 'DELETE',
       body: JSON.stringify({ eventId }),
       headers: new Headers({
         'Content-Type': 'application/json',
@@ -37,7 +31,7 @@ async function registerForEvent(
       throw new Error(response)
     }
 
-    addToast(`Successfully ${isRegistering ? 'registered' : 'unregistered'}`, {
+    addToast(`Successfully unregistered`, {
       appearance: 'success',
       autoDismiss: true,
     })
@@ -62,7 +56,6 @@ function GoToEventPage({ eventId }: { eventId: string }) {
 function Register({ eventId, isRegister }: { eventId: string; isRegister: boolean }) {
   const [isLoading, setLoading] = useState<boolean>(false)
   const { addToast } = useToasts()
-  const { user } = useCurrentUser()
 
   if (isLoading) {
     return (
@@ -76,14 +69,10 @@ function Register({ eventId, isRegister }: { eventId: string; isRegister: boolea
     <button
       className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
       onClick={() => {
-        if (isRegister) {
-          registerForEvent(user, eventId, isRegister, setLoading, addToast)
-        } else {
-          registerForEvent(user, eventId, isRegister, setLoading, addToast)
-        }
+        unregisterForEvent(eventId, setLoading, addToast)
       }}
     >
-      {isRegister ? 'Register*' : 'Unregister'}
+      Unregister
     </button>
   )
 }
@@ -101,20 +90,8 @@ function CardButtons({ teams, eventId }: { teams: Team[]; eventId: string }) {
 
   return (
     <>
-      <Register eventId={eventId} isRegister={true} />
       <div className="mt-5">
-        *By registering to compete, you certify that you are of at least 13 years of age, or the legal minimum age
-        required in your state or country to compete in a competitive tournament with a cash prize, and that if legally
-        considered a minor, have the permission of your parent or legal guardian to compete in The Bayou Bowl III
-        tournament. You also certify that you agree to our{' '}
-        <a className="font-bold" href="/pdf/Bayou_Bowl_III_Rules.pdf" target="_blank" rel="noopener noreferrer">
-          official rules
-        </a>{' '}
-        of The Bayou Bowl III competition, and to our{' '}
-        <a className="font-bold" href={routes.terms_pdf} target="_blank" rel="noopener noreferrer">
-          Terms of Service
-        </a>
-        {' .'}
+        Registraiton for the Bayou Bowl III competition has closed.
       </div>
     </>
   )

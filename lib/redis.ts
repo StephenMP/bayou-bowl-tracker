@@ -21,7 +21,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 export async function purgeFromCache(key: string) {
   try {
-    await redis.connect()
+    await connect()
     await redis.del(key)
   } catch (e) {
     logger.error(e)
@@ -30,7 +30,7 @@ export async function purgeFromCache(key: string) {
 
 export async function getCachedItem<TData>(key: string) {
   try {
-    await redis.connect()
+    await connect()
     const cached = await redis.get(key)
     if (cached) {
       return JSON.parse(cached) as TData
@@ -43,7 +43,7 @@ export async function getCachedItem<TData>(key: string) {
 
 export async function setCachedItem(key: string, data: any) {
   try {
-    await redis.connect()
+    await connect()
     await redis.set(key, JSON.stringify(data))
   } catch (e) {
     logger.error(e)
