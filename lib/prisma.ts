@@ -14,41 +14,41 @@ function getClient(): PrismaClient {
                 url: connectionString,
             },
         },
-        log: [
-            {
-                emit: 'event',
-                level: 'query',
-            },
-            {
-                emit: 'event',
-                level: 'error',
-            },
-            {
-                emit: 'event',
-                level: 'info',
-            },
-            {
-                emit: 'event',
-                level: 'warn',
-            },
-        ],
+        // log: [
+        //     {
+        //         emit: 'event',
+        //         level: 'query',
+        //     },
+        //     {
+        //         emit: 'event',
+        //         level: 'error',
+        //     },
+        //     {
+        //         emit: 'event',
+        //         level: 'info',
+        //     },
+        //     {
+        //         emit: 'event',
+        //         level: 'warn',
+        //     },
+        // ],
     })
 
-    client.$on('query', (e) => {
-        logger.debug('DB query executed', e)
-    })
+    // client.$on('query', (e) => {
+    //     logger.debug('DB query executed', e)
+    // })
 
-    client.$on('error', (e) => {
-        logger.error('DB query executed', e)
-    })
+    // client.$on('error', (e) => {
+    //     logger.error('DB query executed', e)
+    // })
 
-    client.$on('info', (e) => {
-        logger.info('DB query executed', e)
-    })
+    // client.$on('info', (e) => {
+    //     logger.info('DB query executed', e)
+    // })
 
-    client.$on('warn', (e) => {
-        logger.warn('DB query executed', e)
-    })
+    // client.$on('warn', (e) => {
+    //     logger.warn('DB query executed', e)
+    // })
 
     return client
 }

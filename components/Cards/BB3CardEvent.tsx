@@ -20,32 +20,27 @@ async function registerForEvent(
 ) {
   const now = new Date()
   const oct30 = new Date('2021-10-30T00:00:00.000Z')
-  const nov20 = new Date('2021-11-20T23:59:59.000Z')
+  const nov20 = new Date('2021-11-20T10:59:59-07:00')
+  console.log('DATE: ', nov20)
   try {
-    if (now < oct30 && user.user_type !== UserType.ADMIN) {
-      alert('Registration for The Bayou Bowl III will not be open until 30 Oct 2021 :)')
-    } else if (now > nov20 && user.user_type !== UserType.ADMIN) {
-      alert('Registration for The Bayou Bowl III has closed :(')
-    } else {
-      setRegistering(true)
-      const response = await fetcher(`/api/event/register`, {
-        method: isRegistering ? 'POST' : 'DELETE',
-        body: JSON.stringify({ eventId }),
-        headers: new Headers({
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        }),
-      })
+    setRegistering(true)
+    const response = await fetcher(`/api/event/register`, {
+      method: isRegistering ? 'POST' : 'DELETE',
+      body: JSON.stringify({ eventId }),
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      }),
+    })
 
-      if (response && response.error) {
-        throw new Error(response)
-      }
-
-      addToast(`Successfully ${isRegistering ? 'registered' : 'unregistered'}`, {
-        appearance: 'success',
-        autoDismiss: true,
-      })
+    if (response && response.error) {
+      throw new Error(response)
     }
+
+    addToast(`Successfully ${isRegistering ? 'registered' : 'unregistered'}`, {
+      appearance: 'success',
+      autoDismiss: true,
+    })
   } catch (e) {
     addToast('There was an error, please contact support', { appearance: 'error', autoDismiss: false })
     setRegistering(false)
@@ -117,8 +112,9 @@ function CardButtons({ teams, eventId }: { teams: Team[]; eventId: string }) {
         </a>{' '}
         of The Bayou Bowl III competition, and to our{' '}
         <a className="font-bold" href={routes.terms_pdf} target="_blank" rel="noopener noreferrer">
-        Terms of Service
-        </a>{' .'}
+          Terms of Service
+        </a>
+        {' .'}
       </div>
     </>
   )
