@@ -1,4 +1,4 @@
-import { UserType } from '.prisma/client'
+import { Team, UserType } from '.prisma/client'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { firstBy } from 'thenby'
@@ -7,6 +7,7 @@ import Navbar from '../../components/Navbars/AuthNavbar'
 import Spinner from '../../components/PageChange/Spinner'
 import { useTeamsForEvent } from '../../lib/swr'
 import { useCurrentUser } from '../../lib/swr/user'
+import { sortIgnoreCase } from '../../util/string'
 
 export default function Landing() {
   const router = useRouter()
@@ -69,7 +70,7 @@ export default function Landing() {
                   {!teamsLoading &&
                     teams &&
                     teams
-                      .sort(firstBy('name'))
+                      .sort(firstBy((a, b) => sortIgnoreCase(a.name, b.name)))
                       .filter((t) => t.team_members.length)
                       .map((t) => (
                         <div className="flex items-center ml-4">
