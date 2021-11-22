@@ -36,7 +36,6 @@ export default function Landing() {
                     <h1 className="mt-4 text-6xl font-bold uppercase text-blueGray-200">BB III</h1>
                     <h1 className="mt-4 text-4xl font-bold uppercase text-blueGray-200">Competitors</h1>
                   </div>
-                  <h2 className="mt-4 text-4xl font-bold uppercase text-blueGray-200 md-hide">Total:</h2>
                 </div>
               </div>
             </div>
@@ -49,9 +48,10 @@ export default function Landing() {
 
         <section id="rules" className="relative py-20 bg-blueGray-800">
           <div className="container mx-auto px-4">
-            <div className="items-center">
+            <div className="items-center text-center">
+              {teamsLoading && <Spinner light={true} />}
+              {!teamsLoading && <h2 className="mt-4 mb-8 text-4xl font-bold uppercase text-blueGray-200">Total: {teams.length}</h2>}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {teamsLoading && <Spinner light={true} />}
                 {!teamsLoading &&
                   teams &&
                   teams
