@@ -135,7 +135,7 @@ const EventPage = () => {
 
   return (
     <div className="flex justify-center">
-      <Page eventId={eventId} skip={parseInt(skip)} take={parseInt(take)} />
+      <Page eventId={eventId} skip={parseInt(skip) - 1} take={parseInt(take) + 1} />
     </div>
   )
 }
