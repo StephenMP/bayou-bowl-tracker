@@ -197,6 +197,28 @@ const Sidebar = withPageAuthRequired(() => {
                       </a>
                     </Link>
                   </li>
+                  <li className="items-center">
+                    <Link href="/admin/misc">
+                      <a
+                        onClick={() => setCollapseShow("hidden")}
+                        className={
+                          "text-xs uppercase py-3 font-bold block " +
+                          (router.pathname.endsWith('/admin/misc')
+                            ? "text-lightBlue-500 hover:text-lightBlue-600"
+                            : "text-blueGray-700 hover:text-blueGray-500")
+                        }
+                      >
+                        <i className={
+                          "fas fa-shield-alt mr-2 text-sm " +
+                          (router.pathname.endsWith('/admin/misc')
+                            ? "opacity-75"
+                            : "text-blueGray-500")
+                        }
+                        ></i>{" "}
+                        Misc
+                      </a>
+                    </Link>
+                  </li>
                 </ul></> : <></>}
 
             {/* Divider */}

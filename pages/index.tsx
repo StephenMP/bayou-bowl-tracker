@@ -70,7 +70,7 @@ export default function Landing() {
   var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-  });
+  })
 
   return (
     <>
@@ -136,7 +136,13 @@ export default function Landing() {
                   <h3 className="mt-4 text-6xl uppercase text-blueGray-200">Cash Prize Pool</h3>
                 </div>
                 <div className="flex justify-center flex-wrap text-font-mnh text-stroke-blackBlue-2">
-                  <h3 className="mt-4 text-8xl uppercase text-blueGray-200"><CountUp end={2500} duration={3} formattingFn={(value: number) => formatter.format(value).split('.')[0]} /></h3>
+                  <h3 className="mt-4 text-8xl uppercase text-blueGray-200">
+                    <CountUp
+                      end={2500}
+                      duration={3}
+                      formattingFn={(value: number) => formatter.format(value).split('.')[0]}
+                    />
+                  </h3>
                   {/* <h3 className="mt-4 text-6xl uppercase text-blueGray-200">{eventDateString}</h3> */}
                 </div>
               </div>
@@ -212,30 +218,29 @@ export default function Landing() {
             <div className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
                 <h3 className="text-3xl mb-2 font-semibold leading-normal">Latest News</h3>
-                <h6 className="text-lg mb-2 font-semibold leading-normal">
-                  Registration for the Bayou Bowl III is Now Open!
-                </h6>
-                <h6 className="text-sm mb-2 font-semibold leading-normal">30 Oct 2021</h6>
+                <h6 className="text-lg mb-2 font-semibold leading-normal">Official Participant List is Out Now!</h6>
+                <h6 className="text-sm mb-2 font-semibold leading-normal">22 Nov 2021</h6>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  Registration for the Bayou Bowl III has now officially opened. Registration is easy and takes less
-                  than 30 seconds.
+                  After three weeks of open registration, the final list of participants for Bayou Bowl III is now
+                  officially released. In total, 176 hunter will compete for the $2,500 prize pool. Bayou Bowl III will
+                  feature the biggest names in Hunt: Showdown.
                 </p>
                 <p className="text-lg font-light leading-relaxres enteed mt-0 mb-4 text-blueGray-600">
-                  To register, you must:
-                  <ol>
-                    <li className="ml-3">1. Sign in or create an account</li>
-                    <li className="ml-3">2. Make sure your Twitch Name (not URL) is filled in on your profile</li>
-                    <li className="ml-3">3. Click Events on the left side bar</li>
-                    <li className="ml-3">4. Under Bayou Bowl III, click Register</li>
-                    <li className="ml-3">5. DONE!</li>
-                  </ol>
+                  Legends like ArchieTV, LordJamesDelaney, Khalamity, Neenoh, Daexyn, and FailSpawner will go head to
+                  head in individual competition to claim the title of Champion of the Bayou on December 4th, 2021 at 1
+                  PM EST on twitch.tv/MondayNightHunts. Don't miss it!
                 </p>
                 <p>
                   <a href={routes.news}>Read More News</a>
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <Plyr source={plyrSourceInfo('Llmcs9rhfrQ')} options={videoOpts} style={plyrStyle} />
+                <Image
+                  alt="BB3 News Participants"
+                  src="/img/news/Participant_List_Announcement.png"
+                  width={592}
+                  height={333}
+                />
               </div>
             </div>
           </div>

@@ -61,6 +61,33 @@ export default function Landing() {
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
+                <h6 className="text-lg mb-2 font-semibold leading-normal">Official Participant List is Out Now!</h6>
+                <h6 className="text-sm mb-2 font-semibold leading-normal">22 Nov 2021</h6>
+                <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+                  After three weeks of open registration, the final list of participants for Bayou Bowl III is now
+                  officially released. In total, 176 hunter will compete for the $2,500 prize pool. Bayou Bowl III will
+                  feature the biggest names in Hunt: Showdown.
+                </p>
+                <p className="text-lg font-light leading-relaxres enteed mt-0 mb-4 text-blueGray-600">
+                  Legends like ArchieTV, LordJamesDelaney, Khalamity, Neenoh, Daexyn, and FailSpawner will go head to
+                  head in individual competition to claim the title of Champion of the Bayou on December 4th, 2021 at 1
+                  PM EST on twitch.tv/MondayNightHunts. Don't miss it!
+                </p>
+              </div>
+              <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
+                <Image
+                  alt="BB3 News Participants"
+                  src="/img/news/Participant_List_Announcement.png"
+                  width={592}
+                  height={333}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap items-center mt-32">
+              <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
                 <h6 className="text-lg mb-2 font-semibold leading-normal">
                   Registration for the Bayou Bowl III is Now Open!
                 </h6>

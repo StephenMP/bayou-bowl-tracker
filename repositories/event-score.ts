@@ -62,6 +62,32 @@ export async function createEventScore(eventScore: EventScore): Promise<void> {
   }
 }
 
+export async function deleteAllEventScores(eventId: string) {
+  try {
+    const deletePlayerScoresPromise = prisma.playerScore.deleteMany({
+      where: {
+        event_id: eventId,
+      },
+    })
+
+    const deleteTeamScorePromise = prisma.teamScore.deleteMany({
+      where: {
+        event_id: eventId,
+      },
+    })
+
+    await Promise.all([deletePlayerScoresPromise, deleteTeamScorePromise])
+
+    await client().deleteMany({
+      where: {
+        event_id: eventId,
+      },
+    })
+  } catch (e) {
+    logger.error('ERROR: ', e.message)
+  }
+}
+
 export async function deleteEventScore(eventId: string, teamId: string, roundNum: number): Promise<void> {
   try {
     const deletePlayerScoresPromise = prisma.playerScore.deleteMany({

@@ -139,7 +139,7 @@ export default function Footer({ disclaimers }: Props) {
           <div className="flex flex-wrap items-center md:justify-between justify-center">
             <div className="w-full md:w-4/12 px-4 mx-auto text-center text-font-mnh">
               <div className="text-sm text-blueGray-500 font-semibold py-1">
-                Copyright © {new Date().getFullYear()} Monday Night Hunts
+                Copyright © {new Date().getFullYear()} Monday Night Hunts&trade;
               </div>
               <div className="text-sm text-blueGray-500 font-semibold py-1">
                 Not affiliated with Crytek or Hunt: Showdown.

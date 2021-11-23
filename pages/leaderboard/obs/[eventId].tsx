@@ -29,10 +29,11 @@ function calculateScore(eventScore: EventScoreByTeam) {
 
 type PageProps = {
   eventId: string
+  skip: number
   take: number
 }
 
-function Page({ eventId, take }: PageProps) {
+function Page({ eventId, skip, take }: PageProps) {
   const { event, isLoading: eventIsLoading } = useEvent(eventId)
   const { eventScoresByTeam, isLoading: scoresAreLoading } = useEventScoreForEventByTeam(eventId, {
     refreshInterval: 5000,
@@ -49,10 +50,10 @@ function Page({ eventId, take }: PageProps) {
         .thenBy('totalSurvives', 'desc')
         .thenBy('totalRounds')
     )
-    .slice(0, take)
+    .slice(skip, skip + take)
 
   return (
-    <div className="flex flex-wrap max-w-7xl font-bold text-4xl text-font-mnh">
+    <div className="flex flex-wrap font-bold text-4xl text-font-mnh">
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blueGray-700">
         <div className="rounded-t mb-0 px-4 py-3 border-0">
           <div className="flex flex-wrap items-center">
@@ -92,7 +93,7 @@ function Page({ eventId, take }: PageProps) {
               {sortedEventScoresByTeam.map((score, index) => (
                 <tr key={score.teamId}>
                   <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-2">
-                    {index + 1}
+                    {index + 1 + skip}
                   </td>
                   <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-2">
                     {truncate(score.teamName, 18)}
@@ -122,6 +123,7 @@ function Page({ eventId, take }: PageProps) {
 const EventPage = () => {
   const router = useRouter()
   const eventId = queryParamAsString(router.query.eventId)
+  const skip = queryParamAsString(router.query.skip) ?? '0'
   const take = queryParamAsString(router.query.take) ?? '10'
 
   useEffect(() => {
@@ -133,7 +135,7 @@ const EventPage = () => {
 
   return (
     <div className="flex justify-center">
-      <Page eventId={eventId} take={parseInt(take)} />
+      <Page eventId={eventId} skip={parseInt(skip)} take={parseInt(take)} />
     </div>
   )
 }

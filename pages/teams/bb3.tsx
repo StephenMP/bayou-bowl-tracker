@@ -6,6 +6,7 @@ import Navbar from '../../components/Navbars/AuthNavbar'
 import Spinner from '../../components/PageChange/Spinner'
 import { useTeamsForEvent } from '../../lib/swr'
 import { sortIgnoreCase } from '../../util/string'
+import Image from 'next/image'
 
 export default function Landing() {
   const router = useRouter()
@@ -28,14 +29,18 @@ export default function Landing() {
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-7/12 px-4 ml-auto mr-auto text-center">
-                <div className="pr-12 mt-10 text-font-mnh">
-                  <h1 className="mt-4 text-7xl font-bold uppercase text-blueGray-200 md-hide">
-                    Bayou Bowl III Competitors
-                  </h1>
-                  <div className="md-show">
-                    <h1 className="mt-4 text-6xl font-bold uppercase text-blueGray-200">BB III</h1>
-                    <h1 className="mt-4 text-4xl font-bold uppercase text-blueGray-200">Competitors</h1>
+                <div className="mt-10 text-font-mnh">
+                  <div>
+                    <Image
+                      alt="BB3 Event Card"
+                      width={512}
+                      height={288}
+                      src="/img/events/BB3.png"
+                      className="shadow-xl border-none"
+                    />
                   </div>
+                  <h1 className="mt-4 text-6xl font-bold uppercase text-blueGray-200 md-hide">Competitors</h1>
+                  <h1 className="mt-4 text-4xl font-bold uppercase text-blueGray-200 md-show">Competitors</h1>
                 </div>
               </div>
             </div>
@@ -50,7 +55,9 @@ export default function Landing() {
           <div className="container mx-auto px-4">
             <div className="items-center text-center">
               {teamsLoading && <Spinner light={true} />}
-              {!teamsLoading && <h2 className="mt-4 mb-8 text-4xl font-bold uppercase text-blueGray-200">Total: {teams.length}</h2>}
+              {!teamsLoading && (
+                <h2 className="mt-4 mb-8 text-4xl font-bold uppercase text-blueGray-200">Total: {teams.length}</h2>
+              )}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {!teamsLoading &&
                   teams &&
