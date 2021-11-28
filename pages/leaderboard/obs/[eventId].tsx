@@ -4,6 +4,7 @@ import { firstBy } from 'thenby'
 import Spinner from '../../../components/PageChange/Spinner'
 import { useEvent } from '../../../lib/swr'
 import { EventScoreByTeam, useEventScoreForEventByTeam } from '../../../lib/swr/event-score'
+import { isCurrentlyDST } from '../../../util/dates'
 import { queryParamAsString } from '../../../util/routes'
 import { truncate } from '../../../util/string'
 
@@ -123,19 +124,20 @@ function Page({ eventId, skip, take }: PageProps) {
 const EventPage = () => {
   const router = useRouter()
   const eventId = queryParamAsString(router.query.eventId)
-  const skip = queryParamAsString(router.query.skip) ?? '1'
-  const take = queryParamAsString(router.query.take) ?? '10'
+  let skip = parseInt(queryParamAsString(router.query.skip) ?? '1')
+  let take = parseInt(queryParamAsString(router.query.take) ?? '10')
+  skip = skip === 0 ? 1 : skip
+  take = take === 0 ? 10 : take
 
   useEffect(() => {
     document.body.classList.remove('bg-blueGray-200')
     document.body.classList.add('bg-none')
-
     document.getElementById('rcc-confirm-button')?.click()
   })
 
   return (
     <div className="flex justify-center">
-      <Page eventId={eventId} skip={parseInt(skip) - 1} take={parseInt(take) + 1} />
+      <Page eventId={eventId} skip={skip - 1} take={take} />
     </div>
   )
 }
