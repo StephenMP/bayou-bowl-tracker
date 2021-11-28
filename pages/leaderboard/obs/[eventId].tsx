@@ -123,7 +123,7 @@ function Page({ eventId, skip, take }: PageProps) {
 const EventPage = () => {
   const router = useRouter()
   const eventId = queryParamAsString(router.query.eventId)
-  const skip = queryParamAsString(router.query.skip) ?? '0'
+  const skip = queryParamAsString(router.query.skip) ?? '1'
   const take = queryParamAsString(router.query.take) ?? '10'
 
   useEffect(() => {
