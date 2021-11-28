@@ -4,12 +4,13 @@ import React, { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from '
 import { useToasts } from 'react-toast-notifications'
 import { mutate } from 'swr'
 import { firstBy } from 'thenby'
+import ImageTooltipDropdown from '../../../../components/Dropdowns/ImageTooltipDropdown'
 import Spinner from '../../../../components/PageChange/Spinner'
 import Admin from '../../../../layouts/Admin'
 import { fetcher, useEvent, useUserTeamForEventAndUser } from '../../../../lib/swr'
 import { useEventScoreForTeam } from '../../../../lib/swr/event-score'
-import { useCurrentUser, useUser } from '../../../../lib/swr/user'
-import { EventScore, PlayerScore, TeamMember, TeamMemberType, TeamScore } from '../../../../types/prisma'
+import { useCurrentUser } from '../../../../lib/swr/user'
+import { EventScore, PlayerScore, TeamMemberType, TeamScore } from '../../../../types/prisma'
 import { parseTimeFromDate } from '../../../../util/dates'
 import { queryParamAsString, routes } from '../../../../util/routes'
 
@@ -110,7 +111,9 @@ function ScoreTable({
       <div className="rounded-t mb-0 px-4 py-3 border-0">
         <div className="flex flex-wrap items-center">
           <div className="relative py-3 w-full w-6/12 md:w-3/12 px-4 max-w-full flex-grow flex-1">
-            <h3 className={'font-semibold text-xl font-bold ' + (color === 'light' ? 'text-blueGray-700' : 'text-white')}>
+            <h3
+              className={'font-semibold text-xl font-bold ' + (color === 'light' ? 'text-blueGray-700' : 'text-white')}
+            >
               Scores
             </h3>
           </div>
@@ -405,7 +408,12 @@ function Page({ eventId }: { eventId: string }) {
                 <div className="w-full px-4">
                   <div className="relative w-full mb-3">
                     <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                      Hunt Dollars Earned (In the match only)
+                      <ImageTooltipDropdown
+                        text="Hunt Dollars Earned (Click for info):"
+                        src="/img/tooltips/BB3_HuntDollars.png"
+                        width={300}
+                        height={169}
+                      />
                     </label>
                     <input
                       id={currentUser.id + '-money'}
@@ -439,7 +447,12 @@ function Page({ eventId }: { eventId: string }) {
                 <div className="w-full px-4">
                   <div className="relative w-full mb-3">
                     <span className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                      Soul Survivor:
+                      <ImageTooltipDropdown
+                        text="Soul Survivor (Click for info):"
+                        src="/img/tooltips/BB3_SoulSurvivors.png"
+                        width={239}
+                        height={305}
+                      />
                       <input
                         id={currentUser.id + '-survivor'}
                         type="checkbox"
