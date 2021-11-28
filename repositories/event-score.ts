@@ -132,6 +132,9 @@ export async function readEventScoresForTeam(
     where: {
       team_id: teamId,
     },
+    orderBy: {
+      round_num: 'asc'
+    },
     include: opts.include,
   })
 }

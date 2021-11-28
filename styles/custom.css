@@ -16,7 +16,8 @@
 
 @font-face {
   font-family: 'VTF League';
-  src: url('/fonts/VTFLeague-ExtraBoldOblique.woff2') format('woff2'), url('/fonts/VTFLeague-ExtraBoldOblique.woff') format('woff');
+  src: url('/fonts/VTFLeague-ExtraBoldOblique.woff2') format('woff2'),
+    url('/fonts/VTFLeague-ExtraBoldOblique.woff') format('woff');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
@@ -24,7 +25,8 @@
 
 @font-face {
   font-family: 'VTF League';
-  src: url('/fonts/VTFLeague-BlackOblique.woff2') format('woff2'), url('/fonts/VTFLeague-BlackOblique.woff') format('woff');
+  src: url('/fonts/VTFLeague-BlackOblique.woff2') format('woff2'),
+    url('/fonts/VTFLeague-BlackOblique.woff') format('woff');
   font-weight: 900;
   font-style: italic;
   font-display: swap;
@@ -114,4 +116,8 @@
 
 .opacity-80 {
   opacity: 0.8;
+}
+
+.max-h-screen-75 {
+  max-height: 75vh;
 }
