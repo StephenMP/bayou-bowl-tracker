@@ -61,6 +61,31 @@ export default function Landing() {
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
+                <h6 className="text-lg mb-2 font-semibold leading-normal">
+                  Everything you Need to Know to Compete in Bayou Bowl III
+                </h6>
+                <h6 className="text-sm mb-2 font-semibold leading-normal">2 Dec 2021</h6>
+                <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+                  Monday Night Hunts has released a video explaining everything required of registered participants for
+                  Bayou Bowl III.
+                </p>
+                <p className="text-lg font-light leading-relaxres enteed mt-0 mb-4 text-blueGray-600">
+                  If you are competing this weekend, it is highly recommended that you take a few moments to review this
+                  crucial information. Bayou Bowl III will take place on December 4th, 2021 at 1 PM EST on{' '}
+                  <a href="https://twitch.tv/MondayNightHunts" className="font-bold">
+                    twitch.tv/MondayNightHunts.
+                  </a>
+                </p>
+              </div>
+              <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
+                <Plyr source={plyrSourceInfo('JdCqGIjI8t4')} options={videoOpts} style={plyrStyle} />
+              </div>
+            </div>
+          </div>
+
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap items-center mt-32">
+              <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
                 <h6 className="text-lg mb-2 font-semibold leading-normal">Official Participant List is Out Now!</h6>
                 <h6 className="text-sm mb-2 font-semibold leading-normal">22 Nov 2021</h6>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
@@ -71,7 +96,11 @@ export default function Landing() {
                 <p className="text-lg font-light leading-relaxres enteed mt-0 mb-4 text-blueGray-600">
                   Legends like ArchieTV, LordJamesDelaney, Khalamity, Neenoh, Daexyn, and FailSpawner will go head to
                   head in individual competition to claim the title of Champion of the Bayou on December 4th, 2021 at 1
-                  PM EST on twitch.tv/MondayNightHunts. Don't miss it!
+                  PM EST on{' '}
+                  <a href="https://twitch.tv/MondayNightHunts" className="font-bold">
+                    twitch.tv/MondayNightHunts.
+                  </a>
+                  . Don't miss it!
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
