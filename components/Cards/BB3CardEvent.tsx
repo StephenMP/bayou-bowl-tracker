@@ -11,37 +11,37 @@ import { routes } from '../../util/routes'
 import Spinner from '../PageChange/Spinner'
 import Image from 'next/image'
 
-async function unregisterForEvent(
-  eventId: string,
-  setRegistering: React.Dispatch<React.SetStateAction<boolean>>,
-  addToast: AddToast
-) {
-  try {
-    setRegistering(true)
-    const response = await fetcher(`/api/event/register`, {
-      method: 'DELETE',
-      body: JSON.stringify({ eventId }),
-      headers: new Headers({
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      }),
-    })
+// async function unregisterForEvent(
+//   eventId: string,
+//   setRegistering: React.Dispatch<React.SetStateAction<boolean>>,
+//   addToast: AddToast
+// ) {
+//   try {
+//     setRegistering(true)
+//     const response = await fetcher(`/api/event/register`, {
+//       method: 'DELETE',
+//       body: JSON.stringify({ eventId }),
+//       headers: new Headers({
+//         'Content-Type': 'application/json',
+//         Accept: 'application/json',
+//       }),
+//     })
 
-    if (response && response.error) {
-      throw new Error(response)
-    }
+//     if (response && response.error) {
+//       throw new Error(response)
+//     }
 
-    addToast(`Successfully unregistered`, {
-      appearance: 'success',
-      autoDismiss: true,
-    })
-  } catch (e) {
-    addToast('There was an error, please contact support', { appearance: 'error', autoDismiss: false })
-    setRegistering(false)
-  } finally {
-    await mutate(routes.api.user.teams)
-  }
-}
+//     addToast(`Successfully unregistered`, {
+//       appearance: 'success',
+//       autoDismiss: true,
+//     })
+//   } catch (e) {
+//     addToast('There was an error, please contact support', { appearance: 'error', autoDismiss: false })
+//     setRegistering(false)
+//   } finally {
+//     await mutate(routes.api.user.teams)
+//   }
+// }
 
 function GoToEventPage({ eventId }: { eventId: string }) {
   return (
@@ -53,37 +53,12 @@ function GoToEventPage({ eventId }: { eventId: string }) {
   )
 }
 
-function Register({ eventId, isRegister }: { eventId: string; isRegister: boolean }) {
-  const [isLoading, setLoading] = useState<boolean>(false)
-  const { addToast } = useToasts()
-
-  if (isLoading) {
-    return (
-      <button className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
-        <i className="fas fa-spinner animate-spin mx-auto text-white"></i>
-      </button>
-    )
-  }
-
-  return (
-    <button
-      className="bg-blueGray-700 active:bg-blueGray-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-      onClick={() => {
-        unregisterForEvent(eventId, setLoading, addToast)
-      }}
-    >
-      Unregister
-    </button>
-  )
-}
-
 function CardButtons({ teams, eventId }: { teams: Team[]; eventId: string }) {
   const isRegistered = teams.find((ut) => ut.event_id === eventId)
   if (isRegistered) {
     return (
       <>
         <GoToEventPage eventId={eventId} />
-        <Register eventId={eventId} isRegister={false} />
       </>
     )
   }
