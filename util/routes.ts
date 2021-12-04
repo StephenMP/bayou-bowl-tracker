@@ -73,6 +73,7 @@ export const routes = {
     },
     eventId: (eventId: string) => `/leaderboard/${eventId}`,
     bb2: `/leaderboard/bb2`,
+    bb3: `/leaderboard/bb3`,
   },
   team: {
     teamId: (teamId: string) => `/team/${teamId}`,

@@ -39,7 +39,9 @@ function Table({ scores }: { scores: EventScoreByTeam[] }) {
           </div>
           <div className="flex flex-wrap items-center">
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-              <h3 className="font-semibold text-sm text-blueGray-600 text-center">Scores are automatically updated</h3>
+              <h3 className="font-semibold text-sm text-blueGray-600 text-center">
+                Scores are automatically updated every minute while this page is in focus
+              </h3>
             </div>
           </div>
         </div>
@@ -54,10 +56,10 @@ function Table({ scores }: { scores: EventScoreByTeam[] }) {
                   Competitor
                 </th>
                 <th className="px-6 md-hide align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
-                  Hunt Dollars
+                  Money
                 </th>
                 <th className="px-6 md-hide align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
-                  Survives
+                  Survived
                 </th>
                 <th className="px-6 md-hide align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
                   Games Played
@@ -86,7 +88,7 @@ function Table({ scores }: { scores: EventScoreByTeam[] }) {
                       </a>
                     </td>
                     <td className="border-t-0 md-hide px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {score.totalHuntDollars}
+                      ${score.totalHuntDollars}
                     </td>
                     <td className="border-t-0 md-hide px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                       {score.totalSurvives}
@@ -108,7 +110,7 @@ function Table({ scores }: { scores: EventScoreByTeam[] }) {
 }
 
 function Page() {
-  const { bb3EventScores, isLoading } = useEventScoresForBB3({ suspense: false, refreshInterval: 60000 })
+  const { bb3EventScores, isLoading } = useEventScoresForBB3({ suspense: false, refreshInterval: 20000 })
 
   return (
     <div className="flex flex-wrap w-full mt-4 mr-3 ml-3">

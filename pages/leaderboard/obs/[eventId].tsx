@@ -77,10 +77,10 @@ function Page({ eventId, skip, take }: PageProps) {
                   Team
                 </th>
                 <th className="px-3 align-middle border border-solid py-1 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
-                  Hunt Dollars
+                  Money
                 </th>
                 <th className="px-3 align-middle border border-solid py-1 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
-                  Survives
+                  Survived
                 </th>
                 <th className="px-3 align-middle border border-solid py-1 text-md uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-700 text-blueGray-200 border-blueGray-100">
                   Games
@@ -100,7 +100,7 @@ function Page({ eventId, skip, take }: PageProps) {
                     {truncate(score.teamName, 18)}
                   </td>
                   <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-2">
-                    {score.totalHuntDollars}
+                    ${score.totalHuntDollars}
                   </td>
                   <td className="border-t-0 px-3 align-middle text-md text-blueGray-200 border-l-0 border-r-0 whitespace-nowrap p-2">
                     {score.totalSurvives}
