@@ -8,6 +8,7 @@ export type ImageTooltipDropdownProps = {
   src: string
   width: number
   height: number
+  description?: string
 }
 
 const BB3EventScoreHuntDollarsDropdown = (props: ImageTooltipDropdownProps) => {
@@ -44,6 +45,7 @@ const BB3EventScoreHuntDollarsDropdown = (props: ImageTooltipDropdownProps) => {
         }
       >
         <span className="text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"></span>
+        {props.description}
         <Image src={src} width={width} height={height} />
       </div>
     </div>

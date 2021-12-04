@@ -449,6 +449,7 @@ function Page({ eventId }: { eventId: string }) {
                     <span className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                       <ImageTooltipDropdown
                         text="Soul Survivor (Click for info):"
+                        description="Check the box if you have this card"
                         src="/img/tooltips/BB3_SoulSurvivors.png"
                         width={239}
                         height={305}
