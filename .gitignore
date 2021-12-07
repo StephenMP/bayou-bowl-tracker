@@ -35,13 +35,7 @@ yarn-error.log*
 .vercel
 
 # DB Backups
-c49c31ee-6595-412f-8be4-14e7ec25215a
-
-# Sentry
-.sentryclirc
-
-# Sentry
-.sentryclirc
+25d87020-b873-40c9-a389-148f03941a4a
 
 # Sentry
 .sentryclirc
