@@ -61,6 +61,35 @@ export default function Landing() {
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
+                <h6 className="text-lg mb-2 font-semibold leading-normal">Official Winners Announced!</h6>
+                <h6 className="text-sm mb-2 font-semibold leading-normal">6 Dec 2021</h6>
+                <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+                  The VODs have been reviewed and the winners announced! The following list is your top 10 finishers!
+                </p>
+                <p className="text-lg font-light leading-relaxres enteed mt-0 mb-4 text-blueGray-600">
+                  <ol>
+                    <li className="px-3">01. Rachtaz</li>
+                    <li className="px-3">02. Whityyy</li>
+                    <li className="px-3">03. FailSpawner</li>
+                    <li className="px-3">04. ArchieTV</li>
+                    <li className="px-3">05. Daexyn</li>
+                    <li className="px-3">06. CaffeinatedNurgling</li>
+                    <li className="px-3">07. PostPoison</li>
+                    <li className="px-3">08. gunsmackk</li>
+                    <li className="px-3">09. DemonLord100</li>
+                    <li className="px-3">10. GregorianHipster</li>
+                  </ol>
+                </p>
+              </div>
+              <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
+                <Image alt="BB3 News Participants" src="/img/news/Announce4.png" width={592} height={333} />
+              </div>
+            </div>
+          </div>
+
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap items-center mt-32">
+              <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
                 <h6 className="text-lg mb-2 font-semibold leading-normal">
                   Everything you Need to Know to Compete in Bayou Bowl III
                 </h6>

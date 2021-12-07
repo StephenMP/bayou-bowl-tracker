@@ -5,7 +5,7 @@ import Footer from '../components/Footers/Footer'
 import Navbar from '../components/Navbars/AuthNavbar'
 import { routes } from '../util/routes'
 import Image from 'next/image'
-import bb3Banner from '../public/img/brand/The_Bayou_Bowl_Header.png'
+import headerImage from '../public/img/brand/mnh_square.jpg'
 import newsImage from '../public/img/news/BB3_Rules_Released.png'
 import logo from '../public/img/brand/bayoubowl-logo.png'
 import logo2 from '../public/img/brand/bayoubowl-logo-2.png'
@@ -67,9 +67,15 @@ export default function Landing() {
               <div className="w-full px-4 ml-auto mr-auto text-center">
                 <div className="flex justify-center flex-wrap mt-10">
                   <div className="max-w-full rounded-lg">
-                    <Image alt="BayouBowl 3 Header" width={592} height={520} src={bb3Banner} priority />
+                    <Image
+                      alt="Monday Night Hunts Logo"
+                      width={603}
+                      height={173}
+                      className="max-w-full rounded-lg shadow-lg"
+                      src={logo2}
+                    />
                   </div>
-                  <div className="items-center flex flex-wrap text-4xl text-font-mnh text-stroke-blackBlue-2">
+                  {/* <div className="items-center flex flex-wrap text-4xl text-font-mnh text-stroke-blackBlue-2">
                     <div className="w-full lg:w-3/12 uppercase md-hide px-4 ml-auto mr-auto text-center">
                       <CountdownCircleTimer
                         {...timerProps}
@@ -109,9 +115,9 @@ export default function Landing() {
                         {({ elapsedTime }) => renderTime('seconds', getTimeSeconds(elapsedTime))}
                       </CountdownCircleTimer>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
-                <div className="flex justify-center flex-wrap text-font-mnh text-stroke-blackBlue-2">
+                {/* <div className="flex justify-center flex-wrap text-font-mnh text-stroke-blackBlue-2">
                   <h3 className="mt-4 text-6xl uppercase text-blueGray-200">Cash Prize Pool</h3>
                 </div>
                 <div className="flex justify-center flex-wrap text-font-mnh text-stroke-blackBlue-2">
@@ -121,9 +127,9 @@ export default function Landing() {
                       duration={3}
                       formattingFn={(value: number) => formatter.format(value).split('.')[0]}
                     />
-                  </h3>
-                  {/* <h3 className="mt-4 text-6xl uppercase text-blueGray-200">{eventDateString}</h3> */}
-                </div>
+                  </h3> */}
+                {/* <h3 className="mt-4 text-6xl uppercase text-blueGray-200">{eventDateString}</h3> */}
+                {/* </div> */}
               </div>
             </div>
           </div>
@@ -154,9 +160,10 @@ export default function Landing() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
                       <i className="fab fa-twitter"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">@GameswithDeath</h6>
+                    <h6 className="text-xl font-semibold">@MNH_GG</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      THE OFFICIAL WINNERS OF BAYOU BOWL II: THE ITALIAN DREAM. Congratulations to all the participants!
+                      Thank you to everyone who made Bayou Bowl III our best competition yet. We are really blown away
+                      by the support. You are all champions to us!
                     </p>
                   </div>
                 </div>
@@ -168,8 +175,11 @@ export default function Landing() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
                       <i className="fab fa-twitter"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">@michaelexile</h6>
-                    <p className="mt-2 mb-4 text-blueGray-500">I’m here for this, sign me the hell up</p>
+                    <h6 className="text-xl font-semibold">@rachta_z</h6>
+                    <p className="mt-2 mb-4 text-blueGray-500">
+                      Thanks to @MNH_GG for another great Bayou Bowl tournament! Respect from doing all this for the
+                      community and congrats to all participants.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -180,10 +190,11 @@ export default function Landing() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
                       <i className="fab fa-twitter"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">@LordJamesD</h6>
+                    <h6 className="text-xl font-semibold">@The_Chedwin</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      seeing my main partner Beru finish first is the same feeling that a master has a student after he
-                      surpasses him.
+                      I got literally everything I wanted out of the Bayou Bowl, and it was a lot of fun! Thanks again
+                      @GameswithDeath , @Mr_Spwn &amp; @CrankItMan for hosting yet again another A M A Z I N G Community
+                      Tournament!
                     </p>
                   </div>
                 </div>
@@ -198,26 +209,37 @@ export default function Landing() {
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
                 <h3 className="text-3xl mb-2 font-semibold leading-normal">Latest News</h3>
                 <h6 className="text-lg mb-2 font-semibold leading-normal">
-                  Everything you Need to Know to Compete in Bayou Bowl III
+                  Official Winners Announced!
                 </h6>
-                <h6 className="text-sm mb-2 font-semibold leading-normal">2 Dec 2021</h6>
+                <h6 className="text-sm mb-2 font-semibold leading-normal">6 Dec 2021</h6>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  Monday Night Hunts has released a video explaining everything required of registered participants for
-                  Bayou Bowl III.
+                  The VODs have been reviewed and the winners announced! The following list is your top 10 finishers!
                 </p>
                 <p className="text-lg font-light leading-relaxres enteed mt-0 mb-4 text-blueGray-600">
-                  If you are competing this weekend, it is highly recommended that you take a few moments to review this
-                  crucial information. Bayou Bowl III will take place on December 4th, 2021 at 1 PM EST on{' '}
-                  <a href="https://twitch.tv/MondayNightHunts" className="font-bold">
-                    twitch.tv/MondayNightHunts.
-                  </a>
+                  <ol>
+                    <li className="px-3">01. Rachtaz</li>
+                    <li className="px-3">02. Whityyy</li>
+                    <li className="px-3">03. FailSpawner</li>
+                    <li className="px-3">04. ArchieTV</li>
+                    <li className="px-3">05. Daexyn</li>
+                    <li className="px-3">06. CaffeinatedNurgling</li>
+                    <li className="px-3">07. PostPoison</li>
+                    <li className="px-3">08. gunsmackk</li>
+                    <li className="px-3">09. DemonLord100</li>
+                    <li className="px-3">10. GregorianHipster</li>
+                  </ol>
                 </p>
                 <p>
                   <a href={routes.news}>Read More News</a>
                 </p>
               </div>
               <div className="w-full md:w-6/12 px-4 mr-auto ml-auto">
-                <Plyr source={plyrSourceInfo('JdCqGIjI8t4')} options={videoOpts} style={plyrStyle} />
+                <Image
+                  alt="BB3 News Participants"
+                  src="/img/news/Announce4.png"
+                  width={592}
+                  height={333}
+                />
               </div>
             </div>
           </div>
