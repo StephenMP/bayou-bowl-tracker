@@ -403,7 +403,7 @@ export default function Landing() {
                 <div className="px-6">
                   <div className=" mx-auto max-w-120-px">
                     <Image
-                      alt="CrankIt Logo"
+                      alt="ForkIt Logo"
                       height={130}
                       width={130}
                       src={logo_crankit}
@@ -411,10 +411,10 @@ export default function Landing() {
                     />
                   </div>
                   <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">CrankItMan</h5>
+                    <h5 className="text-xl font-bold">ForkItMan</h5>
                     <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">Operations Mastermind</p>
                     <div className="mt-6">
-                      <a href="https://twitter.com/CrankItMan" target="_blank" rel="noopener noreferrer">
+                      <a href="https://twitter.com/forkitman" target="_blank" rel="noopener noreferrer">
                         <button
                           className="bg-lightBlue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                           type="button"
@@ -422,7 +422,7 @@ export default function Landing() {
                           <i className="fab fa-twitter"></i>
                         </button>
                       </a>
-                      <a href="https://twitch.tv/CrankItMan" target="_blank" rel="noopener noreferrer">
+                      <a href="https://twitch.tv/forkitman" target="_blank" rel="noopener noreferrer">
                         <button
                           className="bg-purple-twitch text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                           type="button"
