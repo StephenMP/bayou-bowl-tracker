@@ -193,7 +193,7 @@ export default function Landing() {
                     <h6 className="text-xl font-semibold">@The_Chedwin</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
                       I got literally everything I wanted out of the Bayou Bowl, and it was a lot of fun! Thanks again
-                      @GameswithDeath , @Mr_Spwn &amp; @CrankItMan for hosting yet again another A M A Z I N G Community
+                      @GameswithDeath , @Mr_Spwn &amp; @ForkItMan for hosting yet again another A M A Z I N G Community
                       Tournament!
                     </p>
                   </div>
