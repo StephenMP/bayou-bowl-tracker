@@ -36,6 +36,3 @@ yarn-error.log*
 
 # DB Backups
 25d87020-b873-40c9-a389-148f03941a4a
-
-# Sentry
-.sentryclirc

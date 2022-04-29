@@ -127,13 +127,13 @@ export default function Navbar() {
                 <RulesDropdown />
               </li>
 
-              <li className="flex items-center">
+              {/* <li className="flex items-center">
                 <TeamsDropdown />
-              </li>
+              </li> */}
 
-              <li className="flex items-center">
+              {/* <li className="flex items-center">
                 <LeaderboardsDropdown />
-              </li>
+              </li> */}
 
               {/* <li className="flex items-center">
                 <Link href="#partners">
@@ -150,7 +150,7 @@ export default function Navbar() {
               </li>
 
               <SocialLinks />
-              <AuthedNavs />
+              {/* <AuthedNavs /> */}
             </ul>
           </div>
         </div>

@@ -2,7 +2,6 @@ import { withApiAuthRequired } from '@auth0/nextjs-auth0'
 import { prisma } from '../../../../lib/prisma'
 import { queryParamAsString } from '../../../../util/routes'
 import { logger } from '../../../../lib/logtail'
-import { withSentry } from '@sentry/nextjs'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export const config = {
@@ -40,4 +39,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   }
 }
 
-export default withSentry(withApiAuthRequired(handler))
+export default withApiAuthRequired(handler)
