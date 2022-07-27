@@ -11,7 +11,7 @@ export default class MyApp extends App {
       <React.Fragment>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-          <meta name="description" content="The BayouBowl is the premier Hunt: Showdown Esports tournament!" />
+          <meta name="description" content="Thanks for the amazing journey!" />
           <title>Thank You</title>
           {process.env.NODE_ENV === 'production' && (
             <script defer src="https://app.watchthem.live/pixel/yXsvYNKQz4XEPzHj"></script>
