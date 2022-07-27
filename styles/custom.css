@@ -119,5 +119,9 @@
 }
 
 .max-h-screen-75 {
-  max-height: 75vh;
+  max-height: 100vh;
+}
+
+.min-h-screen-100 {
+  min-height: 100vh;
 }
